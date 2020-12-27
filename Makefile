@@ -2,7 +2,7 @@ BUILD_NAME=cdc-portal
 BUILD_TAG=$$(git log -1 --pretty=%h)
 
 build:
-	@docker build -t ${BUILD_NAME}-backend:${BUILD_TAG} -t ${BUILD_NAME}-backend:latest -f Dockerfile .
+	@docker build -t ${BUILD_NAME}-backend:${BUILD_TAG} -t ${BUILD_NAME}-backend:latest -f backend/Dockerfile backend.
 	@docker build -t ${BUILD_NAME}-frontend:${BUILD_TAG} -t ${BUILD_NAME}-frontend:latest -f frontend/Dockerfile frontend
 
 .env:
