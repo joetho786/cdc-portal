@@ -18,12 +18,6 @@
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged"
   },
-  "eslint-config": {
-    "extends": [
-      "react-app",
-      "plugin:prettier/recommended"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
