@@ -2,9 +2,27 @@ name: Tests
 
 on: [push, pull_request]
 
+env:
+  DJANGO_SETTINGS_MODULE: cdc_portal.settings
+  DJANGO_SECRET_KEY: "dcyz)+52d)n1f3d6dsf&g0p6a($(v4&rvu=9u3u6fib9=kzy$8"
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:10.8
+        env:
+          POSTGRES_USER: cdcuser
+          POSTGRES_PASSWORD: cdcpassword
+          POSTGRES_DB: cdcdb
+        ports:
+        # will assign a random free host port
+        - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    
     steps:
     - uses: actions/checkout@v1
     - name: Set up Python 3.7
