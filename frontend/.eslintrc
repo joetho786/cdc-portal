@@ -3,7 +3,11 @@
         "react-app",
         "plugin:prettier/recommended"
     ],
-    "quotes": [
-        "single"
-    ]
+    "rules": {
+        "quotes": [
+            "warn",
+            "single",
+            "avoid-escape"
+        ]
+    }
 }
