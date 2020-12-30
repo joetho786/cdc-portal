@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import Home from './components/test.js'
-
-function App() {
-   return (
-      <div className="App">
-         <Home />
-      </div>
-   )
-=======
 import React from 'react';
 import Home from './pages/Home';
 import Team from './pages/Team';
@@ -29,7 +18,6 @@ function App() {
       </Router>
     </div>
   );
->>>>>>> d07b1b4c6620651e32df220d5ead893d648f2063
 }
 
 export default App
