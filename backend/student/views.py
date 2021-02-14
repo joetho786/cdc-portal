@@ -5,7 +5,6 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from rest_framework.parsers import MultiPartParser, FormParser
-from django.core import serializers
 
 
 class addStudentDetails(APIView):
@@ -50,7 +49,7 @@ class updateStudentDetails(APIView):
         programBranch = data.pop('program_branch')
         _ = StudentProfile.objects.filter(user=user).update(**data, program_branch=ProgramAndBranch.objects.get(name=programBranch['name']))
         profile = StudentProfile.objects.filter(user=user)[0]
-        operation = profile.save()
+        profile.save()
 
         if serializer.is_valid():
             serializer.save()
