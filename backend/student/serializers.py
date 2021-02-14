@@ -25,7 +25,7 @@ class StudentProfileSerializer(serializers.ModelSerializer):
 
 
 class ResumeSerializer(serializers.ModelSerializer):
-    student = StudentProfileSerializer()
+    student = StudentProfileSerializer(read_only=True)
     file = serializers.FileField()
 
     class Meta:

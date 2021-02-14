@@ -1,10 +1,11 @@
 from rest_framework.response import Response
 from .serializers import StudentProfileSerializer, ResumeSerializer
-from .models import StudentProfile, Resume
+from .models import StudentProfile, Resume, ProgramAndBranch
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
-from rest_framework.parsers import FileUploadParser
+from rest_framework.parsers import MultiPartParser, FormParser
+from django.core import serializers
 
 
 class addStudentDetails(APIView):
@@ -15,10 +16,11 @@ class addStudentDetails(APIView):
         for key in request.data.keys():
             data[key] = request.data.get(key)
         user = request.user
-        user.first_name = data['user']['first_name']
-        user.last_name = data['user']['last_name']
+        user.first_name = data.pop('first_name')
+        user.last_name = data.pop('last_name')
         user.save()
-        profile = StudentProfile.objects.create(user=user, **data)
+        programBranch = data.pop('program_branch')
+        profile = StudentProfile.objects.create(user=user, **data, program_branch=ProgramAndBranch.objects.get(name=programBranch['name']))
         profile.save()
         return Response(StudentProfileSerializer(profile).data, status=status.HTTP_200_OK)
 
@@ -42,13 +44,19 @@ class updateStudentDetails(APIView):
         for key in request.data.keys():
             data[key] = request.data.get(key)
         user = request.user
-        user.first_name = data['user']['first_name']
-        user.last_name = data['user']['last_name']
+        user.first_name = data.pop('first_name')
+        user.last_name = data.pop('last_name')
         user.save()
+        programBranch = data.pop('program_branch')
+        _ = StudentProfile.objects.filter(user=user).update(**data, program_branch=ProgramAndBranch.objects.get(name=programBranch['name']))
+        profile = StudentProfile.objects.filter(user=user)[0]
+        operation = profile.save()
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class deleteStudentDetails(APIView):
@@ -77,13 +85,12 @@ class getResumes(APIView):
 
 class addResume(APIView):
     permission_classes = (IsAuthenticated,)
-    parser_classes = (FileUploadParser,)
+    parser_classes = (MultiPartParser, FormParser,)
 
     def post(self, request, format=None):
-        file = request.data['file']
-        serializer = ResumeSerializer(file=file, data=request.data)
+        serializer = ResumeSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(student=StudentProfile.objects.get(user=request.user))
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
