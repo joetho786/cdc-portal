@@ -1,5 +1,8 @@
 from django.contrib import admin
-from main.models import PastRecruiters, News, AlumniTestimonial, HomeImageCarousel, DesignationChoices, VolunteersYearChoices, CareerCommittee, CoreTeamContacts, Volunteers, NavBarSubOptions, NavBarOptions
+from main.models import PastRecruiters, News,\
+     AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
+     VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
+     Volunteers, NavBarSubOptions, NavBarOptions
 from import_export.admin import ImportExportActionModelAdmin
 
 
