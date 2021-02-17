@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY', cast=str)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-D = config('D', default=False, cast = bool)
+D = config('D', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'cdc_portal.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-if(D==True):
+if D:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -90,7 +90,7 @@ if(D==True):
         }
     }
 
-else :
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -100,7 +100,7 @@ else :
             'HOST': config('DB_HOST', default='localhost'),
             'PORT': config('DB_PORT', cast=int, default=5432),
         }
-}
+    }
 
 
 # Password validation

@@ -1,11 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from student.models import ProgramAndBranch, ProgramEmailId
+from student.models import ProgramAndBranch
 from ckeditor_uploader.fields import RichTextUploadingField
-from django.db.models.signals import pre_save
-from django.urls import reverse
 from django.template.defaultfilters import slugify
-from django.core.exceptions import ValidationError
 import re
 
 
@@ -31,6 +28,7 @@ class PastRecruiters(models.Model):
 
     def __str__(self):
         return self.company_name
+
 
 class DesignationChoices(models.Model):
     Team_Member = 'Team Member'
@@ -63,11 +61,13 @@ class CoreTeamContacts(models.Model):
     def __str__(self):
         return self.user.get_full_name()
 
+
 class VolunteersYearChoices(models.Model):
     year = models.CharField(max_length=64)
 
     def __str__(self):
         return self.year
+
 
 class Volunteers(models.Model):
     name = models.CharField(max_length=64)
@@ -78,6 +78,7 @@ class Volunteers(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class AlumniTestimonial(models.Model):
     alumni_name = models.CharField(max_length=64)
@@ -91,6 +92,7 @@ class AlumniTestimonial(models.Model):
     def __str__(self):
         return self.alumni_name
 
+
 class HomeImageCarousel(models.Model):
     ordering = models.PositiveIntegerField(default=64)
     title = models.CharField(max_length=64)
@@ -99,6 +101,7 @@ class HomeImageCarousel(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class CareerCommittee(models.Model):
     name = models.CharField(max_length=64, blank=False, null=False, default='Member')
@@ -112,6 +115,7 @@ class CareerCommittee(models.Model):
     def __str__(self):
         return self.name
 
+
 class NavBarSubOptions(models.Model):
     title = models.CharField(max_length=64)
     description = RichTextUploadingField(blank=True, null=True)
@@ -120,20 +124,18 @@ class NavBarSubOptions(models.Model):
     def save(self, *args, **kwargs):
         original_slug = slugify(self.title)
         queryset = NavBarSubOptions.objects.all().filter(slug__iexact=original_slug).count()
-
         count = 1
-
         slug = original_slug
         while(queryset):
             slug = original_slug + '-' + str(count)
             count += 1
             queryset = NavBarSubOptions.objects.all().filter(slug__iexact=slug).count()
         self.slug = slug
-        
         super(NavBarSubOptions, self).save(*args, **kwargs)
-    
+
     def __str__(self):
         return self.title
+
 
 class NavBarOptions(models.Model):
     title = models.CharField(max_length=64)
@@ -143,6 +145,3 @@ class NavBarOptions(models.Model):
 
     def __str__(self):
         return self.title
-
-
-

@@ -22,6 +22,7 @@ class PastRecruitersAdmin(admin.ModelAdmin):
         model = PastRecruiters
         fields = '__all__'
 
+
 @admin.register(AlumniTestimonial)
 class TestimonialAdmin(admin.ModelAdmin):
     list_display = ['ranking', 'alumni_name', 'active', ]
@@ -42,17 +43,20 @@ class HomeImageCarouselAdmin(admin.ModelAdmin):
         model = HomeImageCarousel
         fields = '__all__'
 
+
 @admin.register(DesignationChoices)
 class DesignationChoicesAdmin(admin.ModelAdmin):
     class Meta:
         model = DesignationChoices
         fields = '__all__'
 
+
 @admin.register(VolunteersYearChoices)
 class VolunteersYearChoicesAdmin(admin.ModelAdmin):
     class Meta:
         model = VolunteersYearChoices
         fields = '__all__'
+
 
 @admin.register(CoreTeamContacts)
 class CoreTeamContactsAdmin(admin.ModelAdmin):
@@ -75,6 +79,7 @@ class CareerCommitteeAdmin(admin.ModelAdmin):
         model = CareerCommittee
         fields = '__all__'
 
+
 @admin.register(Volunteers)
 class VolunteersAdmin(admin.ModelAdmin):
     list_display = ['name', 'year', 'active', ]
@@ -93,6 +98,7 @@ class NavBarSubOptionsAdmin(admin.ModelAdmin):
     class Meta:
         model = NavBarSubOptions
         fields = '__all__'
+
 
 @admin.register(NavBarOptions)
 class NavBarOptionsAdmin(admin.ModelAdmin):
