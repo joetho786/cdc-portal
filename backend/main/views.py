@@ -1,6 +1,11 @@
 from rest_framework.generics import ListAPIView
-from main.models import News, AlumniTestimonial, PastRecruiters, HomeImageCarousel, CoreTeamContacts, CareerCommittee, Volunteers, NavBarSubOptions, NavBarOptions, DesignationChoices, VolunteersYearChoices
-from main.serializers import NewsSerializer, AlumniTestimonialSerializer, PastRecruitersSerializer, HomeImageCarouselSerializer, CoreTeamContactsSerializer, CareerCommitteeSerializer, VolunteersSerializer, VolunteersYearChoicesSerializer, NavBarSubOptionsSerializer, NavBarOptionsSerializer, DesignationChoicesSerializer
+from main.models import News, AlumniTestimonial, PastRecruiters,\
+     HomeImageCarousel, CoreTeamContacts, CareerCommittee, Volunteers,\
+     NavBarSubOptions, NavBarOptions, DesignationChoices, VolunteersYearChoices
+from main.serializers import NewsSerializer, AlumniTestimonialSerializer,\
+     PastRecruitersSerializer, HomeImageCarouselSerializer, CoreTeamContactsSerializer,\
+     CareerCommitteeSerializer, VolunteersSerializer, VolunteersYearChoicesSerializer,\
+     NavBarSubOptionsSerializer, NavBarOptionsSerializer, DesignationChoicesSerializer
 
 
 class NewsSerializer(ListAPIView):
@@ -30,7 +35,7 @@ class DesignationChoicesSerializer(ListAPIView):
 
 class VolunteersYearChoicesSerializer(ListAPIView):
     queryset = VolunteersYearChoices.objects.all()
-    serializer_class = VolunteersYearChoicesSerializer 
+    serializer_class = VolunteersYearChoicesSerializer
 
 
 class CoreTeamContactsSerializer(ListAPIView):
