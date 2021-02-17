@@ -1,7 +1,10 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from student.models import ProgramAndBranch
-from .models import News, PastRecruiters, Volunteers, AlumniTestimonial, HomeImageCarousel, DesignationChoices, VolunteersYearChoices, CareerCommittee, CoreTeamContacts, NavBarSubOptions, NavBarOptions
+from .models import News, PastRecruiters, Volunteers,\
+                    AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
+                    VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
+                    NavBarSubOptions, NavBarOptions
 
 
 class UserSerializer(serializers.ModelSerializer):
