@@ -153,9 +153,9 @@ REST_FRAMEWORK = {
     ]
 }
 
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000"
-]
+FRONTEND_URL = 'https://'+config('HOST', default='localhost:3000')
+
+CORS_ORIGIN_WHITELIST = [FRONTEND_URL]
 
 CKEDITOR_UPLOAD_PATH = 'ck-uploads/'
 CKEDITOR_ALLOW_NONIMAGE_FILES = False
