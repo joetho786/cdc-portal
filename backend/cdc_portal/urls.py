@@ -18,11 +18,15 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from.views import Login, GoogleLogin
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
     path('api/student/', include("student.urls")),
-    path('api/main/', include("main.urls"))
+    path('api/main/', include("main.urls")),
+    path('api/login/', Login.as_view(), name='login_using_password'),
+    path('api/google_login/', GoogleLogin.as_view(), name='login_using_gooogle')
 ]
 
 if settings.DEBUG:
