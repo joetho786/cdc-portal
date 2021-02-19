@@ -69,7 +69,7 @@ class CoreTeamContacts(models.Model):
 
     def __str__(self):
         return self.user.get_full_name()
-    
+
     class Meta:
         verbose_name_plural = 'Core team contacts'
 
@@ -79,7 +79,7 @@ class VolunteersYearChoices(models.Model):
 
     def __str__(self):
         return self.year
-    
+
     class Meta:
         verbose_name_plural = 'Volunteers year choices'
 
@@ -93,7 +93,7 @@ class Volunteers(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name_plural = 'Volunteers'
 
@@ -153,7 +153,7 @@ class NavBarSubOptions(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     class Meta:
         verbose_name_plural = 'Navbar sub options'
 
