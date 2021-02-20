@@ -148,14 +148,14 @@ MEDIA_URL = '/media/'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'main.jwt_auth.TokenAuthentication'
     ]
 }
 
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000"
-]
+FRONTEND_URL = 'https://'+config('HOST', default='localhost:3000')
+
+CORS_ORIGIN_WHITELIST = [FRONTEND_URL]
 
 CKEDITOR_UPLOAD_PATH = 'ck-uploads/'
 CKEDITOR_ALLOW_NONIMAGE_FILES = False

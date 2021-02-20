@@ -1,6 +1,6 @@
 FROM python:3.7-alpine
 
-ARG BUILD_DEPS="gcc python3-dev musl-dev postgresql-dev jpeg-dev zlib-dev libjpeg"
+ARG BUILD_DEPS="gcc python3-dev musl-dev postgresql-dev jpeg-dev zlib-dev libjpeg libffi-dev"
 RUN apk --no-cache add ${BUILD_DEPS}
 RUN pip install --upgrade pip
 RUN pip install pipenv
