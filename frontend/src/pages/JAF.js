@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Test = () => {
+const JAF = () => {
   return (
     <div>
-      <h1>CDC PORTAL</h1>
+      <h1>JAF Page</h1>
     </div>
   );
 };
 
-export default Test;
+export default JAF;
