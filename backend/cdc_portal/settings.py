@@ -153,7 +153,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-FRONTEND_URL = 'https://'+config('HOST', default='localhost:3000')
+FRONTEND_URL = 'http://'+config('HOST', default='localhost:3000')
 
 CORS_ORIGIN_WHITELIST = [FRONTEND_URL]
 
