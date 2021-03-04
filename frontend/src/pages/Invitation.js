@@ -1,4 +1,3 @@
-import { blue } from '@material-ui/core/colors';
 import React from 'react';
 
 const Invitation = () => {
