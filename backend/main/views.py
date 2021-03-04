@@ -1,4 +1,5 @@
 from rest_framework.generics import ListAPIView
+from rest_framework.filters import SearchFilter
 from main.models import News, AlumniTestimonial, PastRecruiters,\
      HomeImageCarousel, CoreTeamContacts, CareerCommittee, Volunteers,\
      NavBarSubOptions, NavBarOptions, DesignationChoices, VolunteersYearChoices
@@ -41,11 +42,15 @@ class VolunteersYearChoicesSerializer(ListAPIView):
 class CoreTeamContactsSerializer(ListAPIView):
     queryset = CoreTeamContacts.objects.filter(active=True)
     serializer_class = CoreTeamContactsSerializer
+    search_fields = ['designation__designation']
+    filter_backends = (SearchFilter,)
 
 
 class CareerCommitteeSerializer(ListAPIView):
     queryset = CareerCommittee.objects.filter(active=True)
     serializer_class = CareerCommitteeSerializer
+    search_fields = ['designation__designation']
+    filter_backends = (SearchFilter,)
 
 
 class VolunteersSerializer(ListAPIView):
