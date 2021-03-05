@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
@@ -22,13 +23,13 @@ function Navbar() {
                 <div class="dropdown">
                   <ul>
                     <li class="dropdown-link">
-                      <a href="/Invitation">Invitation</a>
+                      <Link to="/Invitation">Invitation</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/ChairmanMessage">Chairman's Message</a>
+                      <Link to="/ChairmanMessage">Chairman's Message</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="DirectorMessage">Director's Message</a>
+                      <Link to="/DirectorMessage">Director's Message</Link>
                     </li>
                   </ul>
                 </div>
@@ -40,25 +41,27 @@ function Navbar() {
                 <div class="dropdown">
                   <ul>
                     <li class="dropdown-link">
-                      <a href="/WhyRecruit">Why Recruit?</a>
+                      <Link to="/WhyRecruit">Why Recruit ?</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/Brochure">Brochure</a>
+                      <Link to="/Brochure">Brochure</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/PlacementStatistics">Placement Statistics</a>
+                      <Link to="/PlacementStatistics">
+                        Placement Statistics
+                      </Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/PlacementProcedure">Placement Procedure</a>
+                      <Link to="/PlacementProcedure">Placement Procedure</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/RecruiterGuidelines">Norms/Guidelines</a>
+                      <Link to="/RecruiterGuidelines">Norms/Guidelines</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/PastRecruiters">Past Recruiters</a>
+                      <Link to="/PastRecruiters">Past Recruiters</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/AIPCNorms">AIPC Norms</a>
+                      <Link to="/AIPCNorms">AIPC Norms</Link>
                     </li>
                   </ul>
                 </div>
@@ -70,16 +73,16 @@ function Navbar() {
                 <div class="dropdown">
                   <ul>
                     <li class="dropdown-link">
-                      <a href="/Achievements">Achievements</a>
+                      <Link to="/Achievements">Achievements</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/Prospective">Prospective</a>
+                      <Link to="/Prospective">Prospective</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/StudentGuidelines">Norms/Guidelines</a>
+                      <Link to="/StudentGuidelines">Norms/Guidelines</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/Internships">Internships</a>
+                      <Link to="/Internships">Internships</Link>
                     </li>
                   </ul>
                 </div>
@@ -91,10 +94,10 @@ function Navbar() {
                 <div class="dropdown">
                   <ul>
                     <li class="dropdown-link">
-                      <a href="/JAF">JAF</a>
+                      <Link to="/JAF">JAF</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/IAF">IAF</a>
+                      <Link to="/IAF">IAF</Link>
                     </li>
                   </ul>
                 </div>
@@ -106,18 +109,18 @@ function Navbar() {
                 <div class="dropdown">
                   <ul>
                     <li class="dropdown-link">
-                      <a href="/ContactUs">Contact Us</a>
+                      <Link to="/ContactUs">Contact Us</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/ReachUs">Reach Us</a>
+                      <Link to="/ReachUs">Reach Us</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/PlacementTeam">Placement Team</a>
+                      <Link to="/PlacementTeam">Placement Team</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/CareerCounselling">
+                      <Link to="/CareerCounselling">
                         Career Counselling Committee
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -129,10 +132,10 @@ function Navbar() {
                 <div class="dropdown">
                   <ul>
                     <li class="dropdown-link">
-                      <a href="/StudentLogin">Student Login</a>
+                      <Link to="/StudentLogin">Student Login</Link>
                     </li>
                     <li class="dropdown-link">
-                      <a href="/RecruiterLogin">Recruiter Login</a>
+                      <Link to="/RecruiterLogin">Recruiter Login</Link>
                     </li>
                   </ul>
                 </div>
