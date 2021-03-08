@@ -1,19 +1,23 @@
 import React from 'react';
-import '../styles/components/C3MemberCard.css';
+import C3MemberCardCSS from '../styles/components/C3MemberCard.module.css';
 import EmailIcon from '@material-ui/icons/Email';
 
 const C3MemberCard = ({ data }) => {
   return (
-    <div className="team-card">
-      <img className="profile-image" src={data.profile_image} alt={data.name} />
-      <div className="card-content">
+    <div className={C3MemberCardCSS.teamCard}>
+      <img
+        className={C3MemberCardCSS.profileImage}
+        src={data.profile_image}
+        alt={data.name}
+      />
+      <div className={C3MemberCardCSS.cardContent}>
         <b style={{ margin: '0', fontSize: '1.5rem' }}>{data.name}</b>
         <br></br>
-        <div className="department">
+        <div className={C3MemberCardCSS.department}>
           <b>{data.department}</b>
         </div>
-        <div className="card-footer">
-          <a href={`mailto:${data.email}`} className="email">
+        <div className={C3MemberCardCSS.cardFooter}>
+          <a href={`mailto:${data.email}`} className={C3MemberCardCSS.email}>
             <EmailIcon style={{ margin: '0 0.5rem' }} />
             {data.email}
           </a>
