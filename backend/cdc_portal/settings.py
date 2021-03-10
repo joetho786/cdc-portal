@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'import_export',
     'main',
     'student',
-    'company',
+    'company'
 ]
 
 MIDDLEWARE = [
