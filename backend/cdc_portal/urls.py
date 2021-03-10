@@ -25,6 +25,7 @@ urlpatterns = [
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
     path('api/student/', include("student.urls")),
     path('api/main/', include("main.urls")),
+    path('api/company/', include("company.urls")),
     path('api/login/', Login.as_view(), name='login_using_password'),
     path('api/google_login/', GoogleLogin.as_view(), name='login_using_gooogle')
 ]
