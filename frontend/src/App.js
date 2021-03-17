@@ -1,7 +1,8 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import NotFound from './pages/404';
 import Invitation from './pages/Invitation';
 import ChairmanMessage from './pages/ChairmanMessage';
 import DirectorMessage from './pages/DirectorMessage';
@@ -34,29 +35,26 @@ function App() {
         <Route path="/Invitation" component={Invitation} />
         <Route path="/ChairmanMessage" component={ChairmanMessage} />
         <Route path="/DirectorMessage" component={DirectorMessage} />
-        <Route path="/WhyRecruit" exact component={WhyRecruit} />
+        <Route path="/WhyRecruit" component={WhyRecruit} />
         <Route path="/Brochure" component={Brochure} />
         <Route path="/PlacementStatistics" component={PlacementStatistics} />
         <Route path="/PlacementProcedure" component={PlacementProcedure} />
-        <Route
-          path="/RecruiterGuidelines"
-          exact
-          component={RecruiterGuidelines}
-        />
+        <Route path="/RecruiterGuidelines" component={RecruiterGuidelines} />
         <Route path="/PastRecruiters" component={PastRecruiters} />
         <Route path="/AIPCNorms" component={AIPCNorms} />
         <Route path="/Achievements" component={Achievements} />
-        <Route path="/Prospective" exact component={Prospective} />
+        <Route path="/Prospective" component={Prospective} />
         <Route path="/StudentGuidelines" component={StudentGuidelines} />
         <Route path="/Internships" component={Internships} />
         <Route path="/JAF" component={JAF} />
         <Route path="/IAF" component={IAF} />
-        <Route path="/ContactUs" exact component={ContactUs} />
+        <Route path="/ContactUs" component={ContactUs} />
         <Route path="/ReachUs" component={ReachUs} />
         <Route path="/PlacementTeam" component={PlacementTeam} />
         <Route path="/CareerCounselling" component={CareerCounselling} />
         <Route path="/StudentLogin" component={StudentLogin} />
         <Route path="/RecruiterLogin" component={RecruiterLogin} />
+        <Route default component={NotFound} />
       </Switch>
     </Router>
   );

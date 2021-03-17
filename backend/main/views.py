@@ -61,8 +61,12 @@ class VolunteersSerializer(ListAPIView):
 class NavBarSubOptionsSerializer(ListAPIView):
     queryset = NavBarSubOptions.objects.all()
     serializer_class = NavBarSubOptionsSerializer
+    search_fields = ['title']
+    filter_backends = (SearchFilter,)
 
 
 class NavBarOptionsSerializer(ListAPIView):
     queryset = NavBarOptions.objects.all()
     serializer_class = NavBarOptionsSerializer
+    search_fields = ['title']
+    filter_backends = (SearchFilter,)
