@@ -124,7 +124,7 @@ const CareerCounselling = () => {
           </Grid>
           <hr
             className={CareerCounsellingCSS.hr}
-            style={{ marginTop: '5rem' }}
+            style={{ marginTop: '2rem' }}
           ></hr>
         </>
       )}
