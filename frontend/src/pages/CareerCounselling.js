@@ -60,7 +60,7 @@ const CareerCounselling = () => {
           >
             {chairman.map((member) => {
               return (
-                <Grid key={member.user.email} item xs={12} sm={6} md={4} lg={3}>
+                <Grid key={member.email} item xs={12} sm={6} md={4} lg={3}>
                   <C3MemberCard data={member} />
                 </Grid>
               );
@@ -85,7 +85,7 @@ const CareerCounselling = () => {
           >
             {facultyIncharge.map((member) => {
               return (
-                <Grid key={member.user.email} item xs={12} sm={6} md={4} lg={3}>
+                <Grid key={member.email} item xs={12} sm={6} md={4} lg={3}>
                   <C3MemberCard data={member} />
                 </Grid>
               );
@@ -110,7 +110,7 @@ const CareerCounselling = () => {
           >
             {members.map((member) => {
               return (
-                <Grid key={member.user.email} item xs={12} sm={6} md={4} lg={3}>
+                <Grid key={member.email} item xs={12} sm={6} md={4} lg={3}>
                   <C3MemberCard data={member} />
                 </Grid>
               );
