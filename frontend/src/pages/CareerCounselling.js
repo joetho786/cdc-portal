@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../api/axios';
-import CareerCounsellingCSS from '../styles/pages/CareerCounselling.module.css';
+import styles from '../styles/pages/CareerCounselling.module.css';
 import C3MemberCard from '../components/C3MemberCard';
 import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
@@ -31,8 +31,8 @@ const CareerCounselling = () => {
             member.designation.designation.includes('Member')
           )
         );
-        setLoding(false);
       })
+      .then(() => setLoding(false))
       .catch((error) => console.log(error));
   }, []);
 
@@ -42,14 +42,14 @@ const CareerCounselling = () => {
         <Loading />
       ) : (
         <>
-          <div className={CareerCounsellingCSS.chairman}>
+          <div className={styles.chairman}>
             <MenuIcon
               fontSize="large"
-              style={{ margin: '0 0.5rem', paddingTop: '0.2rem' }}
+              style={{ margin: '0 0.5rem 0 0', paddingTop: '0.2rem' }}
             />
             CHAIRMAN
           </div>
-          <hr className={CareerCounsellingCSS.hr}></hr>
+          <hr className={styles.hr}></hr>
           <Grid
             container
             direction="row"
@@ -60,24 +60,21 @@ const CareerCounselling = () => {
           >
             {chairman.map((member) => {
               return (
-                <Grid item xs={12} sm={6} md={4} lg={3}>
+                <Grid key={member.user.email} item xs={12} sm={6} md={4} lg={3}>
                   <C3MemberCard data={member} />
                 </Grid>
               );
             })}
           </Grid>
-          <hr
-            className={CareerCounsellingCSS.hr}
-            style={{ marginTop: '5rem' }}
-          ></hr>
-          <div className={CareerCounsellingCSS.facultyIncharge}>
+          <hr className={styles.hr} style={{ marginTop: '5rem' }}></hr>
+          <div className={styles.facultyIncharge}>
             <MenuIcon
               fontSize="large"
-              style={{ margin: '0 0.5rem', paddingTop: '0.2rem' }}
+              style={{ margin: '0 0.5rem 0 0', paddingTop: '0.2rem' }}
             />
             FACULTY INCHARGE
           </div>
-          <hr className={CareerCounsellingCSS.hr}></hr>
+          <hr className={styles.hr}></hr>
           <Grid
             container
             direction="row"
@@ -88,24 +85,21 @@ const CareerCounselling = () => {
           >
             {facultyIncharge.map((member) => {
               return (
-                <Grid item xs={12} sm={6} md={4} lg={3}>
+                <Grid key={member.user.email} item xs={12} sm={6} md={4} lg={3}>
                   <C3MemberCard data={member} />
                 </Grid>
               );
             })}
           </Grid>
-          <hr
-            className={CareerCounsellingCSS.hr}
-            style={{ marginTop: '5rem' }}
-          ></hr>
-          <div className={CareerCounsellingCSS.members}>
+          <hr className={styles.hr} style={{ marginTop: '5rem' }}></hr>
+          <div className={styles.members}>
             <MenuIcon
               fontSize="large"
-              style={{ margin: '0 0.5rem', paddingTop: '0.2rem' }}
+              style={{ margin: '0 0.5rem 0 0', paddingTop: '0.2rem' }}
             />
             MEMBERS
           </div>
-          <hr className={CareerCounsellingCSS.hr}></hr>
+          <hr className={styles.hr}></hr>
           <Grid
             container
             direction="row"
@@ -116,16 +110,13 @@ const CareerCounselling = () => {
           >
             {members.map((member) => {
               return (
-                <Grid item xs={12} sm={6} md={4} lg={3}>
+                <Grid key={member.user.email} item xs={12} sm={6} md={4} lg={3}>
                   <C3MemberCard data={member} />
                 </Grid>
               );
             })}
           </Grid>
-          <hr
-            className={CareerCounsellingCSS.hr}
-            style={{ marginTop: '2rem' }}
-          ></hr>
+          <hr className={styles.hr} style={{ marginTop: '2rem' }}></hr>
         </>
       )}
     </div>
