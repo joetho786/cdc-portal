@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactCardCSS from '../styles/components/ContactCard.module.css';
+import styles from '../styles/components/ContactCard.module.css';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -7,32 +7,27 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const ContactCard = ({ data }) => {
   return (
-    <div className={ContactCardCSS.contactCard}>
-      <div className={ContactCardCSS.cardHeader}>
-        <div className={ContactCardCSS.designation}>
+    <div className={styles.contactCard}>
+      <div className={styles.cardHeader}>
+        <div className={styles.designation}>
           <b>{data.designation.designation}</b>
         </div>
-        <div className={ContactCardCSS.subDesignation}>
-          {data.sub_designation}
-        </div>
+        <div className={styles.subDesignation}>{data.sub_designation}</div>
       </div>
       <img
-        className={ContactCardCSS.profileImage}
+        className={styles.profileImage}
         src={data.profile_image}
         alt={data.name}
       />
-      <div className={ContactCardCSS.cardContent}>
+      <div className={styles.cardContent}>
         <b style={{ margin: '0', fontSize: '1.5rem' }}>
           {data.user.first_name} {data.user.last_name}
         </b>
-        <div className={ContactCardCSS.footer}>
+        <div className={styles.footer}>
           <table style={{ tableLayout: 'auto', margin: 'auto' }}>
             <tr>
               <td>
-                <a
-                  href={`mailto:${data.user.email}`}
-                  className={ContactCardCSS.email}
-                >
+                <a href={`mailto:${data.user.email}`} className={styles.email}>
                   <EmailIcon style={{ margin: '0 0.5rem' }} />
                   {data.user.email}
                 </a>
@@ -40,7 +35,7 @@ const ContactCard = ({ data }) => {
             </tr>
             <tr>
               <td>
-                <div className={ContactCardCSS.phone}>
+                <div className={styles.phone}>
                   <PhoneIcon style={{ margin: '0 0.5rem' }} />
                   {data.phone}
                 </div>
@@ -48,16 +43,23 @@ const ContactCard = ({ data }) => {
             </tr>
           </table>
           {data.github_link || data.linkedin_link ? (
-            <div className={ContactCardCSS.social}>
+            <div className={styles.social}>
               {data.github_link ? (
-                <a href={data.github_link} className={ContactCardCSS.github}>
+                <a
+                  href={data.github_link}
+                  className={styles.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <GitHubIcon style={{ width: '1.8rem', height: '1.8rem' }} />
                 </a>
               ) : null}
               {data.linkedin_link ? (
                 <a
                   href={data.linkedin_link}
-                  className={ContactCardCSS.linkedin}
+                  className={styles.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <LinkedInIcon
                     style={{

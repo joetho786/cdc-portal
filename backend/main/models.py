@@ -50,7 +50,7 @@ class DesignationChoices(models.Model):
 class CoreTeamContacts(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     designation = models.ForeignKey(DesignationChoices, on_delete=models.SET_NULL, null=True, blank=True)
-    sub_designation = models.CharField(max_length=64, default='Office of Student Placement')
+    sub_designation = models.CharField(max_length=64, default='Career Development Cell')
     program_branch = models.ForeignKey(ProgramAndBranch, on_delete=models.SET_NULL, null=True)
     phone = models.CharField(max_length=16, blank=True, null=True)
     github_link = models.URLField(blank=True, null=True)
