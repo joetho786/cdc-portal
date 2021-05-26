@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY', cast=str)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-D = config('D', default=False, cast=bool)
+D = config('D', default=True, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'ckeditor',
+    'ckeditor_uploader',
     'corsheaders',
     'import_export',
     'main',
@@ -153,7 +154,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-FRONTEND_URL = 'https://'+config('HOST', default='localhost:3000')
+FRONTEND_URL = 'http://'+config('HOST', default='localhost:3000')
 
 CORS_ORIGIN_WHITELIST = [FRONTEND_URL]
 

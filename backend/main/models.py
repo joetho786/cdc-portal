@@ -22,6 +22,28 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = 'News'
 
+class AboutUs(models.Model):
+    title = models.CharField(max_length=64, blank=True, default="About Us")
+    content = RichTextUploadingField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'AboutUs'
+
+class DirectorMessage(models.Model):
+    title = models.CharField(max_length=64, blank=True, default="Director Message")
+    name = models.CharField(max_length=64, blank=True)
+    image = models.ImageField(upload_to='people')
+    content = RichTextUploadingField(max_length=5000)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'DirectorMessage'
+
 
 class PastRecruiters(models.Model):
     company_order_no = models.PositiveIntegerField(default=64)
@@ -104,6 +126,9 @@ class AlumniTestimonial(models.Model):
     designation = models.CharField(max_length=64, null=True)
     testimonial = models.TextField(null=False)
     alumni_image = models.ImageField(upload_to='alumni-testimonial')
+    facebook = models.URLField(max_length = 200, blank=True, null=True)
+    twitter = models.URLField(max_length = 200, blank=True, null=True)
+    mailId = models.EmailField(max_length = 200, blank=True, null=True)
     active = models.BooleanField(default=True)
     ranking = models.PositiveSmallIntegerField(default=512)
 

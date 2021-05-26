@@ -6,14 +6,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <div style={{ background: 'rgb(240,240,240)' }} className="App">
       <Router>
         <div>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/team" component={Team} />
-            <Route default component={NotFound} />
-          </Switch>
+          <div>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/team" component={Team} />
+              <Route default component={NotFound} />
+            </Switch>
+          </div>
         </div>
       </Router>
     </div>

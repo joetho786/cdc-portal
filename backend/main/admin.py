@@ -1,11 +1,12 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 from main.models import PastRecruiters, News,\
      AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
      VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
-     Volunteers, NavBarSubOptions, NavBarOptions
+     Volunteers, NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage
 from import_export.admin import ImportExportActionModelAdmin
 
-
+admin.site.register(AboutUs)
 @admin.register(News)
 class NewsAdmin(ImportExportActionModelAdmin):
     list_display = ['order_no', 'title', 'active', ]
@@ -15,6 +16,10 @@ class NewsAdmin(ImportExportActionModelAdmin):
     class Meta:
         model = News
 
+@admin.register(DirectorMessage)
+class DirectorMessageAdmin(ImportExportActionModelAdmin):
+    class Meta:
+        model = DirectorMessage
 
 @admin.register(PastRecruiters)
 class PastRecruitersAdmin(admin.ModelAdmin):
