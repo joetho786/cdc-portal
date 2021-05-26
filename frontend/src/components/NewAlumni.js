@@ -34,7 +34,7 @@ export default function AlumniTestimonial() {
 
     Alumni_Testimonials.map((Testimonial_Obj) => {
       return Testi_list.push(
-        <div>
+        <div key={Testimonial_Obj.alumni_name}>
           <div
             style={{
               margin: 10,
@@ -150,7 +150,7 @@ export default function AlumniTestimonial() {
     ],
   };
   return (
-    <React.Fragment style={{ background: 'rgb(240,240,240)' }}>
+    <div style={{ background: 'rgb(240,240,240)' }}>
       <div className="py-5">
         <Container
           style={{
@@ -178,6 +178,6 @@ export default function AlumniTestimonial() {
           </Slider>
         </Container>
       </div>
-    </React.Fragment>
+    </div>
   );
 }

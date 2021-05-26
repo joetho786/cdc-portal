@@ -65,10 +65,15 @@ export default function Footer(props) {
 
   return (
     <footer className={classes.footer}>
-      <Container maxWidth="lg">
-        <Container maxWidth="lg" component="footer" className={classes.footer}>
-          <Grid container spacing={4} justify="space-evenly">
-            <Grid item xs={6} sm={3} justify="space-evenly">
+      <Container justify="space-evenly" maxWidth="lg">
+        <Container
+          justify="space-evenly"
+          maxWidth="lg"
+          component="footer"
+          className={classes.footer}
+        >
+          <Grid container spacing={4}>
+            <Grid item xs={6} sm={3}>
               <Typography variant="h6" align="center" gutterBottom>
                 <ul align="left">
                   <li>
@@ -102,13 +107,7 @@ export default function Footer(props) {
               </Typography>
             </Grid>
             {footers.map((footer) => (
-              <Grid
-                justify="space-evenly"
-                item
-                xs={6}
-                sm={3}
-                key={footer.title}
-              >
+              <Grid item xs={6} sm={3} key={footer.title}>
                 <Typography
                   style={{ color: 'white' }}
                   variant="h6"

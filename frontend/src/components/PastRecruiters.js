@@ -13,6 +13,7 @@ export default function PastRecruiters() {
           `${process.env.REACT_APP_API_URL}/api/main/past_recruiters/`
         );
         setPR_Obj(res.data);
+        console.log(res.data);
       } catch (err) {}
     };
     fetchPR_Objs();
@@ -23,7 +24,7 @@ export default function PastRecruiters() {
 
     PR_Objs.map((PR) => {
       return list.push(
-        <div>
+        <div key={PR.id}>
           <div
             style={{
               margin: 10,
@@ -82,7 +83,7 @@ export default function PastRecruiters() {
     ],
   };
   return (
-    <React.Fragment style={{ background: 'rgb(240,240,240)' }}>
+    <div style={{ background: 'rgb(240,240,240)' }}>
       <div className="py-5">
         <Container
           style={{
@@ -110,6 +111,6 @@ export default function PastRecruiters() {
           </Slider>
         </Container>
       </div>
-    </React.Fragment>
+    </div>
   );
 }

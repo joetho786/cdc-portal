@@ -8,7 +8,7 @@
     margin-top: -25px;
 }
 
-.text-container {
+.text_container {
     font-size: 16px;
     height: auto;
     margin-top: 30px;
@@ -18,13 +18,13 @@
     padding: 20px;
 }
 
-.text-container h2 {
+.text_container h2 {
     font-size: 40px;
     margin-bottom: 0.5%;
     margin-top: 0.5%;
 }
 
-.carousel-news-wrapper {
+/* .carousel-news-wrapper {
     width: 90%;
     margin-top: 30px;
     display: flex;
@@ -36,19 +36,19 @@
     max-width: 440px;
     height: 445px;
     margin-inline: auto;
-}
+} */
 
 .MuiTabs-flexContainer {
     background: #1b193d;
 }
 
 @media screen and (max-width: 420px) {
-    .text-container {
+    .text_container {
         font-size: 15px;
         width: 90%;
         padding: 10px;
     }
-    .news-wrapper {
+    /* .news-wrapper {
         margin-top: inherit;
-    }
+    } */
 }

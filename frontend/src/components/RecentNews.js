@@ -65,7 +65,7 @@ const RecentNews = () => {
       const doclink = News.document;
       const extlink = News.link;
       return list.push(
-        <div>
+        <div key={News.id}>
           <ListItem className="ListItems">
             <p className={classes.newsText}>
               {News.content}{' '}
@@ -92,7 +92,7 @@ const RecentNews = () => {
               </span>
             </p>
           </ListItem>
-          <hr width="90%" />
+          <hr width="100%" />
         </div>
       );
     });

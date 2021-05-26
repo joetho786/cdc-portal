@@ -1,7 +1,7 @@
 import React from 'react';
 import HeroSection from '../components/herosection1';
 import AboutUs from '../components/AboutUs';
-import Carousel_News_Wrapper from '../components/Carousel_RecentNews';
+import CarouselNewsWrapper from '../components/CarouselRecentNews';
 import '../components/base.css';
 import MediaControlCard from '../components/DirectorMessage';
 import PastRecruiters from '../components/PastRecruiters';
@@ -16,7 +16,7 @@ function Home() {
       <AboutUs />
       <MediaControlCard />
       <div>
-        <Carousel_News_Wrapper />
+        <CarouselNewsWrapper />
       </div>
       <div>
         <PastRecruiters />

@@ -24,7 +24,7 @@ export default function SectionCarousel() {
 
     IC_Objs.map((IC) => {
       return list.push(
-        <div>
+        <div key={IC.title}>
           <img src={IC.image} alt={IC.title} className="slick-image" />
         </div>
       );

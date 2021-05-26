@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django_summernote.admin import SummernoteModelAdmin
 from main.models import PastRecruiters, News,\
      AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
      VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\

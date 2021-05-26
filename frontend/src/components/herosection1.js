@@ -23,8 +23,8 @@ export default function HeroSection() {
         >
           <div className="logo">
             <picture>
-              <source srcset="Artboard3.png" media="(min-width: 700px)" />
-              <source srcset="ArtboardMobile.png" media="(min-width: 600px)" />
+              <source srcSet="Artboard3.png" media="(min-width: 700px)" />
+              <source srcSet="ArtboardMobile.png" media="(min-width: 600px)" />
               <img width="100%" src="ArtboardMobile.png" alt="Baby Sleeping" />
             </picture>
           </div>

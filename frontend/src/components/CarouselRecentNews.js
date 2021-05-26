@@ -3,7 +3,7 @@ import SectionCarousel from './Carousel';
 import VirtualizedList from './RecentNews';
 import Container from '@material-ui/core/Container';
 import './Carousel_News.css';
-const Carousel_News_Wrapper = () => {
+const CarouselNewsWrapper = () => {
   return (
     <Container maxWidth="lg">
       <div className="container-Overview">
@@ -18,4 +18,4 @@ const Carousel_News_Wrapper = () => {
   );
 };
 
-export default Carousel_News_Wrapper;
+export default CarouselNewsWrapper;
