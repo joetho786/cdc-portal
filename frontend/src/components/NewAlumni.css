@@ -1,0 +1,52 @@
+.root {
+    max-width: 600px;
+    height: auto;
+}
+
+.media {
+    height: 150px;
+}
+.profile {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    display: flex;
+}
+.root .avatar {
+    height: 150px;
+    width: 150px;
+    margin-top: -80px;
+    border-radius: 50%;
+}
+.root .main_content {
+    font-size: 15px;
+    min-height: 150px;
+}
+.name_container {
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: -20px;
+}
+.name_container .name {
+    font-size: 15px;
+}
+.name_container .company_name {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.slick-prev:before {
+    float: right;
+}
+.slick-next:before, .slick-prev:before {
+    font-size: 30px;
+    color: rgba(75, 74, 74, 0.856);
+    opacity: 0.2;
+}
