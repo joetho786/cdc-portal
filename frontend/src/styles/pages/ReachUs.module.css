@@ -1,0 +1,10 @@
+.reachUs {
+  font-size: 1.8rem;
+  color: black;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  padding: 1rem;
+}
