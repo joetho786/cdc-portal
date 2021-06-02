@@ -7,6 +7,8 @@ from main.models import PastRecruiters, News,\
 from import_export.admin import ImportExportActionModelAdmin
 
 admin.site.register(AboutUs)
+
+
 @admin.register(News)
 class NewsAdmin(ImportExportActionModelAdmin):
     list_display = ['order_no', 'title', 'active', ]
@@ -16,10 +18,12 @@ class NewsAdmin(ImportExportActionModelAdmin):
     class Meta:
         model = News
 
+
 @admin.register(DirectorMessage)
 class DirectorMessageAdmin(ImportExportActionModelAdmin):
     class Meta:
         model = DirectorMessage
+
 
 @admin.register(PastRecruiters)
 class PastRecruitersAdmin(admin.ModelAdmin):
@@ -40,6 +44,7 @@ class TestimonialAdmin(admin.ModelAdmin):
     class Meta:
         model = AlumniTestimonial
         fields = '__all__'
+
 
 @admin.register(Achievements)
 class AchievementsAdmin(admin.ModelAdmin):

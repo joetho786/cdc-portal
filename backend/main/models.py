@@ -22,6 +22,7 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = 'News'
 
+
 class AboutUs(models.Model):
     title = models.CharField(max_length=64, blank=True, default="About Us")
     content = RichTextUploadingField(blank=True, null=True)
@@ -31,6 +32,7 @@ class AboutUs(models.Model):
 
     class Meta:
         verbose_name_plural = 'AboutUs'
+
 
 class DirectorMessage(models.Model):
     title = models.CharField(max_length=64, blank=True, default="Director Message")
@@ -127,14 +129,15 @@ class AlumniTestimonial(models.Model):
     designation = models.CharField(max_length=64, null=True)
     testimonial = models.TextField(null=False)
     alumni_image = models.ImageField(upload_to='alumni-testimonial')
-    facebook = models.URLField(max_length = 200, blank=True, null=True)
-    twitter = models.URLField(max_length = 200, blank=True, null=True)
-    mailId = models.EmailField(max_length = 200, blank=True, null=True)
+    facebook = models.URLField(max_length=200, blank=True, null=True)
+    twitter = models.URLField(max_length=200, blank=True, null=True)
+    mailId = models.EmailField(max_length=200, blank=True, null=True)
     active = models.BooleanField(default=True)
     ranking = models.PositiveSmallIntegerField(default=512)
 
     def __str__(self):
         return self.alumni_name
+
 
 class Achievements(models.Model):
     CATEGORY = (
@@ -150,6 +153,7 @@ class Achievements(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class HomeImageCarousel(models.Model):
     ordering = models.PositiveIntegerField(default=64)

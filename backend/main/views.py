@@ -20,9 +20,11 @@ class AboutUsSerializer(ListAPIView):
     queryset = AboutUs.objects.all()
     serializer_class = AboutUsSerializer
 
+
 class DirectorMessageSerializer(ListAPIView):
     queryset = DirectorMessage.objects.all()
     serializer_class = DirectorMessageSerializer
+
 
 class AlumniTestimonialSerializer(ListAPIView):
     queryset = AlumniTestimonial.objects.filter(active='True').order_by('ranking')
@@ -32,6 +34,7 @@ class AlumniTestimonialSerializer(ListAPIView):
 class AchievementsSerializer(ListAPIView):
     queryset = Achievements.objects.filter(active='True').order_by('ranking')
     serializer_class = AchievementsSerializer
+
 
 class PastRecruitersSerializer(ListAPIView):
     queryset = PastRecruiters.objects.filter(active=True)

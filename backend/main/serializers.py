@@ -19,6 +19,7 @@ class AboutUsSerializer(serializers.ModelSerializer):
         model = AboutUs
         fields = '__all__'
 
+
 class DirectorMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = DirectorMessage
@@ -62,6 +63,7 @@ class AlumniTestimonialSerializer(serializers.ModelSerializer):
     class Meta:
         model = AlumniTestimonial
         fields = '__all__'
+
 
 class AchievementsSerializer(serializers.ModelSerializer):
     class Meta:
