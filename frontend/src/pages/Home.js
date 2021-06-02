@@ -14,8 +14,12 @@ function Home() {
       <>
         <HeroSection />
       </>
-      <AboutUs />
-      <MediaControlCard />
+      <>
+        <AboutUs />
+      </>
+      <>
+        <MediaControlCard />
+      </>
       <div>
         <CarouselNewsWrapper />
       </div>

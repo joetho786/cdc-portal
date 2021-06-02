@@ -42,11 +42,7 @@ export default function AlumniTestimonial() {
           >
             <Card className={styles.root}>
               <CardActionArea>
-                <CardMedia
-                  className={styles.media}
-                  image={testiBack}
-                  title="Contemplative Reptile"
-                />
+                <CardMedia className={styles.media} image={testiBack} />
                 <div className={styles.profile}>
                   <img
                     className={styles.avatar}

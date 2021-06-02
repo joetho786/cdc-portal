@@ -72,37 +72,28 @@ export default function MediaControlCard() {
 
   return (
     <Container maxWidth="lg">
-      <Card className={classes.root}>
-        <Card className={classes.MessageContainer}>
-          <CardMedia
-            className={classes.cover}
-            image={DirectorMessage.image}
-            title="Live from space album cover"
-          />
-          <div className={classes.details}>
-            <CardContent className={classes.content}>
-              <Typography
-                className={classes.MessageHeader}
-                component="h5"
-                variant="h5"
-                style={{ fontSize: 30 }}
-              >
-                {DirectorMessage.title}
-              </Typography>
-              <Typography>
-                <p dangerouslySetInnerHTML={createDirectorMessage()} />
-              </Typography>
-              <Typography
-                component="h5"
-                color="textPrimary"
-                style={{ fontSize: 20 }}
-                variant="subtitle1"
-              >
-                {DirectorMessage.name}
-              </Typography>
-            </CardContent>
-          </div>
-        </Card>
+      <Card className={classes.MessageContainer}>
+        <CardMedia
+          component="div"
+          className={classes.cover}
+          image={DirectorMessage.image}
+        />
+        <div className={classes.details}>
+          <CardContent className={classes.content}>
+            <Typography
+              className={classes.MessageHeader}
+              component="h5"
+              variant="h5"
+              style={{ fontSize: 30 }}
+            >
+              {DirectorMessage.title}
+            </Typography>
+            <p dangerouslySetInnerHTML={createDirectorMessage()} />
+            <p color="textPrimary" style={{ fontSize: 20 }}>
+              {DirectorMessage.name}
+            </p>
+          </CardContent>
+        </div>
       </Card>
     </Container>
   );

@@ -62,7 +62,7 @@ const RecentNews = () => {
       return list.push(
         <div key={News.id}>
           <ListItem className="ListItems">
-            <p className={classes.newsText}>
+            <div className={classes.newsText}>
               {News.content}{' '}
               <span>
                 {doclink != null && (
@@ -85,7 +85,7 @@ const RecentNews = () => {
                   </Link>
                 )}
               </span>
-            </p>
+            </div>
           </ListItem>
           <hr width="90%" />
         </div>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../../api/axios';
 import Slider from 'react-slick';
-import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import './Carousel.css';
 
@@ -45,9 +44,9 @@ export default function SectionCarousel() {
       className="carousel_container"
     >
       <Grid item xs={12} sm={12} md={8} className="carousel_grid">
-        <Card>
+        <div>
           <Slider {...settings}>{getIC_Objs()}</Slider>
-        </Card>
+        </div>
       </Grid>
     </Grid>
   );
