@@ -1,9 +1,9 @@
 import React from 'react';
-
+import PlacementProcedureComponent from '../components/PlacementProcedure/PlacementProcedure';
 const PlacementProcedure = () => {
   return (
     <div>
-      <h1>Placement Procedure Page</h1>
+      <PlacementProcedureComponent />
     </div>
   );
 };

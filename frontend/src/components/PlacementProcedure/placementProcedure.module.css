@@ -1,0 +1,12 @@
+body {
+    background : rgb(240, 240, 240);
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    color: rgb(53, 53, 53);
+  }
+  
+.title {
+    font-size: 3em;
+    text-align: center;
+    font-family: "Bebas Neue", sans-serif;
+  }

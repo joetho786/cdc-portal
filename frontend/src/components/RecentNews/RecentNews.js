@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import instance from '../../api/axios';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
   container: {
     borderColor: 'rgb(0,0,0)',
-    boxShadow: '0 0 12px',
+    boxShadow: '0 0 6px',
     maxWidth: 700,
   },
 
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   HeaderText: {
     fontSize: 25,
     color: '#fff',
-    fontFamily: 'Roboto',
+    fontFamily: 'sans-serif',
     letterSpacing: 1.1,
     marginTop: 7,
     marginBottom: 7,
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   newsText: {
     marginTop: 1,
     marginBottom: 1,
-    fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
+    fontFamily: 'sans-serif',
     fontSize: 17,
     lineHeight: 1.3,
   },
@@ -45,17 +45,12 @@ const RecentNews = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const res = await axios.get('http://localhost:8000/api/main/news/');
+    instance
+      .get('main/news/')
+      .then((res) => {
         setNews(res.data);
-        console.log(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchNews();
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   const getNews = () => {
@@ -92,7 +87,7 @@ const RecentNews = () => {
               </span>
             </p>
           </ListItem>
-          <hr width="100%" />
+          <hr width="90%" />
         </div>
       );
     });

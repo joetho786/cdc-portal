@@ -1,6 +1,6 @@
 import React from 'react';
-import SectionCarousel from './Carousel';
-import VirtualizedList from './RecentNews';
+import SectionCarousel from '../Carousel/Carousel';
+import VirtualizedList from '../RecentNews/RecentNews';
 import Container from '@material-ui/core/Container';
 import './Carousel_News.css';
 const CarouselNewsWrapper = () => {

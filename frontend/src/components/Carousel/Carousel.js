@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import instance from '../../api/axios';
 import Slider from 'react-slick';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
@@ -8,15 +8,12 @@ import './Carousel.css';
 export default function SectionCarousel() {
   const [IC_Objs, setIC_Obj] = useState([]);
   useEffect(() => {
-    const fetchIC_Objs = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/main/home_image_carousel/`
-        );
+    instance
+      .get('main/home_image_carousel/')
+      .then((res) => {
         setIC_Obj(res.data);
-      } catch (err) {}
-    };
-    fetchIC_Objs();
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   const getIC_Objs = () => {
@@ -42,7 +39,11 @@ export default function SectionCarousel() {
     autoplay: true,
   };
   return (
-    <Grid container className="carousel_container">
+    <Grid
+      style={{ boxShadow: '0 0 6px' }}
+      container
+      className="carousel_container"
+    >
       <Grid item xs={12} sm={12} md={8} className="carousel_grid">
         <Card>
           <Slider {...settings}>{getIC_Objs()}</Slider>

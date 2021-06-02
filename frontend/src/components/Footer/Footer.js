@@ -74,7 +74,12 @@ export default function Footer(props) {
         >
           <Grid container spacing={4}>
             <Grid item xs={6} sm={3}>
-              <Typography variant="h6" align="center" gutterBottom>
+              <Typography
+                component={'span'}
+                variant="h6"
+                align="center"
+                gutterBottom
+              >
                 <ul align="left">
                   <li>
                     <Typography style={{ color: 'white' }} variant="h6">
@@ -109,6 +114,7 @@ export default function Footer(props) {
             {footers.map((footer) => (
               <Grid item xs={6} sm={3} key={footer.title}>
                 <Typography
+                  component={'span'}
                   style={{ color: 'white' }}
                   variant="h6"
                   gutterBottom
@@ -131,7 +137,12 @@ export default function Footer(props) {
               </Grid>
             ))}
           </Grid>
-          <Typography variant="h6" align="center" gutterBottom>
+          <Typography
+            component={'span'}
+            variant="h6"
+            align="center"
+            gutterBottom
+          >
             <div>
               <Tooltip arrow title="facebook">
                 <IconButton

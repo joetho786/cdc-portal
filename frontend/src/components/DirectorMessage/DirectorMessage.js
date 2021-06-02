@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import instance from '../../api/axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -58,19 +58,12 @@ export default function MediaControlCard() {
   const [DirectorMessage, setText] = useState([]);
 
   useEffect(() => {
-    const fetchText = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/main/director_message/`
-        );
+    instance
+      .get('main/director_message/')
+      .then((res) => {
         setText(res.data[0]);
-        console.log(res.data[0]);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchText();
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   const createDirectorMessage = () => {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Slider from 'react-slick';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
@@ -13,20 +12,19 @@ import IconButton from '@material-ui/core/IconButton';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import EmailIcon from '@material-ui/icons/Email';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import testiBack from '../assets/testiback2.jpg';
-import './NewAlumni.css';
+import testiBack from '../../assets/testiback2.jpg';
+import styles from './AlumniTestimonial.module.css';
+import instance from '../../api/axios';
+
 export default function AlumniTestimonial() {
   const [Alumni_Testimonials, setPAlumni_Testimonial] = useState([]);
   useEffect(() => {
-    const fetchAlumni_Testimonials = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/main/alumni_testimonial/`
-        );
+    instance
+      .get('main/alumni_testimonial/')
+      .then((res) => {
         setPAlumni_Testimonial(res.data);
-      } catch (err) {}
-    };
-    fetchAlumni_Testimonials();
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   const getAlumni_Testimonials = () => {
@@ -42,16 +40,16 @@ export default function AlumniTestimonial() {
               display: 'flex',
             }}
           >
-            <Card className="root">
+            <Card className={styles.root}>
               <CardActionArea>
                 <CardMedia
-                  className="media"
+                  className={styles.media}
                   image={testiBack}
                   title="Contemplative Reptile"
                 />
-                <div className="profile">
+                <div className={styles.profile}>
                   <img
-                    className="avatar"
+                    className={styles.avatar}
                     alt="Remy Sharp"
                     src={Testimonial_Obj.alumni_image}
                   />
@@ -60,16 +58,19 @@ export default function AlumniTestimonial() {
                   <Typography
                     variant="body2"
                     color="textPrimary"
-                    component="p"
-                    className="main_content"
+                    component={'span'}
+                    className={styles.main_content}
                   >
                     {Testimonial_Obj.testimonial}
                   </Typography>
-                  <div className="name_container">
-                    <Typography className="name">
+                  <div className={styles.name_container}>
+                    <Typography component={'span'} className={styles.name}>
                       {Testimonial_Obj.alumni_name}
                     </Typography>
-                    <Typography className="company_name">
+                    <Typography
+                      component={'span'}
+                      className={styles.company_name}
+                    >
                       {Testimonial_Obj.company_working}
                     </Typography>
                   </div>
@@ -122,7 +123,8 @@ export default function AlumniTestimonial() {
   };
   var settings = {
     dots: false,
-    slidesToShow: 2,
+    fade: true,
+    slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
     infinite: true,
@@ -135,6 +137,7 @@ export default function AlumniTestimonial() {
           slidesToShow: 1,
           slidesToScroll: 1,
           dots: false,
+          fade: true,
           arrows: true,
         },
       },
@@ -142,6 +145,7 @@ export default function AlumniTestimonial() {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
+          fade: true,
           slidesToScroll: 1,
           dots: true,
           arrows: false,
@@ -161,6 +165,7 @@ export default function AlumniTestimonial() {
             <h2
               style={{
                 fontSize: 40,
+                textAlign: '-webkit-center',
                 justifyContent: 'center',
                 display: 'grid',
                 marginBottom: -10,

@@ -1,15 +1,16 @@
 import React from 'react';
 import HeroSection from '../components/herosection1';
-import AboutUs from '../components/AboutUs';
-import CarouselNewsWrapper from '../components/CarouselRecentNews';
+import AboutUs from '../components/AboutUs/AboutUs';
+import CarouselNewsWrapper from '../components/CarouselNewsWrapper/CarouselRecentNews';
 import '../components/base.css';
-import MediaControlCard from '../components/DirectorMessage';
-import PastRecruiters from '../components/PastRecruiters';
-import AlumniTestimonial from '../components/NewAlumni';
-import Footer from '../components/Footer';
+import MediaControlCard from '../components/DirectorMessage/DirectorMessage';
+import PastRecruiters from '../components/PastRecruiters/PastRecruiters';
+import AlumniTestimonial from '../components/AlumniTestimonial/NewAlumni';
+import Footer from '../components/Footer/Footer';
+import styles from '../styles/pages/Home.module.css';
 function Home() {
   return (
-    <>
+    <div className={styles.aboutusWrapper}>
       <>
         <HeroSection />
       </>
@@ -27,7 +28,7 @@ function Home() {
       <>
         <Footer />
       </>
-    </>
+    </div>
   );
 }
 

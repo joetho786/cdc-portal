@@ -8,7 +8,7 @@
     margin-top: -25px;
 }
 
-.text_container {
+.textContainer {
     font-size: 16px;
     height: auto;
     margin-top: 30px;
@@ -18,37 +18,16 @@
     padding: 20px;
 }
 
-.text_container h2 {
+.aboutUsTitle {
     font-size: 40px;
     margin-bottom: 0.5%;
     margin-top: 0.5%;
 }
 
-/* .carousel-news-wrapper {
-    width: 90%;
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-}
-
-.news-wrapper {
-    max-width: 440px;
-    height: 445px;
-    margin-inline: auto;
-} */
-
-.MuiTabs-flexContainer {
-    background: #1b193d;
-}
-
 @media screen and (max-width: 420px) {
-    .text_container {
+    .textContainer{
         font-size: 15px;
         width: 90%;
         padding: 10px;
     }
-    /* .news-wrapper {
-        margin-top: inherit;
-    } */
 }

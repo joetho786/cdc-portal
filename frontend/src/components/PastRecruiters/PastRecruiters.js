@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import instance from '../../api/axios';
 import Slider from 'react-slick';
 import Container from '@material-ui/core/Container';
 import CardMedia from '@material-ui/core/CardMedia';
-import './newPastRecruiters.css';
+import styles from './PastRecruiters.module.css';
 export default function PastRecruiters() {
   const [PR_Objs, setPR_Obj] = useState([]);
   useEffect(() => {
-    const fetchPR_Objs = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/main/past_recruiters/`
-        );
+    instance
+      .get('main/past_recruiters/')
+      .then((res) => {
         setPR_Obj(res.data);
-        console.log(res.data);
-      } catch (err) {}
-    };
-    fetchPR_Objs();
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   const getPR_Objs = () => {
@@ -33,7 +29,7 @@ export default function PastRecruiters() {
             }}
           >
             <CardMedia
-              className="PR_image"
+              className={styles.PR_image}
               image={PR.company_logo}
               title="Contemplative Reptile"
             />
