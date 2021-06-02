@@ -2,7 +2,8 @@ from django.contrib import admin
 from main.models import PastRecruiters, News,\
      AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
      VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
-     Volunteers, NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage
+     Volunteers, NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
+     Achievements
 from import_export.admin import ImportExportActionModelAdmin
 
 admin.site.register(AboutUs)
@@ -38,6 +39,16 @@ class TestimonialAdmin(admin.ModelAdmin):
 
     class Meta:
         model = AlumniTestimonial
+        fields = '__all__'
+
+@admin.register(Achievements)
+class AchievementsAdmin(admin.ModelAdmin):
+    list_display = ['ranking', 'title', 'active', ]
+    list_filter = ['active', ]
+    ordering = ['ranking', ]
+
+    class Meta:
+        model = Achievements
         fields = '__all__'
 
 

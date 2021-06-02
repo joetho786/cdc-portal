@@ -2,12 +2,13 @@ from rest_framework.generics import ListAPIView
 from rest_framework.filters import SearchFilter
 from main.models import News, AlumniTestimonial, PastRecruiters,\
      HomeImageCarousel, CoreTeamContacts, CareerCommittee, Volunteers,\
-     NavBarSubOptions, NavBarOptions, DesignationChoices, VolunteersYearChoices, AboutUs, DirectorMessage
+     NavBarSubOptions, NavBarOptions, DesignationChoices, VolunteersYearChoices, AboutUs, DirectorMessage,\
+     Achievements
 from main.serializers import NewsSerializer, AlumniTestimonialSerializer,\
      PastRecruitersSerializer, HomeImageCarouselSerializer, CoreTeamContactsSerializer,\
      CareerCommitteeSerializer, VolunteersSerializer, VolunteersYearChoicesSerializer,\
      NavBarSubOptionsSerializer, NavBarOptionsSerializer, DesignationChoicesSerializer, AboutUsSerializer,\
-     DirectorMessageSerializer
+     DirectorMessageSerializer, AchievementsSerializer
 
 
 class NewsSerializer(ListAPIView):
@@ -27,6 +28,10 @@ class AlumniTestimonialSerializer(ListAPIView):
     queryset = AlumniTestimonial.objects.filter(active='True').order_by('ranking')
     serializer_class = AlumniTestimonialSerializer
 
+
+class AchievementsSerializer(ListAPIView):
+    queryset = Achievements.objects.filter(active='True').order_by('ranking')
+    serializer_class = AchievementsSerializer
 
 class PastRecruitersSerializer(ListAPIView):
     queryset = PastRecruiters.objects.filter(active=True)

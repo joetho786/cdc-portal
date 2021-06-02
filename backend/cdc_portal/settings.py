@@ -45,9 +45,9 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'corsheaders',
     'import_export',
-    'main',
     'student',
-    'company'
+    'company',
+    'main',
 ]
 
 MIDDLEWARE = [

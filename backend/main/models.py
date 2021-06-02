@@ -135,6 +135,20 @@ class AlumniTestimonial(models.Model):
     def __str__(self):
         return self.alumni_name
 
+class Achievements(models.Model):
+    CATEGORY = (
+        ('Highlight', 'Highlight'),
+        ('Other', 'Other'),
+    )
+    title = models.CharField(max_length=64)
+    category = models.CharField(max_length=10, choices=CATEGORY)
+    description = RichTextUploadingField(blank=True, null=True)
+    image = models.ImageField(upload_to='achievements', blank=True, null=True)
+    active = models.BooleanField(default=True)
+    ranking = models.PositiveSmallIntegerField(default=512)
+
+    def __str__(self):
+        return self.title
 
 class HomeImageCarousel(models.Model):
     ordering = models.PositiveIntegerField(default=64)
