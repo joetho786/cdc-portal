@@ -108,6 +108,7 @@ class VolunteersYearChoices(models.Model):
 
 class Volunteers(models.Model):
     name = models.CharField(max_length=64)
+    email = models.EmailField()
     year = models.ForeignKey(VolunteersYearChoices, on_delete=models.SET_NULL, null=True, blank=True)
     program_branch = models.ForeignKey(ProgramAndBranch, on_delete=models.SET_NULL, null=True, blank=True)
     active = models.BooleanField(default=True)

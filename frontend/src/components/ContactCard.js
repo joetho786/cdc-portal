@@ -25,22 +25,27 @@ const ContactCard = ({ data }) => {
         </b>
         <div className={styles.footer}>
           <table style={{ tableLayout: 'auto', margin: 'auto' }}>
-            <tr>
-              <td>
-                <a href={`mailto:${data.user.email}`} className={styles.email}>
-                  <EmailIcon style={{ margin: '0 0.5rem' }} />
-                  {data.user.email}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className={styles.phone}>
-                  <PhoneIcon style={{ margin: '0 0.5rem' }} />
-                  {data.phone}
-                </div>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href={`mailto:${data.user.email}`}
+                    className={styles.email}
+                  >
+                    <EmailIcon style={{ margin: '0 0.5rem' }} />
+                    {data.user.email}
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div className={styles.phone}>
+                    <PhoneIcon style={{ margin: '0 0.5rem' }} />
+                    {data.phone}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
           </table>
           {data.github_link || data.linkedin_link ? (
             <div className={styles.social}>
