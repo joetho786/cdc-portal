@@ -50,7 +50,6 @@ class LDAPOAuth(views.APIView):
 
         user_id = request.data['id']
         password = request.data['password']
-        print(user_id, password)
         if not self.testing_mode:
             try:
                 result = subprocess.check_output(['java','LDAP_login_api', user_id, password])
