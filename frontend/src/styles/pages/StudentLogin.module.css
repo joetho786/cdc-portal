@@ -1,0 +1,62 @@
+@media all and (min-width: 480px) {
+    
+  
+    
+  }
+  .Login {
+    margin: 10% 33%;
+    background-color: #f0f0f0;
+    border-radius: 2%;
+    padding: 3%;
+    justify-content: center;
+    box-shadow: 3px 6px 12px 4px #888888;
+}
+.Loginform {
+    margin: 3% 0;
+    padding: 10px;
+    width: 100%;
+    font-size: 0.92rem;
+    border-radius: 5%;
+  }
+
+.LoginButton {
+    margin: 3% 2%;
+    font-size: 0.9rem;
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    border: 2px solid #000;
+    border-radius: 2rem;
+    line-height: 1;
+    transition: 0.3s;
+    text-transform: uppercase;
+    appearance: auto;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+
+.Error {
+    position: absolute;
+    font-size: medium;
+    color: orangered;
+}
+.LoginButton:disabled{
+    color: -internal-light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+    background-color: -internal-light-dark(rgba(239, 239, 239, 0.3), rgba(19, 1, 1, 0.3));
+}
+.Heading{
+    padding-bottom: 10px;
+}
+.Gbutton{
+    height: 20px;
+    margin: 0 15px;
+    width: auto;
+}
