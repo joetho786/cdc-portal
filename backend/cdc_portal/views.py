@@ -2,6 +2,7 @@ import jwt
 import json
 import datetime
 import requests
+import subprocess
 
 from rest_framework import views
 from rest_framework.response import Response
@@ -37,6 +38,62 @@ class Login(views.APIView):
             return Response(
               json.dumps({'Error': "Invalid credentials"}),
               status=400,
+              content_type="application/json"
+            )
+
+
+class LDAPOAuth(views.APIView):
+    testing_mode = False
+    def post(self, request, *args, **kwargs):
+        if not request.data:
+            return Response({'Error': "Please provide valid credentials"}, status="400")
+
+        user_id = request.data['id']
+        password = request.data['password']
+        print(user_id, password)
+        if not self.testing_mode:
+            try:
+                result = subprocess.check_output(['java','LDAP_login_api', user_id, password])
+                result = result.decode('utf-8')
+                if (result == "0"):
+                    return Response(
+                    {'Error': "Invalid credentials : Please provide valid credentials"},
+                    status=400,
+                    content_type="application/json"
+                    )
+                email = result.split("mail=mail: ")[1].split(",")[0].replace("}","").replace("{","")
+                name = result.split("givenname=givenName: ")[1].split(",")[0].replace("}","").replace("{","").split(" ")
+                roll_no = result.split("sn=sn: ")[1].split(",")[0].replace("(","").replace(")","").replace("}","").replace("{","")
+            except:
+                return Response(
+                {'Error': "LDAP Server Down"},
+                status=500,
+                content_type="application/json"
+                )
+        else:
+            email = "test@iitj.ac.in"
+            roll_no = "B19EE048"
+            name = ["test", "user"]
+        print(email)
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            user = User.objects.create(username=roll_no,email=email,first_name=name[0],last_name=name[1])
+        if user:
+            payload = {
+                'id': user.id,
+                'email': user.email,
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+            }
+            jwt_token = {'token': jwt.encode(payload, "SECRET_KEY", algorithm="HS256")}
+
+            return Response(
+              jwt_token,
+              status=status.HTTP_200_OK)
+        else:
+            return Response(
+              {'Error': "Server Down"},
+              status=500,
               content_type="application/json"
             )
 
