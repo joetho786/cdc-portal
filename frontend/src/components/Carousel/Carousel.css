@@ -2,14 +2,13 @@
   width: 700px;
   height: 400px;
   margin-inline: auto;
-  border-color: rgb(0,0,0);
+  border-color: rgb(0, 0, 0);
 }
 
 .slick-slide img {
   height: 400px;
   width: 700px;
   display: inline;
-
 }
 
 .slick-dots {
@@ -20,7 +19,7 @@
   background: aliceblue;
   width: 8px;
   height: 8px;
-  transition: transform .3s;
+  transition: transform 0.3s;
   border-radius: 20%;
 }
 
@@ -73,12 +72,12 @@
   .slick-dots {
     bottom: 10px;
   }
-  
+
   .slick-dots li {
     width: 5px;
     height: 5px;
   }
-  
+
   .slick-dots .slick-active {
     transform: scale(1.6);
   }
