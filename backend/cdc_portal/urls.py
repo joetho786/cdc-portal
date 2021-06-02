@@ -28,7 +28,7 @@ urlpatterns = [
     path('api/company/', include("company.urls")),
     path('api/login/', Login.as_view(), name='login_using_password'),
     path('api/google_login/', GoogleLogin.as_view(), name='login_using_gooogle'),
-    path('api/LDAP_login/',LDAPOAuth.as_view(), name='login_using_ldap_creds')
+    path('api/LDAP_login/', LDAPOAuth.as_view(), name='login_using_ldap_creds')
 ]
 
 if settings.DEBUG:

@@ -32,18 +32,19 @@ class Login(views.APIView):
             jwt_token = {'token': jwt.encode(payload, "SECRET_KEY", algorithm="HS256")}
 
             return Response(
-              jwt_token,
-              status=status.HTTP_200_OK)
+                jwt_token,
+                status=status.HTTP_200_OK)
         else:
             return Response(
-              json.dumps({'Error': "Invalid credentials"}),
-              status=400,
-              content_type="application/json"
+                json.dumps({'Error': "Invalid credentials"}),
+                status=400,
+                content_type="application/json"
             )
 
 
 class LDAPOAuth(views.APIView):
     testing_mode = False
+
     def post(self, request, *args, **kwargs):
         if not request.data:
             return Response({'Error': "Please provide valid credentials"}, status="400")
@@ -52,22 +53,22 @@ class LDAPOAuth(views.APIView):
         password = request.data['password']
         if not self.testing_mode:
             try:
-                result = subprocess.check_output(['java','LDAP_login_api', user_id, password])
+                result = subprocess.check_output(['java', 'LDAP_login_api', user_id, password])
                 result = result.decode('utf-8')
                 if (result == "0"):
                     return Response(
-                    {'Error': "Invalid credentials : Please provide valid credentials"},
-                    status=400,
-                    content_type="application/json"
+                        {'Error': "Invalid credentials : Please provide valid credentials"},
+                        status=400,
+                        content_type="application/json"
                     )
-                email = result.split("mail=mail: ")[1].split(",")[0].replace("}","").replace("{","")
-                name = result.split("givenname=givenName: ")[1].split(",")[0].replace("}","").replace("{","").split(" ")
-                roll_no = result.split("sn=sn: ")[1].split(",")[0].replace("(","").replace(")","").replace("}","").replace("{","")
+                email = result.split("mail=mail: ")[1].split(",")[0].replace("}", "").replace("{", "")
+                name = result.split("givenname=givenName: ")[1].split(",")[0].replace("}", "").replace("{", "").split(" ")
+                roll_no = result.split("sn=sn: ")[1].split(",")[0].replace("(", "").replace(")", "").replace("}", "").replace("{", "")
             except:
                 return Response(
-                {'Error': "LDAP Server Down"},
-                status=500,
-                content_type="application/json"
+                    {'Error': "LDAP Server Down"},
+                    status=500,
+                    content_type="application/json"
                 )
         else:
             email = "test@iitj.ac.in"
@@ -77,7 +78,7 @@ class LDAPOAuth(views.APIView):
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
-            user = User.objects.create(username=roll_no,email=email,first_name=name[0],last_name=name[1])
+            user = User.objects.create(username=roll_no, email=email, first_name=name[0], last_name=name[1])
         if user:
             payload = {
                 'id': user.id,
@@ -87,13 +88,13 @@ class LDAPOAuth(views.APIView):
             jwt_token = {'token': jwt.encode(payload, "SECRET_KEY", algorithm="HS256")}
 
             return Response(
-              jwt_token,
-              status=status.HTTP_200_OK)
+                jwt_token,
+                status=status.HTTP_200_OK)
         else:
             return Response(
-              {'Error': "Server Down"},
-              status=500,
-              content_type="application/json"
+                {'Error': "Server Down"},
+                status=500,
+                content_type="application/json"
             )
 
 
@@ -108,8 +109,8 @@ class GoogleLogin(views.APIView):
         data = resp.json()
         if not data['email'] or resp.status != 200:
             return Response(
-              {'Error': "Invalid credentials"},
-              status=status.HTTP_400_BAD_REQUEST,
+                {'Error': "Invalid credentials"},
+                status=status.HTTP_400_BAD_REQUEST,
             )
         user = User.objects.filter(email=data['email']).first()
         if user is None:
@@ -125,5 +126,5 @@ class GoogleLogin(views.APIView):
             jwt_token = {'token': jwt.encode(payload, "SECRET_KEY", algorithm="HS256")}
 
             return Response(
-              jwt_token,
-              status=status.HTTP_200_OK)
+                jwt_token,
+                status=status.HTTP_200_OK)
