@@ -4,11 +4,9 @@ import styles from '../styles/pages/PlacementTeam.module.css';
 import ContactCard from '../components/ContactCard';
 import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import EmailIcon from '@material-ui/icons/Email';
-import PhoneIcon from '@material-ui/icons/Phone';
+import ContactDetails from '../components/ContactDetails';
+import Volunteers from '../components/Volunteers';
 
 const PlacementTeam = () => {
   const [loading, setLoding] = useState(true);
@@ -87,139 +85,7 @@ const PlacementTeam = () => {
         <Loading />
       ) : (
         <>
-          <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-            spacing={5}
-            style={{
-              width: '100%',
-              margin: '2rem auto auto',
-            }}
-          >
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              lg={6}
-              height="100%"
-              style={{
-                textAlign: 'center',
-                height: '100%',
-              }}
-            >
-              <b
-                style={{
-                  textAlign: 'center',
-                  fontSize: '1.6rem',
-                  fontWeight: 'bold',
-                }}
-              >
-                <LocationOnIcon
-                  style={{ fontSize: '2rem', verticalAlign: 'text-bottom' }}
-                />
-                Indian Institute of Technology Jodhpur
-              </b>
-              <table style={{ tableLayout: 'auto', margin: 'auto' }}>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'flex-start',
-                          fontSize: '1.2rem',
-                        }}
-                      >
-                        N.H. 65, Nagaur Road,
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'flex-start',
-                          fontSize: '1.2rem',
-                        }}
-                      >
-                        Karwar 342037,
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'flex-start',
-                          fontSize: '1.2rem',
-                        }}
-                      >
-                        Jodhpur, Rajasthan
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              lg={6}
-              height="100%"
-              style={{
-                textAlign: 'center',
-                height: '100%',
-              }}
-            >
-              <span
-                style={{
-                  textAlign: 'center',
-                  fontSize: '1.6rem',
-                  fontWeight: 'bold',
-                }}
-              >
-                Contact Information
-              </span>
-              <table style={{ tableLayout: 'auto', margin: 'auto' }}>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div className={styles.phone}>
-                        <PhoneIcon style={{ margin: '0 0.5rem 0 0' }} />
-                        +91 291 2801154
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className={styles.phone}>
-                        <PhoneIcon style={{ margin: '0 0.5rem 0 0' }} />
-                        +91 291 2801153
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="mailto:placement@iitj.ac.in"
-                        className={styles.email}
-                      >
-                        <EmailIcon style={{ margin: '0 0.5rem 0 0' }} />
-                        placement@iitj.ac.in
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </Grid>
-          </Grid>
+          <ContactDetails />
           <hr className={styles.hr} style={{ marginTop: '2rem' }}></hr>
           <div className={styles.members}>
             <MenuIcon
@@ -344,81 +210,9 @@ const PlacementTeam = () => {
               margin: '2rem auto auto',
             }}
           >
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              lg={4}
-              style={{
-                textAlign: 'center',
-              }}
-            >
-              <b className={styles.volunteers}>SOPHOMORE YEAR</b>
-              {sophomoreVolunteers.map((volunteer) => {
-                return (
-                  <Paper className={styles.volunteerPapaer} elevation={2}>
-                    <a
-                      href={`mailto:${volunteer.email}`}
-                      className={styles.volunteerEmail}
-                    >
-                      {`${volunteer.name} (${volunteer.program_branch.abbreviation})`}
-                      <EmailIcon style={{ margin: '0 0.5rem' }} />
-                    </a>
-                  </Paper>
-                );
-              })}
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              lg={4}
-              style={{
-                textAlign: 'center',
-              }}
-            >
-              <b className={styles.volunteers}>PRE-FINAL YEAR</b>
-              {preFinalVolunteers.map((volunteer) => {
-                return (
-                  <Paper className={styles.volunteerPapaer} elevation={2}>
-                    <a
-                      href={`mailto:${volunteer.email}`}
-                      className={styles.volunteerEmail}
-                    >
-                      {`${volunteer.name} (${volunteer.program_branch.abbreviation})`}
-                      <EmailIcon style={{ margin: '0 0.5rem' }} />
-                    </a>
-                  </Paper>
-                );
-              })}
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              lg={4}
-              style={{
-                textAlign: 'center',
-              }}
-            >
-              <b className={styles.volunteers}>POST GRADUATES</b>
-              {pgVolunteers.map((volunteer) => {
-                return (
-                  <Paper className={styles.volunteerPapaer} elevation={2}>
-                    <a
-                      href={`mailto:${volunteer.email}`}
-                      className={styles.volunteerEmail}
-                    >
-                      {`${volunteer.name} (${volunteer.program_branch.abbreviation})`}
-                      <EmailIcon style={{ margin: '0 0.5rem' }} />
-                    </a>
-                  </Paper>
-                );
-              })}
-            </Grid>
+            <Volunteers year="SOPHOMORE YEAR" data={sophomoreVolunteers} />
+            <Volunteers year="PRE-FINAL YEAR" data={preFinalVolunteers} />
+            <Volunteers year="POST GRADUATES" data={pgVolunteers} />
           </Grid>
         </>
       )}
