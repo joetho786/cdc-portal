@@ -48,7 +48,6 @@ jobs:
     - name: Migrations
       working-directory: ./backend
       run: |
-        source "$(pipenv --venv)"/bin/activate
         python manage.py makemigrations
         python manage.py migrate student zero
         python manage.py migrate company one
