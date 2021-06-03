@@ -48,10 +48,12 @@ jobs:
     - name: Migrations
       working-directory: ./backend
       run: |
-        python manage.py makemigrations
-        python manage.py migrate student zero
-        python manage.py migrate company one
-        python manage.py migrate main two
+        source "$(pipenv --venv)"/bin/activate
+        python3 manage.py makemigrations student
+        python3 manage.py makemigrations company
+        python3 manage.py makemigrations main
+        python3 manage.py migrate --fake-initial
+        python3 manage.py migrate
     - name: Coverage
       working-directory: ./backend
       run: |
