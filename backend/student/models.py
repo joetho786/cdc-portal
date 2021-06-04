@@ -2,8 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import pre_save, post_delete
 import random
+from django.utils.deconstruct import deconstructible
 
 
+@deconstructible
 class ProgramAndBranch(models.Model):
     name = models.CharField(max_length=60)
     abbreviation = models.CharField(max_length=10)
