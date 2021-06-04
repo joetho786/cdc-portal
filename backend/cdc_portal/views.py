@@ -64,7 +64,7 @@ class LDAPOAuth(views.APIView):
                 email = result.split("mail=mail: ")[1].split(",")[0].replace("}", "").replace("{", "")
                 name = result.split("givenname=givenName: ")[1].split(",")[0].replace("}", "").replace("{", "").split(" ")
                 roll_no = result.split("sn=sn: ")[1].split(",")[0].replace("(", "").replace(")", "").replace("}", "").replace("{", "")
-            except:
+            except:  # noqa: E722
                 return Response(
                     {'Error': "LDAP Server Down"},
                     status=500,

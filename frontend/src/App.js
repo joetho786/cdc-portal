@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import NotFound from './pages/404';
 import Invitation from './pages/Invitation';
 import ChairmanMessage from './pages/ChairmanMessage';
 import DirectorMessage from './pages/DirectorMessage';
+import GradeSystem from './pages/GradeSystem';
 import Brochure from './pages/Brochure';
 import WhyRecruit from './pages/WhyRecruit';
 import PlacementStatistics from './pages/PlacementStatistics';
@@ -29,12 +30,13 @@ import RecruiterLogin from './pages/RecruiterLogin';
 function App() {
   return (
     <Router>
-      <Navbar />
+      {/* <Navbar /> */}
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/Invitation" component={Invitation} />
         <Route path="/ChairmanMessage" component={ChairmanMessage} />
         <Route path="/DirectorMessage" component={DirectorMessage} />
+        <Route path="/GradeSystem" component={GradeSystem} />
         <Route path="/WhyRecruit" component={WhyRecruit} />
         <Route path="/Brochure" component={Brochure} />
         <Route path="/PlacementStatistics" component={PlacementStatistics} />

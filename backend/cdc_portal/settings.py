@@ -42,11 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'ckeditor',
+    'ckeditor_uploader',
     'corsheaders',
     'import_export',
-    'main',
     'student',
-    'company'
+    'company',
+    'main',
 ]
 
 MIDDLEWARE = [

@@ -4,13 +4,26 @@ from student.models import ProgramAndBranch
 from .models import News, PastRecruiters, Volunteers,\
                     AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
                     VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
-                    NavBarSubOptions, NavBarOptions
+                    NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
+                    Achievements
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
+
+
+class AboutUsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AboutUs
+        fields = '__all__'
+
+
+class DirectorMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DirectorMessage
+        fields = '__all__'
 
 
 class ProgramAndBranchSerializer(serializers.ModelSerializer):
@@ -49,6 +62,12 @@ class VolunteersSerializer(serializers.ModelSerializer):
 class AlumniTestimonialSerializer(serializers.ModelSerializer):
     class Meta:
         model = AlumniTestimonial
+        fields = '__all__'
+
+
+class AchievementsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Achievements
         fields = '__all__'
 
 
