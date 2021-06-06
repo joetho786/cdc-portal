@@ -137,6 +137,7 @@ export default function PersonalDetailsForm({ p1, p2 }) {
                 className={classes.button}
                 src={URL.createObjectURL(p1.photo)}
                 alt=""
+                style={{ maxWidth: '100px' }}
               />
             </div>
           )}

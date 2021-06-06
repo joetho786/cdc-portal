@@ -52,19 +52,16 @@ class updateStudentDetails(APIView):
     permission_classes = (IsAuthenticated,)
 
     def put(self, request, *args, **kwargs):
-        serializer = StudentProfileSerializer(instance=request.user, data=request.data)
         data = {}
         for key in request.data.keys():
-            data[key] = request.data.get(key)
-        user = request.user
-        user.first_name = data.pop('first_name')
-        user.last_name = data.pop('last_name')
-        user.save()
-        programBranch = data.pop('program_branch')
-        _ = StudentProfile.objects.filter(user=user).update(**data, program_branch=ProgramAndBranch.objects.get(name=programBranch['name']))
-        profile = StudentProfile.objects.filter(user=user)[0]
-        profile.save()
-
+            if request.data.get(key) != '':
+                if request.data.get(key) == 'true':
+                    data[key] = True
+                elif request.data.get(key) == 'false':
+                    data[key] = False
+                else:
+                    data[key] = request.data.get(key)
+        serializer = StudentProfileSerializer(instance=request.user, data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -91,7 +88,7 @@ class getResumes(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
-        resumes = Resume.objects.filter(student__user=request.user)
+        resumes = Resume.objects.filter(student__user=request.user).order_by('id')
         serializer = ResumeSerializer(resumes, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -114,13 +111,16 @@ class deleteResume(APIView):
 
     def delete(self, request, pk):
         resume = Resume.objects.get(id=pk)
+        user = request.user
+        if resume.student.user.id != user.id:
+            return Response({'Error': 'Cannot delete others resume'}, status.HTTP_403_FORBIDDEN)
         data = {}
         if(resume.is_verified):
-            data["operation status"] = "Can not delete verified resume"
+            return Response({'Error': 'Can not delete verified resume'}, status.HTTP_403_FORBIDDEN)
         else:
             operation = resume.delete()
             if operation:
-                data["operation status"] = "Successfully deleted resume"
+                return Response({'Error': 'Successfully deleted resume'}, status.HTTP_200_OK)
             else:
-                data["operation status"] = "Failed to delete resume"
+                return Response({'Error': 'Cannot delete the resume'}, status.HTTP_500_INTERNAL_SERVER_ERROR)
         return Response(data=data)
