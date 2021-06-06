@@ -119,6 +119,7 @@ function Home() {
                       <a
                         href={get_link(row.file)}
                         target="_blank"
+                        rel="noopener noreferrer"
                         style={{
                           color: 'inherit',
                           textDecoration: 'none',
@@ -138,6 +139,7 @@ function Home() {
                       <a
                         href={get_link(row.file)}
                         target="_blank"
+                        rel="noopener noreferrer"
                         style={{
                           color: 'inherit',
                           textDecoration: 'none',
