@@ -98,14 +98,14 @@ const StudentRegister = () => {
   };
 
   const handleSubmit = () => {
-    console.log(values1);
+    //console.log(values1);
     var form = new FormData();
     try {
       form.append('std_image', values1.photo, values1.photo.name);
     } catch {}
     form.append('gpa', values2.gpa);
     form.append('ug_gpa', values2.ugpa);
-    form.append('phone', values1.phone);
+    form.append('phone', values1.phonenumber);
     form.append('dob', values1.birthday);
     form.append('category', values1.category);
     form.append('jee_air', values2.jeeair);
@@ -119,7 +119,14 @@ const StudentRegister = () => {
     form.append('xii_year', values2.by12);
     form.append('xii_board_name', values2.bn12);
     form.append('xii_percentage', values2.bp12);
-    instance.post('/student/details_add/', form);
+    instance
+      .post('/student/details_add/', form)
+      .then((res) => {
+        if (res.status === 200) {
+          window.location = '/StudentDashboard';
+        }
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <React.Fragment>

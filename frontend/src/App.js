@@ -27,6 +27,7 @@ import CareerCounselling from './pages/CareerCounselling';
 import StudentLogin from './pages/StudentLogin';
 import RecruiterLogin from './pages/RecruiterLogin';
 import StudentRegister from './pages/StudentRegister';
+import StudentDashboard from './pages/StudentDashboard';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
         <Route path="/CareerCounselling" component={CareerCounselling} />
         <Route path="/StudentLogin" component={StudentLogin} />
         <Route path="/StudentRegister" component={StudentRegister} />
+        <Route path="/StudentDashboard" component={StudentDashboard} />
         <Route path="/RecruiterLogin" component={RecruiterLogin} />
         <Route default component={NotFound} />
       </Switch>

@@ -1,18 +1,35 @@
 import React, { useState } from 'react';
 import instance from '../api/axios';
 import styles from '../styles/pages/StudentLogin.module.css';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const StudentLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = React.useState(false);
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
 
+  const handleCloseerror = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setError('');
+  };
+
   function handleSubmit(event) {
     event.preventDefault();
+    setLoading(true);
     const body = { id: email, password: password };
     instance
       .post('LDAP_login/', body)
@@ -24,17 +41,38 @@ const StudentLogin = () => {
         localStorage.setItem('cdc_Dname', Dname);
         if (res.status === 201) {
           window.location = 'StudentRegister';
+        } else {
+          window.location = 'StudentDashboard';
         }
       })
       .catch(function (error) {
         if (error.response) {
           setError(error.response.data['Error']);
         }
+        setLoading(false);
       });
   }
 
   return (
     <div className={styles.Login}>
+      <Backdrop
+        style={{
+          zIndex: 1,
+          color: '#fff',
+        }}
+        open={loading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      <Snackbar
+        open={error !== ''}
+        autoHideDuration={6000}
+        onClose={handleCloseerror}
+      >
+        <Alert onClose={handleCloseerror} severity="error">
+          {error}
+        </Alert>
+      </Snackbar>
       <h3 className={styles.Heading}>Student Login</h3>
       <form onSubmit={handleSubmit}>
         <input
@@ -61,7 +99,6 @@ const StudentLogin = () => {
           >
             Login
           </button>
-          <div className={styles.Error}>{error} </div>
         </center>
       </form>
     </div>
