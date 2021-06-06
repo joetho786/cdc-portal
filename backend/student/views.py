@@ -10,16 +10,30 @@ from rest_framework.parsers import MultiPartParser, FormParser
 class addStudentDetails(APIView):
     permission_classes = (IsAuthenticated,)
 
+    def get_data_from_rollno(self, roll):
+        import re
+        dic = {}
+        lis1 = re.split("\d+", roll)
+        lis2 = re.split("\D+", roll)
+        dic["RollNo"], dic["Year"], dic["Batch"], dic["Branch"] = lis2[-1], lis2[-2], lis1[0], lis1[1]
+        return dic
+
     def post(self, request, *args, **kwargs):
         data = {}
         for key in request.data.keys():
-            data[key] = request.data.get(key)
+            if request.data.get(key) != '':
+                if request.data.get(key) == 'true':
+                    data[key] = True
+                elif request.data.get(key) == 'false':
+                    data[key] = False
+                else:
+                    data[key] = request.data.get(key)
         user = request.user
-        user.first_name = data.pop('first_name')
-        user.last_name = data.pop('last_name')
-        user.save()
-        programBranch = data.pop('program_branch')
-        profile = StudentProfile.objects.create(user=user, **data, program_branch=ProgramAndBranch.objects.get(name=programBranch['name']))
+        r_dic = self.get_data_from_rollno(user.username)
+        data["year"] = r_dic["Year"]
+        data["roll_no"] = user.username
+        getter = r_dic["Batch"] + '/' + r_dic["Branch"]
+        profile = StudentProfile.objects.create(user=user, **data, program_branch=ProgramAndBranch.objects.get(abbreviation=getter))
         profile.save()
         return Response(StudentProfileSerializer(profile).data, status=status.HTTP_200_OK)
 
