@@ -13,8 +13,8 @@ class addStudentDetails(APIView):
     def get_data_from_rollno(self, roll):
         import re
         dic = {}
-        lis1 = re.split("\d+", roll)
-        lis2 = re.split("\D+", roll)
+        lis1 = re.split("\d+", roll)  # noqa: W605
+        lis2 = re.split("\D+", roll)  # noqa: W605
         dic["RollNo"], dic["Year"], dic["Batch"], dic["Branch"] = lis2[-1], lis2[-2], lis1[0], lis1[1]
         return dic
 
