@@ -26,6 +26,7 @@ import PlacementTeam from './pages/PlacementTeam';
 import CareerCounselling from './pages/CareerCounselling';
 import StudentLogin from './pages/StudentLogin';
 import RecruiterLogin from './pages/RecruiterLogin';
+import StudentRegister from './pages/StudentRegister';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         <Route path="/PlacementTeam" component={PlacementTeam} />
         <Route path="/CareerCounselling" component={CareerCounselling} />
         <Route path="/StudentLogin" component={StudentLogin} />
+        <Route path="/StudentRegister" component={StudentRegister} />
         <Route path="/RecruiterLogin" component={RecruiterLogin} />
         <Route default component={NotFound} />
       </Switch>

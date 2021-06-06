@@ -23,6 +23,9 @@ instance.interceptors.response.use(
     if (error.response.status === 401) {
       localStorage.setItem('cdc_LoggedIn', false);
       localStorage.setItem('cdc_auth_token', '');
+
+      window.alert('Session expired');
+      window.location = '/';
     }
     return Promise.reject(error);
   }

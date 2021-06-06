@@ -18,9 +18,13 @@ const StudentLogin = () => {
       .post('LDAP_login/', body)
       .then((res) => {
         //console.log(res.data);
-        const { token } = res.data;
+        const { token, Dname } = res.data;
         localStorage.setItem('cdc_auth_token', token);
         localStorage.setItem('cdc_LoggedIn', true);
+        localStorage.setItem('cdc_Dname', Dname);
+        if (res.status === 201) {
+          window.location = 'StudentRegister';
+        }
       })
       .catch(function (error) {
         if (error.response) {

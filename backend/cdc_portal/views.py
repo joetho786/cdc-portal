@@ -9,6 +9,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
 
+from student.models import StudentProfile
+
 
 class Login(views.APIView):
 
@@ -74,7 +76,6 @@ class LDAPOAuth(views.APIView):
             email = "test@iitj.ac.in"
             roll_no = "B19EE048"
             name = ["test", "user"]
-        print(email)
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
@@ -85,11 +86,17 @@ class LDAPOAuth(views.APIView):
                 'email': user.email,
                 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
             }
-            jwt_token = {'token': jwt.encode(payload, "SECRET_KEY", algorithm="HS256")}
-
-            return Response(
-                jwt_token,
-                status=status.HTTP_200_OK)
+            data = {'token': jwt.encode(payload, "SECRET_KEY", algorithm="HS256")}
+            data['Dname'] = name[0] + " (" + roll_no + ")"
+            try:
+                StudentProfile.objects.get(user=user)
+                return Response(
+                    data,
+                    status=status.HTTP_200_OK)
+            except StudentProfile.DoesNotExist:
+                return Response(
+                    data,
+                    status=status.HTTP_201_CREATED)
         else:
             return Response(
                 {'Error': "Server Down"},

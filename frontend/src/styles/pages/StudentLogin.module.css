@@ -1,21 +1,54 @@
-@media all and (min-width: 480px) {
+@media all and (min-width: 1200px) {
+  .Login {
+    margin: 10% 33%;
+    background-color: #f0f0f0;
+    border-radius: 2%;
+    padding: 3%;
+    justify-content: center;
+    box-shadow: 3px 6px 12px 4px #888888;
+  }
+  .Loginform {
+    margin: 3% 0;
+    padding: 10px;
+    width: 100%;
+    font-size: 0.92rem;
+    border-radius: 5%;
+  }
 }
-.Login {
-  margin: 10% 33%;
-  background-color: #f0f0f0;
-  border-radius: 2%;
-  padding: 3%;
-  justify-content: center;
-  box-shadow: 3px 6px 12px 4px #888888;
+@media (min-width: 700px) and (max-width: 1200px) {
+  .Login {
+    margin: 20% 20%;
+    background-color: #f0f0f0;
+    border-radius: 2%;
+    padding: 5%;
+    justify-content: center;
+    box-shadow: 3px 6px 12px 4px #888888;
+  }
+  .Loginform {
+    margin: 3% 0;
+    padding: 10px;
+    width: 90%;
+    font-size: 0.92rem;
+    border-radius: 5%;
+  }
 }
-.Loginform {
-  margin: 3% 0;
-  padding: 10px;
-  width: 100%;
-  font-size: 0.92rem;
-  border-radius: 5%;
+@media (max-width: 700px) {
+  .Login {
+    margin: 40% 3%;
+    background-color: #f0f0f0;
+    border-radius: 2%;
+    padding: 5%;
+    justify-content: center;
+    box-shadow: 3px 6px 12px 4px #888888;
+  }
+  .Loginform {
+    margin: 3% 0;
+    padding: 10px;
+    width: 90%;
+    font-size: 0.92rem;
+    border-radius: 5%;
+  }
 }
-
 .LoginButton {
   margin: 3% 2%;
   font-size: 0.9rem;
@@ -39,7 +72,6 @@
   align-items: flex-start;
   cursor: pointer;
 }
-
 .Error {
   position: absolute;
   font-size: medium;

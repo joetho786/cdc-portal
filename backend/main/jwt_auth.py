@@ -1,5 +1,4 @@
-from rest_framework import status, exceptions
-from django.http import HttpResponse
+from rest_framework import exceptions
 from rest_framework.authentication import get_authorization_header, BaseAuthentication
 from django.contrib.auth.models import User
 
@@ -47,10 +46,8 @@ class TokenAuthentication(BaseAuthentication):
                 id=userid,
                 is_active=True
             )
-        except jwt.ExpiredSignatureError or jwt.DecodeError or jwt.InvalidTokenError:
-            return HttpResponse({'Error': "Token is invalid"}, status=status.HTTP_403_FORBIDDEN)
-        except User.DoesNotExist:
-            return HttpResponse({'Error': "Internal server error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except:  # noqa: E722
+            raise exceptions.AuthenticationFailed("Invalid token")
 
         return (user, token)
 

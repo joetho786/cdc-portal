@@ -1,0 +1,185 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Paper from '@material-ui/core/Paper';
+import instance from '../api/axios';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import PersonalDetailsForm from '../components/RegistrationForms/PersonalDetailsForm';
+import AcademicDetailsForm from '../components/RegistrationForms/AcademicDetailsForm';
+import NormsForm from '../components/RegistrationForms/NormsForm';
+
+const useStyles = makeStyles((theme) => ({
+  layout: {
+    width: 'auto',
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+      width: 600,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      marginTop: theme.spacing(6),
+      marginBottom: theme.spacing(6),
+      padding: theme.spacing(3),
+    },
+  },
+  stepper: {
+    padding: theme.spacing(5, 0, 5),
+  },
+  buttons: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+const steps = ['Personal Details', 'Academic details', 'Norms Acceptance'];
+
+const StudentRegister = () => {
+  const classes = useStyles();
+  const [activeStep, setActiveStep] = React.useState(0);
+
+  const [values1, setValues1] = React.useState({
+    birthday: '',
+    phonenumber: '',
+    padd: '',
+    cadd: '',
+    category: '',
+    national: '',
+    disable: '',
+    photo: '',
+  });
+  const [values2, setValues2] = React.useState({
+    gpa: '',
+    ugpa: '',
+    jeeair: '',
+    by12: '',
+    by10: '',
+    bn12: '',
+    bn10: '',
+    bp12: '',
+    bp10: '',
+    check: '',
+  });
+  const [check, setCheck] = React.useState(false);
+
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <PersonalDetailsForm p1={values1} p2={setValues1} />;
+      case 1:
+        return <AcademicDetailsForm p1={values2} p2={setValues2} />;
+      case 2:
+        return <NormsForm p1={check} p2={setCheck} />;
+      default:
+        throw new Error('Unknown step');
+    }
+  }
+
+  const handleNext = () => {
+    setActiveStep(activeStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep(activeStep - 1);
+  };
+
+  const handleSubmit = () => {
+    console.log(values1);
+    var form = new FormData();
+    try {
+      form.append('std_image', values1.photo, values1.photo.name);
+    } catch {}
+    form.append('gpa', values2.gpa);
+    form.append('ug_gpa', values2.ugpa);
+    form.append('phone', values1.phone);
+    form.append('dob', values1.birthday);
+    form.append('category', values1.category);
+    form.append('jee_air', values2.jeeair);
+    form.append('physical_disability', values1.disable);
+    form.append('nationality', values1.national);
+    form.append('permanent_address', values1.padd);
+    form.append('current_address', values1.cadd);
+    form.append('x_year', values2.by10);
+    form.append('x_board_name', values2.bn10);
+    form.append('x_percentage', values2.bp10);
+    form.append('xii_year', values2.by12);
+    form.append('xii_board_name', values2.bn12);
+    form.append('xii_percentage', values2.bp12);
+    instance.post('/student/details_add/', form);
+  };
+  return (
+    <React.Fragment>
+      <CssBaseline />
+      <main className={classes.layout}>
+        <Paper className={classes.paper}>
+          <Typography component="h3" variant="h5" align="center">
+            Student Registeration
+          </Typography>
+          <Stepper activeStep={activeStep} className={classes.stepper}>
+            {steps.map((label) => (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+          <React.Fragment>
+            {activeStep === steps.length ? (
+              <React.Fragment>
+                <Typography variant="h5" gutterBottom>
+                  Loading ...
+                </Typography>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                {getStepContent(activeStep)}
+                <div className={classes.buttons}>
+                  {activeStep !== 0 && (
+                    <Button onClick={handleBack} className={classes.button}>
+                      Back
+                    </Button>
+                  )}
+                  {activeStep !== steps.length - 1 ? (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleNext}
+                      className={classes.button}
+                    >
+                      Next
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      disabled={!check}
+                      onClick={handleSubmit}
+                      className={classes.button}
+                    >
+                      Submit
+                    </Button>
+                  )}
+                </div>
+              </React.Fragment>
+            )}
+          </React.Fragment>
+        </Paper>
+      </main>
+    </React.Fragment>
+  );
+};
+
+export default StudentRegister;

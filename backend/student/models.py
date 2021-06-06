@@ -7,6 +7,11 @@ from django.utils.deconstruct import deconstructible
 
 @deconstructible
 class ProgramAndBranch(models.Model):
+    """
+    @Roll_number = B19EE048
+    => name = Btech Electrical Engineering
+    => abbreviation = B/EE
+    """
     name = models.CharField(max_length=60)
     abbreviation = models.CharField(max_length=10)
     usable = models.BooleanField(default=False)
@@ -96,8 +101,8 @@ def event_pre_save_receiver_resume(sender, instance, *args, **kwargs):
             'IITJodhpur.pdf' not in instance.file.name \
             and instance._state.adding is True:
         instance.file.name = instance.student.user.first_name + '_' + instance.student.user.last_name \
-                             + '_' + instance.student.user.username + '_' + str(random.randint(1, 10001)) + \
-                             '_' + 'IITJodhpur.pdf'
+            + '_' + instance.student.user.username + '_' + str(random.randint(1, 10001)) + \
+            '_' + 'IITJodhpur.pdf'
     if not instance.reference:
         instance.reference = instance.file.name
 
