@@ -6,8 +6,8 @@ import '../components/base.css';
 import MediaControlCard from '../components/DirectorMessage/DirectorMessage';
 import PastRecruiters from '../components/PastRecruiters/PastRecruiters';
 import AlumniTestimonial from '../components/AlumniTestimonial/NewAlumni';
-import Footer from '../components/Footer/Footer';
 import styles from '../styles/pages/Home.module.css';
+
 function Home() {
   return (
     <div className={styles.aboutusWrapper}>
@@ -29,9 +29,6 @@ function Home() {
       <div>
         <AlumniTestimonial />
       </div>
-      <>
-        <Footer />
-      </>
     </div>
   );
 }

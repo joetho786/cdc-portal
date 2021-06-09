@@ -4,7 +4,6 @@ import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
-import Footer from '../components/Footer/Footer';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -12,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     display: 'flex',
     marginBottom: 10,
+    overflowX: 'clip',
     [theme.breakpoints.down(460)]: {
       padding: 2,
     },
@@ -67,12 +67,15 @@ const ChairmanMessage = () => {
               </Grid>
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
-                  <p dangerouslySetInnerHTML={createMessage()} />
+                  {message ? (
+                    <p dangerouslySetInnerHTML={createMessage()} />
+                  ) : (
+                    <p>Coming soon...</p>
+                  )}
                 </Paper>
               </Grid>
             </Grid>
           </Container>
-          <Footer />
         </>
       )}
     </div>

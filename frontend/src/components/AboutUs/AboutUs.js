@@ -21,10 +21,14 @@ const AboutUs = () => {
 
   return (
     <Container maxWidth="lg">
-      <Container maxWidth="lg" className={styles.textContainer}>
-        <h2 className={styles.aboutUsTitle}>{aboutText.title}</h2>
-        <p dangerouslySetInnerHTML={createAboutUs()} />
-      </Container>
+      {aboutText ? (
+        <Container maxWidth="lg" className={styles.textContainer}>
+          <h2 className={styles.aboutUsTitle}>{aboutText.title}</h2>
+          <p dangerouslySetInnerHTML={createAboutUs()} />
+        </Container>
+      ) : (
+        ''
+      )}
     </Container>
   );
 };

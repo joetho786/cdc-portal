@@ -79,10 +79,14 @@ const AIPCNorms = () => {
               <Grid item xs={12}>
                 <Paper className={classes.paper_s}>
                   <Typography>
-                    <p
-                      classes={classes.text}
-                      dangerouslySetInnerHTML={createtext()}
-                    />
+                    {text ? (
+                      <p
+                        classes={classes.text}
+                        dangerouslySetInnerHTML={createtext()}
+                      />
+                    ) : (
+                      <p>Coming soon...</p>
+                    )}
                   </Typography>
                 </Paper>
               </Grid>
