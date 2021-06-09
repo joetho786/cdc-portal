@@ -88,6 +88,7 @@ const RecruiterGuidelines = () => {
               </Grid>
             </Grid>
           </Container>
+          <Footer />
         </>
       )}
     </div>
