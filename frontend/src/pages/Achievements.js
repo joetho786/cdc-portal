@@ -4,7 +4,6 @@ import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
-import Footer from '../../src/components/Footer/Footer';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';
@@ -174,7 +173,6 @@ const Achievements = () => {
               </Grid>
             </Grid>
           </Container>
-          <Footer />
         </>
       )}
     </div>

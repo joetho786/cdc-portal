@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
 import NotFound from './pages/404';
 import Invitation from './pages/Invitation';
@@ -28,11 +28,12 @@ import StudentLogin from './pages/StudentLogin';
 import RecruiterLogin from './pages/RecruiterLogin';
 import StudentRegister from './pages/StudentRegister';
 import StudentDashboard from './pages/StudentDashboard';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <Router>
-      {/* <Navbar /> */}
+      <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/Invitation" component={Invitation} />
@@ -62,6 +63,7 @@ function App() {
         <Route path="/RecruiterLogin" component={RecruiterLogin} />
         <Route default component={NotFound} />
       </Switch>
+      <Footer />
     </Router>
   );
 }

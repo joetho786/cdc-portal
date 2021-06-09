@@ -9,7 +9,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Container, Typography } from '@material-ui/core';
-import Footer from '../../src/components/Footer/Footer';
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -115,7 +114,6 @@ export default function BasicTable() {
           </Grid>
         </Grid>
       </Container>
-      <Footer />
     </>
   );
 }

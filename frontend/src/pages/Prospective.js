@@ -10,7 +10,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { Container, Typography } from '@material-ui/core';
-import Footer from '../../src/components/Footer/Footer';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -161,7 +161,6 @@ export default function Prospective() {
           </Grid>
         </Grid>
       </Container>
-      <Footer />
     </>
   );
 }
