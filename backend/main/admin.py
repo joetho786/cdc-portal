@@ -138,7 +138,7 @@ class NavBarOptionsAdmin(admin.ModelAdmin):
 class WhyRecruitAdmin(admin.ModelAdmin):
     list_display = ['title', 'active']
     list_filter = ['active', ]
-    search_fields = ['title',]
+    search_fields = ['title', ]
 
     class Meta:
         model = WhyRecruit
