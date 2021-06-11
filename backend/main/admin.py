@@ -3,7 +3,7 @@ from main.models import PastRecruiters, News,\
      AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
      VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
      Volunteers, NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
-     Achievements
+     Achievements, WhyRecruit
 from import_export.admin import ImportExportActionModelAdmin
 
 admin.site.register(AboutUs)
@@ -131,4 +131,15 @@ class NavBarOptionsAdmin(admin.ModelAdmin):
 
     class Meta:
         model = NavBarOptions
+        fields = '__all__'
+
+
+@admin.register(WhyRecruit)
+class WhyRecruitAdmin(admin.ModelAdmin):
+    list_display = ['title', 'active']
+    list_filter = ['active', ]
+    search_fields = ['title',]
+
+    class Meta:
+        model = WhyRecruit
         fields = '__all__'
