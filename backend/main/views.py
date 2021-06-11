@@ -88,7 +88,7 @@ class NavBarOptionsSerializer(ListAPIView):
     search_fields = ['title']
     filter_backends = (SearchFilter,)
 
-     
+
 class WhyRecruitSerializer(ListAPIView):
     queryset = WhyRecruit.objects.filter(active=True)
     serializer_class = WhyRecruitSerializer
