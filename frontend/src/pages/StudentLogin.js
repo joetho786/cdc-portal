@@ -40,6 +40,7 @@ const StudentLogin = () => {
         localStorage.setItem('cdc_auth_token', token);
         localStorage.setItem('cdc_LoggedIn', true);
         localStorage.setItem('cdc_Dname', Dname);
+        localStorage.setItem('cdc_loginType', 'Student');
         if (res.status === 201) {
           window.location = 'StudentRegister';
         } else {

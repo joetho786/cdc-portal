@@ -161,7 +161,17 @@ export default function Navbar() {
                 </ul>
               </li>
               {localStorage.getItem('cdc_LoggedIn') === 'true' ? (
-                <div></div>
+                <li>
+                  <Link
+                    to={
+                      localStorage.getItem('cdc_loginType') === 'Student'
+                        ? '/StudentDashboard'
+                        : '/RecruiterDashboard'
+                    }
+                  >
+                    <span>{localStorage.getItem('cdc_Dname')}</span>
+                  </Link>
+                </li>
               ) : (
                 <li>
                   <Link to="#" className="desktop-link">
