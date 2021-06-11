@@ -3,12 +3,12 @@ from rest_framework.filters import SearchFilter
 from main.models import News, AlumniTestimonial, PastRecruiters,\
      HomeImageCarousel, CoreTeamContacts, CareerCommittee, Volunteers,\
      NavBarSubOptions, NavBarOptions, DesignationChoices, VolunteersYearChoices, AboutUs, DirectorMessage,\
-     Achievements
+     Achievements, WhyRecruit
 from main.serializers import NewsSerializer, AlumniTestimonialSerializer,\
      PastRecruitersSerializer, HomeImageCarouselSerializer, CoreTeamContactsSerializer,\
      CareerCommitteeSerializer, VolunteersSerializer, VolunteersYearChoicesSerializer,\
      NavBarSubOptionsSerializer, NavBarOptionsSerializer, DesignationChoicesSerializer, AboutUsSerializer,\
-     DirectorMessageSerializer, AchievementsSerializer
+     DirectorMessageSerializer, AchievementsSerializer, WhyRecruitSerializer
 
 
 class NewsSerializer(ListAPIView):
@@ -85,5 +85,12 @@ class NavBarSubOptionsSerializer(ListAPIView):
 class NavBarOptionsSerializer(ListAPIView):
     queryset = NavBarOptions.objects.all()
     serializer_class = NavBarOptionsSerializer
+    search_fields = ['title']
+    filter_backends = (SearchFilter,)
+
+     
+class WhyRecruitSerializer(ListAPIView):
+    queryset = WhyRecruit.objects.filter(active=True)
+    serializer_class = WhyRecruitSerializer
     search_fields = ['title']
     filter_backends = (SearchFilter,)
