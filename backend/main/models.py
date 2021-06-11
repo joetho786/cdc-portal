@@ -214,7 +214,7 @@ class NavBarOptions(models.Model):
     class Meta:
         verbose_name_plural = 'Navbar options'
 
-  
+
 class WhyRecruit(models.Model):
     title = models.CharField(max_length=64)
     active = models.BooleanField(default=True)
