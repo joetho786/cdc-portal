@@ -119,4 +119,3 @@ class WhyRecruitSerializer(serializers.ModelSerializer):
     class Meta:
         model = WhyRecruit
         fields = '__all__'
-        
