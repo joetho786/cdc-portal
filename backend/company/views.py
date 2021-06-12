@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from rest_framework.response import Response
 from .serializers import CompanyProfileSerializer, InternshipOfferSerializer, JobOfferSerializer
 from .models import CompanyProfile, InternshipOffer, JobOffer
@@ -8,22 +9,26 @@ from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class AddCompanyDetails(APIView):
-    permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
         data = {}
         for key in request.data.keys():
             data[key] = request.data.get(key)
-        user = request.user
-        user.first_name = data.pop('first_name')
-        user.last_name = data.pop('last_name')
-        user.save()
-        job_offers = data.pop('job_offers')
-        internship_offers = data.pop('internship_offers')
-        profile = CompanyProfile.objects.create(user=user, **data, job_offers=JobOffer.objects.get(name=job_offers['profile']),
-                                                internship_offers=InternshipOffer.objects.get(internship_offers['profile']))
-        profile.save()
-        return Response(CompanyProfileSerializer(profile).data, status=status.HTTP_200_OK)
+            if request.data.get(key) == '':
+                return Response({'Error': 'Data Input Incorrect'}, status=status.HTTP_400_BAD_REQUEST)
+        email = data.pop('email')
+        password = data.pop('password')
+        data.pop('cpassword')
+        try:
+            user = User.objects.get(email=email)
+            return Response({'Error': 'User Alreday Exists'}, status=status.HTTP_400_BAD_REQUEST)
+        except User.DoesNotExist:
+            user = User.objects.create(email=email, username=email)
+            user.set_password(password)
+            user.save()
+            profile = CompanyProfile.objects.create(user=user, **data)
+            profile.save()
+            return Response(CompanyProfileSerializer(profile).data, status=status.HTTP_201_CREATED)
 
 
 class GetCompanyDetails(APIView):

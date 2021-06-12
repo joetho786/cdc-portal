@@ -160,23 +160,37 @@ export default function Navbar() {
                   </li>
                 </ul>
               </li>
-              <li>
-                <Link to="#" className="desktop-link">
-                  Login <i className="fa fa-caret-down"></i>
-                </Link>
-                <input type="checkbox" id="show-login" />
-                <label htmlFor="show-login">
-                  Login <i className="fa fa-caret-down"></i>
-                </label>
-                <ul>
-                  <li>
-                    <Link to="/RecruiterLogin">Recruiter Login</Link>
-                  </li>
-                  <li>
-                    <Link to="/StudentLogin">Student Login</Link>
-                  </li>
-                </ul>
-              </li>
+              {localStorage.getItem('cdc_LoggedIn') === 'true' ? (
+                <li>
+                  <Link
+                    to={
+                      localStorage.getItem('cdc_loginType') === 'Student'
+                        ? '/StudentDashboard'
+                        : '/RecruiterDashboard'
+                    }
+                  >
+                    <span>{localStorage.getItem('cdc_Dname')}</span>
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to="#" className="desktop-link">
+                    Login <i className="fa fa-caret-down"></i>
+                  </Link>
+                  <input type="checkbox" id="show-login" />
+                  <label htmlFor="show-login">
+                    Login <i className="fa fa-caret-down"></i>
+                  </label>
+                  <ul>
+                    <li>
+                      <Link to="/RecruiterLogin">Recruiter Login</Link>
+                    </li>
+                    <li>
+                      <Link to="/StudentLogin">Student Login</Link>
+                    </li>
+                  </ul>
+                </li>
+              )}
             </ul>
           </div>
         </nav>
