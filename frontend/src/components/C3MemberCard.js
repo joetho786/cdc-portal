@@ -11,11 +11,9 @@ const C3MemberCard = ({ data }) => {
         alt={data.name}
       />
       <div className={styles.cardContent}>
-        <b style={{ margin: '0', fontSize: '1.5rem' }}>{data.name}</b>
+        <b style={{ margin: '0', fontSize: '1.4rem' }}>{data.name}</b>
         <br></br>
-        <div className={styles.department}>
-          <b>{data.department}</b>
-        </div>
+        <div className={styles.department}>{data.department}</div>
         <div className={styles.cardFooter}>
           <a href={`mailto:${data.email}`} className={styles.email}>
             <EmailIcon style={{ margin: '0 0.5rem' }} />
