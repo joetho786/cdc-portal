@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useGoogleLogin } from 'react-google-login';
-import GButton from '../assets/google-icon.svg';
-import styles from '../styles/pages/StudentLogin.module.css';
+import GoogleButton from '../assets/google-icon.svg';
+import styles from '../styles/pages/RecruiterLogin.module.css';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -95,8 +95,8 @@ const RecruiterLogin = () => {
             {error}
           </Alert>
         </Snackbar>
-        <h3 className={styles.Heading}>Recruiter Login</h3>
-        <form>
+        <h3 className={styles.heading}>Recruiter Login</h3>
+        <div className={styles.form}>
           <input
             className={styles.Loginform}
             autoFocus
@@ -108,42 +108,44 @@ const RecruiterLogin = () => {
           <input
             type="password"
             value={password}
-            placeholder="Enter Password"
+            placeholder="Enter password"
             className={styles.Loginform}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <center>
-            <button
-              variant="primary"
-              size="lg"
-              onClick={handleSubmit}
-              disabled={!validateForm()}
-              className={styles.LoginButton}
-            >
-              Login
+        </div>
+        <center className={styles.buttons} style={{ marginTop: '0.5rem' }}>
+          <button
+            size="lg"
+            className={styles.registerButton}
+            onClick={(e) => {
+              e.preventDefault();
+              window.location = 'RecruiterRegister';
+            }}
+          >
+            Register
+          </button>
+          <button
+            type="submit"
+            size="lg"
+            onClick={handleSubmit}
+            disabled={!validateForm()}
+            className={styles.loginButton}
+          >
+            Login
+          </button>
+          <hr />
+          <p>OR</p>
+          <div>
+            <button onClick={sigIn} className={styles.googleSignIn}>
+              <img
+                src={GoogleButton}
+                className={styles.googleButton}
+                alt="Google sign-in"
+              />
+              Sign in with Google
             </button>
-            <button
-              variant="primary"
-              size="lg"
-              className={styles.LoginButton}
-              onClick={(e) => {
-                e.preventDefault();
-                window.location = 'RecruiterRegister';
-              }}
-            >
-              Register
-            </button>
-            <div>
-              <button onClick={sigIn} className={styles.LoginButton}>
-                <img
-                  src={GButton}
-                  className={styles.Gbutton}
-                  alt="gooogle_button"
-                />
-              </button>
-            </div>
-          </center>
-        </form>
+          </div>
+        </center>
       </div>
     </div>
   );
