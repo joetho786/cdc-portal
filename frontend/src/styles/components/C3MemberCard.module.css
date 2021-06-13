@@ -4,6 +4,7 @@
   text-align: center;
   border-radius: 0.35rem;
   margin: auto;
+  background-color: #fff;
 }
 
 .profileImage {
@@ -21,7 +22,8 @@
 
 .department {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: #636c72;
   margin: 0.5rem 0 0.9rem 0;
   padding: 0 2rem;
@@ -31,7 +33,7 @@
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   padding: 0.7rem;
   margin: 0 auto 0;
-  width: 17.5rem;
+  width: 15.5rem;
 }
 
 .email {

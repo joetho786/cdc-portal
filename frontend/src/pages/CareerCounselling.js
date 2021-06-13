@@ -37,7 +37,7 @@ const CareerCounselling = () => {
   }, []);
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: 'auto', width: '100%' }}>
       {loading ? (
         <Loading />
       ) : (
@@ -106,7 +106,7 @@ const CareerCounselling = () => {
             justify="center"
             alignItems="center"
             spacing={5}
-            style={{ width: '100%', margin: 'auto' }}
+            style={{ width: '100%', margin: 'auto', marginBottom: '2rem' }}
           >
             {members.map((member) => {
               return (
@@ -116,7 +116,6 @@ const CareerCounselling = () => {
               );
             })}
           </Grid>
-          <hr className={styles.hr} style={{ marginTop: '2rem' }}></hr>
         </>
       )}
     </div>

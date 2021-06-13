@@ -14,7 +14,7 @@ const Volunteers = () => {
       spacing={5}
       style={{
         width: '100%',
-        margin: '2rem auto auto',
+        margin: '6rem auto auto',
       }}
     >
       <Grid

@@ -17,25 +17,34 @@ const StudentLogin = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = React.useState(false);
 
+  const clearForm = () => {
+    setError('');
+    setEmail('');
+    setPassword('');
+  };
+
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return (
+      email.length > 0 &&
+      email.match('(^[a-z]+).([0-9]+)(@iitj.ac.in)') &&
+      password.length > 0
+    );
   }
 
-  const handleCloseerror = (event, reason) => {
+  const handleCloseError = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
     setError('');
   };
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
     const body = { id: email, password: password };
     instance
       .post('LDAP_login/', body)
       .then((res) => {
-        //console.log(res.data);
         const { token, Dname } = res.data;
         localStorage.setItem('cdc_auth_token', token);
         localStorage.setItem('cdc_LoggedIn', true);
@@ -53,7 +62,7 @@ const StudentLogin = () => {
         }
         setLoading(false);
       });
-  }
+  };
 
   return (
     <div
@@ -79,14 +88,14 @@ const StudentLogin = () => {
           <Snackbar
             open={error !== ''}
             autoHideDuration={6000}
-            onClose={handleCloseerror}
+            onClose={handleCloseError}
           >
-            <Alert onClose={handleCloseerror} severity="error">
+            <Alert onClose={handleCloseError} severity="error">
               {error}
             </Alert>
           </Snackbar>
-          <h3 className={styles.Heading}>Student Login</h3>
-          <form onSubmit={handleSubmit}>
+          <h3 className={styles.heading}>Student Login</h3>
+          <div className={styles.form}>
             <input
               className={styles.Loginform}
               autoFocus
@@ -101,18 +110,25 @@ const StudentLogin = () => {
               className={styles.Loginform}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <center>
-              <button
-                variant="primary"
-                size="lg"
-                type="submit"
-                disabled={!validateForm()}
-                className={styles.LoginButton}
-              >
-                Login
-              </button>
-            </center>
-          </form>
+          </div>
+          <center style={{ marginTop: '0.5rem' }}>
+            <button
+              size="lg"
+              onClick={clearForm}
+              className={styles.clearButton}
+            >
+              Clear
+            </button>
+            <button
+              size="lg"
+              type="submit"
+              disabled={!validateForm()}
+              onClick={handleSubmit}
+              className={styles.loginButton}
+            >
+              Login
+            </button>
+          </center>
         </div>
       </div>
     </div>
