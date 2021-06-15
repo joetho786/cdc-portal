@@ -103,6 +103,7 @@ class CoreTeamContactsSerializer(serializers.ModelSerializer):
 
 class NavBarSubOptionsSerializer(serializers.ModelSerializer):
     file = serializers.FileField()
+
     class Meta:
         model = NavBarSubOptions
         fields = '__all__'
