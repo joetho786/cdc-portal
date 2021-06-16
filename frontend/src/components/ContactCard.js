@@ -6,6 +6,21 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const ContactCard = ({ data }) => {
+  function getLink(link) {
+    try {
+      link = new URL(link);
+      link = link.pathname;
+    } catch {}
+    let backend = `http://${
+      process.env.BACKEND_HOST ? process.env.BACKEND_HOST : '127.0.0.1'
+    }:8000`;
+    let newLink =
+      process.env.NODE_ENV === 'production'
+        ? window.location.origin + link
+        : backend + link;
+    return newLink;
+  }
+
   return (
     <div className={styles.contactCard}>
       <div className={styles.cardHeader}>
@@ -16,7 +31,7 @@ const ContactCard = ({ data }) => {
       </div>
       <img
         className={styles.profileImage}
-        src={data.profile_image}
+        src={getLink(data.profile_image)}
         alt={data.name}
       />
       <div className={styles.cardContent}>
