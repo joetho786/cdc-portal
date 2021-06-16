@@ -9,6 +9,21 @@ const JAF = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({});
 
+  function get_link(link) {
+    try {
+      link = new URL(link);
+      link = link.pathname;
+    } catch {}
+    let backend = `http://${
+      process.env.BACKEND_HOST ? process.env.BACKEND_HOST : '127.0.0.1'
+    }:8000`;
+    let ln =
+      process.env.NODE_ENV === 'production'
+        ? window.location.origin + link
+        : backend + link;
+    return ln;
+  }
+
   useEffect(() => {
     instance
       .get('main/navbar_suboptions?search=Job Announcement Form')
@@ -34,14 +49,16 @@ const JAF = () => {
           </Paper>
           <Paper elevation={2} className={styles.jaf}>
             <div className={styles.download}>
-              <a download href={data['file']}>
+              <a download href={get_link(data['file'])}>
                 Click here to download the Job Announcement Form{' '}
                 <i className="fa fa-external-link-alt"></i>
               </a>
             </div>
             <div className={styles.iframe}>
               <iframe
-                src={`https://docs.google.com/gview?url=${data['file']}&embedded=true#view=fitH`}
+                src={`https://docs.google.com/gview?url=${get_link(
+                  data['file']
+                )}&embedded=true#view=fitH`}
                 title="Job Announcement Form"
                 style={{ width: '100%', height: '100%' }}
               />
