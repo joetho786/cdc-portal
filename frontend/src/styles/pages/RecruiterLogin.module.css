@@ -52,6 +52,7 @@
   }
   .Loginform:focus {
     outline: none;
+    border: 2px solid #7c7c7c;
   }
 }
 
@@ -74,6 +75,7 @@
   }
   .Loginform:focus {
     outline: none;
+    border: 2px solid #7c7c7c;
   }
 }
 
@@ -91,7 +93,7 @@
 }
 
 .loginButton:disabled {
-  opacity: 60%;
+  opacity: 0.7;
   cursor: not-allowed;
 }
 

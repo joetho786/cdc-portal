@@ -1,13 +1,14 @@
 import React from 'react';
 import styles from '../styles/components/C3MemberCard.module.css';
 import EmailIcon from '@material-ui/icons/Email';
+import { getLink } from '../utils/getLink';
 
 const C3MemberCard = ({ data }) => {
   return (
     <div className={styles.teamCard}>
       <img
         className={styles.profileImage}
-        src={data.profile_image}
+        src={getLink(data.profile_image)}
         alt={data.name}
       />
       <div className={styles.cardContent}>

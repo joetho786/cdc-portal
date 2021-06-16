@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Loading from '../components/Loading';
 import DescriptionIcon from '@material-ui/icons/Description';
 import styles from '../styles/pages/Brochure.module.css';
+import { getLink } from '../utils/getLink';
 
 const Brochure = () => {
   const [loading, setLoading] = useState(true);
@@ -34,14 +35,16 @@ const Brochure = () => {
           </Paper>
           <Paper elevation={2} className={styles.jaf}>
             <div className={styles.download}>
-              <a download href={data['file']}>
+              <a download href={getLink(data['file'])}>
                 Click here to download the Brochure{' '}
                 <i className="fa fa-external-link-alt"></i>
               </a>
             </div>
             <div className={styles.iframe}>
               <iframe
-                src={`https://docs.google.com/gview?url=${data['file']}&embedded=true#view=fitH`}
+                src={`https://docs.google.com/gview?url=${getLink(
+                  data['file']
+                )}&embedded=true#view=fitH`}
                 title="Brochure"
                 style={{ width: '100%', height: '100%' }}
                 frameborder="0"

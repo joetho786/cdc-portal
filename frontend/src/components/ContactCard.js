@@ -4,6 +4,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import { getLink } from '../utils/getLink';
 
 const ContactCard = ({ data }) => {
   return (
@@ -16,7 +17,7 @@ const ContactCard = ({ data }) => {
       </div>
       <img
         className={styles.profileImage}
-        src={data.profile_image}
+        src={getLink(data.profile_image)}
         alt={data.name}
       />
       <div className={styles.cardContent}>
