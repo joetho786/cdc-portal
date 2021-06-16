@@ -116,7 +116,7 @@ export default function BasicTable() {
                 <Table className={classes.table} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                      <TableCell>QUALIFYING DEDREE</TableCell>
+                      <TableCell>QUALIFYING DEGREE</TableCell>
                       <TableCell align="left">
                         MARKS OBTAINED IN QUALIFYING DEGREE
                       </TableCell>
