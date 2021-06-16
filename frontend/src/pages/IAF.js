@@ -4,25 +4,11 @@ import Paper from '@material-ui/core/Paper';
 import Loading from '../components/Loading';
 import DescriptionIcon from '@material-ui/icons/Description';
 import styles from '../styles/pages/IAF.module.css';
+import { getLink } from '../utils/getLink';
 
 const IAF = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({});
-
-  function getLink(link) {
-    try {
-      link = new URL(link);
-      link = link.pathname;
-    } catch {}
-    let backend = `http://${
-      process.env.BACKEND_HOST ? process.env.BACKEND_HOST : '127.0.0.1'
-    }:8000`;
-    let newLink =
-      process.env.NODE_ENV === 'production'
-        ? window.location.origin + link
-        : backend + link;
-    return newLink;
-  }
 
   useEffect(() => {
     instance

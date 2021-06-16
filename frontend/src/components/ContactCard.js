@@ -4,23 +4,9 @@ import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import { getLink } from '../utils/getLink';
 
 const ContactCard = ({ data }) => {
-  function getLink(link) {
-    try {
-      link = new URL(link);
-      link = link.pathname;
-    } catch {}
-    let backend = `http://${
-      process.env.BACKEND_HOST ? process.env.BACKEND_HOST : '127.0.0.1'
-    }:8000`;
-    let newLink =
-      process.env.NODE_ENV === 'production'
-        ? window.location.origin + link
-        : backend + link;
-    return newLink;
-  }
-
   return (
     <div className={styles.contactCard}>
       <div className={styles.cardHeader}>
