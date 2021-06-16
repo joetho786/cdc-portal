@@ -50,7 +50,7 @@ const IAF = () => {
           <Paper elevation={2} className={styles.iaf}>
             <div className={styles.download}>
               <a download href={getLink(data['file'])}>
-                Click here to download the Intership Announcement Form{' '}
+                Click here to download the Internship Announcement Form{' '}
                 <i className="fa fa-external-link-alt"></i>
               </a>
             </div>
