@@ -26,7 +26,7 @@ const StudentLogin = () => {
   function validateForm() {
     return (
       email.length > 0 &&
-      email.match('(^[a-z]+).([0-9]+)(@iitj.ac.in)') &&
+      email.match('(^[a-z]+).([0-9]+)') &&
       password.length > 0
     );
   }
