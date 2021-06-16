@@ -17,7 +17,10 @@ const IAF = () => {
     let backend = `http://${
       process.env.BACKEND_HOST ? process.env.BACKEND_HOST : '127.0.0.1'
     }:8000`;
-    let ln = process.env.NODE_ENV === 'production' ? window.location.origin + link : backend + link;
+    let ln =
+      process.env.NODE_ENV === 'production'
+        ? window.location.origin + link
+        : backend + link;
     return ln;
   }
 
@@ -53,7 +56,9 @@ const IAF = () => {
             </div>
             <div className={styles.iframe}>
               <iframe
-                src={`https://docs.google.com/gview?url=${get_link(data['file'])}&embedded=true#view=fitH`}
+                src={`https://docs.google.com/gview?url=${get_link(
+                  data['file']
+                )}&embedded=true#view=fitH`}
                 title="Internship Announcement Form"
                 style={{ width: '100%', height: '100%' }}
               />
