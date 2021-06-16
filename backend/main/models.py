@@ -181,6 +181,7 @@ class CareerCommittee(models.Model):
 class NavBarSubOptions(models.Model):
     title = models.CharField(max_length=64)
     description = RichTextUploadingField(blank=True, null=True)
+    file = models.FileField(upload_to='files', null=True, blank=True)
     slug = models.SlugField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
