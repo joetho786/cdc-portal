@@ -2,7 +2,6 @@ export const getLink = (link) => {
   try {
     link = new URL(link);
     link = link.pathname;
-    console.log(`Link: ${link}`);
   } catch {}
   let backend = `http://${
     process.env.BACKEND_HOST ? process.env.BACKEND_HOST : '127.0.0.1'
