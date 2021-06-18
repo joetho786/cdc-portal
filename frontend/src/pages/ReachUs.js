@@ -8,18 +8,14 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Map from '../components/Map';
 
 const ReachUs = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState({});
-
-  const createMarkup = () => {
-    return { __html: data.description };
-  };
 
   const ReachUsData = () => {
     return (
       <div
         style={{ padding: '1rem' }}
-        dangerouslySetInnerHTML={createMarkup()}
+        dangerouslySetInnerHTML={{ __html: data.description }}
       />
     );
   };
@@ -29,13 +25,13 @@ const ReachUs = () => {
       .get('main/navbar_suboptions?search=Reach')
       .then((res) => {
         setData(res.data[0]);
-        setLoading(false);
       })
+      .then(setLoading(false))
       .catch((error) => console.log(error));
   }, []);
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: 'auto', width: '100%' }}>
       {loading ? (
         <Loading />
       ) : (

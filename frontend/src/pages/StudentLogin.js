@@ -5,6 +5,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import back_img from '../assets/login_back.jpg';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -16,29 +17,39 @@ const StudentLogin = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = React.useState(false);
 
+  const clearForm = () => {
+    setError('');
+    setEmail('');
+    setPassword('');
+  };
+
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return (
+      email.length > 0 &&
+      email.match('(^[a-z]+).([0-9]+)') &&
+      password.length > 0
+    );
   }
 
-  const handleCloseerror = (event, reason) => {
+  const handleCloseError = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
     setError('');
   };
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
     const body = { id: email, password: password };
     instance
       .post('LDAP_login/', body)
       .then((res) => {
-        //console.log(res.data);
         const { token, Dname } = res.data;
         localStorage.setItem('cdc_auth_token', token);
         localStorage.setItem('cdc_LoggedIn', true);
         localStorage.setItem('cdc_Dname', Dname);
+        localStorage.setItem('cdc_loginType', 'Student');
         if (res.status === 201) {
           window.location = 'StudentRegister';
         } else {
@@ -51,56 +62,75 @@ const StudentLogin = () => {
         }
         setLoading(false);
       });
-  }
+  };
 
   return (
-    <div className={styles.Login}>
-      <Backdrop
-        style={{
-          zIndex: 1,
-          color: '#fff',
-        }}
-        open={loading}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
-      <Snackbar
-        open={error !== ''}
-        autoHideDuration={6000}
-        onClose={handleCloseerror}
-      >
-        <Alert onClose={handleCloseerror} severity="error">
-          {error}
-        </Alert>
-      </Snackbar>
-      <h3 className={styles.Heading}>Student Login</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          className={styles.Loginform}
-          autoFocus
-          placeholder="Enter LDAP ID"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          value={password}
-          placeholder="Enter LDAP Password"
-          className={styles.Loginform}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <center>
-          <button
-            variant="primary"
-            size="lg"
-            type="submit"
-            disabled={!validateForm()}
-            className={styles.LoginButton}
+    <div
+      style={{
+        background: `url(${back_img}) no-repeat fixed`,
+        backgroundSize: 'cover',
+        backgroundPosition: '50%',
+        padding: '3%',
+        justifyContent: 'center',
+      }}
+    >
+      <div className={styles.background}>
+        <div className={styles.Login}>
+          <Backdrop
+            style={{
+              zIndex: 1,
+              color: '#fff',
+            }}
+            open={loading}
           >
-            Login
-          </button>
-        </center>
-      </form>
+            <CircularProgress color="inherit" />
+          </Backdrop>
+          <Snackbar
+            open={error !== ''}
+            autoHideDuration={6000}
+            onClose={handleCloseError}
+          >
+            <Alert onClose={handleCloseError} severity="error">
+              {error}
+            </Alert>
+          </Snackbar>
+          <h3 className={styles.heading}>Student Login</h3>
+          <div className={styles.form}>
+            <input
+              className={styles.Loginform}
+              autoFocus
+              placeholder="Enter LDAP ID"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              value={password}
+              placeholder="Enter LDAP Password"
+              className={styles.Loginform}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <center style={{ marginTop: '0.5rem' }}>
+            <button
+              size="lg"
+              onClick={clearForm}
+              className={styles.clearButton}
+            >
+              Clear
+            </button>
+            <button
+              size="lg"
+              type="submit"
+              disabled={!validateForm()}
+              onClick={handleSubmit}
+              className={styles.loginButton}
+            >
+              Login
+            </button>
+          </center>
+        </div>
+      </div>
     </div>
   );
 };

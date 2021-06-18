@@ -141,7 +141,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/django_static/'
 STATIC_ROOT = os.path.join(BASE_DIR, config('STATIC_PATH', default='assets/staticfiles', cast=str))
 
 MEDIA_ROOT = os.path.join(BASE_DIR, config('MEDIA_PATH', default='assets/media', cast=str))
@@ -159,5 +159,46 @@ FRONTEND_URL = 'http://'+config('HOST', default='localhost:3000')
 
 CORS_ORIGIN_WHITELIST = [FRONTEND_URL]
 
-CKEDITOR_UPLOAD_PATH = 'ck-uploads/'
-CKEDITOR_ALLOW_NONIMAGE_FILES = False
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Basic',
+        'width': '100%',
+        'tabSpaces': 4,
+        'mathJaxLib': 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML',
+        'toolbar_Basic': [
+            {'name': 'clipboard', 'items': ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+            {'name': 'editing', 'items': ['Find', 'Replace', ]},
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+            {'name': 'formulae', 'items': ['Mathjax']},
+            {'name': 'insert',
+             'items': ['Link', 'Image', 'Table', 'HorizontalRule', 'Smiley', ]},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', ]},
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+        ],
+        'extraPlugins': ','.join([
+            'uploadimage',
+            'div',
+            'autolink',
+            'iframe',
+            'embed',
+            'embedsemantic',
+            'autoembed',
+            'autogrow',
+            'uploadimage',
+            'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'mathjax',
+            'codesnippet',
+        ]),
+    },
+}

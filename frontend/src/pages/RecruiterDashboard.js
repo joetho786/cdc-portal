@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router /* Switch, Route */ } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
@@ -10,13 +10,14 @@ import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import Home from '../components/StudentDashboard/Home';
+/* import Home from '../components/StudentDashboard/Home';
 import UploadResume from '../components/StudentDashboard/UplaodResume';
-import StudentLogin from './StudentLogin';
+import StudentLogin from './StudentLogin'; */
 import {
   mainListItems,
   secondaryListItems,
-} from '../components/StudentDashboard/MenuItems';
+  thirdListItems,
+} from '../components/RecruiterDashboard/MenuItems';
 
 const drawerWidth = 240;
 
@@ -126,12 +127,14 @@ export default function Dashboard() {
         <List>{mainListItems}</List>
         <Divider />
         <List>{secondaryListItems}</List>
+        <Divider />
+        <List>{thirdListItems}</List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Router>
-            <Switch>
+            {/* <Switch>
               <Route path="/StudentDashboard/" exact component={Home} />
               <Route
                 path="/StudentDashboard/profile"
@@ -143,7 +146,7 @@ export default function Dashboard() {
                 exact
                 component={UploadResume}
               />
-            </Switch>
+            </Switch> */}
           </Router>
         </Container>
       </main>

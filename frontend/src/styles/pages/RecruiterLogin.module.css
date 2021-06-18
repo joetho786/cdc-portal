@@ -97,7 +97,7 @@
   cursor: not-allowed;
 }
 
-.clearButton {
+.registerButton {
   margin: 1rem 1rem;
   font-size: 1rem;
   font-weight: bold;
@@ -111,7 +111,7 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-.clearButton:hover {
+.registerButton:hover {
   background-color: #1d1642;
   color: #fff;
 }
@@ -122,8 +122,37 @@
   color: orangered;
 }
 
-.Gbutton {
-  height: 20px;
-  margin: 0 15px;
-  width: auto;
+.buttons > hr {
+  width: 80%;
+  margin-top: 1.5rem;
+  border-top: 0.5px solid#b4b4b4;
+}
+
+.buttons > p {
+  color: #7c7c7c;
+  width: 3rem;
+  margin: -1.3rem auto 2rem;
+  background: #fff;
+}
+
+.googleSignIn {
+  margin: 1rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 100px;
+  outline: none;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #4285f4;
+  color: #4285f4;
+  cursor: pointer;
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.googleButton {
+  margin: 0 0.6rem 0 0;
+  width: 1rem;
+  height: 1rem;
 }

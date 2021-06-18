@@ -26,8 +26,11 @@ import PlacementTeam from './pages/PlacementTeam';
 import CareerCounselling from './pages/CareerCounselling';
 import StudentLogin from './pages/StudentLogin';
 import RecruiterLogin from './pages/RecruiterLogin';
+import RecruiterRegister from './pages/RecruiterRegister';
+import RecruiterDashboard from './pages/RecruiterDashboard';
 import StudentRegister from './pages/StudentRegister';
 import StudentDashboard from './pages/StudentDashboard';
+import AdmissionProcedure from './pages/AdmissionProcedure';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -40,6 +43,7 @@ function App() {
         <Route path="/ChairmanMessage" component={ChairmanMessage} />
         <Route path="/DirectorMessage" component={DirectorMessage} />
         <Route path="/GradeSystem" component={GradeSystem} />
+        <Route path="/AdmissionProcedure" component={AdmissionProcedure} />
         <Route path="/WhyRecruit" component={WhyRecruit} />
         <Route path="/Brochure" component={Brochure} />
         <Route path="/PlacementStatistics" component={PlacementStatistics} />
@@ -61,6 +65,8 @@ function App() {
         <Route path="/StudentRegister" component={StudentRegister} />
         <Route path="/StudentDashboard" component={StudentDashboard} />
         <Route path="/RecruiterLogin" component={RecruiterLogin} />
+        <Route path="/RecruiterRegister" component={RecruiterRegister} />
+        <Route path="/RecruiterDashboard" component={RecruiterDashboard} />
         <Route default component={NotFound} />
       </Switch>
       <Footer />

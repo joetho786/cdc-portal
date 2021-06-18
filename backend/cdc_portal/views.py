@@ -1,5 +1,4 @@
 import jwt
-import json
 import datetime
 import requests
 import subprocess
@@ -16,14 +15,14 @@ class Login(views.APIView):
 
     def post(self, request, *args, **kwargs):
         if not request.data:
-            return Response({'Error': "Please provide email/password"}, status="400")
+            return Response({'Error': "Please provide email/password"}, status="400", content_type="application/json")
 
         email = request.data['email']
         password = request.data['password']
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
-            return Response({'Error': "Invalid email/password"}, status="400")
+            return Response({'Error': "Invalid email/password"}, status=400, content_type="application/json")
         if user and user.check_password(password):
 
             payload = {
@@ -31,14 +30,14 @@ class Login(views.APIView):
                 'email': user.email,
                 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
             }
-            jwt_token = {'token': jwt.encode(payload, "SECRET_KEY", algorithm="HS256")}
-
+            data = {'token': jwt.encode(payload, "SECRET_KEY", algorithm="HS256")}
+            data['Dname'] = user.email
             return Response(
-                jwt_token,
+                data,
                 status=status.HTTP_200_OK)
         else:
             return Response(
-                json.dumps({'Error': "Invalid credentials"}),
+                {'Error': "Invalid credentials"},
                 status=400,
                 content_type="application/json"
             )
@@ -49,7 +48,7 @@ class LDAPOAuth(views.APIView):
 
     def post(self, request, *args, **kwargs):
         if not request.data:
-            return Response({'Error': "Please provide valid credentials"}, status="400")
+            return Response({'Error': "Please provide valid credentials"}, status="400", content_type="application/json")
 
         user_id = request.data['id']
         password = request.data['password']

@@ -128,7 +128,7 @@ const ContactUs = () => {
             justify="center"
             alignItems="center"
             spacing={5}
-            style={{ width: '100%', margin: 'auto' }}
+            style={{ width: '100%', margin: 'auto auto 2rem' }}
           >
             {representative.map((member) => {
               return (
@@ -138,7 +138,6 @@ const ContactUs = () => {
               );
             })}
           </Grid>
-          <hr className={styles.hr} style={{ marginTop: '2rem' }}></hr>
         </>
       )}
     </div>
