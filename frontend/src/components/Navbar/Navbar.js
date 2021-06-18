@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Grid from '@material-ui/core/Grid';
 import logo from '../../assets/cdclogo.png';
 import iitjLogo from '../../assets/iitjKogo.png';
 export default function Navbar() {
+  const [isChecked, setIsChecked] = useState(false);
+
   return (
     <Grid container style={{ marginBottom: 68 }}>
       <div className="wrapper">
         <nav>
-          <input type="checkbox" id="show-menu" />
+          <input
+            onChange={(event) => setIsChecked(event.currentTarget.checked)}
+            checked={isChecked}
+            type="checkbox"
+            id="show-menu"
+          />
           <label htmlFor="show-menu" className="menu-icon">
             <i className="fas fa-bars"></i>
           </label>
@@ -32,13 +39,13 @@ export default function Navbar() {
                   Home <i className="fa fa-caret-down"></i>
                 </label>
                 <ul>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/Invitation">Invitation</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/DirectorMessage">Director's Message</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/ChairmanMessage">Chairman's Message</Link>
                   </li>
                 </ul>
@@ -52,13 +59,13 @@ export default function Navbar() {
                   Academics <i className="fa fa-caret-down"></i>
                 </label>
                 <ul>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/GradeSystem">Grade System</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/Programmes">Programmes</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/AdmissionProcedure">Admission Procedure</Link>
                   </li>
                 </ul>
@@ -72,16 +79,16 @@ export default function Navbar() {
                   Students <i className="fa fa-caret-down"></i>
                 </label>
                 <ul>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/Achievements">Achievements</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/Prospective">Prospective</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/StudentGuidelines">Norms/Guidelines</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/Internships">Internships</Link>
                   </li>
                 </ul>
@@ -95,25 +102,25 @@ export default function Navbar() {
                   Recruiter <i className="fa fa-caret-down"></i>
                 </label>
                 <ul>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/WhyRecruit">Why Recruit?</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/Brochure">Brochure</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/PlacementStatistics">Placement Statistics</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/PlacementProcedure">Placement Procedure</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/RecruiterGuidelines">Norms/Guidelines</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/PastRecruiters">Past Recruiters</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/AIPCNorms">AIPC Norms</Link>
                   </li>
                 </ul>
@@ -127,10 +134,10 @@ export default function Navbar() {
                   Forms <i className="fa fa-caret-down"></i>
                 </label>
                 <ul>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/JAF">JAF</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/IAF">IAF</Link>
                   </li>
                 </ul>
@@ -144,16 +151,16 @@ export default function Navbar() {
                   CDC-Team <i className="fa fa-caret-down"></i>
                 </label>
                 <ul>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/ContactUs">Contact Us</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/ReachUs">Reach Us</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/PlacementTeam">Placement Team</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/CareerCounselling">
                       Career Counselling Committee Members
                     </Link>
@@ -169,10 +176,10 @@ export default function Navbar() {
                   Login <i className="fa fa-caret-down"></i>
                 </label>
                 <ul>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/RecruiterLogin">Recruiter Login</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/StudentLogin">Student Login</Link>
                   </li>
                 </ul>
