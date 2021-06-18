@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Container from '@material-ui/core/Container';
+import { getLink } from '../../utils/getLink';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -78,7 +79,7 @@ export default function MediaControlCard() {
           <CardMedia
             component="div"
             className={classes.cover}
-            image={DirectorMessage.image}
+            image={getLink(DirectorMessage.image)}
           />
           <div className={classes.details}>
             <CardContent className={classes.content}>

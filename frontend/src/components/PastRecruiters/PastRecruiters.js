@@ -4,6 +4,8 @@ import Slider from 'react-slick';
 import Container from '@material-ui/core/Container';
 import CardMedia from '@material-ui/core/CardMedia';
 import styles from './PastRecruiters.module.css';
+import { getLink } from '../../utils/getLink';
+
 export default function PastRecruiters() {
   const [PR_Objs, setPR_Obj] = useState([]);
   useEffect(() => {
@@ -30,7 +32,7 @@ export default function PastRecruiters() {
           >
             <CardMedia
               className={styles.PR_image}
-              image={PR.company_logo}
+              image={getLink(PR.company_logo)}
               title="Contemplative Reptile"
             />
           </div>

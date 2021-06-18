@@ -3,6 +3,7 @@ import instance from '../../api/axios';
 import Slider from 'react-slick';
 import Grid from '@material-ui/core/Grid';
 import './Carousel.css';
+import { getLink } from '../../utils/getLink';
 
 export default function SectionCarousel() {
   const [IC_Objs, setIC_Obj] = useState([]);
@@ -21,7 +22,7 @@ export default function SectionCarousel() {
     IC_Objs.map((IC) => {
       return list.push(
         <div key={IC.title}>
-          <img src={IC.image} alt={IC.title} className="slick-image" />
+          <img src={getLink(IC.image)} alt={IC.title} className="slick-image" />
         </div>
       );
     });
