@@ -15,6 +15,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import testiBack from '../../assets/testiback2.jpg';
 import styles from './AlumniTestimonial.module.css';
 import instance from '../../api/axios';
+import { getLink } from '../../utils/getLink';
 
 export default function AlumniTestimonial() {
   const [Alumni_Testimonials, setPAlumni_Testimonial] = useState([]);
@@ -47,7 +48,7 @@ export default function AlumniTestimonial() {
                   <img
                     className={styles.avatar}
                     alt="Remy Sharp"
-                    src={Testimonial_Obj.alumni_image}
+                    src={getLink(Testimonial_Obj.alumni_image)}
                   />
                 </div>
                 <CardContent>
