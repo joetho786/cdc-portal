@@ -187,7 +187,7 @@ nav .content .links {
   .content .links #show-login:checked ~ ul {
     max-height: 100vh;
   }
-  .content .links ul{
+  .content .links ul {
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%), 0 3px 4px 0 rgb(0 0 0 / 19%);
   }
   .content .links ul li {
