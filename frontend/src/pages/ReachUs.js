@@ -14,7 +14,7 @@ const ReachUs = () => {
   const ReachUsData = () => {
     return (
       <div
-        style={{ padding: '1rem' }}
+        style={{ padding: '1rem', fontSize: '1rem', color: 'rgb(53,53,53)' }}
         dangerouslySetInnerHTML={{ __html: data.description }}
       />
     );
@@ -53,7 +53,7 @@ const ReachUs = () => {
               style={{ width: '100%', heigth: '100%', margin: 'auto' }}
             >
               <Grid key="reachUs" item xs={12} sm={12} md={6} lg={6}>
-                <ReachUsData />
+                {data ? <ReachUsData /> : ''}
               </Grid>
               <Grid key="Map" item xs={12} sm={12} md={6} lg={6}>
                 <Map />
