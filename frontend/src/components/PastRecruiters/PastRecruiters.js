@@ -90,6 +90,7 @@ export default function PastRecruiters() {
             <h2
               style={{
                 fontSize: 40,
+                textAlign: '-webkit-center',
                 justifyContent: 'center',
                 display: 'grid',
                 marginBottom: -10,

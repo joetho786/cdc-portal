@@ -1,6 +1,7 @@
 .root {
   max-width: 900px;
   height: auto;
+  border-radius: 20px;
 }
 
 .media {
@@ -21,7 +22,8 @@
   border-radius: 50%;
 }
 .root .main_content {
-  font-size: 15px;
+  font-size: 1rem;
+  color: rgb(53, 53, 53);
   min-height: 150px;
 }
 .name_container {
@@ -34,12 +36,16 @@
   flex-direction: column;
   margin-top: 10px;
   margin-bottom: -20px;
+  font-size: 1rem;
+  color: rgb(53, 53, 53);
 }
 .name_container .name {
-  font-size: 15px;
+  font-size: 1rem;
+  color: rgb(53, 53, 53);
 }
 .name_container .company_name {
-  font-size: 15px;
+  font-size: 1rem;
+  color: rgb(53, 53, 53);
   margin-bottom: 5px;
 }
 .slick-prev:before {

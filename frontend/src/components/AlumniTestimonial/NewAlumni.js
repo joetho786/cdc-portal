@@ -53,7 +53,6 @@ export default function AlumniTestimonial() {
                 <CardContent>
                   <Typography
                     variant="body2"
-                    color="textPrimary"
                     component={'span'}
                     className={styles.main_content}
                   >
@@ -143,14 +142,14 @@ export default function AlumniTestimonial() {
           slidesToShow: 1,
           fade: true,
           slidesToScroll: 1,
-          dots: true,
+          dots: false,
           arrows: false,
         },
       },
     ],
   };
   return (
-    <div style={{ background: 'rgb(240,240,240)' }}>
+    <div style={{ marginBottom: '2rem', background: 'rgb(240,240,240)' }}>
       <div className="py-5">
         <Container
           style={{

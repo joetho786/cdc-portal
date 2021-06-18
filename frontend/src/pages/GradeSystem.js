@@ -24,19 +24,27 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: 'flex',
-    marginBottom: 10,
+    marginBottom: '2rem',
   },
   paper: {
     padding: theme.spacing(2),
+    [theme.breakpoints.up(460)]: {
+      paddingInline: 40,
+    },
     textAlign: 'center',
     width: 'auto',
-    color: theme.palette.text.secondary,
+    fontSize: '1rem',
+    color: 'rgb(53, 53, 53)',
+    [theme.breakpoints.down(350)]: {
+      padding: 10,
+    },
   },
   text: {
     padding: theme.spacing(2),
     textAlign: 'left',
     width: 'auto',
-    color: theme.palette.text.secondary,
+    fontSize: '1rem',
+    color: 'rgb(53, 53, 53)',
   },
 }));
 
@@ -69,7 +77,7 @@ export default function BasicTable() {
     <>
       <Container maxWidth="lg" className={classes.root}>
         <Grid container spacing={3}>
-          <Grid style={{ marginTop: '10px' }} item xs={12}>
+          <Grid style={{ marginTop: '30px' }} item xs={12}>
             <Paper className={classes.paper}>
               <Typography component="h5" variant="h5" style={{ fontSize: 30 }}>
                 Grade System
@@ -92,19 +100,19 @@ export default function BasicTable() {
                 <Table className={classes.table} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                      <TableCell>GRADES</TableCell>
-                      <TableCell align="left">DENOTION</TableCell>
-                      <TableCell align="left">POINTS</TableCell>
+                      <TableCell align="center">GRADES</TableCell>
+                      <TableCell align="center">DENOTION</TableCell>
+                      <TableCell align="center">POINTS</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {rows.map((row) => (
                       <TableRow key={row.name}>
-                        <TableCell component="th" scope="row">
+                        <TableCell align="center" component="th" scope="row">
                           {row.name}
                         </TableCell>
-                        <TableCell align="left">{row.calories}</TableCell>
-                        <TableCell align="left">{row.points}</TableCell>
+                        <TableCell align="center">{row.calories}</TableCell>
+                        <TableCell align="center">{row.points}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

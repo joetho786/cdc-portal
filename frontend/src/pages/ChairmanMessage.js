@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: 'flex',
-    marginBottom: 10,
+    marginBottom: '2rem',
     overflowX: 'clip',
     [theme.breakpoints.down(460)]: {
       padding: 2,
@@ -18,8 +18,12 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
+    [theme.breakpoints.up(460)]: {
+      paddingInline: 40,
+    },
     width: 'auto',
-    color: theme.palette.text.secondary,
+    fontSize: '1rem',
+    color: 'rgb(53, 53, 53)',
   },
 }));
 
@@ -47,14 +51,14 @@ const ChairmanMessage = () => {
   };
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: 'auto', width: '100%' }}>
       {loading ? (
         <Loading />
       ) : (
         <>
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
-              <Grid style={{ marginTop: '10px' }} item xs={12}>
+              <Grid style={{ marginTop: '30px' }} item xs={12}>
                 <Paper className={classes.paper}>
                   <Typography
                     component="h5"
