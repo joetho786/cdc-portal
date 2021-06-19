@@ -25,19 +25,21 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: 'flex',
-    marginBottom: 10,
+    marginBottom: '2rem',
+    [theme.breakpoints.down(460)]: {
+      padding: 15,
+    },
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
     width: 'auto',
-    color: theme.palette.text.secondary,
+    fontsize: '1rem',
+    color: 'rgb(53,53,53)',
   },
   text: {
-    padding: theme.spacing(2),
-    textAlign: 'left',
-    width: 'auto',
-    color: theme.palette.text.secondary,
+    fontsize: '1rem',
+    color: 'rgb(53,53,53)',
   },
 }));
 
@@ -81,11 +83,11 @@ export default function BasicTable() {
             <Paper className={classes.paper}>
               <Typography
                 component="h4"
-                style={{ fontSize: 18, fontWeight: 'bold' }}
+                style={{ fontSize: 20, fontWeight: 'bold' }}
               >
                 B.TECH
               </Typography>
-              <Typography component="h5" variant="h5" style={{ fontSize: 16 }}>
+              <Typography className={classes.text}>
                 Admissions to B.Tech. Programs are made once a year (in July)
                 through the all-India level Joint Entrance Examination (JEE)
                 conducted by IITs. The procedures and other requirements for
@@ -99,11 +101,11 @@ export default function BasicTable() {
               <br></br>
               <Typography
                 component="h4"
-                style={{ fontSize: 18, fontWeight: 'bold' }}
+                style={{ fontSize: 20, fontWeight: 'bold' }}
               >
                 M.TECH
               </Typography>
-              <Typography component="h5" variant="h5" style={{ fontSize: 16 }}>
+              <Typography className={classes.text}>
                 The eligibility criteria prescribed below are the absolute
                 minimum. The Admissions Committee may prescribe requirements
                 over and above these. <Link href="#">Read More</Link>
@@ -116,7 +118,7 @@ export default function BasicTable() {
                 <Table className={classes.table} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                      <TableCell>QUALIFYING DEGREE</TableCell>
+                      <TableCell>QUALIFYING DEDREE</TableCell>
                       <TableCell align="left">
                         MARKS OBTAINED IN QUALIFYING DEGREE
                       </TableCell>
@@ -140,11 +142,11 @@ export default function BasicTable() {
               <br></br>
               <Typography
                 component="h4"
-                style={{ fontSize: 18, fontWeight: 'bold' }}
+                style={{ fontSize: 20, fontWeight: 'bold' }}
               >
                 M.Sc
               </Typography>
-              <Typography component="h5" variant="h5" style={{ fontSize: 16 }}>
+              <Typography className={classes.text}>
                 Admissions to M.Sc Programs are made once a year (in July)
                 through the all-India level Joint Admission Test for Masters
                 (JAM) conducted by IITs. The eligibility criteria prescribed
