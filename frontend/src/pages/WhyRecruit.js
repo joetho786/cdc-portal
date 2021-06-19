@@ -9,25 +9,27 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Footer from '../components/Footer/Footer';
+import { getLink } from '../utils/getLink';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    marginBottom: 10,
+    marginBottom: '2rem',
     [theme.breakpoints.down(460)]: {
-      padding: 2,
+      padding: 15,
     },
   },
   paper: {
     padding: theme.spacing(2),
     width: 'auto',
-    color: theme.palette.text.secondary,
+    color: 'rgb(53,53,53)',
+    fontSize: '1rem',
   },
   paper_card: {
     padding: theme.spacing(2),
     width: 'auto',
-    color: theme.palette.text.secondary,
+    color: 'rgb(53,53,53)',
+    fontSize: '1rem',
   },
   card: {
     width: 370,
@@ -92,7 +94,7 @@ const WhyRecruit = () => {
                           alt={item.title}
                           height="200"
                           justify-content="center"
-                          image={item.img}
+                          image={getLink(item.img)}
                           title={item.title}
                           padding="5"
                           backgroundColor="#2979ff"
@@ -121,7 +123,8 @@ const WhyRecruit = () => {
               </Grid>
             </Paper>
           </Container>
-          <Footer />
+          <br></br>
+          <br></br>
         </>
       )}
     </div>
