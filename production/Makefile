@@ -11,6 +11,15 @@ build:
 launch: .env
 	@docker-compose up -d
 
+build_launch:
+	@docker-compose up --build -d
+
+pull:
+	@cd ..
+	@git pull
+
+deploy: pull stop build_launch
+
 stop:
 	@docker-compose down
 
