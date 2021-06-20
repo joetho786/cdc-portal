@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Loading from '../components/Loading';
 import DescriptionIcon from '@material-ui/icons/Description';
 import styles from '../styles/pages/Brochure.module.css';
+import { Container } from '@material-ui/core';
 import { getLink } from '../utils/getLink';
 
 const Brochure = () => {
@@ -25,7 +26,7 @@ const Brochure = () => {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <Container maxWidth="lg">
           <Paper className={styles.heading} elevation={2}>
             <DescriptionIcon
               fontSize="inherit"
@@ -51,7 +52,7 @@ const Brochure = () => {
               />
             </div>
           </Paper>
-        </>
+        </Container>
       )}
     </div>
   );
