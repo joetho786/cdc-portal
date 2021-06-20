@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: 'flex',
-    marginBottom: '2rem',
+    marginBottom: 10,
     overflowX: 'clip',
     [theme.breakpoints.down(460)]: {
       padding: 2,
@@ -22,8 +22,11 @@ const useStyles = makeStyles((theme) => ({
       paddingInline: 40,
     },
     width: 'auto',
-    fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: '#000',
+  },
+  text: {
+    color: '#000',
+    fontsize: '1rem',
   },
 }));
 
@@ -51,7 +54,7 @@ const ChairmanMessage = () => {
   };
 
   return (
-    <div style={{ height: 'auto', width: '100%' }}>
+    <div style={{ height: '100vh', width: '100%' }}>
       {loading ? (
         <Loading />
       ) : (
