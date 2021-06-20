@@ -149,7 +149,7 @@ class Config(views.APIView):
 
     def put(self, request, *args, **kwargs):
         data = request.data
-        if data == None:
+        if data is None:
             return Response(status.HTTP_400_BAD_REQUEST)
         try:
             edit_config(data)
