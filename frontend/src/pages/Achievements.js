@@ -24,12 +24,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     width: 'auto',
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
   },
   paperother: {
     width: 'auto',
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
   },
   Hroot: {
     maxWidth: 345,
@@ -45,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
+  },
+  actionArea: {
+    minHeight: '100%',
+    flexFlow: 'column-reverse',
   },
 }));
 
@@ -81,14 +85,19 @@ const Achievements = () => {
     highlights.map((highlights_Obj) => {
       return highlights_list.push(
         <Card key={highlights_Obj.title} className={classes.Hroot}>
-          <CardActionArea>
+          <CardActionArea className={classes.actionArea}>
             <CardMedia
               className={classes.media}
               image={getLink(highlights_Obj.image)}
               title={highlights_Obj.title}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography
+                gutterBottom
+                style={{ color: 'black' }}
+                variant="h6"
+                component="h2"
+              >
                 {highlights_Obj.title}
               </Typography>
               <div className={classes.paperother}>
@@ -115,7 +124,12 @@ const Achievements = () => {
         <Card key={others_Obj.title} className={classes.Hroot}>
           <CardActionArea>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography
+                gutterBottom
+                style={{ color: 'black' }}
+                variant="h6"
+                component="h2"
+              >
                 {others_Obj.title}
               </Typography>
               <div className={classes.paperother}>

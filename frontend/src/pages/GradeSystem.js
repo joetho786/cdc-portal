@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     width: 'auto',
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
     [theme.breakpoints.down(350)]: {
       padding: 10,
     },
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
     width: 'auto',
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
   },
 }));
 

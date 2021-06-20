@@ -84,7 +84,7 @@ export default function MediaControlCard() {
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <h2 className={classes.MessageHeader}>{DirectorMessage.title}</h2>
-              <div style={{ fontSize: '1rem', color: 'rgb(53,53,53)' }}>
+              <div style={{ fontSize: '1rem', color: 'black' }}>
                 <p dangerouslySetInnerHTML={createDirectorMessage()} />
                 <p>{DirectorMessage.name}</p>
               </div>
