@@ -1,3 +1,4 @@
+from django.db.utils import IntegrityError
 from rest_framework.response import Response
 from .serializers import StudentProfileSerializer, ResumeSerializer
 from .models import StudentProfile, Resume, ProgramAndBranch
@@ -33,8 +34,11 @@ class addStudentDetails(APIView):
         data["year"] = r_dic["Year"]
         data["roll_no"] = user.username
         getter = r_dic["Batch"] + '/' + r_dic["Branch"]
-        profile = StudentProfile.objects.create(user=user, **data, program_branch=ProgramAndBranch.objects.get(abbreviation=getter))
-        profile.save()
+        try:
+            profile = StudentProfile.objects.create(user=user, **data, program_branch=ProgramAndBranch.objects.get(getter=getter))
+            profile.save()
+        except IntegrityError:
+            return Response({'Error': 'Invalid/Empty Fields in Form'}, status=status.HTTP_400_BAD_REQUEST)
         return Response(StudentProfileSerializer(profile).data, status=status.HTTP_200_OK)
 
 
@@ -88,6 +92,8 @@ class getResumes(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
+        if not StudentProfile.objects.filter(user=request.user).exists():
+            return Response(status=status.HTTP_403_FORBIDDEN)
         resumes = Resume.objects.filter(student__user=request.user).order_by('id')
         serializer = ResumeSerializer(resumes, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
