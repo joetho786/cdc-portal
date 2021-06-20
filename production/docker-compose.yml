@@ -1,10 +1,10 @@
-version: '3'
+version: "3"
 services:
   django:
     build:
       context: ../backend
       dockerfile: Dockerfile.prod
-    image: 'cdc-web-backend-1:latest'
+    image: "cdc-web-backend-1:latest"
     container_name: django
     restart: unless-stopped
     env_file: .env
@@ -17,6 +17,7 @@ services:
     volumes:
       - django_static_files:/app/assets/staticfiles
       - django_media_files:/app/assets/media
+      - backend_config:/app/config
       - ../backend:/app
     depends_on:
       - postgresql
@@ -28,24 +29,24 @@ services:
     build:
       context: ../frontend
       dockerfile: Dockerfile.prod
-    image: 'cdc-web-frontend-1:latest'
+    image: "cdc-web-frontend-1:latest"
     container_name: frontend
     restart: unless-stopped
     env_file: .env
     environment:
       - BACKEND_HOST=django
     ports:
-    - 8088:80
+      - 8088:80
     volumes:
-    - django_static_files:/app/django_static_files
-    - django_media_files:/app/django_media_files
+      - django_static_files:/app/django_static_files
+      - django_media_files:/app/django_media_files
     depends_on:
       - django
     networks:
       - app-network
-  
+
   postgresql:
-    image: 'bitnami/postgresql:latest'
+    image: "bitnami/postgresql:latest"
     container_name: postgresql
     restart: unless-stopped
     env_file: .env
@@ -72,4 +73,6 @@ volumes:
     driver: local
   django_static_files:
   django_media_files:
+    driver: local
+  backend_config:
     driver: local
