@@ -32,14 +32,17 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
+    [theme.breakpoints.up(460)]: {
+      paddingInline: 40,
+    },
     textAlign: 'center',
     width: 'auto',
     fontsize: '1rem',
-    color: 'rgb(53,53,53)',
+    color: '#000',
   },
   text: {
     fontsize: '1rem',
-    color: 'rgb(53,53,53)',
+    color: '#000',
   },
 }));
 
@@ -72,7 +75,7 @@ export default function BasicTable() {
     <>
       <Container maxWidth="lg" className={classes.root}>
         <Grid container spacing={3}>
-          <Grid style={{ marginTop: '10px' }} item xs={12}>
+          <Grid style={{ marginTop: '30px' }} item xs={12}>
             <Paper className={classes.paper}>
               <Typography component="h5" variant="h5" style={{ fontSize: 30 }}>
                 Admission Procedure
