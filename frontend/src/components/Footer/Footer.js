@@ -24,24 +24,24 @@ const footers = [
   {
     title: 'Downloads',
     description: [
-      ['JAF', '#'],
-      ['IAF', '#'],
-      ['Brochure', '#'],
+      ['JAF', '/JAF'],
+      ['IAF', '/IAF'],
+      ['Brochure', '/Brochure'],
     ],
   },
   {
     title: 'Quick Links',
     description: [
-      ['Placement registration link', '#'],
-      ['Placement Statistics', '#'],
-      ['Meet our Team', '#'],
+      ['Placement registration link', '/RecruiterLogin'],
+      ['Placement Statistics', '/PlacementStatistics'],
+      ['Meet our Team', '/CareerCounselling'],
     ],
   },
   {
     title: 'External Links',
     description: [
-      ['IIT Jodhpur', '#'],
-      ['Student Gymkhana', '#'],
+      ['IIT Jodhpur', 'https://iitj.ac.in/'],
+      ['Student Gymkhana', 'https://students.iitj.ac.in/'],
     ],
   },
 ];
@@ -126,6 +126,8 @@ export default function Footer(props) {
                     <li key={item}>
                       <Link
                         href={item[1]}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         variant="subtitle1"
                         style={{ color: 'white' }}
                       >
@@ -147,6 +149,8 @@ export default function Footer(props) {
               <Tooltip arrow title="facebook">
                 <IconButton
                   href="https://www.facebook.com/SPC.IITJ/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   variant="outlined"
                   style={{ color: 'white' }}
                 >
@@ -155,7 +159,9 @@ export default function Footer(props) {
               </Tooltip>
               <Tooltip arrow title="Linkedin">
                 <IconButton
-                  href="#"
+                  href="https://in.linkedin.com/in/career-development-cell-iit-jodhpur-62a31352"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{ color: 'white' }}
                   variant="outlined"
                 >
@@ -165,6 +171,8 @@ export default function Footer(props) {
               <Tooltip arrow title="GitHub">
                 <IconButton
                   href="https://github.com/devlup-labs/cdc-portal"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   variant="outlined"
                   style={{ color: 'white' }}
                 >

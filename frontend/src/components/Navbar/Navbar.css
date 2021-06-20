@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
 .wrapper {
   background: #ffffff;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 3px 5px 0 rgb(0 0 0 / 19%);
   position: fixed;
   width: 100%;
   z-index: 200;
@@ -142,9 +140,13 @@ nav .content .links {
     left: -100%;
     margin-left: 0;
     max-width: 350px;
+    max-height: -webkit-fill-available;
     overflow-y: auto;
     padding-bottom: 100px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+  }
+  ::-webkit-scrollbar {
+    display: none;
   }
   nav #show-menu:checked ~ .content .links {
     left: 0%;
@@ -184,6 +186,9 @@ nav .content .links {
   .content .links #show-cdc-team:checked ~ ul,
   .content .links #show-login:checked ~ ul {
     max-height: 100vh;
+  }
+  .content .links ul {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%), 0 3px 4px 0 rgb(0 0 0 / 19%);
   }
   .content .links ul li {
     margin: 7px 20px;

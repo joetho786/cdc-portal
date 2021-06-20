@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 1,
     marginBottom: 1,
     fontFamily: 'sans-serif',
-    fontSize: 17,
+    fontSize: '1rem',
+    color: 'black',
     lineHeight: 1.3,
   },
 }));
@@ -67,7 +68,7 @@ const RecentNews = () => {
               <span>
                 {doclink != null && (
                   <Link
-                    style={{ textDecoration: 'none', fontSize: 15 }}
+                    style={{ textDecoration: 'none', fontSize: '1rem' }}
                     to={News.document}
                   >
                     {News.file_title}
@@ -78,7 +79,7 @@ const RecentNews = () => {
                 {' '}
                 {extlink != null && (
                   <Link
-                    style={{ textDecoration: 'none', fontSize: 15 }}
+                    style={{ textDecoration: 'none', fontSize: '1rem' }}
                     to={News.link}
                   >
                     {News.link_title}

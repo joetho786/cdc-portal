@@ -5,26 +5,27 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Footer from '../../src/components/Footer/Footer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: 'flex',
-    marginBottom: 10,
+    marginBottom: '2rem',
     [theme.breakpoints.down(460)]: {
-      padding: 2,
+      padding: 15,
     },
   },
   paper: {
     padding: theme.spacing(3),
     width: 'auto',
-    color: theme.palette.text.secondary,
+    fontSize: '1rem',
+    color: 'rgb(53, 53, 53)',
   },
   paper_s: {
     padding: theme.spacing(4),
     width: 'auto',
-    color: theme.palette.text.secondary,
+    fontSize: '1rem',
+    color: 'rgb(53, 53, 53)',
   },
   text: {
     textAlign: 'center',
@@ -56,14 +57,14 @@ const AIPCNorms = () => {
   };
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: 'auto', width: '100%' }}>
       {loading ? (
         <Loading />
       ) : (
         <>
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
-              <Grid style={{ marginTop: '10px' }} item xs={12}>
+              <Grid style={{ marginTop: '30px' }} item xs={12}>
                 <Paper className={classes.paper}>
                   <Typography
                     component="h5"
@@ -92,7 +93,6 @@ const AIPCNorms = () => {
               </Grid>
             </Grid>
           </Container>
-          <Footer />
         </>
       )}
     </div>

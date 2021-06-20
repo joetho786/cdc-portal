@@ -3,7 +3,6 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
-import './placementProcedure.module.css';
 import 'react-vertical-timeline-component/style.min.css';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -16,16 +15,22 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: 'flex',
-    marginBottom: 10,
+    marginBottom: '2rem',
     [theme.breakpoints.down(460)]: {
-      padding: 2,
+      padding: 25,
+      overflowX: 'hidden',
     },
   },
   paper: {
     padding: theme.spacing(2),
     width: 'auto',
-    color: theme.palette.text.secondary,
+    fontSize: '1rem',
+    color: 'black',
     textAlign: 'center',
+  },
+  card: {
+    fontSize: '1rem',
+    color: 'black',
   },
 }));
 
@@ -45,20 +50,20 @@ const PlacementProcedureComponent = () => {
     <>
       <Container maxWidth="lg" className={classes.root}>
         <Grid container spacing={3}>
-          <Grid style={{ marginTop: '10px' }} item xs={12}>
+          <Grid style={{ marginTop: '30px' }} item xs={12}>
             <Paper className={classes.paper}>
               <Typography component="h5" variant="h5" style={{ fontSize: 30 }}>
                 Placement Procedure
               </Typography>
             </Paper>
           </Grid>
-          <VerticalTimeline>
+          <VerticalTimeline animate={false}>
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               iconStyle={IconStyle}
               icon={1}
             >
-              <p>
+              <p className={classes.card}>
                 CDC sends invitation to companies and organizations. companies
                 can also send us a mail at{' '}
                 <a
@@ -76,7 +81,7 @@ const PlacementProcedureComponent = () => {
               iconStyle={IconStyle}
               icon={2}
             >
-              <p>
+              <p className={classes.card}>
                 Companies participating in Annual Placement Meet at IIT Jodhpur
                 will be required to register at the Career Development Cell
                 (CDC) website
@@ -100,7 +105,7 @@ const PlacementProcedureComponent = () => {
               iconStyle={IconStyle}
               icon={3}
             >
-              <p>
+              <p className={classes.card}>
                 fill out the JAF (Job Announcement Form)/ IAF (Intern
                 Announcement Form) and send a soft copy of the same to the
                 Placement Team. The CDC will verify the information provided by
@@ -135,7 +140,7 @@ const PlacementProcedureComponent = () => {
               iconStyle={IconStyle}
               icon={4}
             >
-              <p>
+              <p className={classes.card}>
                 The dates of the Pre Placement Talks (PPT) will be decided with
                 the mutual consent of CDC and the Organisation.
               </p>
@@ -145,7 +150,7 @@ const PlacementProcedureComponent = () => {
               iconStyle={IconStyle}
               icon={5}
             >
-              <p>
+              <p className={classes.card}>
                 Based on the PPT and profile of the job, students will be asked
                 to apply for the job.
               </p>
@@ -155,7 +160,7 @@ const PlacementProcedureComponent = () => {
               iconStyle={IconStyle}
               icon={6}
             >
-              <p>
+              <p className={classes.card}>
                 Placement Session starts in the month of October. Early
                 recruitment offers will be entertained based on the students'
                 response for the same. A suitable date and time slot will be
@@ -169,7 +174,7 @@ const PlacementProcedureComponent = () => {
               iconStyle={IconStyle}
               icon={7}
             >
-              <p>
+              <p className={classes.card}>
                 The company/organisation is required to furnish the results by
                 the end of the day of recruitment.
               </p>

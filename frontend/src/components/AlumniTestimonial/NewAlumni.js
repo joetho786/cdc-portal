@@ -15,6 +15,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import testiBack from '../../assets/testiback2.jpg';
 import styles from './AlumniTestimonial.module.css';
 import instance from '../../api/axios';
+import { getLink } from '../../utils/getLink';
 
 export default function AlumniTestimonial() {
   const [Alumni_Testimonials, setPAlumni_Testimonial] = useState([]);
@@ -47,13 +48,12 @@ export default function AlumniTestimonial() {
                   <img
                     className={styles.avatar}
                     alt="Remy Sharp"
-                    src={Testimonial_Obj.alumni_image}
+                    src={getLink(Testimonial_Obj.alumni_image)}
                   />
                 </div>
                 <CardContent>
                   <Typography
                     variant="body2"
-                    color="textPrimary"
                     component={'span'}
                     className={styles.main_content}
                   >
@@ -143,14 +143,14 @@ export default function AlumniTestimonial() {
           slidesToShow: 1,
           fade: true,
           slidesToScroll: 1,
-          dots: true,
+          dots: false,
           arrows: false,
         },
       },
     ],
   };
   return (
-    <div style={{ background: 'rgb(240,240,240)' }}>
+    <div style={{ marginBottom: '2rem', background: 'rgb(240,240,240)' }}>
       <div className="py-5">
         <Container
           style={{

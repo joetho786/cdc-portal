@@ -15,22 +15,34 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: 'flex',
+    marginBottom: '2rem',
+  },
+  body: {
+    fontSize: '1rem',
+    color: 'black',
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
     width: 'auto',
-    color: theme.palette.text.secondary,
+    fontSize: '1rem',
+    color: 'black',
   },
   text: {
     padding: theme.spacing(2),
+    [theme.breakpoints.up(460)]: {
+      paddingInline: 40,
+    },
     textAlign: 'left',
     width: 'auto',
-    color: theme.palette.text.secondary,
+    fontSize: '1rem',
+    color: 'black',
   },
   table: {
     minWidth: 'auto',
     marginTop: 5,
+    fontSize: '1rem',
+    color: 'black',
   },
 }));
 
@@ -51,7 +63,7 @@ export default function Prospective() {
     <>
       <Container maxWidth="lg" className={classes.root}>
         <Grid container spacing={3}>
-          <Grid style={{ marginTop: '10px' }} item xs={12}>
+          <Grid style={{ marginTop: '30px' }} item xs={12}>
             <Paper className={classes.paper}>
               <Typography component="h5" variant="h5" style={{ fontSize: 30 }}>
                 Prospective
@@ -83,76 +95,107 @@ export default function Prospective() {
               This year we place before you for your consideration 216 students
               (121 B.Tech., 44 M.Tech. and 51 M.Sc. students ) who are eligible
               for the seeking placements through the Institute.
-              <TableContainer style={{ marginTop: '10px' }} component={Paper}>
+              <TableContainer
+                style={{
+                  fontSize: '1rem',
+                  color: 'black',
+                  marginTop: '10px',
+                }}
+                component={Paper}
+              >
                 <Table className={classes.table} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                      <TableCell>Program</TableCell>
-                      <TableCell align="left">Branch</TableCell>
+                      <TableCell className={classes.body}>Program</TableCell>
+                      <TableCell className={classes.body} align="left">
+                        Branch
+                      </TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     <TableRow>
-                      <TableCell rowSpan={4} component="td">
+                      <TableCell
+                        className={classes.body}
+                        rowSpan={4}
+                        component="td"
+                      >
                         B.Tech
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell key="btech1">
+                      <TableCell className={classes.body} key="btech1">
                         Computer Science & Engineering
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell key="btech2">
+                      <TableCell className={classes.body} key="btech2">
                         {' '}
                         Electrical Engineering
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell key="btech3">Mechanical Engineering</TableCell>
+                      <TableCell className={classes.body} key="btech3">
+                        Mechanical Engineering
+                      </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell rowSpan={6} component="td">
+                      <TableCell
+                        className={classes.body}
+                        rowSpan={6}
+                        component="td"
+                      >
                         M.Tech
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell key="btech4">
+                      <TableCell className={classes.body} key="btech4">
                         Computer Science & Engineering
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell key="btech5">
+                      <TableCell className={classes.body} key="btech5">
                         {' '}
                         Electrical Engineering
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell key="btech6">Mechanical Engineering</TableCell>
+                      <TableCell className={classes.body} key="btech6">
+                        Mechanical Engineering
+                      </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell key="btech7">
+                      <TableCell className={classes.body} key="btech7">
                         Bioscience & Bioengineering
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell key="btech8">
+                      <TableCell className={classes.body} key="btech8">
                         Metallurgical and Materials Engineering
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell rowSpan={4} component="td">
+                      <TableCell
+                        className={classes.body}
+                        rowSpan={4}
+                        component="td"
+                      >
                         M.Sc
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell key="btech9">Physics</TableCell>
+                      <TableCell className={classes.body} key="btech9">
+                        Physics
+                      </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell key="btech10">Chemistry</TableCell>
+                      <TableCell className={classes.body} key="btech10">
+                        Chemistry
+                      </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell key="btech11">Mathematics</TableCell>
+                      <TableCell className={classes.body} key="btech11">
+                        Mathematics
+                      </TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>

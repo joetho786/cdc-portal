@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import { getLink } from '../../utils/getLink';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -26,14 +26,16 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     boxShadow: 'none',
-    borderRadius: '0',
+    borderRadius: 20,
     [theme.breakpoints.down(780)]: {
       flexDirection: 'column',
       alignItems: 'center',
     },
   },
   MessageHeader: {
-    color: 'rgb(0, 0, 0)',
+    fontSize: 40,
+    marginBottom: '0.5%',
+    marginTop: '0.5%',
   },
   details: {
     display: 'flex',
@@ -77,22 +79,15 @@ export default function MediaControlCard() {
           <CardMedia
             component="div"
             className={classes.cover}
-            image={DirectorMessage.image}
+            image={getLink(DirectorMessage.image)}
           />
           <div className={classes.details}>
             <CardContent className={classes.content}>
-              <Typography
-                className={classes.MessageHeader}
-                component="h5"
-                variant="h5"
-                style={{ fontSize: 30 }}
-              >
-                {DirectorMessage.title}
-              </Typography>
-              <p dangerouslySetInnerHTML={createDirectorMessage()} />
-              <p color="textPrimary" style={{ fontSize: 20 }}>
-                {DirectorMessage.name}
-              </p>
+              <h2 className={classes.MessageHeader}>{DirectorMessage.title}</h2>
+              <div style={{ fontSize: '1rem', color: 'black' }}>
+                <p dangerouslySetInnerHTML={createDirectorMessage()} />
+                <p>{DirectorMessage.name}</p>
+              </div>
             </CardContent>
           </div>
         </Card>

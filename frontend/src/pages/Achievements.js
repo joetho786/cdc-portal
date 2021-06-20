@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { getLink } from '../utils/getLink';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
@@ -17,13 +17,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     marginBottom: 10,
     [theme.breakpoints.down(460)]: {
-      padding: 5,
+      padding: 15,
     },
   },
   paper: {
     padding: theme.spacing(2),
     width: 'auto',
-    color: theme.palette.text.secondary,
+    fontSize: '1rem',
+    color: 'black',
+  },
+  paperother: {
+    width: 'auto',
+    fontSize: '1rem',
+    color: 'black',
   },
   Hroot: {
     maxWidth: 345,
@@ -39,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
+  },
+  actionArea: {
+    minHeight: '100%',
+    flexFlow: 'column-reverse',
   },
 }));
 
@@ -75,21 +85,28 @@ const Achievements = () => {
     highlights.map((highlights_Obj) => {
       return highlights_list.push(
         <Card key={highlights_Obj.title} className={classes.Hroot}>
-          <CardActionArea>
+          <CardActionArea className={classes.actionArea}>
             <CardMedia
               className={classes.media}
-              image={highlights_Obj.image}
+              image={getLink(highlights_Obj.image)}
               title={highlights_Obj.title}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography
+                gutterBottom
+                style={{ color: 'black' }}
+                variant="h6"
+                component="h2"
+              >
                 {highlights_Obj.title}
               </Typography>
-              <p
-                dangerouslySetInnerHTML={createAchievements(
-                  highlights_Obj.description
-                )}
-              />
+              <div className={classes.paperother}>
+                <p
+                  dangerouslySetInnerHTML={createAchievements(
+                    highlights_Obj.description
+                  )}
+                />
+              </div>
             </CardContent>
           </CardActionArea>
         </Card>
@@ -107,14 +124,21 @@ const Achievements = () => {
         <Card key={others_Obj.title} className={classes.Hroot}>
           <CardActionArea>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography
+                gutterBottom
+                style={{ color: 'black' }}
+                variant="h6"
+                component="h2"
+              >
                 {others_Obj.title}
               </Typography>
-              <p
-                dangerouslySetInnerHTML={createAchievements(
-                  others_Obj.description
-                )}
-              />
+              <div className={classes.paperother}>
+                <p
+                  dangerouslySetInnerHTML={createAchievements(
+                    others_Obj.description
+                  )}
+                />
+              </div>
             </CardContent>
           </CardActionArea>
         </Card>
@@ -125,14 +149,14 @@ const Achievements = () => {
   };
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: 'auto', width: '100%' }}>
       {loading ? (
         <Loading />
       ) : (
         <>
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
-              <Grid style={{ marginTop: '10px' }} item xs={12}>
+              <Grid style={{ marginTop: '30px' }} item xs={12}>
                 <Paper className={classes.paper}>
                   <Typography
                     component="h5"
