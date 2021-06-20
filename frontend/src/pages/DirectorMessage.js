@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: 'flex',
-    marginBottom: '2rem',
+    marginBottom: 10,
     [theme.breakpoints.down(460)]: {
       padding: 2,
     },
@@ -21,8 +21,11 @@ const useStyles = makeStyles((theme) => ({
       paddingInline: 40,
     },
     width: 'auto',
-    fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: theme.palette.text.secondary,
+  },
+  text: {
+    color: '#000',
+    fontsize: '1rem',
   },
 }));
 
@@ -50,7 +53,7 @@ const DirectorMessage = () => {
   };
 
   return (
-    <div style={{ height: 'auto', width: '100%' }}>
+    <div style={{ height: '100vh', width: '100%' }}>
       {loading ? (
         <Loading />
       ) : (
@@ -71,7 +74,10 @@ const DirectorMessage = () => {
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
                   {message ? (
-                    <p dangerouslySetInnerHTML={createMessage()} />
+                    <p
+                      dangerouslySetInnerHTML={createMessage()}
+                      className={classes.text}
+                    />
                   ) : (
                     <p>Coming soon...</p>
                   )}
