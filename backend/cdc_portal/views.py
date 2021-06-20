@@ -9,6 +9,7 @@ from rest_framework import status
 from django.contrib.auth.models import User
 
 from student.models import StudentProfile
+from .utils import get_config, edit_config, get_config_value, IsSuperUser
 
 
 class Login(views.APIView):
@@ -44,7 +45,6 @@ class Login(views.APIView):
 
 
 class LDAPOAuth(views.APIView):
-    testing_mode = False
 
     def post(self, request, *args, **kwargs):
         if not request.data:
@@ -52,7 +52,7 @@ class LDAPOAuth(views.APIView):
 
         user_id = request.data['id']
         password = request.data['password']
-        if not self.testing_mode:
+        if not get_config_value('LDAPTestMode'):
             try:
                 result = subprocess.check_output(['java', 'LDAP_login_api', user_id, password])
                 result = result.decode('utf-8')
@@ -73,11 +73,13 @@ class LDAPOAuth(views.APIView):
                 )
         else:
             email = "test@iitj.ac.in"
-            roll_no = "B19EE048"
+            roll_no = "B19EE480"
             name = ["test", "user"]
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
+            if len(name) < 2:
+                name.append("")
             user = User.objects.create(username=roll_no, email=email, first_name=name[0], last_name=name[1])
         if user:
             payload = {
@@ -134,3 +136,23 @@ class GoogleLogin(views.APIView):
             return Response(
                 jwt_token,
                 status=status.HTTP_200_OK)
+
+
+class Config(views.APIView):
+    permission_classes = (IsSuperUser,)
+
+    def get(self, request, *args, **kwargs):
+        config = get_config()
+        return Response(
+            config,
+            status=status.HTTP_200_OK)
+
+    def put(self, request, *args, **kwargs):
+        data = request.data
+        if data is None:
+            return Response(status.HTTP_400_BAD_REQUEST)
+        try:
+            edit_config(data)
+            return Response(status.HTTP_200_OK)
+        except:  # noqa: E722
+            return Response({'Error': "Invalid File format"}, status.HTTP_400_BAD_REQUEST)

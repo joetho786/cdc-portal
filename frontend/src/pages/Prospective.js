@@ -19,14 +19,14 @@ const useStyles = makeStyles((theme) => ({
   },
   body: {
     fontSize: '1rem',
-    color: 'rgb(53,53,53)',
+    color: 'black',
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
     width: 'auto',
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
   },
   text: {
     padding: theme.spacing(2),
@@ -36,13 +36,13 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
     width: 'auto',
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
   },
   table: {
     minWidth: 'auto',
     marginTop: 5,
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
   },
 }));
 
@@ -98,7 +98,7 @@ export default function Prospective() {
               <TableContainer
                 style={{
                   fontSize: '1rem',
-                  color: 'rgb(53,53,53)',
+                  color: 'black',
                   marginTop: '10px',
                 }}
                 component={Paper}

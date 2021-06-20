@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 1,
     fontFamily: 'sans-serif',
     fontSize: '1rem',
-    color: 'rgb(53,53,53)',
+    color: 'black',
     lineHeight: 1.3,
   },
 }));

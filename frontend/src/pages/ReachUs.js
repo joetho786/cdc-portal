@@ -14,7 +14,7 @@ const ReachUs = () => {
   const ReachUsData = () => {
     return (
       <div
-        style={{ padding: '1rem', fontSize: '1rem', color: 'rgb(53, 53, 53)' }}
+        style={{ padding: '1rem', fontSize: '1rem', color: 'black' }}
         dangerouslySetInnerHTML={{ __html: data.description }}
       />
     );

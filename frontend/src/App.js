@@ -32,6 +32,7 @@ import StudentRegister from './pages/StudentRegister';
 import StudentDashboard from './pages/StudentDashboard';
 import AdmissionProcedure from './pages/AdmissionProcedure';
 import Footer from './components/Footer/Footer';
+import SiteConfig from './pages/SiteConfig';
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
         <Route path="/RecruiterLogin" component={RecruiterLogin} />
         <Route path="/RecruiterRegister" component={RecruiterRegister} />
         <Route path="/RecruiterDashboard" component={RecruiterDashboard} />
+        <Route path="/SiteConfig" component={SiteConfig} />
         <Route default component={NotFound} />
       </Switch>
       <Footer />
