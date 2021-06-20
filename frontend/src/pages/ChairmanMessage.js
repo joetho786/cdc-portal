@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: 'flex',
-    marginBottom: 10,
+    marginBottom: '2rem',
     overflowX: 'clip',
     [theme.breakpoints.down(460)]: {
       padding: 2,
