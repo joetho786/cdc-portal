@@ -3,7 +3,6 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
-import './placementProcedure.module.css';
 import 'react-vertical-timeline-component/style.min.css';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -26,12 +25,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     width: 'auto',
     fontSize: '1rem',
-    color: 'rgb(53,53,53)',
+    color: 'black',
     textAlign: 'center',
   },
   card: {
     fontSize: '1rem',
-    color: 'rgb(53,53,53)',
+    color: 'black',
   },
 }));
 

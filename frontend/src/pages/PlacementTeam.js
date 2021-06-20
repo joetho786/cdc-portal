@@ -58,7 +58,7 @@ const PlacementTeam = () => {
           <div className={styles.members}>
             <MenuIcon
               fontSize="large"
-              style={{ margin: '0 0.5rem 0 0', paddingTop: '0.2rem' }}
+              style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
             />
             WEB DEVELOPMENT TEAM
           </div>
@@ -83,7 +83,7 @@ const PlacementTeam = () => {
           <div className={styles.members}>
             <MenuIcon
               fontSize="large"
-              style={{ margin: '0 0.5rem 0 0', paddingTop: '0.2rem' }}
+              style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
             />
             VOLUNTEERS
           </div>

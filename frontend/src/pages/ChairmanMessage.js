@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
     width: 'auto',
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
   },
 }));
 
