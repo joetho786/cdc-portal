@@ -38,11 +38,11 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     width: 'auto',
     fontsize: '1rem',
-    color: '#000',
+    color: 'rgb(0,0,0)',
   },
   text: {
     fontsize: '1rem',
-    color: '#000',
+    color: 'rgb(0,0,0)',
   },
 }));
 
