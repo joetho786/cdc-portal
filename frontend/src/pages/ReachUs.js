@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Loading from '../components/Loading';
 import styles from '../styles/pages/ReachUs.module.css';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import { Container } from '@material-ui/core';
 import Map from '../components/Map';
 
 const ReachUs = () => {
@@ -14,7 +15,7 @@ const ReachUs = () => {
   const ReachUsData = () => {
     return (
       <div
-        style={{ padding: '1rem', fontSize: '1rem', color: 'rgb(53, 53, 53)' }}
+        style={{ padding: '1rem', fontSize: '1rem', color: 'black' }}
         dangerouslySetInnerHTML={{ __html: data.description }}
       />
     );
@@ -35,7 +36,7 @@ const ReachUs = () => {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <Container maxWidth="lg">
           <Paper className={styles.reachUs} elevation={2}>
             <LocationOnIcon
               fontSize="large"
@@ -43,7 +44,7 @@ const ReachUs = () => {
             />
             REACH US
           </Paper>
-          <Paper style={{ padding: '0.5rem', margin: '2rem' }} elevation={2}>
+          <Paper className={styles.content} elevation={2}>
             <Grid
               container
               direction="row"
@@ -60,7 +61,7 @@ const ReachUs = () => {
               </Grid>
             </Grid>
           </Paper>
-        </>
+        </Container>
       )}
     </div>
   );

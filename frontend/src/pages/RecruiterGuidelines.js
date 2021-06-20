@@ -19,13 +19,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     width: 'auto',
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
   },
   paper_s: {
     padding: theme.spacing(4),
     width: 'auto',
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
   },
   text: {
     textAlign: 'center',

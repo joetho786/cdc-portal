@@ -45,7 +45,7 @@ const CareerCounselling = () => {
           <div className={styles.chairman}>
             <MenuIcon
               fontSize="large"
-              style={{ margin: '0 0.5rem 0 0', paddingTop: '0.2rem' }}
+              style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
             />
             CHAIRMAN
           </div>
@@ -70,7 +70,7 @@ const CareerCounselling = () => {
           <div className={styles.facultyIncharge}>
             <MenuIcon
               fontSize="large"
-              style={{ margin: '0 0.5rem 0 0', paddingTop: '0.2rem' }}
+              style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
             />
             FACULTY INCHARGE
           </div>
@@ -95,7 +95,7 @@ const CareerCounselling = () => {
           <div className={styles.members}>
             <MenuIcon
               fontSize="large"
-              style={{ margin: '0 0.5rem 0 0', paddingTop: '0.2rem' }}
+              style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
             />
             MEMBERS
           </div>

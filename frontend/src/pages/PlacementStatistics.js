@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   body: {
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
   },
   paper: {
     padding: theme.spacing(2),
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     },
     width: 'auto',
     fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'black',
   },
 }));
 

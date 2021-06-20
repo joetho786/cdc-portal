@@ -23,7 +23,7 @@
 }
 .root .main_content {
   font-size: 1rem;
-  color: rgb(53, 53, 53);
+  color: black;
   min-height: 150px;
 }
 .name_container {
@@ -37,15 +37,15 @@
   margin-top: 10px;
   margin-bottom: -20px;
   font-size: 1rem;
-  color: rgb(53, 53, 53);
+  color: black;
 }
 .name_container .name {
   font-size: 1rem;
-  color: rgb(53, 53, 53);
+  color: black;
 }
 .name_container .company_name {
   font-size: 1rem;
-  color: rgb(53, 53, 53);
+  color: black;
   margin-bottom: 5px;
 }
 .slick-prev:before {

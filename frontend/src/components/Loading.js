@@ -10,10 +10,10 @@ const Loading = () => {
       direction="column"
       alignItems="center"
       justify="center"
-      style={{ height: '100%' }}
+      style={{ height: '100vh' }}
     >
       <Grid item xs={3}>
-        <CircularProgress size="5rem" />
+        <CircularProgress size="5rem" style={{ color: '#1d1642' }} />
       </Grid>
     </Grid>
   );

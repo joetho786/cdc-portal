@@ -8,14 +8,14 @@
 }
 
 .cardHeader {
-  padding: 0.2rem;
+  padding: 0.5rem;
   background-color: #f5f5f5;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   text-align: center;
 }
 
 .designation {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: black;
   text-align: center;
   margin: 0.2rem 0;
@@ -36,6 +36,7 @@
 
 .cardContent {
   padding: 0.2rem;
+  padding-top: 1rem;
   background-color: #f5f5f5;
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   text-align: center;
@@ -48,7 +49,7 @@
 }
 
 .email {
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: black;
   text-decoration: none;
   display: flex;
@@ -57,7 +58,7 @@
 }
 
 .phone {
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: black;
   display: flex;
   justify-content: flex-start;

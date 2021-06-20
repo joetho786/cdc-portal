@@ -62,7 +62,7 @@ const ContactUs = () => {
           <div className={styles.members}>
             <MenuIcon
               fontSize="large"
-              style={{ margin: '0 0.5rem', paddingTop: '0.2rem' }}
+              style={{ margin: '0 0.5rem', paddingTop: '0rem' }}
             />
             PLACEMENT TEAM
           </div>

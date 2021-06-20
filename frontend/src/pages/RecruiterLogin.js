@@ -7,7 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import instance from '../api/axios';
-import back_img from '../assets/login_back.jpg';
+import back_img from '../assets/loginback.jpg';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;

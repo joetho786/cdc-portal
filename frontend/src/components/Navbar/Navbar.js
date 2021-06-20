@@ -4,6 +4,12 @@ import './Navbar.css';
 import Grid from '@material-ui/core/Grid';
 import logo from '../../assets/cdclogo.png';
 import iitjLogo from '../../assets/iitjKogo.png';
+function Logout(event) {
+  event.preventDefault();
+  localStorage.setItem('cdc_LoggedIn', false);
+  localStorage.setItem('cdc_auth_token', '');
+  window.location = '/';
+}
 export default function Navbar() {
   const [isChecked, setIsChecked] = useState(false);
 
@@ -170,14 +176,28 @@ export default function Navbar() {
               {localStorage.getItem('cdc_LoggedIn') === 'true' ? (
                 <li>
                   <Link
+                    className="desktop-link"
                     to={
                       localStorage.getItem('cdc_loginType') === 'Student'
                         ? '/StudentDashboard'
                         : '/RecruiterDashboard'
                     }
                   >
-                    <span>{localStorage.getItem('cdc_Dname')}</span>
+                    <span>
+                      {localStorage.getItem('cdc_Dname')}
+                      <i className="fa fa-caret-down"></i>
+                    </span>
                   </Link>
+                  <input type="checkbox" id="show-cdc-team" />
+                  <label htmlFor="show-cdc-team">
+                    {localStorage.getItem('cdc_Dname')}{' '}
+                    <i className="fa fa-caret-down"></i>
+                  </label>
+                  <ul>
+                    <li onClick={Logout}>
+                      <Link to="#">Logout</Link>
+                    </li>
+                  </ul>
                 </li>
               ) : (
                 <li>

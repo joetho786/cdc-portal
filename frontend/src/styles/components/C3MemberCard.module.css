@@ -23,7 +23,6 @@
 .department {
   text-align: center;
   font-size: 1.2rem;
-  font-weight: 600;
   color: #636c72;
   margin: 0.5rem 0 0.9rem 0;
   padding: 0 2rem;
@@ -37,7 +36,7 @@
 }
 
 .email {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: black;
   text-decoration: none;
   text-align: center;
