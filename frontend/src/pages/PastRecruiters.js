@@ -24,12 +24,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#000',
     fontSize: '1rem',
   },
-  paper_s: {
-    padding: theme.spacing(4),
-    width: 'auto',
-    color: '#000',
-    fontSize: '1rem',
-  },
   text_: {
     color: '#000',
     fontsize: '1rem',
@@ -88,14 +82,14 @@ const PastRecruiters = () => {
                 </Paper>
               </Grid>
               <Grid item xs={12}>
-                <Paper className={classes.paper_s}>
+                <Paper className={classes.paper}>
                   <Typography
                     component="h3"
                     style={{
                       fontSize: 20,
                       fontWeight: 'bold',
                       textAlign: 'center',
-                      color: 'rgb(53,53,53)',
+                      color: 'rgb(0,0,0)',
                     }}
                   >
                     Private Companies
@@ -118,7 +112,7 @@ const PastRecruiters = () => {
                       fontSize: 20,
                       fontWeight: 'bold',
                       textAlign: 'center',
-                      color: 'rgb(53,53,53)',
+                      color: 'rgb(0,0,0)',
                     }}
                   >
                     Public Sector Companies
