@@ -21,10 +21,10 @@ const useStyles = makeStyles((theme) => ({
       paddingInline: 40,
     },
     width: 'auto',
-    color: '#000,
+    color: 'rgb(0,0,0),
   },
   text: {
-    color: '#000',
+    color: 'rgb(0,0,0)',
     fontsize: '1rem',
   },
 }));
