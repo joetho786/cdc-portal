@@ -184,7 +184,7 @@ export default function Navbar() {
                     }
                   >
                     <span>
-                      {localStorage.getItem('cdc_Dname')}
+                      {localStorage.getItem('cdc_Dname')}{' '}
                       <i className="fa fa-caret-down"></i>
                     </span>
                   </Link>
@@ -193,11 +193,32 @@ export default function Navbar() {
                     {localStorage.getItem('cdc_Dname')}{' '}
                     <i className="fa fa-caret-down"></i>
                   </label>
-                  <ul>
-                    <li onClick={Logout}>
-                      <Link to="#">Logout</Link>
-                    </li>
-                  </ul>
+                  {localStorage.getItem('cdc_loginType') === 'Student' ? (
+                    /* Student Zone */
+                    <ul>
+                      <li onClick={() => setIsChecked(!isChecked)}>
+                        <Link to="/StudentDashboard/uploadresume">Profile</Link>
+                      </li>
+                      <li onClick={() => setIsChecked(!isChecked)}>
+                        <Link to="/StudentDashboard/uploadresume">
+                          Upload Resume
+                        </Link>
+                      </li>
+                      <li onClick={Logout}>
+                        <Link to="#">Logout</Link>
+                      </li>
+                    </ul>
+                  ) : (
+                    /* Compant Zone */
+                    <ul>
+                      <li onClick={() => setIsChecked(!isChecked)}>
+                        <Link to="/CareerCounselling">Profile</Link>
+                      </li>
+                      <li onClick={Logout}>
+                        <Link to="#">Logout</Link>
+                      </li>
+                    </ul>
+                  )}
                 </li>
               ) : (
                 <li>
