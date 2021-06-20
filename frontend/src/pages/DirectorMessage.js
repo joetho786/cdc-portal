@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
       paddingInline: 40,
     },
     width: 'auto',
-    color: theme.palette.text.secondary,
+    color: '#000,
   },
   text: {
     color: '#000',
