@@ -16,19 +16,22 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
+    [theme.breakpoints.up(460)]: {
+      paddingInline: 40,
+    },
     width: 'auto',
-    color: 'rgb(53,53,53)',
+    color: '#000',
     fontSize: '1rem',
   },
   paper_s: {
     padding: theme.spacing(4),
     width: 'auto',
-    color: 'rgb(53,53,53)',
+    color: '#000',
     fontSize: '1rem',
   },
   text_: {
-    color: 'rgb(53,53,53)',
+    color: '#000',
     fontsize: '1rem',
     textAlign: 'center',
   },
@@ -71,7 +74,7 @@ const PastRecruiters = () => {
         <>
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
-              <Grid style={{ marginTop: '10px' }} item xs={12}>
+              <Grid style={{ marginTop: '30px' }} item xs={12}>
                 <Paper className={classes.paper}>
                   <Typography
                     component="h5"
