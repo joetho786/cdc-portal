@@ -18,7 +18,7 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from.views import Login, GoogleLogin, LDAPOAuth
+from.views import Login, GoogleLogin, LDAPOAuth, Config
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,7 +28,8 @@ urlpatterns = [
     path('api/company/', include("company.urls")),
     path('api/login/', Login.as_view(), name='login_using_password'),
     path('api/google_login/', GoogleLogin.as_view(), name='login_using_gooogle'),
-    path('api/LDAP_login/', LDAPOAuth.as_view(), name='login_using_ldap_creds')
+    path('api/LDAP_login/', LDAPOAuth.as_view(), name='login_using_ldap_creds'),
+    path('api/backend_config/', Config.as_view(), name='backend_config')
 ]
 
 if settings.DEBUG:
