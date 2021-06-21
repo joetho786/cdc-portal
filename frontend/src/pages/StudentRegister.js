@@ -11,6 +11,14 @@ import Typography from '@material-ui/core/Typography';
 import PersonalDetailsForm from '../components/RegistrationForms/PersonalDetailsForm';
 import AcademicDetailsForm from '../components/RegistrationForms/AcademicDetailsForm';
 import NormsForm from '../components/RegistrationForms/NormsForm';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -26,10 +34,12 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(11),
     marginBottom: theme.spacing(3),
-    padding: theme.spacing(2),
+    BorderRadius: theme.spacing(3),
+    padding: theme.spacing(5),
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
+      padding: theme.spacing(6),
+      borderRadius: theme.spacing(7),
     },
   },
   stepper: {
@@ -49,6 +59,8 @@ const steps = ['Personal Details', 'Academic details', 'Norms Acceptance'];
 
 const StudentRegister = () => {
   const classes = useStyles();
+  const [error, setError] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
 
   const [values1, setValues1] = React.useState({
@@ -71,7 +83,7 @@ const StudentRegister = () => {
     bn10: '',
     bp12: '',
     bp10: '',
-    check: '',
+    check: false,
   });
   const [check, setCheck] = React.useState(false);
 
@@ -96,8 +108,16 @@ const StudentRegister = () => {
     setActiveStep(activeStep - 1);
   };
 
+  const handleCloseError = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setError('');
+  };
+
   const handleSubmit = () => {
     //console.log(values1);
+    setLoading(true);
     var form = new FormData();
     try {
       form.append('std_image', values1.photo, values1.photo.name);
@@ -125,12 +145,35 @@ const StudentRegister = () => {
           window.location = '/StudentDashboard';
         }
       })
-      .catch((error) => console.log(error));
+      .catch(function (error) {
+        if (error.response) {
+          setError(error.response.data['Error']);
+        }
+        setLoading(false);
+      });
   };
   return (
     <React.Fragment>
       <CssBaseline />
       <main className={classes.layout}>
+        <Backdrop
+          style={{
+            zIndex: 1,
+            color: '#fff',
+          }}
+          open={loading}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+        <Snackbar
+          open={error !== ''}
+          autoHideDuration={6000}
+          onClose={handleCloseError}
+        >
+          <Alert onClose={handleCloseError} severity="error">
+            {error}
+          </Alert>
+        </Snackbar>
         <Paper className={classes.paper}>
           <Typography component="h3" variant="h5" align="center">
             Student Registeration
