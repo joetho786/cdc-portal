@@ -22,8 +22,11 @@ const useStyles = makeStyles((theme) => ({
       paddingInline: 40,
     },
     width: 'auto',
-    fontSize: '1rem',
-    color: 'black',
+    color: 'rgb(0,0,0)',
+  },
+  text: {
+    color: 'rgb(0,0,0)',
+    fontsize: '1rem',
   },
 }));
 
@@ -51,7 +54,7 @@ const ChairmanMessage = () => {
   };
 
   return (
-    <div style={{ height: 'auto', width: '100%' }}>
+    <div style={{ height: '100vh', width: '100%' }}>
       {loading ? (
         <Loading />
       ) : (
