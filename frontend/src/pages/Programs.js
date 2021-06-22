@@ -339,7 +339,7 @@ const Programmes = () => {
                       <br />
                       <TableBody>
                         <TableRow className={classes.heads}>
-                          Masters of Technology Programs
+                          Master of Technology Programs
                         </TableRow>
                         {mtechrows.map((row) => (
                           <TableRow key={row.name}>
