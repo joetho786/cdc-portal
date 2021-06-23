@@ -90,7 +90,7 @@ function Home() {
           console.log(error.response);
           if (error.response.status === 403) {
             window.alert('Complete Your Profile');
-            window.location = '/StudentRegister';
+            window.location = '/student-register';
           }
         }
       });

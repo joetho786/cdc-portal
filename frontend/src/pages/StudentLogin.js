@@ -51,9 +51,9 @@ const StudentLogin = () => {
         localStorage.setItem('cdc_Dname', Dname);
         localStorage.setItem('cdc_loginType', 'Student');
         if (res.status === 201) {
-          window.location = 'StudentRegister';
+          window.location = 'student-register';
         } else {
-          window.location = 'StudentDashboard';
+          window.location = 'student-dashboard';
         }
       })
       .catch(function (error) {

@@ -76,7 +76,7 @@ export default function RecruiterRegister() {
       .then((res) => {
         //console.log(res.data);
         if (res.status === 201) {
-          window.location = 'RecruiterLogin';
+          window.location = 'recruiter-login';
         }
       })
       .catch(function (error) {

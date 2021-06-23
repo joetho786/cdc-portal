@@ -7,6 +7,7 @@ import Invitation from './pages/Invitation';
 import ChairmanMessage from './pages/ChairmanMessage';
 import DirectorMessage from './pages/DirectorMessage';
 import GradeSystem from './pages/GradeSystem';
+import Programmes from './pages/Programs';
 import Brochure from './pages/Brochure';
 import WhyRecruit from './pages/WhyRecruit';
 import PlacementStatistics from './pages/PlacementStatistics';
@@ -31,7 +32,6 @@ import RecruiterDashboard from './pages/RecruiterDashboard';
 import StudentRegister from './pages/StudentRegister';
 import StudentDashboard from './pages/StudentDashboard';
 import AdmissionProcedure from './pages/AdmissionProcedure';
-import Programmes from './pages/Programs';
 import Footer from './components/Footer/Footer';
 import SiteConfig from './pages/SiteConfig';
 
@@ -41,36 +41,36 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/Invitation" component={Invitation} />
-        <Route path="/ChairmanMessage" component={ChairmanMessage} />
-        <Route path="/DirectorMessage" component={DirectorMessage} />
-        <Route path="/GradeSystem" component={GradeSystem} />
-        <Route path="/AdmissionProcedure" component={AdmissionProcedure} />
-        <Route path="/Programmes" component={Programmes} />
-        <Route path="/WhyRecruit" component={WhyRecruit} />
-        <Route path="/Brochure" component={Brochure} />
-        <Route path="/PlacementStatistics" component={PlacementStatistics} />
-        <Route path="/PlacementProcedure" component={PlacementProcedure} />
-        <Route path="/RecruiterGuidelines" component={RecruiterGuidelines} />
-        <Route path="/PastRecruiters" component={PastRecruiters} />
-        <Route path="/AIPCNorms" component={AIPCNorms} />
-        <Route path="/Achievements" component={Achievements} />
-        <Route path="/Prospective" component={Prospective} />
-        <Route path="/StudentGuidelines" component={StudentGuidelines} />
-        <Route path="/Internships" component={Internships} />
-        <Route path="/JAF" component={JAF} />
-        <Route path="/IAF" component={IAF} />
-        <Route path="/ContactUs" component={ContactUs} />
-        <Route path="/ReachUs" component={ReachUs} />
-        <Route path="/PlacementTeam" component={PlacementTeam} />
-        <Route path="/CareerCounselling" component={CareerCounselling} />
-        <Route path="/StudentLogin" component={StudentLogin} />
-        <Route path="/StudentRegister" component={StudentRegister} />
-        <Route path="/StudentDashboard" component={StudentDashboard} />
-        <Route path="/RecruiterLogin" component={RecruiterLogin} />
-        <Route path="/RecruiterRegister" component={RecruiterRegister} />
-        <Route path="/RecruiterDashboard" component={RecruiterDashboard} />
-        <Route path="/SiteConfig" component={SiteConfig} />
+        <Route path="/invitation" component={Invitation} />
+        <Route path="/chairman-message" component={ChairmanMessage} />
+        <Route path="/director-message" component={DirectorMessage} />
+        <Route path="/grade-system" component={GradeSystem} />
+        <Route path="/programs" component={Programmes} />
+        <Route path="/admissions" component={AdmissionProcedure} />
+        <Route path="/achievements" component={Achievements} />
+        <Route path="/prospective" component={Prospective} />
+        <Route path="/student-guidelines" component={StudentGuidelines} />
+        <Route path="/internships" component={Internships} />
+        <Route path="/why-recruit" component={WhyRecruit} />
+        <Route path="/brochure" component={Brochure} />
+        <Route path="/placement-statistics" component={PlacementStatistics} />
+        <Route path="/placement-procedure" component={PlacementProcedure} />
+        <Route path="/company-rules" component={RecruiterGuidelines} />
+        <Route path="/past-recruiters" component={PastRecruiters} />
+        <Route path="/aipc-norms" component={AIPCNorms} />
+        <Route path="/jaf" component={JAF} />
+        <Route path="/iaf" component={IAF} />
+        <Route path="/contact" component={ContactUs} />
+        <Route path="/reach-us" component={ReachUs} />
+        <Route path="/placement-team" component={PlacementTeam} />
+        <Route path="/c3-members" component={CareerCounselling} />
+        <Route path="/student-login" component={StudentLogin} />
+        <Route path="/student-register" component={StudentRegister} />
+        <Route path="/student-dashboard" component={StudentDashboard} />
+        <Route path="/recruiter-login" component={RecruiterLogin} />
+        <Route path="/recruiter-register" component={RecruiterRegister} />
+        <Route path="/recruiter-dashboard" component={RecruiterDashboard} />
+        <Route path="/site-config" component={SiteConfig} />
         <Route default component={NotFound} />
       </Switch>
       <Footer />
