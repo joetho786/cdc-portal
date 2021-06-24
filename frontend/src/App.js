@@ -34,11 +34,13 @@ import StudentDashboard from './pages/StudentDashboard';
 import AdmissionProcedure from './pages/AdmissionProcedure';
 import Footer from './components/Footer/Footer';
 import SiteConfig from './pages/SiteConfig';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
       <Navbar />
+      <ScrollToTop />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/invitation" component={Invitation} />
