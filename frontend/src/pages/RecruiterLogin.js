@@ -43,7 +43,7 @@ const RecruiterLogin = () => {
         localStorage.setItem('cdc_LoggedIn', true);
         localStorage.setItem('cdc_Dname', Dname);
         localStorage.setItem('cdc_loginType', 'Recruiter');
-        window.location = 'RecruiterDashboard';
+        window.location = 'recruiter-dashboard';
       })
       .catch(function (error) {
         if (error.response) {
@@ -119,7 +119,7 @@ const RecruiterLogin = () => {
             className={styles.registerButton}
             onClick={(e) => {
               e.preventDefault();
-              window.location = 'RecruiterRegister';
+              window.location = 'recruiter-register';
             }}
           >
             Register
