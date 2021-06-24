@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
@@ -14,24 +14,13 @@ import EmailIcon from '@material-ui/icons/Email';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import testiBack from '../../assets/testiback2.jpg';
 import styles from './AlumniTestimonial.module.css';
-import instance from '../../api/axios';
 import { getLink } from '../../utils/getLink';
 
-export default function AlumniTestimonial() {
-  const [Alumni_Testimonials, setPAlumni_Testimonial] = useState([]);
-  useEffect(() => {
-    instance
-      .get('main/alumni_testimonial/')
-      .then((res) => {
-        setPAlumni_Testimonial(res.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
+const AlumniTestimonial = ({ data }) => {
   const getAlumni_Testimonials = () => {
     let Testi_list = [];
 
-    Alumni_Testimonials.map((Testimonial_Obj) => {
+    data.map((Testimonial_Obj) => {
       return Testi_list.push(
         <div key={Testimonial_Obj.alumni_name}>
           <div
@@ -181,4 +170,6 @@ export default function AlumniTestimonial() {
       </div>
     </div>
   );
-}
+};
+
+export default AlumniTestimonial;

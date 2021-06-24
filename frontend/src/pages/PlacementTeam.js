@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
 import Volunteers from '../components/Volunteers';
 import ContactUsTeam from './ContactUs.js';
-
+import FadeInWhenVisible from '../components/Animation/FadeIn';
 const PlacementTeam = () => {
   const [loading, setLoding] = useState(true);
   const [webDev, setWebDev] = useState([]);
@@ -55,13 +55,15 @@ const PlacementTeam = () => {
         <>
           <ContactUsTeam />
           <hr className={styles.hr} style={{ marginTop: '2rem' }}></hr>
-          <div className={styles.members}>
-            <MenuIcon
-              fontSize="large"
-              style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
-            />
-            WEB DEVELOPMENT TEAM
-          </div>
+          <FadeInWhenVisible>
+            <div className={styles.members}>
+              <MenuIcon
+                fontSize="large"
+                style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
+              />
+              WEB DEVELOPMENT TEAM
+            </div>
+          </FadeInWhenVisible>
           <hr className={styles.hr}></hr>
           <Grid
             container
@@ -80,13 +82,15 @@ const PlacementTeam = () => {
             })}
           </Grid>
           <hr className={styles.hr} style={{ marginTop: '2rem' }}></hr>
-          <div className={styles.members}>
-            <MenuIcon
-              fontSize="large"
-              style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
-            />
-            VOLUNTEERS
-          </div>
+          <FadeInWhenVisible>
+            <div className={styles.members}>
+              <MenuIcon
+                fontSize="large"
+                style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
+              />
+              VOLUNTEERS
+            </div>
+          </FadeInWhenVisible>
           <hr className={styles.hr}></hr>
           <Grid
             container
