@@ -12,24 +12,20 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     marginBottom: '2rem',
     [theme.breakpoints.down(460)]: {
-      padding: 15,
+      padding: 2,
     },
   },
   paper: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
+    [theme.breakpoints.up(460)]: {
+      paddingInline: 40,
+    },
     width: 'auto',
-    fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
-  },
-  paper_s: {
-    padding: theme.spacing(4),
-    width: 'auto',
-    fontSize: '1rem',
-    color: 'rgb(53, 53, 53)',
+    color: 'rgb(0,0,0)',
   },
   text: {
-    textAlign: 'center',
-    padding: theme.spacing(2),
+    color: 'rgb(0,0,0)',
+    fontsize: '1rem',
   },
 }));
 
@@ -78,11 +74,11 @@ const AIPCNorms = () => {
                 </Paper>
               </Grid>
               <Grid item xs={12}>
-                <Paper className={classes.paper_s}>
+                <Paper className={classes.paper}>
                   <Typography>
                     {text ? (
                       <p
-                        classes={classes.text}
+                        className={classes.text}
                         dangerouslySetInnerHTML={createtext()}
                       />
                     ) : (

@@ -31,7 +31,9 @@ import RecruiterDashboard from './pages/RecruiterDashboard';
 import StudentRegister from './pages/StudentRegister';
 import StudentDashboard from './pages/StudentDashboard';
 import AdmissionProcedure from './pages/AdmissionProcedure';
+import Programmes from './pages/Programs';
 import Footer from './components/Footer/Footer';
+import SiteConfig from './pages/SiteConfig';
 
 function App() {
   return (
@@ -44,6 +46,7 @@ function App() {
         <Route path="/DirectorMessage" component={DirectorMessage} />
         <Route path="/GradeSystem" component={GradeSystem} />
         <Route path="/AdmissionProcedure" component={AdmissionProcedure} />
+        <Route path="/Programmes" component={Programmes} />
         <Route path="/WhyRecruit" component={WhyRecruit} />
         <Route path="/Brochure" component={Brochure} />
         <Route path="/PlacementStatistics" component={PlacementStatistics} />
@@ -67,6 +70,7 @@ function App() {
         <Route path="/RecruiterLogin" component={RecruiterLogin} />
         <Route path="/RecruiterRegister" component={RecruiterRegister} />
         <Route path="/RecruiterDashboard" component={RecruiterDashboard} />
+        <Route path="/SiteConfig" component={SiteConfig} />
         <Route default component={NotFound} />
       </Switch>
       <Footer />

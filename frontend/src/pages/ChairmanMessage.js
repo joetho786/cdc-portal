@@ -22,8 +22,11 @@ const useStyles = makeStyles((theme) => ({
       paddingInline: 40,
     },
     width: 'auto',
-    fontSize: '1rem',
-    color: 'black',
+    color: 'rgb(0,0,0)',
+  },
+  text: {
+    color: 'rgb(0,0,0)',
+    fontsize: '1rem',
   },
 }));
 

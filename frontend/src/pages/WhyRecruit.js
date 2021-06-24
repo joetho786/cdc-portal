@@ -9,35 +9,31 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Footer from '../components/Footer/Footer';
+import { getLink } from '../utils/getLink';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    marginBottom: 10,
+    marginBottom: '2rem',
     [theme.breakpoints.down(460)]: {
-      padding: 2,
+      padding: 15,
     },
   },
   paper: {
     padding: theme.spacing(2),
+    [theme.breakpoints.up(460)]: {
+      paddingInline: 40,
+    },
     width: 'auto',
-    color: theme.palette.text.secondary,
-  },
-  paper_card: {
-    padding: theme.spacing(2),
-    width: 'auto',
-    color: theme.palette.text.secondary,
+    color: 'rgb(0,0,0)',
+    fontSize: '1rem',
   },
   card: {
-    width: 370,
+    width: 'auto',
   },
   card_content: {
-    backgroundColor: '#82b1ff',
+    backgroundColor: 'rgb(255, 255, 255)',
     height: 290,
-    '&:hover': {
-      background: '#fce4ec',
-    },
   },
 }));
 
@@ -58,14 +54,14 @@ const WhyRecruit = () => {
   }, []);
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: 'auto', width: 'auto' }}>
       {loading ? (
         <Loading />
       ) : (
         <>
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
-              <Grid style={{ marginTop: '10px' }} item xs={12}>
+              <Grid style={{ marginTop: '30px' }} item xs={12}>
                 <Paper className={classes.paper}>
                   <Typography
                     component="h5"
@@ -76,15 +72,21 @@ const WhyRecruit = () => {
                   </Typography>
                 </Paper>
               </Grid>
-              <br />
             </Grid>
           </Container>
-          <br />
           <Container maxwidth="lg" className={classes.root}>
             <Paper className={classes.paper}>
               <Grid container spacing={4}>
                 {recruitdata.map((item, index) => (
-                  <Grid item xs={12} sm={6} md={4}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4}
+                    styles={{
+                      justifyContent: 'center',
+                    }}
+                  >
                     <Card className={classes.card} raised="True">
                       <CardActionArea>
                         <CardMedia
@@ -92,10 +94,10 @@ const WhyRecruit = () => {
                           alt={item.title}
                           height="200"
                           justify-content="center"
-                          image={item.img}
+                          image={getLink(item.img)}
                           title={item.title}
                           padding="5"
-                          backgroundColor="#2979ff"
+                          backgroundColor="rgb(255, 255, 255)"
                         />
                         <CardContent className={classes.card_content}>
                           <Typography
@@ -103,12 +105,13 @@ const WhyRecruit = () => {
                             variant="h5"
                             component="h2"
                             align="center"
+                            color="rgb(0,0,0)"
                           >
                             {item.title}
                           </Typography>
                           <Typography
                             variant="body3"
-                            color="#004d40"
+                            color="rgb(0,0,0)"
                             component="p"
                           >
                             {item.text}
@@ -121,7 +124,6 @@ const WhyRecruit = () => {
               </Grid>
             </Paper>
           </Container>
-          <Footer />
         </>
       )}
     </div>

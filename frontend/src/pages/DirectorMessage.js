@@ -21,8 +21,11 @@ const useStyles = makeStyles((theme) => ({
       paddingInline: 40,
     },
     width: 'auto',
-    fontSize: '1rem',
-    color: 'black',
+    color: 'rgb(0,0,0)',
+  },
+  text: {
+    color: 'rgb(0,0,0)',
+    fontsize: '1rem',
   },
 }));
 
@@ -71,7 +74,10 @@ const DirectorMessage = () => {
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
                   {message ? (
-                    <p dangerouslySetInnerHTML={createMessage()} />
+                    <p
+                      dangerouslySetInnerHTML={createMessage()}
+                      className={classes.text}
+                    />
                   ) : (
                     <p>Coming soon...</p>
                   )}

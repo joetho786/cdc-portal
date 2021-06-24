@@ -4,13 +4,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 6rem 1rem 2rem;
+  margin: 6rem 0rem 2rem 0rem;
   padding: 1rem;
 }
 
 .iaf {
   text-align: center;
-  margin: 2rem 1rem;
+  margin: 2rem 0rem;
   padding: 1rem;
 }
 

@@ -10,10 +10,12 @@ class ProgramAndBranch(models.Model):
     """
     @Roll_number = B19EE048
     => name = Btech Electrical Engineering
-    => abbreviation = B/EE
+    => getter = B/EE
+    => abbreviation = BTech EE
     """
     name = models.CharField(max_length=60)
-    abbreviation = models.CharField(max_length=10)
+    abbreviation = models.CharField(max_length=20)
+    getter = models.CharField(max_length=10, default="B/EE")
     usable = models.BooleanField(default=False)
 
     def __str__(self):

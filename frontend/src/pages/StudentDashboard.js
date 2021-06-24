@@ -111,7 +111,7 @@ export default function Dashboard() {
     <div className={classes.root}>
       <CssBaseline />
       <Drawer
-        variant="permanent"
+        variant={window.innerWidth >= 1350 ? 'permanent' : 'temporary'}
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
         }}

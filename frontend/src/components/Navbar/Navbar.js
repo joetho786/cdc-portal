@@ -5,6 +5,12 @@ import Grid from '@material-ui/core/Grid';
 import logo from '../../assets/cdclogo.png';
 import iitjLogo from '../../assets/iitjKogo.png';
 import { motion } from 'framer-motion';
+function Logout(event) {
+  event.preventDefault();
+  localStorage.setItem('cdc_LoggedIn', false);
+  localStorage.setItem('cdc_auth_token', '');
+  window.location = '/';
+}
 export default function Navbar() {
   const [isChecked, setIsChecked] = useState(false);
 
@@ -55,6 +61,50 @@ export default function Navbar() {
                       <Link to="/ChairmanMessage">Chairman's Message</Link>
                     </li>
                   </ul>
+                  <Link
+                    className="desktop-link"
+                    to={
+                      localStorage.getItem('cdc_loginType') === 'Student'
+                        ? '/StudentDashboard'
+                        : '/RecruiterDashboard'
+                    }
+                  >
+                    <span>
+                      {localStorage.getItem('cdc_Dname')}{' '}
+                      <i className="fa fa-caret-down"></i>
+                    </span>
+                  </Link>
+                  <input type="checkbox" id="show-cdc-team" />
+                  <label htmlFor="show-cdc-team">
+                    {localStorage.getItem('cdc_Dname')}{' '}
+                    <i className="fa fa-caret-down"></i>
+                  </label>
+                  {localStorage.getItem('cdc_loginType') === 'Student' ? (
+                    /* Student Zone */
+                    <ul>
+                      <li onClick={() => setIsChecked(!isChecked)}>
+                        <Link to="/StudentDashboard/uploadresume">Profile</Link>
+                      </li>
+                      <li onClick={() => setIsChecked(!isChecked)}>
+                        <Link to="/StudentDashboard/uploadresume">
+                          Upload Resume
+                        </Link>
+                      </li>
+                      <li onClick={Logout}>
+                        <Link to="#">Logout</Link>
+                      </li>
+                    </ul>
+                  ) : (
+                    /* Compant Zone */
+                    <ul>
+                      <li onClick={() => setIsChecked(!isChecked)}>
+                        <Link to="/CareerCounselling">Profile</Link>
+                      </li>
+                      <li onClick={Logout}>
+                        <Link to="#">Logout</Link>
+                      </li>
+                    </ul>
+                  )}
                 </li>
                 <li>
                   <Link to="#" className="desktop-link">

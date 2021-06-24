@@ -85,7 +85,15 @@ function Home() {
         adt.program_branch = adt.program_branch.name;
         setdata(adt);
       })
-      .catch((error) => console.log(error));
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response);
+          if (error.response.status === 403) {
+            window.alert('Complete Your Profile');
+            window.location = '/StudentRegister';
+          }
+        }
+      });
   }, []);
   return (
     <Grid container spacing={2}>
