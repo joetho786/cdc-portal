@@ -65,34 +65,24 @@ const AlumniTestimonial = ({ data }) => {
                 <div>
                   {Testimonial_Obj.facebook !== null && (
                     <Tooltip arrow title="facebook">
-                      <IconButton
-                        href={Testimonial_Obj.facebook}
-                        color="primary"
-                        variant="outlined"
-                      >
-                        <FacebookIcon />
+                      <IconButton color="primary" variant="outlined">
+                        <FacebookIcon href={Testimonial_Obj.facebook} />
                       </IconButton>
                     </Tooltip>
                   )}
                   {Testimonial_Obj.mailId !== null && (
                     <Tooltip arrow title={Testimonial_Obj.mailId}>
-                      <IconButton
-                        href={`https://mail.google.com/mail/?view=cm&fs=1&to=${Testimonial_Obj.mailId}`}
-                        color="secondary"
-                        variant="outlined"
-                      >
-                        <EmailIcon />
+                      <IconButton color="secondary" variant="outlined">
+                        <EmailIcon
+                          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${Testimonial_Obj.mailId}`}
+                        />
                       </IconButton>
                     </Tooltip>
                   )}
                   {Testimonial_Obj.twitter !== null && (
                     <Tooltip arrow title="Twitter">
-                      <IconButton
-                        href={Testimonial_Obj.twitter}
-                        color="primary"
-                        variant="outlined"
-                      >
-                        <TwitterIcon />
+                      <IconButton color="primary" variant="outlined">
+                        <TwitterIcon href={Testimonial_Obj.twitter} />
                       </IconButton>
                     </Tooltip>
                   )}
