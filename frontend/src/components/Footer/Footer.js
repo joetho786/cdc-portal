@@ -24,17 +24,17 @@ const footers = [
   {
     title: 'Downloads',
     description: [
-      ['JAF', '/JAF'],
-      ['IAF', '/IAF'],
-      ['Brochure', '/Brochure'],
+      ['JAF', '/jaf'],
+      ['IAF', '/iaf'],
+      ['Brochure', '/brochure'],
     ],
   },
   {
     title: 'Quick Links',
     description: [
-      ['Placement registration link', '/RecruiterLogin'],
-      ['Placement Statistics', '/PlacementStatistics'],
-      ['Meet our Team', '/CareerCounselling'],
+      ['Placement registration link', '/recruiter-login'],
+      ['Placement Statistics', '/placement-statistics'],
+      ['Meet our Team', '/c3-members'],
     ],
   },
   {

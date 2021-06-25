@@ -132,14 +132,14 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Router>
             <Switch>
-              <Route path="/StudentDashboard/" exact component={Home} />
+              <Route path="/student-dashboard/" exact component={Home} />
               <Route
-                path="/StudentDashboard/profile"
+                path="/student-dashboard/profile"
                 exact
                 component={StudentLogin}
               />
               <Route
-                path="/StudentDashboard/UploadResume"
+                path="/student-dashboard/UploadResume"
                 exact
                 component={UploadResume}
               />
