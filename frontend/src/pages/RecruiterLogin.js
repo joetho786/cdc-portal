@@ -7,7 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import instance from '../api/axios';
-import back_img from '../assets/loginback.jpg';
+import backgroundImage from '../assets/loginback.jpg';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -43,7 +43,7 @@ const RecruiterLogin = () => {
         localStorage.setItem('cdc_LoggedIn', true);
         localStorage.setItem('cdc_Dname', Dname);
         localStorage.setItem('cdc_loginType', 'Recruiter');
-        window.location = 'RecruiterDashboard';
+        window.location = 'recruiter-dashboard';
       })
       .catch(function (error) {
         if (error.response) {
@@ -69,7 +69,7 @@ const RecruiterLogin = () => {
   return (
     <div
       style={{
-        background: `url(${back_img}) no-repeat fixed`,
+        background: `url(${backgroundImage}) no-repeat fixed`,
         backgroundSize: 'cover',
         backgroundPosition: '50%',
         padding: '3%',
@@ -119,7 +119,7 @@ const RecruiterLogin = () => {
             className={styles.registerButton}
             onClick={(e) => {
               e.preventDefault();
-              window.location = 'RecruiterRegister';
+              window.location = 'recruiter-register';
             }}
           >
             Register

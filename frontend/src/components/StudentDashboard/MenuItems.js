@@ -17,7 +17,7 @@ function Logout(event) {
 export const mainListItems = (
   <div>
     <a
-      href="/StudentDashboard/"
+      href="/student-dashboard/"
       style={{ color: 'inherit', textDecoration: 'none' }}
     >
       <ListItem>
@@ -28,7 +28,7 @@ export const mainListItems = (
       </ListItem>
     </a>
     <a
-      href="/StudentDashboard/"
+      href="/student-dashboard/"
       style={{ color: 'inherit', textDecoration: 'none' }}
     >
       <ListItem button>
@@ -39,7 +39,7 @@ export const mainListItems = (
       </ListItem>
     </a>
     <a
-      href="/StudentDashboard/uploadresume"
+      href="/student-dashboard/uploadresume"
       style={{ color: 'inherit', textDecoration: 'none' }}
     >
       <ListItem button>

@@ -29,14 +29,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1rem',
   },
   card: {
-    width: 370,
+    width: 'auto',
   },
   card_content: {
-    backgroundColor: '#82b1ff',
+    backgroundColor: 'rgb(255, 255, 255)',
     height: 290,
-    '&:hover': {
-      background: '#fce4ec',
-    },
   },
 }));
 
@@ -57,7 +54,7 @@ const WhyRecruit = () => {
   }, []);
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: 'auto', width: 'auto' }}>
       {loading ? (
         <Loading />
       ) : (
@@ -75,10 +72,8 @@ const WhyRecruit = () => {
                   </Typography>
                 </Paper>
               </Grid>
-              <br />
             </Grid>
           </Container>
-          <br />
           <Container maxwidth="lg" className={classes.root}>
             <Paper className={classes.paper}>
               <Grid container spacing={4}>
@@ -102,7 +97,7 @@ const WhyRecruit = () => {
                           image={getLink(item.img)}
                           title={item.title}
                           padding="5"
-                          backgroundColor="#2979ff"
+                          backgroundColor="rgb(255, 255, 255)"
                         />
                         <CardContent className={classes.card_content}>
                           <Typography
@@ -129,8 +124,6 @@ const WhyRecruit = () => {
               </Grid>
             </Paper>
           </Container>
-          <br></br>
-          <br></br>
         </>
       )}
     </div>
