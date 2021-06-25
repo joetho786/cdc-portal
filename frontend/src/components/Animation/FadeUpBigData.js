@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 
-function FadeInWhenVisible({ children }) {
+function FadeUpBigDataWhenVisible({ children }) {
   const controls = useAnimation();
   const [ref, inView] = useInView({
-    rootMargin: '50px',
-    threshold: 0.4,
+    rootMargin: '20px',
+    threshold: 0.05,
   });
 
   useEffect(() => {
@@ -23,8 +23,8 @@ function FadeInWhenVisible({ children }) {
         initial="hidden"
         transition={{ duration: 1 }}
         variants={{
-          visible: { opacity: 1 },
-          hidden: { opacity: 0 },
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 20 },
         }}
       >
         {children}
@@ -33,4 +33,4 @@ function FadeInWhenVisible({ children }) {
   );
 }
 
-export default FadeInWhenVisible;
+export default FadeUpBigDataWhenVisible;

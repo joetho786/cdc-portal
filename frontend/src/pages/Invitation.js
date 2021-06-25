@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import FadeInWhenVisible from '../components/Animation/FadeIn';
+import FadeUpBigDataWhenVisible from '../components/Animation/FadeUpBigData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,24 +60,28 @@ const Invitation = () => {
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
-                <Paper className={classes.paper}>
-                  <Typography
-                    component="h5"
-                    variant="h5"
-                    style={{ fontSize: 30, textAlign: 'center' }}
-                  >
-                    Invitation
-                  </Typography>
-                </Paper>
+                <FadeInWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography
+                      component="h5"
+                      variant="h5"
+                      style={{ fontSize: 30, textAlign: 'center' }}
+                    >
+                      Invitation
+                    </Typography>
+                  </Paper>
+                </FadeInWhenVisible>
               </Grid>
               <Grid item xs={12}>
-                <Paper className={classes.paper}>
-                  {invitation ? (
-                    <p dangerouslySetInnerHTML={createInvitation()} />
-                  ) : (
-                    <p>Coming soon...</p>
-                  )}
-                </Paper>
+                <FadeUpBigDataWhenVisible>
+                  <Paper className={classes.paper}>
+                    {invitation ? (
+                      <p dangerouslySetInnerHTML={createInvitation()} />
+                    ) : (
+                      <p>Coming soon...</p>
+                    )}
+                  </Paper>
+                </FadeUpBigDataWhenVisible>
               </Grid>
             </Grid>
           </Container>

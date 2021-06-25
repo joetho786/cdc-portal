@@ -10,6 +10,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Table from '@material-ui/core/Table';
+import FadeInWhenVisible from '../components/Animation/FadeIn';
+import FadeUpBigDataWhenVisible from '../components/Animation/FadeUpBigData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -285,199 +287,206 @@ const Programmes = () => {
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
-                <Paper className={classes.paper}>
-                  <Typography
-                    component="h5"
-                    variant="h5"
-                    display="block"
-                    width="500"
-                    style={{ fontSize: 30, textAlign: 'center' }}
-                  >
-                    Programmes
-                  </Typography>
-                </Paper>
+                <FadeInWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography
+                      component="h5"
+                      variant="h5"
+                      display="block"
+                      width="500"
+                      style={{ fontSize: 30, textAlign: 'center' }}
+                    >
+                      Programmes
+                    </Typography>
+                  </Paper>
+                </FadeInWhenVisible>
               </Grid>
               <Grid item xs={12}>
-                <Paper className={classes.paper}>
-                  <Typography
-                    component="h4"
-                    style={{
-                      fontSize: 20,
-                      fontWeight: 'bold',
-                      textAlign: 'center',
-                    }}
-                  >
-                    Academic Programs
-                  </Typography>
-                  <Typography className={classes.text}>
-                    The Institute offers the following Academic Programs:
-                  </Typography>
-                  <br />
-                  <TableContainer
-                    className={classes.tablewrapper}
-                    component={Paper}
-                    elevation={0}
-                  >
-                    <Table className={classes.table} aria-label="simple table">
-                      <TableBody>
-                        <TableRow className={classes.heads}>
-                          Bachelor of Technology Programs
-                        </TableRow>
-                        {btechrows.map((row) => (
-                          <TableRow key={row.name}>
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              className={classes.text}
-                            >
-                              <Link href={row.link}>{row.name}</Link>
-                            </TableCell>
+                <FadeUpBigDataWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography
+                      component="h4"
+                      style={{
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                      }}
+                    >
+                      Academic Programs
+                    </Typography>
+                    <Typography className={classes.text}>
+                      The Institute offers the following Academic Programs:
+                    </Typography>
+                    <br />
+                    <TableContainer
+                      className={classes.tablewrapper}
+                      component={Paper}
+                      elevation={0}
+                    >
+                      <Table
+                        className={classes.table}
+                        aria-label="simple table"
+                      >
+                        <TableBody>
+                          <TableRow className={classes.heads}>
+                            Bachelor of Technology Programs
                           </TableRow>
-                        ))}
-                      </TableBody>
-                      <br />
-                      <br />
-                      <TableBody>
-                        <TableRow className={classes.heads}>
-                          Master of Technology Programs
-                        </TableRow>
-                        {mtechrows.map((row) => (
-                          <TableRow key={row.name}>
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              className={classes.text}
-                            >
-                              <Link href={row.link}>{row.name}</Link>
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                      <br />
-                      <br />
-                      <TableBody>
-                        <TableRow className={classes.heads}>
-                          Master of Science Programs
-                        </TableRow>
-                        {mscrows.map((row) => (
-                          <TableRow key={row.name}>
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              className={classes.text}
-                            >
-                              <Link href={row.link}>{row.name}</Link>
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                      <br />
-                      <br />
-                      <TableBody>
-                        <TableRow className={classes.heads}>
-                          Master of Science - Master of Technology Programs
-                        </TableRow>
-                        {mscmtechrows.map((row) => (
-                          <TableRow key={row.name}>
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              className={classes.text}
-                            >
-                              <Link href={row.link}>{row.name}</Link>
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                      <br />
-                      <br />
-                      <TableBody>
-                        <TableRow className={classes.heads}>
-                          Master of Technology - Doctor of Philosophy
-                          (M.Tech.-Ph.D.) Dual Degree Programs
-                        </TableRow>
-                        {mtechphdrows.map((row) => (
-                          <TableRow key={row.name}>
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              className={classes.text}
-                            >
-                              <Link href={row.link}>{row.name}</Link>
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                      <br />
-                      <br />
-                      <TableBody>
-                        <TableRow className={classes.heads}>
-                          Doctor of Philosophy Programs
-                        </TableRow>
+                          {btechrows.map((row) => (
+                            <TableRow key={row.name}>
+                              <TableCell
+                                component="th"
+                                scope="row"
+                                className={classes.text}
+                              >
+                                <Link href={row.link}>{row.name}</Link>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
                         <br />
-                        <Typography className={classes.text}>
-                          Core Sciences
-                        </Typography>
-                        {phdcorerows.map((row) => (
-                          <TableRow key={row.name}>
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              className={classes.text}
-                            >
-                              <Link href={row.link}>{row.name}</Link>
-                            </TableCell>
-                          </TableRow>
-                        ))}
                         <br />
-                        <Typography className={classes.text}>
-                          Engineering Sciences
-                        </Typography>
-                        {phdesrows.map((row) => (
-                          <TableRow key={row.name}>
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              className={classes.text}
-                            >
-                              <Link href={row.link}>{row.name}</Link>
-                            </TableCell>
+                        <TableBody>
+                          <TableRow className={classes.heads}>
+                            Master of Technology Programs
                           </TableRow>
-                        ))}
+                          {mtechrows.map((row) => (
+                            <TableRow key={row.name}>
+                              <TableCell
+                                component="th"
+                                scope="row"
+                                className={classes.text}
+                              >
+                                <Link href={row.link}>{row.name}</Link>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
                         <br />
-                        <Typography className={classes.text}>
-                          Inter-disciplinary Areas
-                        </Typography>
-                        {phdintrows.map((row) => (
-                          <TableRow key={row.name}>
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              className={classes.text}
-                            >
-                              <Link href={row.link}>{row.name}</Link>
-                            </TableCell>
-                          </TableRow>
-                        ))}
                         <br />
-                        <Typography className={classes.text}>
-                          Humanities and Social Sciences
-                        </Typography>
-                        {phdhumrows.map((row) => (
-                          <TableRow key={row.name}>
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              className={classes.text}
-                            >
-                              <Link href={row.link}>{row.name}</Link>
-                            </TableCell>
+                        <TableBody>
+                          <TableRow className={classes.heads}>
+                            Master of Science Programs
                           </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                </Paper>
+                          {mscrows.map((row) => (
+                            <TableRow key={row.name}>
+                              <TableCell
+                                component="th"
+                                scope="row"
+                                className={classes.text}
+                              >
+                                <Link href={row.link}>{row.name}</Link>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                        <br />
+                        <br />
+                        <TableBody>
+                          <TableRow className={classes.heads}>
+                            Master of Science - Master of Technology Programs
+                          </TableRow>
+                          {mscmtechrows.map((row) => (
+                            <TableRow key={row.name}>
+                              <TableCell
+                                component="th"
+                                scope="row"
+                                className={classes.text}
+                              >
+                                <Link href={row.link}>{row.name}</Link>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                        <br />
+                        <br />
+                        <TableBody>
+                          <TableRow className={classes.heads}>
+                            Master of Technology - Doctor of Philosophy
+                            (M.Tech.-Ph.D.) Dual Degree Programs
+                          </TableRow>
+                          {mtechphdrows.map((row) => (
+                            <TableRow key={row.name}>
+                              <TableCell
+                                component="th"
+                                scope="row"
+                                className={classes.text}
+                              >
+                                <Link href={row.link}>{row.name}</Link>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                        <br />
+                        <br />
+                        <TableBody>
+                          <TableRow className={classes.heads}>
+                            Doctor of Philosophy Programs
+                          </TableRow>
+                          <br />
+                          <Typography className={classes.text}>
+                            Core Sciences
+                          </Typography>
+                          {phdcorerows.map((row) => (
+                            <TableRow key={row.name}>
+                              <TableCell
+                                component="th"
+                                scope="row"
+                                className={classes.text}
+                              >
+                                <Link href={row.link}>{row.name}</Link>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                          <br />
+                          <Typography className={classes.text}>
+                            Engineering Sciences
+                          </Typography>
+                          {phdesrows.map((row) => (
+                            <TableRow key={row.name}>
+                              <TableCell
+                                component="th"
+                                scope="row"
+                                className={classes.text}
+                              >
+                                <Link href={row.link}>{row.name}</Link>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                          <br />
+                          <Typography className={classes.text}>
+                            Inter-disciplinary Areas
+                          </Typography>
+                          {phdintrows.map((row) => (
+                            <TableRow key={row.name}>
+                              <TableCell
+                                component="th"
+                                scope="row"
+                                className={classes.text}
+                              >
+                                <Link href={row.link}>{row.name}</Link>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                          <br />
+                          <Typography className={classes.text}>
+                            Humanities and Social Sciences
+                          </Typography>
+                          {phdhumrows.map((row) => (
+                            <TableRow key={row.name}>
+                              <TableCell
+                                component="th"
+                                scope="row"
+                                className={classes.text}
+                              >
+                                <Link href={row.link}>{row.name}</Link>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                  </Paper>
+                </FadeUpBigDataWhenVisible>
               </Grid>
             </Grid>
           </Container>

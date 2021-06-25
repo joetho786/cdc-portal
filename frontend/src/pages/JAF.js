@@ -6,6 +6,8 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import styles from '../styles/pages/JAF.module.css';
 import { Container } from '@material-ui/core';
 import { getLink } from '../utils/getLink';
+import FadeInWhenVisible from '../components/Animation/FadeIn';
+import FadeUpWhenVisible from '../components/Animation/FadeUp';
 
 const JAF = () => {
   const [loading, setLoading] = useState(true);
@@ -27,30 +29,34 @@ const JAF = () => {
         <Loading />
       ) : (
         <Container maxWidth="lg">
-          <Paper className={styles.heading} elevation={2}>
-            <DescriptionIcon
-              fontSize="inherit"
-              style={{ margin: '0 0.3rem', padding: '0' }}
-            />
-            JAF
-          </Paper>
-          <Paper elevation={2} className={styles.jaf}>
-            <div className={styles.download}>
-              <a download href={getLink(data['file'])}>
-                Click here to download the Job Announcement Form{' '}
-                <i className="fa fa-external-link-alt"></i>
-              </a>
-            </div>
-            <div className={styles.iframe}>
-              <iframe
-                src={`https://docs.google.com/gview?url=${getLink(
-                  data['file']
-                )}&embedded=true#view=fitH`}
-                title="Job Announcement Form"
-                style={{ width: '100%', height: '100%' }}
+          <FadeInWhenVisible>
+            <Paper className={styles.heading} elevation={2}>
+              <DescriptionIcon
+                fontSize="inherit"
+                style={{ margin: '0 0.3rem', padding: '0' }}
               />
-            </div>
-          </Paper>
+              JAF
+            </Paper>
+          </FadeInWhenVisible>
+          <FadeUpWhenVisible>
+            <Paper elevation={2} className={styles.jaf}>
+              <div className={styles.download}>
+                <a download href={getLink(data['file'])}>
+                  Click here to download the Job Announcement Form{' '}
+                  <i className="fa fa-external-link-alt"></i>
+                </a>
+              </div>
+              <div className={styles.iframe}>
+                <iframe
+                  src={`https://docs.google.com/gview?url=${getLink(
+                    data['file']
+                  )}&embedded=true#view=fitH`}
+                  title="Job Announcement Form"
+                  style={{ width: '100%', height: '100%' }}
+                />
+              </div>
+            </Paper>
+          </FadeUpWhenVisible>
         </Container>
       )}
     </div>
