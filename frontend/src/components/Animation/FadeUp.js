@@ -6,7 +6,7 @@ function FadeUpWhenVisible({ children }) {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     rootMargin: '50px',
-    threshold: 0.4,
+    threshold: 0.2,
   });
 
   useEffect(() => {

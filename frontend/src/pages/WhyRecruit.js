@@ -10,7 +10,8 @@ import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { getLink } from '../utils/getLink';
-
+import FadeInWhenVisible from '../components/Animation/FadeIn';
+import FadeUpWhenVisible from '../components/Animation/FadeUp';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -62,15 +63,17 @@ const WhyRecruit = () => {
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
-                <Paper className={classes.paper}>
-                  <Typography
-                    component="h5"
-                    variant="h5"
-                    style={{ fontSize: 30, textAlign: 'center' }}
-                  >
-                    Why Recruit?
-                  </Typography>
-                </Paper>
+                <FadeInWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography
+                      component="h5"
+                      variant="h5"
+                      style={{ fontSize: 30, textAlign: 'center' }}
+                    >
+                      Why Recruit?
+                    </Typography>
+                  </Paper>
+                </FadeInWhenVisible>
               </Grid>
             </Grid>
           </Container>
@@ -87,38 +90,40 @@ const WhyRecruit = () => {
                       justifyContent: 'center',
                     }}
                   >
-                    <Card className={classes.card} raised="True">
-                      <CardActionArea>
-                        <CardMedia
-                          component="img"
-                          alt={item.title}
-                          height="200"
-                          justify-content="center"
-                          image={getLink(item.img)}
-                          title={item.title}
-                          padding="5"
-                          backgroundColor="rgb(255, 255, 255)"
-                        />
-                        <CardContent className={classes.card_content}>
-                          <Typography
-                            gutterBottom
-                            variant="h5"
-                            component="h2"
-                            align="center"
-                            color="rgb(0,0,0)"
-                          >
-                            {item.title}
-                          </Typography>
-                          <Typography
-                            variant="body3"
-                            color="rgb(0,0,0)"
-                            component="p"
-                          >
-                            {item.text}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                    </Card>
+                    <FadeUpWhenVisible>
+                      <Card className={classes.card} raised="True">
+                        <CardActionArea>
+                          <CardMedia
+                            component="img"
+                            alt={item.title}
+                            height="200"
+                            justify-content="center"
+                            image={getLink(item.img)}
+                            title={item.title}
+                            padding="5"
+                            backgroundColor="rgb(255, 255, 255)"
+                          />
+                          <CardContent className={classes.card_content}>
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              component="h2"
+                              align="center"
+                              color="rgb(0,0,0)"
+                            >
+                              {item.title}
+                            </Typography>
+                            <Typography
+                              variant="body3"
+                              color="rgb(0,0,0)"
+                              component="p"
+                            >
+                              {item.text}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </FadeUpWhenVisible>
                   </Grid>
                 ))}
               </Grid>

@@ -15,7 +15,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 import FadeInWhenVisible from '../components/Animation/FadeIn';
-import FadeUpWhenVisible from '../components/Animation/FadeUp';
+import FadeUpBigDataWhenVisible from '../components/Animation/FadeUpBigData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,7 +94,7 @@ const PlacementStatistics = () => {
                 </FadeInWhenVisible>
               </Grid>
               <Grid item xs={12}>
-                <FadeUpWhenVisible>
+                <FadeUpBigDataWhenVisible>
                   <Paper className={classes.paper}>
                     {text ? (
                       <p dangerouslySetInnerHTML={createText()} />
@@ -227,7 +227,7 @@ const PlacementStatistics = () => {
                       rootProps={{ 'data-testid': '1' }}
                     />
                   </Paper>
-                </FadeUpWhenVisible>
+                </FadeUpBigDataWhenVisible>
               </Grid>
             </Grid>
           </Container>
