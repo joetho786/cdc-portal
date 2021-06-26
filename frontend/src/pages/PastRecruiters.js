@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import FadeInWhenVisible from '../components/Animation/FadeIn';
+import FadeUpWhenVisible from '../components/Animation/FadeUp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,65 +71,69 @@ const PastRecruiters = () => {
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
-                <Paper className={classes.paper}>
-                  <Typography
-                    component="h5"
-                    variant="h5"
-                    display="block"
-                    width="500"
-                    style={{ fontSize: 30, textAlign: 'center' }}
-                  >
-                    Past Recruiters
-                  </Typography>
-                </Paper>
+                <FadeInWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography
+                      component="h5"
+                      variant="h5"
+                      display="block"
+                      width="500"
+                      style={{ fontSize: 30, textAlign: 'center' }}
+                    >
+                      Past Recruiters
+                    </Typography>
+                  </Paper>
+                </FadeInWhenVisible>
               </Grid>
               <Grid item xs={12}>
-                <Paper className={classes.paper}>
-                  <Typography
-                    component="h3"
-                    style={{
-                      fontSize: 20,
-                      fontWeight: 'bold',
-                      textAlign: 'center',
-                      color: 'rgb(0,0,0)',
-                    }}
-                  >
-                    Private Companies
-                  </Typography>
-                  <Typography>
-                    {privatetext ? (
-                      <p
-                        className={classes.text_}
-                        dangerouslySetInnerHTML={createtext(privatetext)}
-                      />
-                    ) : (
-                      <p>Coming soon...</p>
-                    )}
-                  </Typography>
-                  <br />
-                  <br />
-                  <Typography
-                    component="h3"
-                    style={{
-                      fontSize: 20,
-                      fontWeight: 'bold',
-                      textAlign: 'center',
-                      color: 'rgb(0,0,0)',
-                    }}
-                  >
-                    Public Sector Companies
-                  </Typography>
-                  <Typography>
-                    {publictext ? (
-                      <p
-                        className={classes.text_}
-                        dangerouslySetInnerHTML={createtext(publictext)}
-                      />
-                    ) : (
-                      <p>Coming soon...</p>
-                    )}
-                  </Typography>
-                </Paper>
+                <FadeUpWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography
+                      component="h3"
+                      style={{
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        color: 'rgb(0,0,0)',
+                      }}
+                    >
+                      Private Companies
+                    </Typography>
+                    <Typography>
+                      {privatetext ? (
+                        <p
+                          className={classes.text_}
+                          dangerouslySetInnerHTML={createtext(privatetext)}
+                        />
+                      ) : (
+                        <p>Coming soon...</p>
+                      )}
+                    </Typography>
+                    <br />
+                    <br />
+                    <Typography
+                      component="h3"
+                      style={{
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        color: 'rgb(0,0,0)',
+                      }}
+                    >
+                      Public Sector Companies
+                    </Typography>
+                    <Typography>
+                      {publictext ? (
+                        <p
+                          className={classes.text_}
+                          dangerouslySetInnerHTML={createtext(publictext)}
+                        />
+                      ) : (
+                        <p>Coming soon...</p>
+                      )}
+                    </Typography>
+                  </Paper>
+                </FadeUpWhenVisible>
               </Grid>
             </Grid>
           </Container>

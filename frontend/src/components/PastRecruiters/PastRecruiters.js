@@ -1,26 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import instance from '../../api/axios';
+import React from 'react';
 import Slider from 'react-slick';
 import Container from '@material-ui/core/Container';
 import CardMedia from '@material-ui/core/CardMedia';
 import styles from './PastRecruiters.module.css';
 import { getLink } from '../../utils/getLink';
 
-export default function PastRecruiters() {
-  const [PR_Objs, setPR_Obj] = useState([]);
-  useEffect(() => {
-    instance
-      .get('main/past_recruiters/')
-      .then((res) => {
-        setPR_Obj(res.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
+const PastRecruiters = ({ data }) => {
   const getPR_Objs = () => {
     let list = [];
 
-    PR_Objs.map((PR) => {
+    data.map((PR) => {
       return list.push(
         <div key={PR.id}>
           <div
@@ -112,4 +101,5 @@ export default function PastRecruiters() {
       </div>
     </div>
   );
-}
+};
+export default PastRecruiters;

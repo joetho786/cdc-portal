@@ -10,7 +10,8 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-
+import FadeUpWhenVisible from '../components/Animation/FadeUp';
+import FadeInWhenVisible from '../components/Animation/FadeIn';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -85,30 +86,32 @@ const Achievements = () => {
     highlights.map((highlights_Obj) => {
       return highlights_list.push(
         <Card key={highlights_Obj.title} className={classes.Hroot}>
-          <CardActionArea className={classes.actionArea}>
-            <CardMedia
-              className={classes.media}
-              image={getLink(highlights_Obj.image)}
-              title={highlights_Obj.title}
-            />
-            <CardContent>
-              <Typography
-                gutterBottom
-                style={{ color: 'black' }}
-                variant="h6"
-                component="h2"
-              >
-                {highlights_Obj.title}
-              </Typography>
-              <div className={classes.paperother}>
-                <p
-                  dangerouslySetInnerHTML={createAchievements(
-                    highlights_Obj.description
-                  )}
-                />
-              </div>
-            </CardContent>
-          </CardActionArea>
+          <FadeInWhenVisible>
+            <CardActionArea className={classes.actionArea}>
+              <CardMedia
+                className={classes.media}
+                image={getLink(highlights_Obj.image)}
+                title={highlights_Obj.title}
+              />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  style={{ color: 'black' }}
+                  variant="h6"
+                  component="h2"
+                >
+                  {highlights_Obj.title}
+                </Typography>
+                <div className={classes.paperother}>
+                  <p
+                    dangerouslySetInnerHTML={createAchievements(
+                      highlights_Obj.description
+                    )}
+                  />
+                </div>
+              </CardContent>
+            </CardActionArea>
+          </FadeInWhenVisible>
         </Card>
       );
     });
@@ -121,27 +124,29 @@ const Achievements = () => {
 
     others.map((others_Obj) => {
       return others_list.push(
-        <Card key={others_Obj.title} className={classes.Hroot}>
-          <CardActionArea>
-            <CardContent>
-              <Typography
-                gutterBottom
-                style={{ color: 'black' }}
-                variant="h6"
-                component="h2"
-              >
-                {others_Obj.title}
-              </Typography>
-              <div className={classes.paperother}>
-                <p
-                  dangerouslySetInnerHTML={createAchievements(
-                    others_Obj.description
-                  )}
-                />
-              </div>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+        <FadeUpWhenVisible>
+          <Card key={others_Obj.title} className={classes.Hroot}>
+            <CardActionArea>
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  style={{ color: 'black' }}
+                  variant="h6"
+                  component="h2"
+                >
+                  {others_Obj.title}
+                </Typography>
+                <div className={classes.paperother}>
+                  <p
+                    dangerouslySetInnerHTML={createAchievements(
+                      others_Obj.description
+                    )}
+                  />
+                </div>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </FadeUpWhenVisible>
       );
     });
 
@@ -157,24 +162,19 @@ const Achievements = () => {
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
-                <Paper className={classes.paper}>
-                  <Typography
-                    component="h5"
-                    variant="h5"
-                    style={{ fontSize: 30, textAlign: 'center' }}
-                  >
-                    Achievements
-                  </Typography>
-                </Paper>
+                <FadeInWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography
+                      component="h5"
+                      variant="h5"
+                      style={{ fontSize: 30, textAlign: 'center' }}
+                    >
+                      Achievements
+                    </Typography>
+                  </Paper>
+                </FadeInWhenVisible>
               </Grid>
               <Grid item xs={12}>
-                <Typography
-                  component="h5"
-                  variant="h5"
-                  style={{ fontSize: 30, margin: 10, textAlign: 'center' }}
-                >
-                  Highlights
-                </Typography>
                 <Container maxWidth="lg" className={classes.Awrapper}>
                   {highlights === [] ? ' ' : gethighlights()}
                 </Container>
@@ -184,13 +184,6 @@ const Achievements = () => {
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Typography
-                  component="h5"
-                  variant="h5"
-                  style={{ fontSize: 30, margin: 10, textAlign: 'center' }}
-                >
-                  Others
-                </Typography>
                 <Container maxWidth="lg" className={classes.Awrapper}>
                   {others === [] ? ' ' : getothers()}
                 </Container>

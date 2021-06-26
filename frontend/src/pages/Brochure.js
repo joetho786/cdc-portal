@@ -6,7 +6,8 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import styles from '../styles/pages/Brochure.module.css';
 import { Container } from '@material-ui/core';
 import { getLink } from '../utils/getLink';
-
+import FadeInWhenVisible from '../components/Animation/FadeIn';
+import FadeUpWhenVisible from '../components/Animation/FadeUp';
 const Brochure = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({});
@@ -27,31 +28,35 @@ const Brochure = () => {
         <Loading />
       ) : (
         <Container maxWidth="lg">
-          <Paper className={styles.heading} elevation={2}>
-            <DescriptionIcon
-              fontSize="inherit"
-              style={{ margin: '0 0.3rem', padding: '0' }}
-            />
-            Brochure
-          </Paper>
-          <Paper elevation={2} className={styles.jaf}>
-            <div className={styles.download}>
-              <a download href={getLink(data['file'])}>
-                Click here to download the Brochure{' '}
-                <i className="fa fa-external-link-alt"></i>
-              </a>
-            </div>
-            <div className={styles.iframe}>
-              <iframe
-                src={`https://docs.google.com/gview?url=${getLink(
-                  data['file']
-                )}&embedded=true#view=fitH`}
-                title="Brochure"
-                style={{ width: '100%', height: '100%' }}
-                frameborder="0"
+          <FadeInWhenVisible>
+            <Paper className={styles.heading} elevation={2}>
+              <DescriptionIcon
+                fontSize="inherit"
+                style={{ margin: '0 0.3rem', padding: '0' }}
               />
-            </div>
-          </Paper>
+              Brochure
+            </Paper>
+          </FadeInWhenVisible>
+          <FadeUpWhenVisible>
+            <Paper elevation={2} className={styles.jaf}>
+              <div className={styles.download}>
+                <a download href={getLink(data['file'])}>
+                  Click here to download the Brochure{' '}
+                  <i className="fa fa-external-link-alt"></i>
+                </a>
+              </div>
+              <div className={styles.iframe}>
+                <iframe
+                  src={`https://docs.google.com/gview?url=${getLink(
+                    data['file']
+                  )}&embedded=true#view=fitH`}
+                  title="Brochure"
+                  style={{ width: '100%', height: '100%' }}
+                  frameborder="0"
+                />
+              </div>
+            </Paper>
+          </FadeUpWhenVisible>
         </Container>
       )}
     </div>

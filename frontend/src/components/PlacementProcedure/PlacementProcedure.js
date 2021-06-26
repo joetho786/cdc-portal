@@ -10,6 +10,7 @@ import { Container, Typography } from '@material-ui/core';
 import StarsIcon from '@material-ui/icons/Stars';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import FadeInWhenVisible from '../Animation/FadeIn';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,13 +52,19 @@ const PlacementProcedureComponent = () => {
       <Container maxWidth="lg" className={classes.root}>
         <Grid container spacing={3}>
           <Grid style={{ marginTop: '30px' }} item xs={12}>
-            <Paper className={classes.paper}>
-              <Typography component="h5" variant="h5" style={{ fontSize: 30 }}>
-                Placement Procedure
-              </Typography>
-            </Paper>
+            <FadeInWhenVisible>
+              <Paper className={classes.paper}>
+                <Typography
+                  component="h5"
+                  variant="h5"
+                  style={{ fontSize: 30 }}
+                >
+                  Placement Procedure
+                </Typography>
+              </Paper>
+            </FadeInWhenVisible>
           </Grid>
-          <VerticalTimeline animate={false}>
+          <VerticalTimeline>
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               iconStyle={IconStyle}

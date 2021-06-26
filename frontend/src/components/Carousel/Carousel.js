@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import instance from '../../api/axios';
+import React from 'react';
 import Slider from 'react-slick';
 import Grid from '@material-ui/core/Grid';
 import './Carousel.css';
 import { getLink } from '../../utils/getLink';
-
-export default function SectionCarousel() {
-  const [IC_Objs, setIC_Obj] = useState([]);
-  useEffect(() => {
-    instance
-      .get('main/home_image_carousel/')
-      .then((res) => {
-        setIC_Obj(res.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
+import FadeRightWhenVisible from '../Animation/FadeRight';
+const SectionCarousel = ({ data }) => {
   const getIC_Objs = () => {
     let list = [];
 
-    IC_Objs.map((IC) => {
+    data.map((IC) => {
       return list.push(
         <div key={IC.title}>
           <img src={getLink(IC.image)} alt={IC.title} className="slick-image" />
@@ -45,10 +34,13 @@ export default function SectionCarousel() {
       className="carousel_container"
     >
       <Grid item xs={12} sm={12} md={8} className="carousel_grid">
-        <div>
-          <Slider {...settings}>{getIC_Objs()}</Slider>
-        </div>
+        <FadeRightWhenVisible>
+          <div>
+            <Slider {...settings}>{getIC_Objs()}</Slider>
+          </div>
+        </FadeRightWhenVisible>
       </Grid>
     </Grid>
   );
-}
+};
+export default SectionCarousel;
