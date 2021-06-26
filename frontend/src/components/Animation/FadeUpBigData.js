@@ -5,8 +5,8 @@ import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 function FadeUpBigDataWhenVisible({ children }) {
   const controls = useAnimation();
   const [ref, inView] = useInView({
-    rootMargin: '20px',
-    threshold: 0.05,
+    rootMargin: '50px',
+    threshold: 0.01,
   });
 
   useEffect(() => {
