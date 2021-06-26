@@ -7,6 +7,7 @@ import CarouselNewsWrapper from '../components/CarouselNewsWrapper/CarouselRecen
 import DirectorMessageComponent from '../components/DirectorMessage/DirectorMessage';
 import PastRecruiters from '../components/PastRecruiters/PastRecruiters';
 import AlumniTestimonial from '../components/AlumniTestimonial/NewAlumni';
+import Poster from '../components/Poster/Poster';
 import styles from '../styles/pages/Home.module.css';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
 import FadeUpWhenVisible from '../components/Animation/FadeUp';
@@ -72,6 +73,9 @@ function Home() {
             </FadeInWhenVisible>
             <FadeUpWhenVisible>
               <AboutUs data={aboutText} />
+            </FadeUpWhenVisible>
+            <FadeUpWhenVisible>
+              <Poster />
             </FadeUpWhenVisible>
             <FadeUpWhenVisible>
               <DirectorMessageComponent data={DirectorMessage} />
