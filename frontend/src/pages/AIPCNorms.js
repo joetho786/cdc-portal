@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
-import FadeUpWhenVisible from '../components/Animation/FadeUp';
+import FadeUpBigDataWhenVisible from '../components/Animation/FadeUpBigData';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -77,7 +77,7 @@ const AIPCNorms = () => {
                 </FadeInWhenVisible>
               </Grid>
               <Grid item xs={12}>
-                <FadeUpWhenVisible>
+                <FadeUpBigDataWhenVisible>
                   <Paper className={classes.paper}>
                     <Typography>
                       {text ? (
@@ -90,7 +90,7 @@ const AIPCNorms = () => {
                       )}
                     </Typography>
                   </Paper>
-                </FadeUpWhenVisible>
+                </FadeUpBigDataWhenVisible>
               </Grid>
             </Grid>
           </Container>

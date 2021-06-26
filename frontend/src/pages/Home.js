@@ -11,6 +11,7 @@ import Poster from '../components/Poster/Poster';
 import styles from '../styles/pages/Home.module.css';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
 import FadeUpWhenVisible from '../components/Animation/FadeUp';
+import FadeUpBigDataWhenVisible from '../components/Animation/FadeUpBigData';
 function Home() {
   const [loading, setLoding] = useState(true);
   const [aboutText, setAboutText] = useState([]);
@@ -71,15 +72,15 @@ function Home() {
             <FadeInWhenVisible>
               <HeroSection />
             </FadeInWhenVisible>
-            <FadeUpWhenVisible>
+            <FadeUpBigDataWhenVisible>
               <AboutUs data={aboutText} />
-            </FadeUpWhenVisible>
+            </FadeUpBigDataWhenVisible>
             <FadeUpWhenVisible>
               <Poster />
             </FadeUpWhenVisible>
-            <FadeUpWhenVisible>
+            <FadeUpBigDataWhenVisible>
               <DirectorMessageComponent data={DirectorMessage} />
-            </FadeUpWhenVisible>
+            </FadeUpBigDataWhenVisible>
             <FadeUpWhenVisible>
               <CarouselNewsWrapper IC_Objs={IC_Objs} news={news} />
             </FadeUpWhenVisible>
