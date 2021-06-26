@@ -6,7 +6,7 @@ import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
 import ContactDetails from '../components/ContactDetails';
-
+import FadeInWhenVisible from '../components/Animation/FadeIn';
 const ContactUs = () => {
   const [loading, setLoding] = useState(true);
   const [facultyIncharge, setFacultyIncharge] = useState([]);
@@ -59,13 +59,15 @@ const ContactUs = () => {
         <>
           <ContactDetails />
           <hr className={styles.hr} style={{ marginTop: '2rem' }}></hr>
-          <div className={styles.members}>
-            <MenuIcon
-              fontSize="large"
-              style={{ margin: '0 0.5rem', paddingTop: '0rem' }}
-            />
-            PLACEMENT TEAM
-          </div>
+          <FadeInWhenVisible>
+            <div className={styles.members}>
+              <MenuIcon
+                fontSize="large"
+                style={{ margin: '0 0.5rem', paddingTop: '0rem' }}
+              />
+              PLACEMENT TEAM
+            </div>
+          </FadeInWhenVisible>
           <hr className={styles.hr}></hr>
           <Grid
             container

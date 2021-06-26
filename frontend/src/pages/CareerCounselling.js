@@ -5,7 +5,7 @@ import C3MemberCard from '../components/C3MemberCard';
 import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import FadeInWhenVisible from '../components/Animation/FadeIn';
 const CareerCounselling = () => {
   const [loading, setLoding] = useState(true);
   const [chairman, setChairman] = useState([]);
@@ -42,13 +42,15 @@ const CareerCounselling = () => {
         <Loading />
       ) : (
         <>
-          <div className={styles.chairman}>
-            <MenuIcon
-              fontSize="large"
-              style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
-            />
-            CHAIRMAN
-          </div>
+          <FadeInWhenVisible>
+            <div className={styles.chairman}>
+              <MenuIcon
+                fontSize="large"
+                style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
+              />
+              CHAIRMAN
+            </div>
+          </FadeInWhenVisible>
           <hr className={styles.hr}></hr>
           <Grid
             container
@@ -67,13 +69,15 @@ const CareerCounselling = () => {
             })}
           </Grid>
           <hr className={styles.hr} style={{ marginTop: '5rem' }}></hr>
-          <div className={styles.facultyIncharge}>
-            <MenuIcon
-              fontSize="large"
-              style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
-            />
-            FACULTY INCHARGE
-          </div>
+          <FadeInWhenVisible>
+            <div className={styles.facultyIncharge}>
+              <MenuIcon
+                fontSize="large"
+                style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
+              />
+              FACULTY INCHARGE
+            </div>
+          </FadeInWhenVisible>
           <hr className={styles.hr}></hr>
           <Grid
             container
@@ -92,13 +96,15 @@ const CareerCounselling = () => {
             })}
           </Grid>
           <hr className={styles.hr} style={{ marginTop: '5rem' }}></hr>
-          <div className={styles.members}>
-            <MenuIcon
-              fontSize="large"
-              style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
-            />
-            MEMBERS
-          </div>
+          <FadeInWhenVisible>
+            <div className={styles.members}>
+              <MenuIcon
+                fontSize="large"
+                style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
+              />
+              MEMBERS
+            </div>
+          </FadeInWhenVisible>
           <hr className={styles.hr}></hr>
           <Grid
             container
