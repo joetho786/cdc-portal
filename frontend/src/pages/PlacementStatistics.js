@@ -14,6 +14,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import FadeInWhenVisible from '../components/Animation/FadeIn';
+import FadeUpBigDataWhenVisible from '../components/Animation/FadeUpBigData';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -78,130 +81,153 @@ const PlacementStatistics = () => {
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
-                <Paper className={classes.paper}>
-                  <Typography
-                    component="h5"
-                    variant="h5"
-                    style={{ fontSize: 30, textAlign: 'center' }}
-                  >
-                    Placement Statistics
-                  </Typography>
-                </Paper>
+                <FadeInWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography
+                      component="h5"
+                      variant="h5"
+                      style={{ fontSize: 30, textAlign: 'center' }}
+                    >
+                      Placement Statistics
+                    </Typography>
+                  </Paper>
+                </FadeInWhenVisible>
               </Grid>
               <Grid item xs={12}>
-                <Paper className={classes.paper}>
-                  {text ? (
-                    <p dangerouslySetInnerHTML={createText()} />
-                  ) : (
-                    <p></p>
-                  )}
-                  <TableContainer
-                    className={classes.tablewrapper}
-                    component={Paper}
-                    elevation={0}
-                  >
-                    <Table className={classes.table} aria-label="simple table">
-                      <TableHead>
-                        <TableRow>
-                          <TableCell className={classes.body}>
-                            <b>{heading[0]}</b>
-                          </TableCell>
-                          <TableCell className={classes.body}>
-                            <b>{heading[1]}</b>
-                          </TableCell>
-                          <TableCell className={classes.body}>
-                            <b>{heading[2]}</b>
-                          </TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {data.map((Data) => {
-                          return (
-                            <TableRow key={Data[0]}>
-                              <TableCell
-                                className={classes.body}
-                                component="th"
-                                scope="row"
-                              >
-                                {Data[0]}
-                              </TableCell>
-                              <TableCell className={classes.body} align="left">
-                                {Data[1]}%
-                              </TableCell>
-                              <TableCell className={classes.body} align="left">
-                                {Data[2]}%
-                              </TableCell>
-                            </TableRow>
-                          );
-                        })}
-                        <TableRow key="overall">
-                          <TableCell
-                            className={classes.body}
-                            component="th"
-                            scope="row"
-                          >
-                            Overall
-                          </TableCell>
-                          <TableCell className={classes.body} align="left">
-                            {overall[0]}%
-                          </TableCell>
-                          <TableCell className={classes.body} align="left">
-                            {overall[1]}%
-                          </TableCell>
-                        </TableRow>
-                        <TableRow key="overallAvg">
-                          <TableCell
-                            className={classes.body}
-                            component="th"
-                            scope="row"
-                          >
-                            Overall Average Salary
-                          </TableCell>
-                          <TableCell className={classes.body} align="left">
-                            {OverallAverageSalary[0]}L
-                          </TableCell>
-                          <TableCell className={classes.body} align="left">
-                            {OverallAverageSalary[1]}L
-                          </TableCell>
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                  <Chart
-                    width={'100%'}
-                    height={'500px'}
-                    chartType="ComboChart"
-                    loader={<div>Loading Chart</div>}
-                    data={[heading].concat(data)}
-                    options={{
-                      vAxis: { title: 'Placement Percentage' },
-                      hAxis: { title: 'Departments' },
-                      legend: 'bottom',
-                      seriesType: 'bars',
-                      series: { 2: { type: 'line' } },
-                    }}
-                    rootProps={{ 'data-testid': '1' }}
-                  />
-                  <Chart
-                    width={'100%'}
-                    height={'500px'}
-                    chartType="BarChart"
-                    loader={<div>Loading Chart</div>}
-                    data={[
-                      ['Year', 'Placement Percentage'],
-                      [heading[1], overall[0]],
-                      [heading[2], overall[1]],
-                    ]}
-                    options={{
-                      vAxis: { title: 'Year' },
-                      hAxis: { title: 'Placement Percentage', minValue: 0 },
-                      legend: { position: 'bottom' },
-                      seriesType: 'bars',
-                      series: { 2: { type: 'line' } },
-                    }}
-                    rootProps={{ 'data-testid': '1' }}
-                  />
-                </Paper>
+                <FadeUpBigDataWhenVisible>
+                  <Paper className={classes.paper}>
+                    {text ? (
+                      <p dangerouslySetInnerHTML={createText()} />
+                    ) : (
+                      <p></p>
+                    )}
+                    <TableContainer
+                      className={classes.tablewrapper}
+                      component={Paper}
+                      elevation={0}
+                    >
+                      <Table
+                        className={classes.table}
+                        aria-label="simple table"
+                      >
+                        <TableHead>
+                          <TableRow>
+                            <TableCell className={classes.body}>
+                              <b>{heading[0]}</b>
+                            </TableCell>
+                            <TableCell className={classes.body}>
+                              <b>{heading[1]}</b>
+                            </TableCell>
+                            <TableCell className={classes.body}>
+                              <b>{heading[2]}</b>
+                            </TableCell>
+                          </TableRow>
+                        </TableHead>
+                        <TableBody>
+                          {data.map((Data) => {
+                            return (
+                              <TableRow key={Data[0]}>
+                                <TableCell
+                                  className={classes.body}
+                                  component="th"
+                                  scope="row"
+                                >
+                                  {Data[0]}
+                                </TableCell>
+                                <TableCell
+                                  className={classes.body}
+                                  align="left"
+                                >
+                                  {Data[1]}%
+                                </TableCell>
+                                <TableCell
+                                  className={classes.body}
+                                  align="left"
+                                >
+                                  {Data[2]}%
+                                </TableCell>
+                              </TableRow>
+                            );
+                          })}
+                          <TableRow key="overall">
+                            <TableCell
+                              className={classes.body}
+                              component="th"
+                              scope="row"
+                            >
+                              Overall
+                            </TableCell>
+                            <TableCell className={classes.body} align="left">
+                              {overall[0]}%
+                            </TableCell>
+                            <TableCell className={classes.body} align="left">
+                              {overall[1]}%
+                            </TableCell>
+                          </TableRow>
+                          <TableRow key="overallAvg">
+                            <TableCell
+                              className={classes.body}
+                              component="th"
+                              scope="row"
+                            >
+                              Overall Average Salary
+                            </TableCell>
+                            <TableCell className={classes.body} align="left">
+                              {OverallAverageSalary[0]}L
+                            </TableCell>
+                            <TableCell className={classes.body} align="left">
+                              {OverallAverageSalary[1]}L
+                            </TableCell>
+                          </TableRow>
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                    <Chart
+                      width={'100%'}
+                      height={'500px'}
+                      chartType="ComboChart"
+                      loader={<div>Loading Chart</div>}
+                      data={[heading].concat(data)}
+                      options={{
+                        vAxis: { title: 'Placement Percentage' },
+                        hAxis: { title: 'Departments' },
+                        legend: 'bottom',
+                        animation: {
+                          duration: 1000,
+                          easing: 'out',
+                          startup: true,
+                        },
+                        seriesType: 'bars',
+                        series: { 2: { type: 'line' } },
+                      }}
+                      rootProps={{ 'data-testid': '1' }}
+                    />
+                    <Chart
+                      width={'100%'}
+                      height={'500px'}
+                      chartType="BarChart"
+                      loader={<div>Loading Chart</div>}
+                      data={[
+                        ['Year', 'Placement Percentage'],
+                        [heading[1], overall[0]],
+                        [heading[2], overall[1]],
+                      ]}
+                      options={{
+                        vAxis: { title: 'Year' },
+                        hAxis: { title: 'Placement Percentage', minValue: 0 },
+                        legend: { position: 'bottom' },
+                        animation: {
+                          duration: 1000,
+                          easing: 'out',
+                          startup: true,
+                        },
+                        seriesType: 'bars',
+                        series: { 2: { type: 'line' } },
+                      }}
+                      rootProps={{ 'data-testid': '1' }}
+                    />
+                  </Paper>
+                </FadeUpBigDataWhenVisible>
               </Grid>
             </Grid>
           </Container>

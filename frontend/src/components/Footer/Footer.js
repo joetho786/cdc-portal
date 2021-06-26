@@ -9,7 +9,6 @@ import IconButton from '@material-ui/core/IconButton';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
-
 function Copyright() {
   return (
     <Typography variant="body2" style={{ color: 'white' }} align="center">
@@ -24,17 +23,17 @@ const footers = [
   {
     title: 'Downloads',
     description: [
-      ['JAF', '/JAF'],
-      ['IAF', '/IAF'],
-      ['Brochure', '/Brochure'],
+      ['JAF', '/jaf'],
+      ['IAF', '/iaf'],
+      ['Brochure', '/brochure'],
     ],
   },
   {
     title: 'Quick Links',
     description: [
-      ['Placement registration link', '/RecruiterLogin'],
-      ['Placement Statistics', '/PlacementStatistics'],
-      ['Meet our Team', '/CareerCounselling'],
+      ['Placement registration link', '/recruiter-login'],
+      ['Placement Statistics', '/placement-statistics'],
+      ['Meet our Team', '/c3-members'],
     ],
   },
   {

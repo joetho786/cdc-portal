@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
@@ -14,24 +14,13 @@ import EmailIcon from '@material-ui/icons/Email';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import testiBack from '../../assets/testiback2.jpg';
 import styles from './AlumniTestimonial.module.css';
-import instance from '../../api/axios';
 import { getLink } from '../../utils/getLink';
 
-export default function AlumniTestimonial() {
-  const [Alumni_Testimonials, setPAlumni_Testimonial] = useState([]);
-  useEffect(() => {
-    instance
-      .get('main/alumni_testimonial/')
-      .then((res) => {
-        setPAlumni_Testimonial(res.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
+const AlumniTestimonial = ({ data }) => {
   const getAlumni_Testimonials = () => {
     let Testi_list = [];
 
-    Alumni_Testimonials.map((Testimonial_Obj) => {
+    data.map((Testimonial_Obj) => {
       return Testi_list.push(
         <div key={Testimonial_Obj.alumni_name}>
           <div
@@ -76,34 +65,24 @@ export default function AlumniTestimonial() {
                 <div>
                   {Testimonial_Obj.facebook !== null && (
                     <Tooltip arrow title="facebook">
-                      <IconButton
-                        href={Testimonial_Obj.facebook}
-                        color="primary"
-                        variant="outlined"
-                      >
-                        <FacebookIcon />
+                      <IconButton color="primary" variant="outlined">
+                        <FacebookIcon href={Testimonial_Obj.facebook} />
                       </IconButton>
                     </Tooltip>
                   )}
                   {Testimonial_Obj.mailId !== null && (
                     <Tooltip arrow title={Testimonial_Obj.mailId}>
-                      <IconButton
-                        href={`https://mail.google.com/mail/?view=cm&fs=1&to=${Testimonial_Obj.mailId}`}
-                        color="secondary"
-                        variant="outlined"
-                      >
-                        <EmailIcon />
+                      <IconButton color="secondary" variant="outlined">
+                        <EmailIcon
+                          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${Testimonial_Obj.mailId}`}
+                        />
                       </IconButton>
                     </Tooltip>
                   )}
                   {Testimonial_Obj.twitter !== null && (
                     <Tooltip arrow title="Twitter">
-                      <IconButton
-                        href={Testimonial_Obj.twitter}
-                        color="primary"
-                        variant="outlined"
-                      >
-                        <TwitterIcon />
+                      <IconButton color="primary" variant="outlined">
+                        <TwitterIcon href={Testimonial_Obj.twitter} />
                       </IconButton>
                     </Tooltip>
                   )}
@@ -181,4 +160,6 @@ export default function AlumniTestimonial() {
       </div>
     </div>
   );
-}
+};
+
+export default AlumniTestimonial;

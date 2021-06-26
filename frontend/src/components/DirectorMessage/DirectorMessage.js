@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import instance from '../../api/axios';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -55,38 +54,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MediaControlCard() {
+const DirectorMessageComponent = ({ data }) => {
   const classes = useStyles();
-  const [DirectorMessage, setText] = useState([]);
-
-  useEffect(() => {
-    instance
-      .get('main/director_message/')
-      .then((res) => {
-        setText(res.data[0]);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
   const createDirectorMessage = () => {
-    return { __html: DirectorMessage.content };
+    return { __html: data.content };
   };
 
   return (
     <Container maxWidth="lg">
-      {DirectorMessage ? (
+      {data ? (
         <Card className={classes.MessageContainer}>
           <CardMedia
             component="div"
             className={classes.cover}
-            image={getLink(DirectorMessage.image)}
+            image={getLink(data.image)}
           />
           <div className={classes.details}>
             <CardContent className={classes.content}>
-              <h2 className={classes.MessageHeader}>{DirectorMessage.title}</h2>
+              <h2 className={classes.MessageHeader}>{data.title}</h2>
               <div style={{ fontSize: '1rem', color: 'black' }}>
                 <p dangerouslySetInnerHTML={createDirectorMessage()} />
-                <p>{DirectorMessage.name}</p>
+                <p>{data.name}</p>
               </div>
             </CardContent>
           </div>
@@ -96,4 +84,5 @@ export default function MediaControlCard() {
       )}
     </Container>
   );
-}
+};
+export default DirectorMessageComponent;

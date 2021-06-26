@@ -5,7 +5,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import back_img from '../assets/login_back.jpg';
+import backgroundImage from '../assets/loginback.jpg';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -51,9 +51,9 @@ const StudentLogin = () => {
         localStorage.setItem('cdc_Dname', Dname);
         localStorage.setItem('cdc_loginType', 'Student');
         if (res.status === 201) {
-          window.location = 'StudentRegister';
+          window.location = 'student-register';
         } else {
-          window.location = 'StudentDashboard';
+          window.location = 'student-dashboard';
         }
       })
       .catch(function (error) {
@@ -67,7 +67,7 @@ const StudentLogin = () => {
   return (
     <div
       style={{
-        background: `url(${back_img}) no-repeat fixed`,
+        background: `url(${backgroundImage}) no-repeat fixed`,
         backgroundSize: 'cover',
         backgroundPosition: '50%',
         padding: '3%',

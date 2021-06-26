@@ -5,7 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import FadeInWhenVisible from '../components/Animation/FadeIn';
+import FadeUpBigDataWhenVisible from '../components/Animation/FadeUpBigData';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -53,7 +54,7 @@ const DirectorMessage = () => {
   };
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: 'auto', width: '100%' }}>
       {loading ? (
         <Loading />
       ) : (
@@ -61,27 +62,31 @@ const DirectorMessage = () => {
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
-                <Paper className={classes.paper}>
-                  <Typography
-                    component="h5"
-                    variant="h5"
-                    style={{ fontSize: 30, textAlign: 'center' }}
-                  >
-                    Director's Message
-                  </Typography>
-                </Paper>
+                <FadeInWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography
+                      component="h5"
+                      variant="h5"
+                      style={{ fontSize: 30, textAlign: 'center' }}
+                    >
+                      Director's Message
+                    </Typography>
+                  </Paper>
+                </FadeInWhenVisible>
               </Grid>
               <Grid item xs={12}>
-                <Paper className={classes.paper}>
-                  {message ? (
-                    <p
-                      dangerouslySetInnerHTML={createMessage()}
-                      className={classes.text}
-                    />
-                  ) : (
-                    <p>Coming soon...</p>
-                  )}
-                </Paper>
+                <FadeUpBigDataWhenVisible>
+                  <Paper className={classes.paper}>
+                    {message ? (
+                      <p
+                        dangerouslySetInnerHTML={createMessage()}
+                        className={classes.text}
+                      />
+                    ) : (
+                      <p>Coming soon...</p>
+                    )}
+                  </Paper>
+                </FadeUpBigDataWhenVisible>
               </Grid>
             </Grid>
           </Container>

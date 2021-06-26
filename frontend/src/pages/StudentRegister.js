@@ -142,7 +142,7 @@ const StudentRegister = () => {
       .post('/student/details_add/', form)
       .then((res) => {
         if (res.status === 200) {
-          window.location = '/StudentDashboard';
+          window.location = '/student-dashboard';
         }
       })
       .catch(function (error) {

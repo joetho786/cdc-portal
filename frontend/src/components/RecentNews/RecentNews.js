@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import instance from '../../api/axios';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import { Link } from 'react-router-dom';
-
+import FadeLeftWhenVisible from '../Animation/FadeLeft';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -41,23 +40,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RecentNews = () => {
+const RecentNews = ({ data }) => {
   const classes = useStyles();
-  const [news, setNews] = useState([]);
-
-  useEffect(() => {
-    instance
-      .get('main/news/')
-      .then((res) => {
-        setNews(res.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
   const getNews = () => {
     let list = [];
 
-    news.map((News) => {
+    data.map((News) => {
       const doclink = News.document;
       const extlink = News.link;
       return list.push(
@@ -96,12 +84,14 @@ const RecentNews = () => {
     return list;
   };
   return (
-    <div className={classes.container}>
-      <ListItem className={classes.Header}>
-        <h2 className={classes.HeaderText}>Recent News</h2>
-      </ListItem>
-      <div className={classes.root}>{getNews()}</div>
-    </div>
+    <FadeLeftWhenVisible>
+      <div className={classes.container}>
+        <ListItem className={classes.Header}>
+          <h2 className={classes.HeaderText}>Recent News</h2>
+        </ListItem>
+        <div className={classes.root}>{getNews()}</div>
+      </div>
+    </FadeLeftWhenVisible>
   );
 };
 

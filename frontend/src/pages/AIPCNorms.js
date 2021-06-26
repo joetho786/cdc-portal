@@ -5,7 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import FadeInWhenVisible from '../components/Animation/FadeIn';
+import FadeUpBigDataWhenVisible from '../components/Animation/FadeUpBigData';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -53,7 +54,7 @@ const AIPCNorms = () => {
   };
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: 'auto', width: '100%' }}>
       {loading ? (
         <Loading />
       ) : (
@@ -61,31 +62,35 @@ const AIPCNorms = () => {
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
-                <Paper className={classes.paper}>
-                  <Typography
-                    component="h5"
-                    variant="h5"
-                    display="block"
-                    width="500"
-                    style={{ fontSize: 30, textAlign: 'center' }}
-                  >
-                    AIPC Norms
-                  </Typography>
-                </Paper>
+                <FadeInWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography
+                      component="h5"
+                      variant="h5"
+                      display="block"
+                      width="500"
+                      style={{ fontSize: 30, textAlign: 'center' }}
+                    >
+                      AIPC Norms
+                    </Typography>
+                  </Paper>
+                </FadeInWhenVisible>
               </Grid>
               <Grid item xs={12}>
-                <Paper className={classes.paper}>
-                  <Typography>
-                    {text ? (
-                      <p
-                        className={classes.text}
-                        dangerouslySetInnerHTML={createtext()}
-                      />
-                    ) : (
-                      <p>Coming soon...</p>
-                    )}
-                  </Typography>
-                </Paper>
+                <FadeUpBigDataWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography>
+                      {text ? (
+                        <p
+                          className={classes.text}
+                          dangerouslySetInnerHTML={createtext()}
+                        />
+                      ) : (
+                        <p>Coming soon...</p>
+                      )}
+                    </Typography>
+                  </Paper>
+                </FadeUpBigDataWhenVisible>
               </Grid>
             </Grid>
           </Container>
