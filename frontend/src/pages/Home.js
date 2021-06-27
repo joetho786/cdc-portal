@@ -12,6 +12,8 @@ import styles from '../styles/pages/Home.module.css';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
 import FadeUpWhenVisible from '../components/Animation/FadeUp';
 import FadeUpBigDataWhenVisible from '../components/Animation/FadeUpBigData';
+import Grid from '@material-ui/core/Grid';
+import CancelIcon from '@material-ui/icons/Cancel';
 function Home() {
   const [loading, setLoding] = useState(true);
   const [aboutText, setAboutText] = useState([]);
@@ -20,6 +22,8 @@ function Home() {
   const [news, setNews] = useState([]);
   const [PR_Objs, setPR_Obj] = useState([]);
   const [Alumni_Testimonials, setPAlumni_Testimonial] = useState([]);
+  const [show, setshow] = useState(true);
+  const [alert, setalert] = useState([]);
   useEffect(() => {
     instance
       // set about us text
@@ -58,6 +62,12 @@ function Home() {
       .then((res) => {
         setNews(res.data);
       })
+      .catch((error) => console.log(error));
+    instance
+      .get('main/alerts/')
+      .then((res) => {
+        setalert(res.data.Homepage);
+      })
       .catch((error) => console.log(error))
       .then(() => setLoding(false))
       .catch((error) => console.log(error));
@@ -68,6 +78,17 @@ function Home() {
         <Loading />
       ) : (
         <>
+          {show && alert.length !== 0 ? (
+            <Grid
+              container
+              style={{ padding: '10px 100px', background: alert[1] }}
+            >
+              <CancelIcon onClick={() => setshow(false)} />
+              <div style={{ margin: 'auto' }}>{alert[0]}</div>
+            </Grid>
+          ) : (
+            <div />
+          )}
           <div className={styles.homeWrapper}>
             <FadeInWhenVisible>
               <HeroSection />

@@ -1,13 +1,21 @@
 {
   "ServerAdmins": [["manav_cdcdev", "kapoor.3@iitj.ac.in"]],
-  "LDAPTestMode": true,
-  "IntershipYear": 19,
-  "PlacementYear": 18,
+  "LDAPTestMode": false,
+  "IntershipYears": ["B19"],
+  "JobYears": ["B18"],
   "ShowAdertisements": true,
   "AllowProfileEdit": true,
-  "AlertsInternship": [],
-  "AlertsPlacement": [],
-  "AnnoucementsInternship": [],
-  "AnnoucementsPlacement": [],
-  "AlertsCompany": []
+  "Alerts": {
+    "CompanyLogin": [],
+    "CompanyDashboard": [],
+    "StudentLogin": ["Placemnet not yet initialized", "lightBlue"],
+    "StudentDashboard": [],
+    "StudentRegister": [],
+    "Homepage": ["Welcome to new CDC Portal", "lightBlue"]
+  },
+  "Annoucements": {
+    "Internships": [],
+    "Jobs": [],
+    "All": []
+  }
 }

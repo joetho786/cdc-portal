@@ -12,7 +12,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Home from '../components/StudentDashboard/Home';
 import UploadResume from '../components/StudentDashboard/UplaodResume';
+import Offers from '../components/StudentDashboard/Offers';
 import StudentLogin from './StudentLogin';
+import Grid from '@material-ui/core/Grid';
+import CancelIcon from '@material-ui/icons/Cancel';
+import instance from '../api/axios';
 import {
   mainListItems,
   secondaryListItems,
@@ -103,12 +107,29 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [alert, setalert] = React.useState([]);
+  const [show, setshow] = React.useState(true);
   const handleDrawerClose = () => {
     setOpen(!open);
   };
-
+  React.useEffect(() => {
+    instance
+      .get('main/alerts/')
+      .then((res) => {
+        setalert(res.data.StudentDashboard);
+      })
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <div className={classes.root}>
+      {show && alert.length !== 0 ? (
+        <Grid container style={{ padding: '10px 100px', background: alert[1] }}>
+          <CancelIcon onClick={() => setshow(false)} />
+          <div style={{ margin: 'auto' }}>{alert[0]}</div>
+        </Grid>
+      ) : (
+        <div />
+      )}
       <CssBaseline />
       <Drawer
         variant={window.innerWidth >= 1350 ? 'permanent' : 'temporary'}
@@ -142,6 +163,11 @@ export default function Dashboard() {
                 path="/student-dashboard/UploadResume"
                 exact
                 component={UploadResume}
+              />
+              <Route
+                path="/student-dashboard/offers"
+                exact
+                component={Offers}
               />
             </Switch>
           </Router>

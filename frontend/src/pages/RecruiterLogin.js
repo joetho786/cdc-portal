@@ -8,6 +8,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import instance from '../api/axios';
 import backgroundImage from '../assets/loginback.jpg';
+import Grid from '@material-ui/core/Grid';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -18,6 +20,8 @@ const RecruiterLogin = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = React.useState(false);
+  const [alert, setalert] = useState([]);
+  const [show, setshow] = useState(true);
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -65,6 +69,14 @@ const RecruiterLogin = () => {
     isSignedIn: true,
     accessType: 'offline',
   });
+  React.useEffect(() => {
+    instance
+      .get('main/alerts/')
+      .then((res) => {
+        setalert(res.data.CompanyLogin);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div
@@ -76,6 +88,14 @@ const RecruiterLogin = () => {
         justifyContent: 'center',
       }}
     >
+      {show && alert.length !== 0 ? (
+        <Grid container style={{ padding: '10px 100px', background: alert[1] }}>
+          <CancelIcon onClick={() => setshow(false)} />
+          <div style={{ margin: 'auto' }}>{alert[0]}</div>
+        </Grid>
+      ) : (
+        <div />
+      )}
       <div className={styles.Login}>
         <Backdrop
           style={{
