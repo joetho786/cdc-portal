@@ -3,13 +3,25 @@ from .models import CompanyProfile, JobAdvertisement, JobOffer, InternshipAdvert
 from student.serializers import UserSerializer
 
 
+class CompanyProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = CompanyProfile
+        fields = '__all__'
+
+
 class InternshipAdvertisementSerializer(serializers.ModelSerializer):
+    company = CompanyProfileSerializer(read_only=True)
+
     class Meta:
         model = InternshipAdvertisement
         fields = '__all__'
 
 
 class JobAdvertisementSerializer(serializers.ModelSerializer):
+    company = CompanyProfileSerializer(read_only=True)
+
     class Meta:
         model = JobAdvertisement
         fields = '__all__'
@@ -28,16 +40,6 @@ class InternshipOfferSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = InternshipOffer
-        fields = '__all__'
-
-
-class CompanyProfileSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
-    job_offers = JobOfferSerializer(read_only=True)
-    intership_offers = InternshipOfferSerializer(read_only=True)
-
-    class Meta:
-        model = CompanyProfile
         fields = '__all__'
 
 
