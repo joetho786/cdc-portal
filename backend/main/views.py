@@ -1,5 +1,3 @@
-import json
-
 from cdc_portal.utils import get_config_value
 from django.shortcuts import get_object_or_404
 from rest_framework import status
