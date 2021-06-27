@@ -6,6 +6,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import PersonIcon from '@material-ui/icons/Person';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import AllInboxIcon from '@material-ui/icons/AllInbox';
 
 function Logout(event) {
   event.preventDefault();
@@ -47,6 +48,17 @@ export const mainListItems = (
           <CloudUploadIcon />
         </ListItemIcon>
         <ListItemText primary="Upload Resume" />
+      </ListItem>
+    </a>
+    <a
+      href="/student-dashboard/offers"
+      style={{ color: 'inherit', textDecoration: 'none' }}
+    >
+      <ListItem button>
+        <ListItemIcon>
+          <AllInboxIcon />
+        </ListItemIcon>
+        <ListItemText primary="Available Offers" />
       </ListItem>
     </a>
   </div>
