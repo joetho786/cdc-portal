@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
+from .utils import get_config_value
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +30,17 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 D = config('D', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
+
+# For Emails
+
+ADMINS = [tuple(s) for s in get_config_value('ServerAdmins')]
+EMAIL_USE_TLS = True
+EMAIL_PORT = config('SERVER_EMAIL_PORT', cast=int, default=587)
+EMAIL_HOST = config('SERVER_EMAIL_HOST', cast=str, default="smtp.gmail.com")
+EMAIL_HOST_USER = config('SERVER_EMAIL', cast=str)
+EMAIL_HOST_PASSWORD = config('SERVER_EMAIL_PASSWORD', cast=str)
+SERVER_EMAIL = config('SERVER_EMAIL', cast=str)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 # Application definition
