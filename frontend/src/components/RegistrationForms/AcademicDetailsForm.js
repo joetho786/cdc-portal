@@ -93,22 +93,22 @@ export default function AcademicDetailsForm({ p1, p2 }) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            name="10th Board Name"
-            label="10th Board Name"
-            fullWidth
-            autoComplete="10th Board Name"
-            value={p1.bn10}
-            onChange={handleChangebn10}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
             name="12th Board Name"
             label="12th Board Name"
             fullWidth
             autoComplete="12th Board Name"
             value={p1.bn12}
             onChange={handleChangebn12}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            name="10th Board Name"
+            label="10th Board Name"
+            fullWidth
+            autoComplete="10th Board Name"
+            value={p1.bn10}
+            onChange={handleChangebn10}
           />
         </Grid>
         <Grid item xs={12} sm={6}>

@@ -81,7 +81,7 @@ function Home() {
           {show && alert.length !== 0 ? (
             <Grid
               container
-              style={{ padding: '10px 100px', background: alert[1] }}
+              style={{ padding: '10px 10%', background: alert[1] }}
             >
               <CancelIcon onClick={() => setshow(false)} />
               <div style={{ margin: 'auto' }}>{alert[0]}</div>

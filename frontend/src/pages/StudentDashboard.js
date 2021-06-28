@@ -13,7 +13,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Home from '../components/StudentDashboard/Home';
 import UploadResume from '../components/StudentDashboard/UplaodResume';
 import Offers from '../components/StudentDashboard/Offers';
-import StudentLogin from './StudentLogin';
+import Profile from '../components/StudentDashboard/Profile';
 import Grid from '@material-ui/core/Grid';
 import CancelIcon from '@material-ui/icons/Cancel';
 import instance from '../api/axios';
@@ -86,8 +86,7 @@ const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto',
+    minHeight: '100vh',
   },
   container: {
     paddingTop: theme.spacing(4),
@@ -123,7 +122,7 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       {show && alert.length !== 0 ? (
-        <Grid container style={{ padding: '10px 100px', background: alert[1] }}>
+        <Grid container style={{ padding: '10px 10%', background: alert[1] }}>
           <CancelIcon onClick={() => setshow(false)} />
           <div style={{ margin: 'auto' }}>{alert[0]}</div>
         </Grid>
@@ -149,7 +148,6 @@ export default function Dashboard() {
         <List>{secondaryListItems}</List>
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Router>
             <Switch>
@@ -157,7 +155,7 @@ export default function Dashboard() {
               <Route
                 path="/student-dashboard/profile"
                 exact
-                component={StudentLogin}
+                component={Profile}
               />
               <Route
                 path="/student-dashboard/UploadResume"
