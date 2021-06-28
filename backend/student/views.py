@@ -12,7 +12,7 @@ from rest_framework import status
 from rest_framework.parsers import MultiPartParser, FormParser
 
 
-class addStudentDetails(APIView):
+class StudentDetails(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get_data_from_rollno(self, roll):
@@ -43,24 +43,22 @@ class addStudentDetails(APIView):
             profile.save()
         except IntegrityError:
             return Response({'Error': 'Invalid/Empty Fields in Form'}, status=status.HTTP_400_BAD_REQUEST)
-        return Response(StudentProfileSerializer(profile).data, status=status.HTTP_200_OK)
-
-
-class getStudentDetails(APIView):
-    permission_classes = (IsAuthenticated,)
+        return Response(StudentProfileSerializer(profile, many=True).data, status=status.HTTP_200_OK)
 
     def get(self, request, *args, **kwargs):
         user = request.user
-        student_profile = StudentProfile.objects.filter(user=user)
-        serializer = StudentProfileSerializer(student_profile, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-class updateStudentDetails(APIView):
-    permission_classes = (IsAuthenticated,)
+        allowed_edit = get_config_value('AllowProfileEdit')
+        student_profile = StudentProfile.objects.get(user=user)
+        serializer = StudentProfileSerializer(student_profile)
+        data = serializer.data
+        data['AllowedEdit'] = allowed_edit
+        return Response(data, status=status.HTTP_200_OK)
 
     def put(self, request, *args, **kwargs):
         data = {}
+        allowed_edit = get_config_value('AllowProfileEdit')
+        if not allowed_edit:
+            return Response({"Error": "Edit profile is not allowed now"}, status=status.HTTP_403_FORBIDDEN)
         for key in request.data.keys():
             if request.data.get(key) != '':
                 if request.data.get(key) == 'true':
@@ -69,16 +67,14 @@ class updateStudentDetails(APIView):
                     data[key] = False
                 else:
                     data[key] = request.data.get(key)
-        serializer = StudentProfileSerializer(instance=request.user, data=data)
+        user = request.user
+        profile = StudentProfile.objects.get(user=user)
+        serializer = StudentProfileSerializer(instance=profile, data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class deleteStudentDetails(APIView):
-    permission_classes = (IsAuthenticated,)
 
     def delete(self, request, *args, **kwargs):
         user = request.user
@@ -92,32 +88,23 @@ class deleteStudentDetails(APIView):
         return Response(data=data)
 
 
-class getResumes(APIView):
-    permission_classes = (IsAuthenticated,)
-
-    def get(self, request, *args, **kwargs):
-        if not StudentProfile.objects.filter(user=request.user).exists():
-            return Response(status=status.HTTP_403_FORBIDDEN)
-        resumes = Resume.objects.filter(student__user=request.user).order_by('id')
-        if len(resumes) == 0:
-            profile = StudentProfile.objects.get(user=request.user)
-            return Response(StudentProfileSerializer(profile).data, status=status.HTTP_200_OK)
-        serializer = ResumeSerializer(resumes, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-class getApprovedResumes(APIView):
-    permission_classes = (IsAuthenticated,)
-
-    def get(self, request, *args, **kwargs):
-        resumes = Resume.objects.filter(student__user=request.user, is_verified=True).order_by('id')
-        serializer = ResumeSerializer(resumes, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-class addResume(APIView):
+class Resumes(APIView):
     permission_classes = (IsAuthenticated,)
     parser_classes = (MultiPartParser, FormParser,)
+
+    def get(self, request, *args, **kwargs):
+        approved = request.query_params.get('approved', False)
+        if not StudentProfile.objects.filter(user=request.user).exists():
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        if approved:
+            resumes = Resume.objects.filter(student__user=request.user, is_verified=True).order_by('id')
+        else:
+            resumes = Resume.objects.filter(student__user=request.user).order_by('id')
+            if len(resumes) == 0:
+                profile = StudentProfile.objects.get(user=request.user)
+                return Response(StudentProfileSerializer(profile).data, status=status.HTTP_200_OK)
+        serializer = ResumeSerializer(resumes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, format=None):
         serializer = ResumeSerializer(data=request.data)
@@ -126,10 +113,6 @@ class addResume(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class deleteResume(APIView):
-    permission_classes = (IsAuthenticated,)
 
     def delete(self, request, pk):
         resume = Resume.objects.get(id=pk)
@@ -148,7 +131,7 @@ class deleteResume(APIView):
         return Response(data=data)
 
 
-class StudentAvailableOffers(APIView):
+class AvailableOffers(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get_applied_ad_list(self, user, model):
@@ -194,7 +177,7 @@ class StudentAvailableOffers(APIView):
         return Response(offers, status.HTTP_200_OK)
 
 
-class StudentAppliedOffers(APIView):
+class AppliedOffers(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
