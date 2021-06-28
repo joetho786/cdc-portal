@@ -188,8 +188,8 @@ export default function Navbar() {
                       <i className="fa fa-caret-down"></i>
                     </span>
                   </Link>
-                  <input type="checkbox" id="show-cdc-team" />
-                  <label htmlFor="show-cdc-team">
+                  <input type="checkbox" id="show-login" />
+                  <label htmlFor="show-login">
                     {localStorage.getItem('cdc_Dname')}{' '}
                     <i className="fa fa-caret-down"></i>
                   </label>
@@ -214,7 +214,7 @@ export default function Navbar() {
                       </li>
                     </ul>
                   ) : (
-                    /* Compant Zone */
+                    /* Company Zone */
                     <ul>
                       <li onClick={() => setIsChecked(!isChecked)}>
                         <Link to="/c3-members">Profile</Link>
