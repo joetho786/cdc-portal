@@ -20,6 +20,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
 import LinkIcon from '@material-ui/icons/Link';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Chip from '@material-ui/core/Chip';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column',
     width: '100%',
+    marginTop: '20px',
   },
   avatar: {
     width: theme.spacing(18),
@@ -57,6 +59,8 @@ function Home() {
   const classes = useStyles();
   const [data, setdata] = React.useState('');
   const [resume, setresumeData] = React.useState([]);
+  const [joboffers, setjoboffers] = React.useState([]);
+  const [internoffers, setinternoffers] = React.useState([]);
 
   function deleteRow(event, index, id) {
     event.preventDefault();
@@ -76,9 +80,15 @@ function Home() {
     instance
       .get('student/get_resumes/')
       .then((res) => {
-        console.log(res.data);
-        setresumeData(res.data);
-        let adt = res.data[0].student;
+        //console.log(res.data);
+        let adt = {};
+        try {
+          // If no resume is present
+          adt = res.data[0].student;
+          setresumeData(res.data);
+        } catch {
+          adt = res.data;
+        }
         adt.std_image = get_link(adt.std_image);
         adt.email = adt.user.email;
         adt.user = adt.user.first_name + ' ' + adt.user.last_name;
@@ -94,10 +104,119 @@ function Home() {
           }
         }
       });
+    instance.get('student/applied_offers/').then((res) => {
+      console.log(res.data);
+      let dat = [];
+      res.data.Internships.forEach((element) => {
+        element.name = element.profile.company.name;
+        element.designation = element.profile.designation;
+        dat.push(element);
+        console.log(element);
+      });
+      setinternoffers(dat);
+      dat = [];
+      res.data.Jobs.forEach((element) => {
+        element.name = element.company.name;
+        dat.push(element);
+      });
+      setjoboffers(dat);
+    });
   }, []);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={8}>
+        {internoffers.length === 0 ? (
+          <div />
+        ) : (
+          <Paper className={classes.paper}>
+            <React.Fragment>
+              <Typography
+                component="h2"
+                variant="h6"
+                color="primary"
+                gutterBottom
+              >
+                Applied Internships Offers
+              </Typography>
+              <Table size="small">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>S No.</TableCell>
+                    <TableCell>Date</TableCell>
+                    <TableCell>Company</TableCell>
+                    <TableCell>Designation</TableCell>
+                    <TableCell>Status</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {internoffers.map((row, index) => (
+                    <TableRow key={row.id}>
+                      <TableCell>{index + 1}</TableCell>
+                      <TableCell>
+                        {getDate(row.application_timestamp)}
+                      </TableCell>
+                      <TableCell>{row.name}</TableCell>
+                      <TableCell>{row.designation}</TableCell>
+                      <TableCell>
+                        {row.is_accepted ? (
+                          <Chip color="green" label="Accepted" />
+                        ) : (
+                          <Chip label="Pending" />
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </React.Fragment>
+          </Paper>
+        )}
+        {joboffers.length === 0 ? (
+          <div />
+        ) : (
+          <Paper className={classes.paper}>
+            <React.Fragment>
+              <Typography
+                component="h2"
+                variant="h6"
+                color="primary"
+                gutterBottom
+              >
+                Applied Job Offers
+              </Typography>
+              <Table size="small">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>S No.</TableCell>
+                    <TableCell>Date</TableCell>
+                    <TableCell>Company</TableCell>
+                    <TableCell>Designation</TableCell>
+                    <TableCell>Status</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {joboffers.map((row, index) => (
+                    <TableRow key={row.id}>
+                      <TableCell>{index + 1}</TableCell>
+                      <TableCell>
+                        {getDate(row.application_timestamp)}
+                      </TableCell>
+                      <TableCell>{row.name}</TableCell>
+                      <TableCell>{row.designation}</TableCell>
+                      <TableCell>
+                        {row.is_accepted ? (
+                          <Chip color="green" label="Accepted" />
+                        ) : (
+                          <Chip label="Pending" />
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </React.Fragment>
+          </Paper>
+        )}
         <Paper className={classes.paper}>
           <React.Fragment>
             <Typography

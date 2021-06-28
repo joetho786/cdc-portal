@@ -12,10 +12,12 @@ class ProgramAndBranch(models.Model):
     => name = Btech Electrical Engineering
     => getter = B/EE
     => abbreviation = BTech EE
+    => check_cg = to check for branch cg comaprison while listing offers
     """
     name = models.CharField(max_length=60)
     abbreviation = models.CharField(max_length=20)
     getter = models.CharField(max_length=10, default="B/EE")
+    check_gpa = models.BooleanField(default=True)
     usable = models.BooleanField(default=False)
 
     def __str__(self):

@@ -15,6 +15,8 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import Grid from '@material-ui/core/Grid';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -86,6 +88,8 @@ const StudentRegister = () => {
     check: false,
   });
   const [check, setCheck] = React.useState(false);
+  const [alert, setalert] = React.useState([]);
+  const [show, setshow] = React.useState(true);
 
   function getStepContent(step) {
     switch (step) {
@@ -152,8 +156,25 @@ const StudentRegister = () => {
         setLoading(false);
       });
   };
+
+  React.useEffect(() => {
+    instance
+      .get('main/alerts/')
+      .then((res) => {
+        setalert(res.data.StudentRegister);
+      })
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <React.Fragment>
+      {show && alert.length !== 0 ? (
+        <Grid container style={{ padding: '10px 100px', background: alert[1] }}>
+          <CancelIcon onClick={() => setshow(false)} />
+          <div style={{ margin: 'auto' }}>{alert[0]}</div>
+        </Grid>
+      ) : (
+        <div />
+      )}
       <CssBaseline />
       <main className={classes.layout}>
         <Backdrop

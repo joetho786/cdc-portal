@@ -6,6 +6,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import backgroundImage from '../assets/loginback.jpg';
+import Grid from '@material-ui/core/Grid';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -16,6 +18,8 @@ const StudentLogin = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = React.useState(false);
+  const [alert, setalert] = useState([]);
+  const [show, setshow] = useState(true);
 
   const clearForm = () => {
     setError('');
@@ -63,7 +67,14 @@ const StudentLogin = () => {
         setLoading(false);
       });
   };
-
+  React.useEffect(() => {
+    instance
+      .get('main/alerts/')
+      .then((res) => {
+        setalert(res.data.StudentLogin);
+      })
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <div
       style={{
@@ -74,6 +85,14 @@ const StudentLogin = () => {
         justifyContent: 'center',
       }}
     >
+      {show && alert.length !== 0 ? (
+        <Grid container style={{ padding: '10px 100px', background: alert[1] }}>
+          <CancelIcon onClick={() => setshow(false)} />
+          <div style={{ margin: 'auto' }}>{alert[0]}</div>
+        </Grid>
+      ) : (
+        <div />
+      )}
       <div className={styles.background}>
         <div className={styles.Login}>
           <Backdrop

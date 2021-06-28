@@ -1,3 +1,7 @@
+from company.serializers import InternshipAdvertisementSerializer, InternshipOfferSerializer, JobAdvertisementSerializer, JobOfferSerializer
+from django.shortcuts import get_object_or_404
+from company.models import InternshipAdvertisement, InternshipOffer, JobAdvertisement, JobOffer
+from cdc_portal.utils import get_config_value
 from django.db.utils import IntegrityError
 from rest_framework.response import Response
 from .serializers import StudentProfileSerializer, ResumeSerializer
@@ -95,6 +99,18 @@ class getResumes(APIView):
         if not StudentProfile.objects.filter(user=request.user).exists():
             return Response(status=status.HTTP_403_FORBIDDEN)
         resumes = Resume.objects.filter(student__user=request.user).order_by('id')
+        if len(resumes) == 0:
+            profile = StudentProfile.objects.get(user=request.user)
+            return Response(StudentProfileSerializer(profile).data, status=status.HTTP_200_OK)
+        serializer = ResumeSerializer(resumes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class getApprovedResumes(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, *args, **kwargs):
+        resumes = Resume.objects.filter(student__user=request.user, is_verified=True).order_by('id')
         serializer = ResumeSerializer(resumes, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -130,3 +146,82 @@ class deleteResume(APIView):
             else:
                 return Response({'Error': 'Cannot delete the resume'}, status.HTTP_500_INTERNAL_SERVER_ERROR)
         return Response(data=data)
+
+
+class StudentAvailableOffers(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get_applied_ad_list(self, user, model):
+        if model == InternshipAdvertisement:
+            m = InternshipOffer
+        else:
+            m = JobOffer
+        return model.objects.filter(
+            id__in=m.objects.filter(student__user=user).values_list('profile'))
+
+    def get_offers(self, profile, model):
+        if profile.program_branch.check_gpa:
+            offers = model.objects.filter(min_gpa__lte=profile.gpa,
+                                          eligible_program_branch__name__contains=profile.program_branch.name,
+                                          active=True).difference(self.get_applied_ad_list(profile.user, model))
+        else:
+            offers = model.objects.filter(
+                eligible_program_branch__name__contains=profile.program_branch.name,
+                active=True).difference(self.get_applied_ad_list(profile.user, model))
+        return offers
+
+    def get(self, request):
+        show = get_config_value('ShowAdertisements')
+        profile = get_object_or_404(StudentProfile, user=request.user)
+        IntershipYears = get_config_value('IntershipYears')
+        JobYears = get_config_value('JobYears')
+        if profile.banned:
+            Response({'Error': 'You are Banned', }, status.HTTP_403_FORBIDDEN)
+        if profile.placed:
+            Response({'Error': 'You are Placed', }, status.HTTP_403_FORBIDDEN)
+        year_combo = profile.program_branch.getter.split('/')[0] + str(profile.year)
+        offers = {}
+        if year_combo in IntershipYears:
+            model = InternshipAdvertisement
+            serializer = InternshipAdvertisementSerializer
+            off = self.get_offers(profile, model)
+            offers['Internships'] = serializer(off, many=True).data if show else []
+        if year_combo in JobYears:
+            model = JobAdvertisement
+            serializer = JobAdvertisementSerializer
+            off = self.get_offers(profile, model)
+            offers['Jobs'] = serializer(off, many=True).data if show else []
+        return Response(offers, status.HTTP_200_OK)
+
+
+class StudentAppliedOffers(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, *args, **kwargs):
+        data = {}
+        off = InternshipOffer.objects.filter(student__user=request.user)
+        data['Internships'] = InternshipOfferSerializer(off, many=True).data
+        off = JobOffer.objects.filter(student__user=request.user)
+        data['Jobs'] = JobOfferSerializer(off, many=True).data
+        return Response(data, status=status.HTTP_200_OK)
+
+    def post(self, request,):
+        data = {}
+        for key in request.data.keys():
+            data[key] = request.data.get(key)
+        user = request.user
+        if data['type'] == 'Intern':
+            model = InternshipOffer
+            model_ad = InternshipAdvertisement
+        elif data['type'] == 'Job':
+            model = JobOffer
+            model_ad = JobAdvertisement
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        ad_id = data.pop('ad_id')
+        ad = get_object_or_404(model_ad, id=ad_id)
+        rs_id = data.pop('resume')
+        res = get_object_or_404(Resume, id=rs_id)
+        student = get_object_or_404(StudentProfile, user=user)
+        model.objects.create(profile=ad, resume=res, student=student, company=ad.company)
+        return Response(status=status.HTTP_200_OK)

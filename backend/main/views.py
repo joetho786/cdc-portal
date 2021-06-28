@@ -1,14 +1,30 @@
-from rest_framework.generics import ListAPIView
+from cdc_portal.utils import get_config_value
+from django.shortcuts import get_object_or_404
+from rest_framework import status
 from rest_framework.filters import SearchFilter
-from main.models import News, AlumniTestimonial, PastRecruiters,\
-     HomeImageCarousel, CoreTeamContacts, CareerCommittee, Volunteers,\
-     NavBarSubOptions, NavBarOptions, DesignationChoices, VolunteersYearChoices, AboutUs, DirectorMessage,\
-     Achievements, WhyRecruit
-from main.serializers import NewsSerializer, AlumniTestimonialSerializer,\
-     PastRecruitersSerializer, HomeImageCarouselSerializer, CoreTeamContactsSerializer,\
-     CareerCommitteeSerializer, VolunteersSerializer, VolunteersYearChoicesSerializer,\
-     NavBarSubOptionsSerializer, NavBarOptionsSerializer, DesignationChoicesSerializer, AboutUsSerializer,\
-     DirectorMessageSerializer, AchievementsSerializer, WhyRecruitSerializer
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from student.models import StudentProfile
+
+from main.models import (AboutUs, Achievements, AlumniTestimonial,
+                         CareerCommittee, CoreTeamContacts, DesignationChoices,
+                         DirectorMessage, HomeImageCarousel, NavBarOptions,
+                         NavBarSubOptions, News, PastRecruiters, Volunteers,
+                         VolunteersYearChoices, WhyRecruit)
+from main.serializers import (AboutUsSerializer, AchievementsSerializer,
+                              AlumniTestimonialSerializer,
+                              CareerCommitteeSerializer,
+                              CoreTeamContactsSerializer,
+                              DesignationChoicesSerializer,
+                              DirectorMessageSerializer,
+                              HomeImageCarouselSerializer,
+                              NavBarOptionsSerializer,
+                              NavBarSubOptionsSerializer, NewsSerializer,
+                              PastRecruitersSerializer, VolunteersSerializer,
+                              VolunteersYearChoicesSerializer,
+                              WhyRecruitSerializer)
 
 
 class NewsSerializer(ListAPIView):
@@ -94,3 +110,25 @@ class WhyRecruitSerializer(ListAPIView):
     serializer_class = WhyRecruitSerializer
     search_fields = ['title']
     filter_backends = (SearchFilter,)
+
+
+class Alerts(APIView):
+    def get(self, request,):
+        return Response(get_config_value('Alerts'), status=status.HTTP_200_OK)
+
+
+class Announcements(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request,):
+        profile = get_object_or_404(StudentProfile, user=request.user)
+        IntershipYears = get_config_value('IntershipYears')
+        JobYears = get_config_value('JobYears')
+        an = get_config_value('Annoucements')
+        year_combo = profile.program_branch.getter.split('/')[0] + str(profile.year)
+        data = {'Annoucements': an["All"]}
+        if year_combo in IntershipYears:
+            data['Annoucements'].append(an["Interships"])
+        if year_combo in JobYears:
+            data['Annoucements'].append(an["Jobs"])
+        return Response(data, status.HTTP_200_OK)

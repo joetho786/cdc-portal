@@ -202,6 +202,11 @@ export default function Navbar() {
                         </Link>
                       </li>
                       <li onClick={() => setIsChecked(!isChecked)}>
+                        <Link to="/student-dashboard/offers">
+                          Available offers
+                        </Link>
+                      </li>
+                      <li onClick={() => setIsChecked(!isChecked)}>
                         <Link to="/student-dashboard/uploadresume">
                           Upload Resume
                         </Link>
