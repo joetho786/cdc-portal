@@ -29,7 +29,7 @@ export const mainListItems = (
       </ListItem>
     </a>
     <a
-      href="/student-dashboard/"
+      href="/student-dashboard/profile"
       style={{ color: 'inherit', textDecoration: 'none' }}
     >
       <ListItem button>

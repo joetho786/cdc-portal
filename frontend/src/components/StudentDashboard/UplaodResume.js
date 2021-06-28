@@ -63,7 +63,7 @@ function UploadResume() {
     form.append('file', file, file.name);
     form.append('reference', ref);
     instance
-      .post('/student/add_resume/', form)
+      .post('/student/resume/', form)
       .then((res) => {
         setOpen(true);
         setRef('');

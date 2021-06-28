@@ -15,6 +15,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function getUrl(photo) {
+  try {
+    return URL.createObjectURL(photo);
+  } catch {
+    return photo;
+  }
+}
+
 export default function PersonalDetailsForm({ p1, p2 }) {
   const classes = useStyles();
 
@@ -135,7 +143,7 @@ export default function PersonalDetailsForm({ p1, p2 }) {
             <div>
               <img
                 className={classes.button}
-                src={URL.createObjectURL(p1.photo)}
+                src={getUrl(p1.photo)}
                 alt=""
                 style={{ maxWidth: '100px' }}
               />

@@ -143,7 +143,7 @@ const StudentRegister = () => {
     form.append('xii_board_name', values2.bn12);
     form.append('xii_percentage', values2.bp12);
     instance
-      .post('/student/details_add/', form)
+      .post('/student/details/', form)
       .then((res) => {
         if (res.status === 200) {
           window.location = '/student-dashboard';
@@ -168,7 +168,7 @@ const StudentRegister = () => {
   return (
     <React.Fragment>
       {show && alert.length !== 0 ? (
-        <Grid container style={{ padding: '10px 100px', background: alert[1] }}>
+        <Grid container style={{ padding: '10px 10%', background: alert[1] }}>
           <CancelIcon onClick={() => setshow(false)} />
           <div style={{ margin: 'auto' }}>{alert[0]}</div>
         </Grid>

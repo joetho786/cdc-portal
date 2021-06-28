@@ -65,7 +65,7 @@ function Home() {
   function deleteRow(event, index, id) {
     event.preventDefault();
     instance
-      .delete('student/delete_resume/' + id)
+      .delete('student/resume/' + id)
       .then((res) => {
         resume.splice(index, 1);
         setresumeData(resume);
@@ -78,7 +78,7 @@ function Home() {
   }
   React.useEffect(() => {
     instance
-      .get('student/get_resumes/')
+      .get('student/resumes/')
       .then((res) => {
         //console.log(res.data);
         let adt = {};
