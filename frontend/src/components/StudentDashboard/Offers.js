@@ -89,7 +89,7 @@ function Offers() {
         }
       });
     instance
-      .get('student/get_approved_resumes/')
+      .get('student/resumes/?approved=true')
       .then((res) => {
         console.log(res.data);
         setresumeData(res.data);
