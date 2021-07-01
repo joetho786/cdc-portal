@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -105,13 +105,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const [alert, setalert] = React.useState([]);
-  const [show, setshow] = React.useState(true);
+  const [open, setOpen] = useState(false);
+  const [alert, setalert] = useState([]);
+  const [show, setshow] = useState(true);
   const handleDrawerClose = () => {
     setOpen(!open);
   };
-  React.useEffect(() => {
+
+  useEffect(() => {
     instance
       .get('main/alerts/')
       .then((res) => {
@@ -119,6 +120,7 @@ export default function Dashboard() {
       })
       .catch((error) => console.log(error));
   }, []);
+
   return (
     <div className={classes.root}>
       {show && alert.length !== 0 ? (
