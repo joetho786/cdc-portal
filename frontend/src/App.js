@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
 import NotFound from './pages/404';
-import Invitation from './pages/Invitation';
 import ChairmanMessage from './pages/ChairmanMessage';
 import DirectorMessage from './pages/DirectorMessage';
 import GradeSystem from './pages/GradeSystem';
@@ -36,6 +35,8 @@ import AdmissionProcedure from './pages/AdmissionProcedure';
 import Footer from './components/Footer/Footer';
 import SiteConfig from './pages/SiteConfig';
 import ScrollToTop from './components/ScrollToTop';
+import StudentProtected from './components/RestrictedRoutes/StudentProtected';
+import CompanyProtected from './components/RestrictedRoutes/CompanyProtected';
 
 function App() {
   return (
@@ -44,7 +45,6 @@ function App() {
       <ScrollToTop />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/invitation" component={Invitation} />
         <Route path="/chairman-message" component={ChairmanMessage} />
         <Route path="/director-message" component={DirectorMessage} />
         <Route path="/grade-system" component={GradeSystem} />
@@ -70,10 +70,16 @@ function App() {
         <Route path="/c3-members" component={CareerCounselling} />
         <Route path="/student-login" component={StudentLogin} />
         <Route path="/student-register" component={StudentRegister} />
-        <Route path="/student-dashboard" component={StudentDashboard} />
+        <StudentProtected
+          path="/student-dashboard/"
+          component={StudentDashboard}
+        />
         <Route path="/recruiter-login" component={RecruiterLogin} />
         <Route path="/recruiter-register" component={RecruiterRegister} />
-        <Route path="/recruiter-dashboard" component={RecruiterDashboard} />
+        <CompanyProtected
+          path="/recruiter-dashboard"
+          component={RecruiterDashboard}
+        />
         <Route path="/site-config" component={SiteConfig} />
         <Route default component={NotFound} />
       </Switch>

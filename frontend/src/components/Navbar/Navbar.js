@@ -46,9 +46,6 @@ export default function Navbar() {
                 </label>
                 <ul>
                   <li onClick={() => setIsChecked(!isChecked)}>
-                    <Link to="/invitation">Invitation</Link>
-                  </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/director-message">Director's Message</Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
