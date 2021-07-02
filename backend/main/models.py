@@ -154,6 +154,25 @@ class Achievements(models.Model):
     def __str__(self):
         return self.title
 
+class CareerDevelopmentActivity(models.Model):
+    CATEGORY = (
+        ('Upcoming', 'Upcoming'),
+        ('Past', 'Past'),
+    )
+    title = models.CharField(max_length=64)
+    category = models.CharField(max_length=10, choices=CATEGORY)
+    date = models.CharField(default="Thursday, January 10th", blank=True, null=True, max_length=100)
+    time = models.CharField(default="4:00pm-6:00pm", blank=True, null=True, max_length=100)
+    location = models.TextField(blank=True, null=True)
+    description = RichTextUploadingField(blank=True, null=True)
+    details = RichTextUploadingField(blank=True, null=True)
+    image = models.ImageField(upload_to='CDActivities', blank=True, null=True)
+    active = models.BooleanField(default=True)
+    ranking = models.PositiveSmallIntegerField(default=512)
+
+    def __str__(self):
+        return self.title
+
 
 class HomeImageCarousel(models.Model):
     ordering = models.PositiveIntegerField(default=64)

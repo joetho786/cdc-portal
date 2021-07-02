@@ -12,7 +12,7 @@ from main.models import (AboutUs, Achievements, AlumniTestimonial,
                          CareerCommittee, CoreTeamContacts, DesignationChoices,
                          DirectorMessage, HomeImageCarousel, NavBarOptions,
                          NavBarSubOptions, News, PastRecruiters, Volunteers,
-                         VolunteersYearChoices, WhyRecruit)
+                         VolunteersYearChoices, WhyRecruit, CareerDevelopmentActivity)
 from main.serializers import (AboutUsSerializer, AchievementsSerializer,
                               AlumniTestimonialSerializer,
                               CareerCommitteeSerializer,
@@ -24,7 +24,7 @@ from main.serializers import (AboutUsSerializer, AchievementsSerializer,
                               NavBarSubOptionsSerializer, NewsSerializer,
                               PastRecruitersSerializer, VolunteersSerializer,
                               VolunteersYearChoicesSerializer,
-                              WhyRecruitSerializer)
+                              WhyRecruitSerializer, CareerDevelopmentActivitySerializer)
 
 
 class NewsSerializer(ListAPIView):
@@ -45,6 +45,10 @@ class DirectorMessageSerializer(ListAPIView):
 class AlumniTestimonialSerializer(ListAPIView):
     queryset = AlumniTestimonial.objects.filter(active='True').order_by('ranking')
     serializer_class = AlumniTestimonialSerializer
+
+class CareerDevelopmentActivitySerializer(ListAPIView):
+    queryset = CareerDevelopmentActivity.objects.filter(active='True').order_by('ranking')
+    serializer_class = CareerDevelopmentActivitySerializer
 
 
 class AchievementsSerializer(ListAPIView):
