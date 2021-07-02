@@ -184,7 +184,8 @@ nav .content .links {
   .content .links #show-recruiter:checked ~ ul,
   .content .links #show-forms:checked ~ ul,
   .content .links #show-cdc-team:checked ~ ul,
-  .content .links #show-login:checked ~ ul {
+  .content .links #show-login:checked ~ ul,
+  .content .links #show-auth-options:checked ~ ul {
     max-height: 100vh;
   }
   .content .links ul {

@@ -10,7 +10,10 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from rest_framework.parsers import MultiPartParser, FormParser
-
+from django.conf import settings
+from django.core.mail import get_connection, EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 class StudentDetails(APIView):
     permission_classes = (IsAuthenticated,)
@@ -207,4 +210,58 @@ class AppliedOffers(APIView):
         res = get_object_or_404(Resume, id=rs_id)
         student = get_object_or_404(StudentProfile, user=user)
         model.objects.create(profile=ad, resume=res, student=student, company=ad.company)
+        return Response(status=status.HTTP_200_OK)
+
+class SendSuggestionsAndInquiry(APIView):
+    permission_classes = (IsAuthenticated,)
+    
+    def post(self, request,):
+        data = {}
+        for key in request.data.keys():
+            data[key] = request.data.get(key)
+        user = request.user
+        profile = get_object_or_404(StudentProfile, user=user)
+        name = profile
+        roll_no = user.username
+        email = user.email
+        branch = profile.program_branch.name
+        send_mail_to = data['sendto']
+        feedback_subject = data['subject']
+        feedback_text = data['text']
+        feedback_category = data['category']
+        from_email = settings.FEEDBACK_SENDER_EMAIL
+        # Send mail
+        with get_connection(
+                username=from_email,
+                password=settings.FEEDBACK_SENDER_EMAIL_PASSWORD
+        ) as connection:
+            subject = feedback_subject
+            to_email = [send_mail_to, ]
+            cc = [settings.CHAIRMAN_ID, settings.OFFICE_CDC_ID, settings.FACULTY_INCHARGE_ID, ]
+            html_content = render_to_string("student/feedback_email_template.html",
+                                            {'name': name, 'branch': branch,
+                                             'roll_no': roll_no, 'email': email, 'feedback_type': feedback_category,
+                                             'feedback_text': feedback_text})
+            text_content = strip_tags(html_content)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
+                                             cc=cc, connection=connection)
+            message.attach_alternative(html_content, "text/html")
+            message.send()
+
+        # Confirmation mail to user
+        from_success_email = settings.FEEDBACK_RESPONDER_EMAIL
+        with get_connection(
+                username=from_success_email,
+                password=settings.FEEDBACK_RESPONDER_EMAIL_PASSWORD
+        ) as connection:
+            subject = feedback_category + ' ' + 'received'
+            to_email = [email, ]
+            html_content = render_to_string("student/feedback_confirmation.html",
+                                            {'feedback_type': feedback_category})
+            text_content = strip_tags(html_content)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_success_email, to=to_email,
+                                             connection=connection)
+            message.attach_alternative(html_content, "text/html")
+            message.send()
+
         return Response(status=status.HTTP_200_OK)

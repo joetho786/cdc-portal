@@ -188,8 +188,8 @@ export default function Navbar() {
                       <i className="fa fa-caret-down"></i>
                     </span>
                   </Link>
-                  <input type="checkbox" id="show-cdc-team" />
-                  <label htmlFor="show-cdc-team">
+                  <input type="checkbox" id="show-auth-options" />
+                  <label htmlFor="show-auth-options">
                     {localStorage.getItem('cdc_Dname')}{' '}
                     <i className="fa fa-caret-down"></i>
                   </label>
