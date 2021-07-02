@@ -70,6 +70,7 @@ class AchievementsSerializer(serializers.ModelSerializer):
         model = Achievements
         fields = '__all__'
 
+
 class CareerDevelopmentActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = CareerDevelopmentActivity

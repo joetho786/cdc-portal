@@ -15,6 +15,7 @@ from django.core.mail import get_connection, EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
+
 class StudentDetails(APIView):
     permission_classes = (IsAuthenticated,)
 
@@ -212,9 +213,10 @@ class AppliedOffers(APIView):
         model.objects.create(profile=ad, resume=res, student=student, company=ad.company)
         return Response(status=status.HTTP_200_OK)
 
+
 class SendSuggestionsAndInquiry(APIView):
     permission_classes = (IsAuthenticated,)
-    
+
     def post(self, request,):
         data = {}
         for key in request.data.keys():

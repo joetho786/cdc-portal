@@ -46,6 +46,7 @@ class AlumniTestimonialSerializer(ListAPIView):
     queryset = AlumniTestimonial.objects.filter(active='True').order_by('ranking')
     serializer_class = AlumniTestimonialSerializer
 
+
 class CareerDevelopmentActivitySerializer(ListAPIView):
     queryset = CareerDevelopmentActivity.objects.filter(active='True').order_by('ranking')
     serializer_class = CareerDevelopmentActivitySerializer

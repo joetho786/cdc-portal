@@ -154,6 +154,7 @@ class Achievements(models.Model):
     def __str__(self):
         return self.title
 
+
 class CareerDevelopmentActivity(models.Model):
     CATEGORY = (
         ('Upcoming', 'Upcoming'),

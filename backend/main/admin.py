@@ -18,6 +18,7 @@ class NewsAdmin(ImportExportActionModelAdmin):
     class Meta:
         model = News
 
+
 @admin.register(CareerDevelopmentActivity)
 class CareerDevelopmentActivityAdmin(ImportExportActionModelAdmin):
     list_display = ['ranking', 'title', 'active', ]
@@ -26,6 +27,7 @@ class CareerDevelopmentActivityAdmin(ImportExportActionModelAdmin):
 
     class Meta:
         model = CareerDevelopmentActivity
+
 
 @admin.register(DirectorMessage)
 class DirectorMessageAdmin(ImportExportActionModelAdmin):
