@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import FacebookIcon from '@material-ui/icons/Facebook';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import EmailIcon from '@material-ui/icons/Email';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import testiBack from '../../assets/testiback2.jpg';
@@ -63,6 +64,13 @@ const AlumniTestimonial = ({ data }) => {
               </CardActionArea>
               <CardActions style={{ justifyContent: 'center' }}>
                 <div>
+                  {Testimonial_Obj.linkedin !== null && (
+                    <Tooltip arrow title="linkedin">
+                      <IconButton color="primary" variant="outlined">
+                        <LinkedInIcon href={Testimonial_Obj.linkedin} />
+                      </IconButton>
+                    </Tooltip>
+                  )}
                   {Testimonial_Obj.facebook !== null && (
                     <Tooltip arrow title="facebook">
                       <IconButton color="primary" variant="outlined">

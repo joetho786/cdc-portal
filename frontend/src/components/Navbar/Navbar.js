@@ -63,9 +63,6 @@ export default function Navbar() {
                 </label>
                 <ul>
                   <li onClick={() => setIsChecked(!isChecked)}>
-                    <Link to="/grade-system">Grade System</Link>
-                  </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/programs">Programmes</Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
@@ -94,6 +91,9 @@ export default function Navbar() {
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/internships">Internships</Link>
                   </li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
+                    <Link to="/cd-activities">Career Development Activity</Link>
+                  </li>
                 </ul>
               </li>
               <li>
@@ -116,6 +116,9 @@ export default function Navbar() {
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/placement-procedure">Placement Procedure</Link>
+                  </li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
+                    <Link to="/grade-system">Grade System</Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/company-rules">Norms/Guidelines</Link>
