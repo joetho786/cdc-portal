@@ -208,3 +208,20 @@ class AppliedOffers(APIView):
         student = get_object_or_404(StudentProfile, user=user)
         model.objects.create(profile=ad, resume=res, student=student, company=ad.company)
         return Response(status=status.HTTP_200_OK)
+
+
+class Advertisement(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, id):
+        internship = InternshipAdvertisement.objects.filter(id=id)
+        if internship.exists():
+            data = InternshipAdvertisementSerializer(internship[0]).data
+            data['type'] = 'Internship'
+            return Response(data, status=status.HTTP_200_OK)
+        job = JobAdvertisement.objects.filter(id=id)
+        if job.exists():
+            data = JobAdvertisementSerializer(job[0]).data
+            data['type'] = 'Job'
+            return Response(data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
