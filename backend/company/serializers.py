@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import CompanyProfile, JobAdvertisement, JobOffer, InternshipAdvertisement, InternshipOffer, CompanyPerson
-from student.serializers import UserSerializer
+from student.serializers import ProgramAndBranchSerializer, UserSerializer
 
 
 class CompanyProfileSerializer(serializers.ModelSerializer):
@@ -13,6 +13,7 @@ class CompanyProfileSerializer(serializers.ModelSerializer):
 
 class InternshipAdvertisementSerializer(serializers.ModelSerializer):
     company = CompanyProfileSerializer(read_only=True)
+    eligible_program_branch = ProgramAndBranchSerializer(read_only=True, many=True)
 
     class Meta:
         model = InternshipAdvertisement

@@ -20,6 +20,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
 import LinkIcon from '@material-ui/icons/Link';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import Chip from '@material-ui/core/Chip';
 
 const useStyles = makeStyles((theme) => ({
@@ -110,6 +111,7 @@ function Home() {
       res.data.Internships.forEach((element) => {
         element.name = element.profile.company.name;
         element.designation = element.profile.designation;
+        element.adv = element.profile.id;
         dat.push(element);
         console.log(element);
       });
@@ -117,6 +119,8 @@ function Home() {
       dat = [];
       res.data.Jobs.forEach((element) => {
         element.name = element.company.name;
+        element.designation = element.profile.designation;
+        element.adv = element.profile.id;
         dat.push(element);
       });
       setjoboffers(dat);
@@ -141,7 +145,7 @@ function Home() {
               <Table size="small">
                 <TableHead>
                   <TableRow>
-                    <TableCell>S No.</TableCell>
+                    <TableCell></TableCell>
                     <TableCell>Date</TableCell>
                     <TableCell>Company</TableCell>
                     <TableCell>Designation</TableCell>
@@ -151,7 +155,19 @@ function Home() {
                 <TableBody>
                   {internoffers.map((row, index) => (
                     <TableRow key={row.id}>
-                      <TableCell>{index + 1}</TableCell>
+                      <TableCell>
+                        <VisibilityIcon
+                          style={{
+                            marginLeft: '10%',
+                            paddingTop: '1%',
+                            cursor: 'pointer',
+                          }}
+                          onClick={() => {
+                            window.location =
+                              '/student-dashboard/advertisement/' + row.adv;
+                          }}
+                        />
+                      </TableCell>
                       <TableCell>
                         {getDate(row.application_timestamp)}
                       </TableCell>
@@ -187,7 +203,7 @@ function Home() {
               <Table size="small">
                 <TableHead>
                   <TableRow>
-                    <TableCell>S No.</TableCell>
+                    <TableCell></TableCell>
                     <TableCell>Date</TableCell>
                     <TableCell>Company</TableCell>
                     <TableCell>Designation</TableCell>
@@ -197,7 +213,19 @@ function Home() {
                 <TableBody>
                   {joboffers.map((row, index) => (
                     <TableRow key={row.id}>
-                      <TableCell>{index + 1}</TableCell>
+                      <TableCell>
+                        <VisibilityIcon
+                          style={{
+                            marginLeft: '10%',
+                            paddingTop: '1%',
+                            cursor: 'pointer',
+                          }}
+                          onClick={() => {
+                            window.location =
+                              '/student-dashboard/advertisement/' + row.adv;
+                          }}
+                        />
+                      </TableCell>
                       <TableCell>
                         {getDate(row.application_timestamp)}
                       </TableCell>

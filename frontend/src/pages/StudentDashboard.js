@@ -21,6 +21,7 @@ import {
   mainListItems,
   secondaryListItems,
 } from '../components/StudentDashboard/MenuItems';
+import ViewAdvertisement from '../components/StudentDashboard/ViewAdvertisement';
 
 const drawerWidth = 240;
 
@@ -168,6 +169,11 @@ export default function Dashboard() {
                 path="/student-dashboard/offers"
                 exact
                 component={Offers}
+              />
+              <Route
+                path="/student-dashboard/advertisement/:id"
+                exact
+                component={ViewAdvertisement}
               />
             </Switch>
           </Router>
