@@ -1,10 +1,14 @@
 from django.contrib import admin
-from main.models import PastRecruiters, News,\
+from main.models import OfficeMails, PastRecruiters, News,\
      AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
      VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
      Volunteers, NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
-     Achievements, WhyRecruit
+     Achievements, WhyRecruit, CareerDevelopmentActivity
 from import_export.admin import ImportExportActionModelAdmin
+
+
+admin.site.register(OfficeMails)
+
 
 admin.site.register(AboutUs)
 
@@ -17,6 +21,16 @@ class NewsAdmin(ImportExportActionModelAdmin):
 
     class Meta:
         model = News
+
+
+@admin.register(CareerDevelopmentActivity)
+class CareerDevelopmentActivityAdmin(ImportExportActionModelAdmin):
+    list_display = ['ranking', 'title', 'active', ]
+    list_filter = ['active', ]
+    ordering = ['ranking']
+
+    class Meta:
+        model = CareerDevelopmentActivity
 
 
 @admin.register(DirectorMessage)

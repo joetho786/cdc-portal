@@ -31,7 +31,7 @@ const Poster = () => {
               )}&embedded=true#view=fitH`}
               title="Poster"
               style={{ width: '100%', height: '100%' }}
-              frameborder="0"
+              frameBorder="0"
             />
           </div>
         </Paper>

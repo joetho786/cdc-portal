@@ -3,10 +3,12 @@ from . import views
 
 app_name = 'main'
 urlpatterns = [
+    path('office_mails/', views.OfficeMailsSerializer.as_view(), name="office_mails"),
     path('news/', views.NewsSerializer.as_view(), name="news"),
     path('about_us/', views.AboutUsSerializer.as_view(), name="about_us"),
     path('director_message/', views.DirectorMessageSerializer.as_view(), name="director_message"),
     path('alumni_testimonial/', views.AlumniTestimonialSerializer.as_view(), name="alumni_testimonial"),
+    path('career_development_activity/', views.CareerDevelopmentActivitySerializer.as_view(), name="career_development_activity"),
     path('achievements/', views.AchievementsSerializer.as_view(), name="achievements"),
     path('past_recruiters/', views.PastRecruitersSerializer.as_view(), name="past_recruiters"),
     path('designation_choices/', views.DesignationChoicesSerializer.as_view(), name="designation_choices"),

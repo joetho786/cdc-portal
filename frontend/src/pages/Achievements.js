@@ -7,9 +7,11 @@ import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { getLink } from '../utils/getLink';
 import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import DialogBox from '../components/DialogBox';
 import FadeUpWhenVisible from '../components/Animation/FadeUp';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
     fontSize: '1rem',
     color: 'black',
+    height: 90,
   },
   Hroot: {
     maxWidth: 345,
@@ -50,6 +53,14 @@ const useStyles = makeStyles((theme) => ({
   actionArea: {
     minHeight: '100%',
     flexFlow: 'column-reverse',
+    height: 350,
+    maxHeight: 400,
+  },
+  otherActionArea: {
+    height: 200,
+  },
+  action: {
+    justifyContent: 'space-evenly',
   },
 }));
 
@@ -85,8 +96,8 @@ const Achievements = () => {
 
     highlights.map((highlights_Obj) => {
       return highlights_list.push(
-        <Card key={highlights_Obj.title} className={classes.Hroot}>
-          <FadeInWhenVisible>
+        <FadeInWhenVisible>
+          <Card key={highlights_Obj.title} className={classes.Hroot}>
             <CardActionArea className={classes.actionArea}>
               <CardMedia
                 className={classes.media}
@@ -111,8 +122,17 @@ const Achievements = () => {
                 </div>
               </CardContent>
             </CardActionArea>
-          </FadeInWhenVisible>
-        </Card>
+            {highlights_Obj.details === null ? null : (
+              <CardActions className={classes.action}>
+                <DialogBox
+                  label={'Details'}
+                  title={highlights_Obj.title}
+                  text={highlights_Obj.details}
+                />
+              </CardActions>
+            )}
+          </Card>
+        </FadeInWhenVisible>
       );
     });
 
@@ -126,7 +146,7 @@ const Achievements = () => {
       return others_list.push(
         <FadeUpWhenVisible>
           <Card key={others_Obj.title} className={classes.Hroot}>
-            <CardActionArea>
+            <CardActionArea className={classes.otherActionArea}>
               <CardContent>
                 <Typography
                   gutterBottom
@@ -145,6 +165,15 @@ const Achievements = () => {
                 </div>
               </CardContent>
             </CardActionArea>
+            {others_Obj.details === null ? null : (
+              <CardActions className={classes.action}>
+                <DialogBox
+                  label={'Details'}
+                  title={others_Obj.title}
+                  text={others_Obj.details}
+                />
+              </CardActions>
+            )}
           </Card>
         </FadeUpWhenVisible>
       );

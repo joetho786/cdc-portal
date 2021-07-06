@@ -15,6 +15,7 @@ import RecruiterGuidelines from './pages/RecruiterGuidelines';
 import PastRecruiters from './pages/PastRecruiters';
 import AIPCNorms from './pages/AIPCNorms';
 import Achievements from './pages/Achievements';
+import CDActivities from './pages/CDActivities';
 import Prospective from './pages/Prospective';
 import StudentGuidelines from './pages/StudentGuidelines';
 import Internships from './pages/Internships';
@@ -50,6 +51,7 @@ function App() {
         <Route path="/programs" component={Programmes} />
         <Route path="/admissions" component={AdmissionProcedure} />
         <Route path="/achievements" component={Achievements} />
+        <Route path="/cd-activities" component={CDActivities} />
         <Route path="/prospective" component={Prospective} />
         <Route path="/student-guidelines" component={StudentGuidelines} />
         <Route path="/internships" component={Internships} />

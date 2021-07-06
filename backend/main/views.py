@@ -8,12 +8,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from student.models import StudentProfile
 
-from main.models import (AboutUs, Achievements, AlumniTestimonial,
+from main.models import (OfficeMails, AboutUs, Achievements, AlumniTestimonial,
                          CareerCommittee, CoreTeamContacts, DesignationChoices,
                          DirectorMessage, HomeImageCarousel, NavBarOptions,
                          NavBarSubOptions, News, PastRecruiters, Volunteers,
-                         VolunteersYearChoices, WhyRecruit)
-from main.serializers import (AboutUsSerializer, AchievementsSerializer,
+                         VolunteersYearChoices, WhyRecruit, CareerDevelopmentActivity)
+from main.serializers import (OfficeMailsSerializer, AboutUsSerializer, AchievementsSerializer,
                               AlumniTestimonialSerializer,
                               CareerCommitteeSerializer,
                               CoreTeamContactsSerializer,
@@ -24,7 +24,12 @@ from main.serializers import (AboutUsSerializer, AchievementsSerializer,
                               NavBarSubOptionsSerializer, NewsSerializer,
                               PastRecruitersSerializer, VolunteersSerializer,
                               VolunteersYearChoicesSerializer,
-                              WhyRecruitSerializer)
+                              WhyRecruitSerializer, CareerDevelopmentActivitySerializer)
+
+
+class OfficeMailsSerializer(ListAPIView):
+    queryset = OfficeMails.objects.filter(active=True)
+    serializer_class = OfficeMailsSerializer
 
 
 class NewsSerializer(ListAPIView):
@@ -45,6 +50,11 @@ class DirectorMessageSerializer(ListAPIView):
 class AlumniTestimonialSerializer(ListAPIView):
     queryset = AlumniTestimonial.objects.filter(active='True').order_by('ranking')
     serializer_class = AlumniTestimonialSerializer
+
+
+class CareerDevelopmentActivitySerializer(ListAPIView):
+    queryset = CareerDevelopmentActivity.objects.filter(active='True').order_by('ranking')
+    serializer_class = CareerDevelopmentActivitySerializer
 
 
 class AchievementsSerializer(ListAPIView):
