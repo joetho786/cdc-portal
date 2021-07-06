@@ -235,7 +235,6 @@ class SendSuggestionsAndInquiry(APIView):
         from_email = settings.FEEDBACK_SENDER_EMAIL
         CCList = [i.email for i in OfficeMails.objects.filter(category="CC")]
         BCCList = [i.email for i in OfficeMails.objects.filter(category="BCC")]
-        print(CCList)
         # Send mail
         with get_connection(
                 username=from_email,
