@@ -1,5 +1,6 @@
 from company.serializers import InternshipAdvertisementSerializer, InternshipOfferSerializer, JobAdvertisementSerializer, JobOfferSerializer
 from django.shortcuts import get_object_or_404
+from main.models import OfficeMails
 from company.models import InternshipAdvertisement, InternshipOffer, JobAdvertisement, JobOffer
 from cdc_portal.utils import get_config_value
 from django.db.utils import IntegrityError
@@ -232,6 +233,9 @@ class SendSuggestionsAndInquiry(APIView):
         feedback_text = data['text']
         feedback_category = data['category']
         from_email = settings.FEEDBACK_SENDER_EMAIL
+        CCList = [i.email for i in OfficeMails.objects.filter(category="CC")]
+        BCCList = [i.email for i in OfficeMails.objects.filter(category="BCC")]
+        print(CCList)
         # Send mail
         with get_connection(
                 username=from_email,
@@ -239,14 +243,15 @@ class SendSuggestionsAndInquiry(APIView):
         ) as connection:
             subject = feedback_subject
             to_email = [send_mail_to, ]
-            cc = [settings.CHAIRMAN_ID, settings.OFFICE_CDC_ID, settings.FACULTY_INCHARGE_ID, ]
+            cc = CCList
+            bcc = BCCList
             html_content = render_to_string("student/feedback_email_template.html",
                                             {'name': name, 'branch': branch,
                                              'roll_no': roll_no, 'email': email, 'feedback_type': feedback_category,
                                              'feedback_text': feedback_text})
             text_content = strip_tags(html_content)
             message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
-                                             cc=cc, connection=connection)
+                                             cc=cc, bcc=bcc, connection=connection)
             message.attach_alternative(html_content, "text/html")
             message.send()
 
@@ -267,3 +272,20 @@ class SendSuggestionsAndInquiry(APIView):
             message.send()
 
         return Response(status=status.HTTP_200_OK)
+
+
+class Advertisement(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, id):
+        internship = InternshipAdvertisement.objects.filter(id=id)
+        if internship.exists():
+            data = InternshipAdvertisementSerializer(internship[0]).data
+            data['type'] = 'Internship'
+            return Response(data, status=status.HTTP_200_OK)
+        job = JobAdvertisement.objects.filter(id=id)
+        if job.exists():
+            data = JobAdvertisementSerializer(job[0]).data
+            data['type'] = 'Job'
+            return Response(data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_400_BAD_REQUEST)

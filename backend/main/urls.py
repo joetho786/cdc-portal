@@ -3,6 +3,7 @@ from . import views
 
 app_name = 'main'
 urlpatterns = [
+    path('office_mails/', views.OfficeMailsSerializer.as_view(), name="office_mails"),
     path('news/', views.NewsSerializer.as_view(), name="news"),
     path('about_us/', views.AboutUsSerializer.as_view(), name="about_us"),
     path('director_message/', views.DirectorMessageSerializer.as_view(), name="director_message"),

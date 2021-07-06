@@ -6,6 +6,25 @@ from django.template.defaultfilters import slugify
 import re
 
 
+class OfficeMails(models.Model):
+    CATEGORY = (
+        ('Suggestion Recipient', 'Suggestion Recipient'),
+        ('Inquiry Recipient', 'Inquiry Recipient'),
+        ('CC', 'CC'),
+        ('BCC', 'BCC'),
+    )
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    category = models.CharField(max_length=100, choices=CATEGORY)
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'OfficeMails'
+
+
 class News(models.Model):
     title = models.CharField(max_length=64, blank=True)
     order_no = models.PositiveSmallIntegerField(default=512)

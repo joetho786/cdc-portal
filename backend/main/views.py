@@ -8,12 +8,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from student.models import StudentProfile
 
-from main.models import (AboutUs, Achievements, AlumniTestimonial,
+from main.models import (OfficeMails, AboutUs, Achievements, AlumniTestimonial,
                          CareerCommittee, CoreTeamContacts, DesignationChoices,
                          DirectorMessage, HomeImageCarousel, NavBarOptions,
                          NavBarSubOptions, News, PastRecruiters, Volunteers,
                          VolunteersYearChoices, WhyRecruit, CareerDevelopmentActivity)
-from main.serializers import (AboutUsSerializer, AchievementsSerializer,
+from main.serializers import (OfficeMailsSerializer, AboutUsSerializer, AchievementsSerializer,
                               AlumniTestimonialSerializer,
                               CareerCommitteeSerializer,
                               CoreTeamContactsSerializer,
@@ -25,6 +25,11 @@ from main.serializers import (AboutUsSerializer, AchievementsSerializer,
                               PastRecruitersSerializer, VolunteersSerializer,
                               VolunteersYearChoicesSerializer,
                               WhyRecruitSerializer, CareerDevelopmentActivitySerializer)
+
+
+class OfficeMailsSerializer(ListAPIView):
+    queryset = OfficeMails.objects.filter(active=True)
+    serializer_class = OfficeMailsSerializer
 
 
 class NewsSerializer(ListAPIView):

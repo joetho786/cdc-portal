@@ -123,7 +123,7 @@ nav .content .links {
     width: 200px;
   }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 950px) {
   .wrapper .menu-icon {
     display: block;
   }

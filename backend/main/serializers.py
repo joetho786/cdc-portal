@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from student.models import ProgramAndBranch
-from .models import News, PastRecruiters, Volunteers,\
+from .models import OfficeMails, News, PastRecruiters, Volunteers,\
                     AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
                     VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
                     NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
@@ -12,6 +12,12 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
+
+
+class OfficeMailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OfficeMails
+        fields = '__all__'
 
 
 class AboutUsSerializer(serializers.ModelSerializer):

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import instance from '../../api/axios';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -8,6 +9,23 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 export default function SuggestionInquiryForm({ p1, p2 }) {
+  const [SuggestionRecipient, setSuggestionRecipient] = useState([]);
+  const [InquiryRecipient, setInquiryRecipient] = useState([]);
+  useEffect(() => {
+    instance
+      .get('main/office_mails/')
+      .then((res) => {
+        setSuggestionRecipient(
+          res.data.filter((Data) =>
+            Data.category.includes('Suggestion Recipient')
+          )
+        );
+        setInquiryRecipient(
+          res.data.filter((Data) => Data.category.includes('Inquiry Recipient'))
+        );
+      })
+      .catch((error) => console.log(error));
+  }, []);
   const handleChangecat = (event) => {
     p2({ ...p1, ...{ category: event.target.value } });
   };
@@ -34,24 +52,24 @@ export default function SuggestionInquiryForm({ p1, p2 }) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
-            <InputLabel>Send mail to department of *</InputLabel>
+            <InputLabel>Send to *</InputLabel>
             <Select fullWidth value={p1.sendto} onChange={handleChangesendto}>
               <ListSubheader>Suggestion</ListSubheader>
-              <MenuItem value="noreply@localhost.com">Office name</MenuItem>
+              {SuggestionRecipient.map((obj) => {
+                return (
+                  <MenuItem key={obj.id} value={obj.email}>
+                    {obj.name}
+                  </MenuItem>
+                );
+              })}
               <ListSubheader>Inquiry</ListSubheader>
-              <MenuItem value="ananya@iitj.ac.in">Chemistry</MenuItem>
-              <MenuItem value="pkdammala@iitj.ac.in">
-                Civil and Infrastructure Engineering
-              </MenuItem>
-              <MenuItem value="mishra@iitj.ac.in">
-                Computer Science and Engineering
-              </MenuItem>
-              <MenuItem value="ruhisonal@iitj.ac.in">
-                Humanites and Social Sciences
-              </MenuItem>
-              <MenuItem value="abir@iitj.ac.in">
-                Metallurgical and Materials Engineering
-              </MenuItem>
+              {InquiryRecipient.map((obj) => {
+                return (
+                  <MenuItem key={obj.id} value={obj.email}>
+                    {obj.name}
+                  </MenuItem>
+                );
+              })}
             </Select>
           </FormControl>
         </Grid>
@@ -77,7 +95,7 @@ export default function SuggestionInquiryForm({ p1, p2 }) {
             label=" text"
             fullWidth
             multiline
-            rowsMax={8}
+            rowsMax={12}
             autoComplete=" text"
             value={p1.text}
             onChange={handleChangetext}

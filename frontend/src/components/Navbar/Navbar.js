@@ -188,8 +188,8 @@ export default function Navbar() {
                       <i className="fa fa-caret-down"></i>
                     </span>
                   </Link>
-                  <input type="checkbox" id="show-auth-options" />
-                  <label htmlFor="show-auth-options">
+                  <input type="checkbox" id="show-login" />
+                  <label htmlFor="show-login">
                     {localStorage.getItem('cdc_Dname')}{' '}
                     <i className="fa fa-caret-down"></i>
                   </label>
@@ -197,24 +197,27 @@ export default function Navbar() {
                     /* Student Zone */
                     <ul>
                       <li onClick={() => setIsChecked(!isChecked)}>
-                        <Link to="/student-dashboard/profile">Profile</Link>
+                        <a href="/student-dashboard/profile">Profile</a>
                       </li>
                       <li onClick={() => setIsChecked(!isChecked)}>
-                        <Link to="/student-dashboard/offers">
-                          Available offers
-                        </Link>
+                        <a href="/student-dashboard/offers">Available offers</a>
                       </li>
                       <li onClick={() => setIsChecked(!isChecked)}>
-                        <Link to="/student-dashboard/uploadresume">
+                        <a href="/student-dashboard/uploadresume">
                           Upload Resume
-                        </Link>
+                        </a>
+                      </li>
+                      <li onClick={() => setIsChecked(!isChecked)}>
+                        <a href="/student-dashboard/suggestion_inquiry">
+                          Suggestion or Inquiry
+                        </a>
                       </li>
                       <li onClick={Logout}>
                         <Link to="#">Logout</Link>
                       </li>
                     </ul>
                   ) : (
-                    /* Compant Zone */
+                    /* Company Zone */
                     <ul>
                       <li onClick={() => setIsChecked(!isChecked)}>
                         <Link to="/c3-members">Profile</Link>
