@@ -1,9 +1,9 @@
 from django.contrib import admin
 from main.models import OfficeMails, PastRecruiters, News,\
-     AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
-     VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
-     Volunteers, NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
-     Achievements, WhyRecruit, CareerDevelopmentActivity
+    AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
+    VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
+    Volunteers, NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
+    Achievements, WhyRecruit, CareerDevelopmentActivity, PlacementCalendar
 from import_export.admin import ImportExportActionModelAdmin
 
 
@@ -156,4 +156,14 @@ class WhyRecruitAdmin(admin.ModelAdmin):
 
     class Meta:
         model = WhyRecruit
+        fields = '__all__'
+
+
+@admin.register(PlacementCalendar)
+class PlacementCalendarAdmin(admin.ModelAdmin):
+    list_display = ['start', 'end', 'title', 'description']
+    search_fields = ['title', ]
+
+    class Meta:
+        model = PlacementCalendar
         fields = '__all__'

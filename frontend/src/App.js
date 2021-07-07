@@ -37,6 +37,7 @@ import SiteConfig from './pages/SiteConfig';
 import ScrollToTop from './components/ScrollToTop';
 import StudentProtected from './components/RestrictedRoutes/StudentProtected';
 import CompanyProtected from './components/RestrictedRoutes/CompanyProtected';
+import PlacementCalendar from './pages/PlacementCalendar';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         <Route path="/prospective" component={Prospective} />
         <Route path="/student-guidelines" component={StudentGuidelines} />
         <Route path="/internships" component={Internships} />
+        <Route path="/placement-calendar" component={PlacementCalendar} />
         <Route path="/why-recruit" component={WhyRecruit} />
         <Route path="/brochure" component={Brochure} />
         <Route path="/placement-statistics" component={PlacementStatistics} />

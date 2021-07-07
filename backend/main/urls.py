@@ -20,5 +20,6 @@ urlpatterns = [
     path('navbar_suboptions/', views.NavBarSubOptionsSerializer.as_view(), name="navbar_suboptions"),
     path('navbar_options/', views.NavBarOptionsSerializer.as_view(), name="navbar_options"),
     path('whyrecruitdata/', views.WhyRecruitSerializer.as_view(), name="whyrecruitdata"),
+    path('placement_calendar/', views.PlacementCalendarView.as_view(), name="placement_calendar"),
     path('alerts/', views.Alerts.as_view(), name="alerts"),
 ]

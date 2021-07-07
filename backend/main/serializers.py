@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from student.models import ProgramAndBranch
-from .models import OfficeMails, News, PastRecruiters, Volunteers,\
-                    AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
-                    VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
-                    NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
-                    Achievements, WhyRecruit, CareerDevelopmentActivity
+from .models import OfficeMails, News, PastRecruiters, PlacementCalendar, Volunteers,\
+    AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
+    VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
+    NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
+    Achievements, WhyRecruit, CareerDevelopmentActivity
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -132,4 +132,10 @@ class NavBarOptionsSerializer(serializers.ModelSerializer):
 class WhyRecruitSerializer(serializers.ModelSerializer):
     class Meta:
         model = WhyRecruit
+        fields = '__all__'
+
+
+class PlacementCalendarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlacementCalendar
         fields = '__all__'

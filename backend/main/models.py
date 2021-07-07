@@ -265,3 +265,10 @@ class WhyRecruit(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class PlacementCalendar(models.Model):
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
+    start = models.DateField()
+    end = models.DateField()
