@@ -181,6 +181,10 @@ function Offers() {
                             color="primary"
                             className={classes.button}
                             endIcon={<VisibilityIcon />}
+                            onClick={() => {
+                              window.location =
+                                '/student-dashboard/advertisement/' + row.id;
+                            }}
                           >
                             View
                           </Button>
@@ -242,6 +246,10 @@ function Offers() {
                             color="primary"
                             className={classes.button}
                             endIcon={<VisibilityIcon />}
+                            onClick={() => {
+                              window.location =
+                                '/student-dashboard/advertisement/' + row.id;
+                            }}
                           >
                             View
                           </Button>

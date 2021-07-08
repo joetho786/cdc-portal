@@ -6,6 +6,25 @@ from django.template.defaultfilters import slugify
 import re
 
 
+class OfficeMails(models.Model):
+    CATEGORY = (
+        ('Suggestion Recipient', 'Suggestion Recipient'),
+        ('Inquiry Recipient', 'Inquiry Recipient'),
+        ('CC', 'CC'),
+        ('BCC', 'BCC'),
+    )
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    category = models.CharField(max_length=100, choices=CATEGORY)
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'OfficeMails'
+
+
 class News(models.Model):
     title = models.CharField(max_length=64, blank=True)
     order_no = models.PositiveSmallIntegerField(default=512)
@@ -129,6 +148,7 @@ class AlumniTestimonial(models.Model):
     designation = models.CharField(max_length=64, null=True)
     testimonial = models.TextField(null=False)
     alumni_image = models.ImageField(upload_to='alumni-testimonial')
+    linkedin = models.URLField(max_length=200, blank=True, null=True)
     facebook = models.URLField(max_length=200, blank=True, null=True)
     twitter = models.URLField(max_length=200, blank=True, null=True)
     mailId = models.EmailField(max_length=200, blank=True, null=True)
@@ -137,7 +157,7 @@ class AlumniTestimonial(models.Model):
 
     def __str__(self):
         return self.alumni_name
-    
+
     class Meta:
         verbose_name_plural = 'Alumni Testimonial'
 
@@ -150,15 +170,36 @@ class Achievements(models.Model):
     title = models.CharField(max_length=64)
     category = models.CharField(max_length=10, choices=CATEGORY)
     description = RichTextUploadingField(blank=True, null=True)
+    details = RichTextUploadingField(blank=True, null=True)
     image = models.ImageField(upload_to='achievements', blank=True, null=True)
     active = models.BooleanField(default=True)
     ranking = models.PositiveSmallIntegerField(default=512)
 
     def __str__(self):
         return self.title
-    
+
     class Meta:
         verbose_name_plural = 'Achievements'
+
+
+class CareerDevelopmentActivity(models.Model):
+    CATEGORY = (
+        ('Upcoming', 'Upcoming'),
+        ('Past', 'Past'),
+    )
+    title = models.CharField(max_length=64)
+    category = models.CharField(max_length=10, choices=CATEGORY)
+    date = models.CharField(default="Thursday, January 10th", blank=True, null=True, max_length=100)
+    time = models.CharField(default="4:00pm-6:00pm", blank=True, null=True, max_length=100)
+    location = models.TextField(blank=True, null=True)
+    description = RichTextUploadingField(blank=True, null=True)
+    details = RichTextUploadingField(blank=True, null=True)
+    image = models.ImageField(upload_to='CDActivities', blank=True, null=True)
+    active = models.BooleanField(default=True)
+    ranking = models.PositiveSmallIntegerField(default=512)
+
+    def __str__(self):
+        return self.title
 
 
 class HomeImageCarousel(models.Model):
@@ -169,7 +210,7 @@ class HomeImageCarousel(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     class Meta:
         verbose_name_plural = 'Home Image Carousel'
 
@@ -185,7 +226,7 @@ class CareerCommittee(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name_plural = 'Career Committee'
 
@@ -236,7 +277,7 @@ class WhyRecruit(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     class Meta:
         verbose_name_plural = 'Why Recruit'
 
@@ -251,3 +292,16 @@ class CourseHighlights(models.Model):
 
     class Meta:
         verbose_name_plural = 'Course Highlights'
+
+
+class PlacementCalendar(models.Model):
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
+    start = models.DateField()
+    end = models.DateField()
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Placement Calendar'

@@ -8,12 +8,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from student.models import StudentProfile
 
-from main.models import (AboutUs, Achievements, AlumniTestimonial,
+from main.models import (OfficeMails, AboutUs, Achievements, AlumniTestimonial,
                          CareerCommittee, CoreTeamContacts, DesignationChoices,
                          DirectorMessage, HomeImageCarousel, NavBarOptions,
-                         NavBarSubOptions, News, PastRecruiters, Volunteers,
-                         VolunteersYearChoices, WhyRecruit, CourseHighlights)
-from main.serializers import (AboutUsSerializer, AchievementsSerializer,
+                         NavBarSubOptions, News, PastRecruiters, PlacementCalendar, Volunteers,
+                         VolunteersYearChoices, WhyRecruit, CareerDevelopmentActivity, CourseHighlights)
+from main.serializers import (OfficeMailsSerializer, AboutUsSerializer, AchievementsSerializer,
                               AlumniTestimonialSerializer,
                               CareerCommitteeSerializer,
                               CoreTeamContactsSerializer,
@@ -22,9 +22,14 @@ from main.serializers import (AboutUsSerializer, AchievementsSerializer,
                               HomeImageCarouselSerializer,
                               NavBarOptionsSerializer,
                               NavBarSubOptionsSerializer, NewsSerializer,
-                              PastRecruitersSerializer, VolunteersSerializer,
+                              PastRecruitersSerializer, PlacementCalendarSerializer, VolunteersSerializer,
                               VolunteersYearChoicesSerializer,
-                              WhyRecruitSerializer, CourseHighlightsSerializer)
+                              WhyRecruitSerializer, CareerDevelopmentActivitySerializer, CourseHighlightsSerializer)
+
+
+class OfficeMailsSerializer(ListAPIView):
+    queryset = OfficeMails.objects.filter(active=True)
+    serializer_class = OfficeMailsSerializer
 
 
 class NewsSerializer(ListAPIView):
@@ -45,6 +50,11 @@ class DirectorMessageSerializer(ListAPIView):
 class AlumniTestimonialSerializer(ListAPIView):
     queryset = AlumniTestimonial.objects.filter(active='True').order_by('ranking')
     serializer_class = AlumniTestimonialSerializer
+
+
+class CareerDevelopmentActivitySerializer(ListAPIView):
+    queryset = CareerDevelopmentActivity.objects.filter(active='True').order_by('ranking')
+    serializer_class = CareerDevelopmentActivitySerializer
 
 
 class AchievementsSerializer(ListAPIView):
@@ -139,3 +149,8 @@ class CourseHighlightsSerializer(ListAPIView):
     serializer_class = CourseHighlightsSerializer
     search_fields = ['program', 'title']
     filter_backends = (SearchFilter,)
+
+
+class PlacementCalendarView(ListAPIView):
+    queryset = PlacementCalendar.objects.all()
+    serializer_class = PlacementCalendarSerializer

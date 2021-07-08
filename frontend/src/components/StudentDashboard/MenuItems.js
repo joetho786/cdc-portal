@@ -7,6 +7,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import AllInboxIcon from '@material-ui/icons/AllInbox';
+import FeedbackIcon from '@material-ui/icons/Feedback';
 
 function Logout(event) {
   event.preventDefault();
@@ -59,6 +60,17 @@ export const mainListItems = (
           <AllInboxIcon />
         </ListItemIcon>
         <ListItemText primary="Available Offers" />
+      </ListItem>
+    </a>
+    <a
+      href="/student-dashboard/suggestion_inquiry"
+      style={{ color: 'inherit', textDecoration: 'none' }}
+    >
+      <ListItem button>
+        <ListItemIcon>
+          <FeedbackIcon />
+        </ListItemIcon>
+        <ListItemText primary="Suggestion or Inquiry" />
       </ListItem>
     </a>
   </div>

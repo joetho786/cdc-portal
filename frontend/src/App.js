@@ -16,6 +16,7 @@ import RecruiterGuidelines from './pages/RecruiterGuidelines';
 import PastRecruiters from './pages/PastRecruiters';
 import AIPCNorms from './pages/AIPCNorms';
 import Achievements from './pages/Achievements';
+import CDActivities from './pages/CDActivities';
 import Prospective from './pages/Prospective';
 import StudentGuidelines from './pages/StudentGuidelines';
 import Internships from './pages/Internships';
@@ -37,6 +38,8 @@ import SiteConfig from './pages/SiteConfig';
 import ScrollToTop from './components/ScrollToTop';
 import StudentProtected from './components/RestrictedRoutes/StudentProtected';
 import CompanyProtected from './components/RestrictedRoutes/CompanyProtected';
+import PlacementCalendar from './pages/PlacementCalendar';
+import StudentRegistrationProcess from './pages/StudentRegistrationProcess';
 
 function App() {
   return (
@@ -52,9 +55,15 @@ function App() {
         <Route path="/course-highlights" component={CourseHighlights} />
         <Route path="/admissions" component={AdmissionProcedure} />
         <Route path="/achievements" component={Achievements} />
+        <Route path="/cd-activities" component={CDActivities} />
         <Route path="/prospective" component={Prospective} />
         <Route path="/student-guidelines" component={StudentGuidelines} />
         <Route path="/internships" component={Internships} />
+        <Route path="/placement-calendar" component={PlacementCalendar} />
+        <Route
+          path="/student-registraion-process"
+          component={StudentRegistrationProcess}
+        />
         <Route path="/why-recruit" component={WhyRecruit} />
         <Route path="/brochure" component={Brochure} />
         <Route path="/placement-statistics" component={PlacementStatistics} />

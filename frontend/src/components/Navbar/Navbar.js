@@ -63,9 +63,6 @@ export default function Navbar() {
                 </label>
                 <ul>
                   <li onClick={() => setIsChecked(!isChecked)}>
-                    <Link to="/grade-system">Grade System</Link>
-                  </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/programs">Programmes</Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
@@ -94,6 +91,17 @@ export default function Navbar() {
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/internships">Internships</Link>
                   </li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
+                    <Link to="/student-registraion-process">
+                      Registartion Procedure
+                    </Link>
+                  </li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
+                    <Link to="/placement-calendar">Placement Calendar</Link>
+                  </li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
+                    <Link to="/cd-activities">Career Development Activity</Link>
+                  </li>
                 </ul>
               </li>
               <li>
@@ -119,6 +127,9 @@ export default function Navbar() {
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/placement-procedure">Placement Procedure</Link>
+                  </li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
+                    <Link to="/grade-system">Grade System</Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/company-rules">Norms/Guidelines</Link>
@@ -188,8 +199,8 @@ export default function Navbar() {
                       <i className="fa fa-caret-down"></i>
                     </span>
                   </Link>
-                  <input type="checkbox" id="show-cdc-team" />
-                  <label htmlFor="show-cdc-team">
+                  <input type="checkbox" id="show-login" />
+                  <label htmlFor="show-login">
                     {localStorage.getItem('cdc_Dname')}{' '}
                     <i className="fa fa-caret-down"></i>
                   </label>
@@ -197,24 +208,27 @@ export default function Navbar() {
                     /* Student Zone */
                     <ul>
                       <li onClick={() => setIsChecked(!isChecked)}>
-                        <Link to="/student-dashboard/profile">Profile</Link>
+                        <a href="/student-dashboard/profile">Profile</a>
                       </li>
                       <li onClick={() => setIsChecked(!isChecked)}>
-                        <Link to="/student-dashboard/offers">
-                          Available offers
-                        </Link>
+                        <a href="/student-dashboard/offers">Available offers</a>
                       </li>
                       <li onClick={() => setIsChecked(!isChecked)}>
-                        <Link to="/student-dashboard/uploadresume">
+                        <a href="/student-dashboard/uploadresume">
                           Upload Resume
-                        </Link>
+                        </a>
+                      </li>
+                      <li onClick={() => setIsChecked(!isChecked)}>
+                        <a href="/student-dashboard/suggestion_inquiry">
+                          Suggestion or Inquiry
+                        </a>
                       </li>
                       <li onClick={Logout}>
                         <Link to="#">Logout</Link>
                       </li>
                     </ul>
                   ) : (
-                    /* Compant Zone */
+                    /* Company Zone */
                     <ul>
                       <li onClick={() => setIsChecked(!isChecked)}>
                         <Link to="/c3-members">Profile</Link>

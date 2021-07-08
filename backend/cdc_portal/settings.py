@@ -42,6 +42,10 @@ EMAIL_HOST_PASSWORD = config('SERVER_EMAIL_PASSWORD', cast=str)
 SERVER_EMAIL = config('SERVER_EMAIL', cast=str)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+FEEDBACK_SENDER_EMAIL = config('FEEDBACK_SENDER_EMAIL')
+FEEDBACK_SENDER_EMAIL_PASSWORD = config('FEEDBACK_SENDER_EMAIL_PASSWORD')
+FEEDBACK_RESPONDER_EMAIL = config('FEEDBACK_RESPONDER_EMAIL')
+FEEDBACK_RESPONDER_EMAIL_PASSWORD = config('FEEDBACK_RESPONDER_EMAIL_PASSWORD')
 
 # Application definition
 
@@ -140,13 +144,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 

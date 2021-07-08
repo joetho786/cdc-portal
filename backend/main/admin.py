@@ -1,10 +1,15 @@
 from django.contrib import admin
-from main.models import PastRecruiters, News,\
-     AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
-     VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
-     Volunteers, NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
-     Achievements, WhyRecruit, CourseHighlights
+from main.models import OfficeMails, PastRecruiters, News,\
+    AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
+    VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
+    Volunteers, NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
+    Achievements, WhyRecruit, CareerDevelopmentActivity, PlacementCalendar.\
+    CourseHighlights
 from import_export.admin import ImportExportActionModelAdmin
+
+
+admin.site.register(OfficeMails)
+
 
 admin.site.register(AboutUs)
 
@@ -17,6 +22,16 @@ class NewsAdmin(ImportExportActionModelAdmin):
 
     class Meta:
         model = News
+
+
+@admin.register(CareerDevelopmentActivity)
+class CareerDevelopmentActivityAdmin(ImportExportActionModelAdmin):
+    list_display = ['ranking', 'title', 'active', ]
+    list_filter = ['active', ]
+    ordering = ['ranking']
+
+    class Meta:
+        model = CareerDevelopmentActivity
 
 
 @admin.register(DirectorMessage)
@@ -142,6 +157,16 @@ class WhyRecruitAdmin(admin.ModelAdmin):
 
     class Meta:
         model = WhyRecruit
+        fields = '__all__'
+
+
+@admin.register(PlacementCalendar)
+class PlacementCalendarAdmin(admin.ModelAdmin):
+    list_display = ['start', 'end', 'title', 'description']
+    search_fields = ['title', ]
+
+    class Meta:
+        model = PlacementCalendar
         fields = '__all__'
 
 

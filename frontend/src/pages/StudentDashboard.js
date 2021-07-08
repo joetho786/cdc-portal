@@ -13,6 +13,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Home from '../components/StudentDashboard/Home';
 import UploadResume from '../components/StudentDashboard/UplaodResume';
 import Offers from '../components/StudentDashboard/Offers';
+import SuggestionInquiry from '../components/StudentDashboard/SuggestionInquiry';
 import Profile from '../components/StudentDashboard/Profile';
 import Grid from '@material-ui/core/Grid';
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -21,6 +22,7 @@ import {
   mainListItems,
   secondaryListItems,
 } from '../components/StudentDashboard/MenuItems';
+import ViewAdvertisement from '../components/StudentDashboard/ViewAdvertisement';
 
 const drawerWidth = 240;
 
@@ -168,6 +170,16 @@ export default function Dashboard() {
                 path="/student-dashboard/offers"
                 exact
                 component={Offers}
+              />
+              <Route
+                path="/student-dashboard/suggestion_inquiry"
+                exact
+                component={SuggestionInquiry}
+              />
+              <Route
+                path="/student-dashboard/advertisement/:id"
+                exact
+                component={ViewAdvertisement}
               />
             </Switch>
           </Router>
