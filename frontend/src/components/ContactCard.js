@@ -6,6 +6,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import { getLink } from '../utils/getLink';
 import FadeUpWhenVisible from './Animation/FadeUp';
+
 const ContactCard = ({ data }) => {
   return (
     <FadeUpWhenVisible>

@@ -5,7 +5,7 @@ from .models import News, PastRecruiters, Volunteers,\
                     AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
                     VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
                     NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
-                    Achievements, WhyRecruit
+                    Achievements, WhyRecruit, CourseHighlights
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -120,4 +120,10 @@ class NavBarOptionsSerializer(serializers.ModelSerializer):
 class WhyRecruitSerializer(serializers.ModelSerializer):
     class Meta:
         model = WhyRecruit
+        fields = '__all__'
+
+
+class CourseHighlightsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CourseHighlights
         fields = '__all__'

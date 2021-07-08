@@ -7,6 +7,7 @@ import ChairmanMessage from './pages/ChairmanMessage';
 import DirectorMessage from './pages/DirectorMessage';
 import GradeSystem from './pages/GradeSystem';
 import Programmes from './pages/Programs';
+import CourseHighlights from './pages/CourseHighlights';
 import Brochure from './pages/Brochure';
 import WhyRecruit from './pages/WhyRecruit';
 import PlacementStatistics from './pages/PlacementStatistics';
@@ -48,6 +49,7 @@ function App() {
         <Route path="/director-message" component={DirectorMessage} />
         <Route path="/grade-system" component={GradeSystem} />
         <Route path="/programs" component={Programmes} />
+        <Route path="/course-highlights" component={CourseHighlights} />
         <Route path="/admissions" component={AdmissionProcedure} />
         <Route path="/achievements" component={Achievements} />
         <Route path="/prospective" component={Prospective} />
