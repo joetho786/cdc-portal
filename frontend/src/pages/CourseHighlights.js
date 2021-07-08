@@ -1,36 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../api/axios';
-import styles from '../styles/pages/CareerCounselling.module.css';
-import C3MemberCard from '../components/C3MemberCard';
+import styles from '../styles/pages/CourseHighlights.module.css';
+import CourseCard from '../components/CourseCard';
 import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
+import SchoolIcon from '@material-ui/icons/School';
+import Paper from '@material-ui/core/Paper';
+import { Container } from '@material-ui/core';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
 
-const CareerCounselling = () => {
+const CourseHighlights = ({ data }) => {
   const [loading, setLoding] = useState(true);
-  const [chairman, setChairman] = useState([]);
-  const [facultyIncharge, setFacultyIncharge] = useState([]);
-  const [members, setMembers] = useState([]);
+  const [bTechProgram, setBTechProgram] = useState([]);
+  const [mTechProgram, setMTechProgram] = useState([]);
+  const [mScProgram, setMScProgram] = useState([]);
 
   useEffect(() => {
     instance
-      .get('main/career_committee/')
+      .get('main/course_highlights/')
       .then((res) => {
-        setChairman(
-          res.data.filter((member) =>
-            member.designation.designation.includes('Chairman')
-          )
+        setBTechProgram(
+          res.data.filter((program) => program.program.includes('BTech'))
         );
-        setFacultyIncharge(
-          res.data.filter((member) =>
-            member.designation.designation.includes('Faculty Incharge')
-          )
+        setMTechProgram(
+          res.data.filter((program) => program.program.includes('MTech'))
         );
-        setMembers(
-          res.data.filter((member) =>
-            member.designation.designation.includes('Member')
-          )
+        setMScProgram(
+          res.data.filter((program) => program.program.includes('MSc'))
         );
       })
       .then(() => setLoding(false))
@@ -42,14 +39,24 @@ const CareerCounselling = () => {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <Container maxWidth="lg">
           <FadeInWhenVisible>
-            <div className={styles.chairman}>
+            <Paper className={styles.heading} elevation={2}>
+              <SchoolIcon
+                fontSize="large"
+                style={{ margin: '0 0.4rem', padding: '0' }}
+              />
+              Course Highlights
+            </Paper>
+          </FadeInWhenVisible>
+
+          <FadeInWhenVisible>
+            <div className={styles.bTech}>
               <MenuIcon
                 fontSize="large"
                 style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
               />
-              CHAIRMAN
+              B.TECH. PROGRAM
             </div>
           </FadeInWhenVisible>
           <hr className={styles.hr}></hr>
@@ -57,26 +64,25 @@ const CareerCounselling = () => {
             container
             direction="row"
             justify="center"
-            alignItems="center"
             spacing={5}
             style={{ width: '100%', margin: 'auto' }}
           >
-            {chairman.map((member) => {
+            {bTechProgram.map((branch) => {
               return (
-                <Grid key={member.email} item xs={12} sm={6} md={4} lg={3}>
-                  <C3MemberCard data={member} />
+                <Grid key={branch.title} item xs={12} sm={6} md={6} lg={6}>
+                  <CourseCard data={branch} />
                 </Grid>
               );
             })}
           </Grid>
           <hr className={styles.hr} style={{ marginTop: '5rem' }}></hr>
           <FadeInWhenVisible>
-            <div className={styles.facultyIncharge}>
+            <div className={styles.mTech}>
               <MenuIcon
                 fontSize="large"
                 style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
               />
-              FACULTY INCHARGE
+              M.TECH. PROGRAM
             </div>
           </FadeInWhenVisible>
           <hr className={styles.hr}></hr>
@@ -84,49 +90,47 @@ const CareerCounselling = () => {
             container
             direction="row"
             justify="center"
-            alignItems="center"
-            spacing={5}
-            style={{ width: '100%', margin: 'auto' }}
-          >
-            {facultyIncharge.map((member) => {
-              return (
-                <Grid key={member.email} item xs={12} sm={6} md={4} lg={3}>
-                  <C3MemberCard data={member} />
-                </Grid>
-              );
-            })}
-          </Grid>
-          <hr className={styles.hr} style={{ marginTop: '5rem' }}></hr>
-          <FadeInWhenVisible>
-            <div className={styles.members}>
-              <MenuIcon
-                fontSize="large"
-                style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
-              />
-              MEMBERS
-            </div>
-          </FadeInWhenVisible>
-          <hr className={styles.hr}></hr>
-          <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
             spacing={5}
             style={{ width: '100%', margin: 'auto', marginBottom: '2rem' }}
           >
-            {members.map((member) => {
+            {mTechProgram.map((discipline) => {
               return (
-                <Grid key={member.email} item xs={12} sm={6} md={4} lg={3}>
-                  <C3MemberCard data={member} />
+                <Grid key={discipline.title} item xs={12} sm={6} md={6} lg={6}>
+                  <CourseCard data={discipline} />
                 </Grid>
               );
             })}
           </Grid>
-        </>
+          <hr className={styles.hr} style={{ marginTop: '5rem' }}></hr>
+          <FadeInWhenVisible>
+            <div className={styles.mSc}>
+              <MenuIcon
+                fontSize="large"
+                style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
+              />
+              M.Sc. PROGRAM
+            </div>
+          </FadeInWhenVisible>
+          <hr className={styles.hr}></hr>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            spacing={5}
+            style={{ width: '100%', margin: 'auto', marginBottom: '2rem' }}
+          >
+            {mScProgram.map((branch) => {
+              return (
+                <Grid key={branch.title} item xs={12} sm={6} md={6} lg={6}>
+                  <CourseCard data={branch} />
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Container>
       )}
     </div>
   );
 };
 
-export default CareerCounselling;
+export default CourseHighlights;

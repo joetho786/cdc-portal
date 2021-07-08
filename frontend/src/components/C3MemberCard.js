@@ -3,6 +3,7 @@ import styles from '../styles/components/C3MemberCard.module.css';
 import EmailIcon from '@material-ui/icons/Email';
 import { getLink } from '../utils/getLink';
 import FadeUpWhenVisible from './Animation/FadeUp';
+
 const C3MemberCard = ({ data }) => {
   return (
     <FadeUpWhenVisible>

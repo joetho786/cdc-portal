@@ -50,7 +50,7 @@ class AboutUs(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = 'AboutUs'
+        verbose_name_plural = 'About Us'
 
 
 class DirectorMessage(models.Model):
@@ -63,7 +63,7 @@ class DirectorMessage(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'DirectorMessage'
+        verbose_name_plural = 'Director Message'
 
 
 class PastRecruiters(models.Model):
@@ -76,7 +76,7 @@ class PastRecruiters(models.Model):
         return self.company_name
 
     class Meta:
-        verbose_name_plural = 'Past recruiters'
+        verbose_name_plural = 'Past Recruiters'
 
 
 class DesignationChoices(models.Model):
@@ -87,7 +87,7 @@ class DesignationChoices(models.Model):
         return self.designation
 
     class Meta:
-        verbose_name_plural = 'Designation choices'
+        verbose_name_plural = 'Designation Choices'
 
 
 class CoreTeamContacts(models.Model):
@@ -114,7 +114,7 @@ class CoreTeamContacts(models.Model):
         return self.user.get_full_name()
 
     class Meta:
-        verbose_name_plural = 'Core team contacts'
+        verbose_name_plural = 'Core Team Contacts'
 
 
 class VolunteersYearChoices(models.Model):
@@ -124,7 +124,7 @@ class VolunteersYearChoices(models.Model):
         return self.year
 
     class Meta:
-        verbose_name_plural = 'Volunteers year choices'
+        verbose_name_plural = 'Volunteers Year Choices'
 
 
 class Volunteers(models.Model):
@@ -158,6 +158,9 @@ class AlumniTestimonial(models.Model):
     def __str__(self):
         return self.alumni_name
 
+    class Meta:
+        verbose_name_plural = 'Alumni Testimonial'
+
 
 class Achievements(models.Model):
     CATEGORY = (
@@ -174,6 +177,9 @@ class Achievements(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name_plural = 'Achievements'
 
 
 class CareerDevelopmentActivity(models.Model):
@@ -205,6 +211,9 @@ class HomeImageCarousel(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = 'Home Image Carousel'
+
 
 class CareerCommittee(models.Model):
     name = models.CharField(max_length=64, blank=False, null=False, default='Member')
@@ -217,6 +226,9 @@ class CareerCommittee(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'Career Committee'
 
 
 class NavBarSubOptions(models.Model):
@@ -241,7 +253,7 @@ class NavBarSubOptions(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = 'Navbar sub options'
+        verbose_name_plural = 'Navbar Sub Options'
 
 
 class NavBarOptions(models.Model):
@@ -254,7 +266,7 @@ class NavBarOptions(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = 'Navbar options'
+        verbose_name_plural = 'Navbar Options'
 
 
 class WhyRecruit(models.Model):
@@ -266,9 +278,30 @@ class WhyRecruit(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = 'Why Recruit'
+
+
+class CourseHighlights(models.Model):
+    program = models.CharField(max_length=64)
+    title = models.CharField(max_length=64)
+    description = RichTextUploadingField()
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Course Highlights'
+
 
 class PlacementCalendar(models.Model):
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
     start = models.DateField()
     end = models.DateField()
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Placement Calendar'

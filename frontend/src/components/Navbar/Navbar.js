@@ -120,6 +120,9 @@ export default function Navbar() {
                     <Link to="/brochure">Brochure</Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
+                    <Link to="/course-highlights">Programs</Link>
+                  </li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/placement-statistics">Placement Statistics</Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>

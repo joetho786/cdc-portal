@@ -12,7 +12,7 @@ from main.models import (OfficeMails, AboutUs, Achievements, AlumniTestimonial,
                          CareerCommittee, CoreTeamContacts, DesignationChoices,
                          DirectorMessage, HomeImageCarousel, NavBarOptions,
                          NavBarSubOptions, News, PastRecruiters, PlacementCalendar, Volunteers,
-                         VolunteersYearChoices, WhyRecruit, CareerDevelopmentActivity)
+                         VolunteersYearChoices, WhyRecruit, CareerDevelopmentActivity, CourseHighlights)
 from main.serializers import (OfficeMailsSerializer, AboutUsSerializer, AchievementsSerializer,
                               AlumniTestimonialSerializer,
                               CareerCommitteeSerializer,
@@ -24,7 +24,7 @@ from main.serializers import (OfficeMailsSerializer, AboutUsSerializer, Achievem
                               NavBarSubOptionsSerializer, NewsSerializer,
                               PastRecruitersSerializer, PlacementCalendarSerializer, VolunteersSerializer,
                               VolunteersYearChoicesSerializer,
-                              WhyRecruitSerializer, CareerDevelopmentActivitySerializer)
+                              WhyRecruitSerializer, CareerDevelopmentActivitySerializer, CourseHighlightsSerializer)
 
 
 class OfficeMailsSerializer(ListAPIView):
@@ -142,6 +142,13 @@ class Announcements(APIView):
         if year_combo in JobYears:
             data['Annoucements'].append(an["Jobs"])
         return Response(data, status.HTTP_200_OK)
+
+
+class CourseHighlightsSerializer(ListAPIView):
+    queryset = CourseHighlights.objects.all()
+    serializer_class = CourseHighlightsSerializer
+    search_fields = ['program', 'title']
+    filter_backends = (SearchFilter,)
 
 
 class PlacementCalendarView(ListAPIView):
