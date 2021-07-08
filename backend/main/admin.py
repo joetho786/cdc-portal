@@ -3,7 +3,7 @@ from main.models import OfficeMails, PastRecruiters, News,\
     AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
     VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
     Volunteers, NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
-    Achievements, WhyRecruit, CareerDevelopmentActivity, PlacementCalendar.\
+    Achievements, WhyRecruit, CareerDevelopmentActivity, PlacementCalendar,\
     CourseHighlights
 from import_export.admin import ImportExportActionModelAdmin
 
