@@ -232,6 +232,22 @@ class CareerCommittee(models.Model):
 
 
 class NavBarSubOptions(models.Model):
+    """
+    model for frontend data:
+        Internships
+        Poster
+        Brochure
+        Past Recruiters Private
+        Past Recruiters Public
+        Reach Us
+        PlacementStatistics
+        AIPC Norms
+        StudentGuidelines
+        Invitation
+        Internship Announcement Form
+        Job Announcement Form
+        Upcoming Companies
+    """
     title = models.CharField(max_length=64)
     description = RichTextUploadingField(blank=True, null=True)
     file = models.FileField(upload_to='files', null=True, blank=True)
@@ -254,19 +270,6 @@ class NavBarSubOptions(models.Model):
 
     class Meta:
         verbose_name_plural = 'Navbar Sub Options'
-
-
-class NavBarOptions(models.Model):
-    title = models.CharField(max_length=64)
-    sub_options = models.ManyToManyField(NavBarSubOptions)
-    active = models.BooleanField(default=True)
-    order_no = models.PositiveIntegerField(default=64)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name_plural = 'Navbar Options'
 
 
 class WhyRecruit(models.Model):

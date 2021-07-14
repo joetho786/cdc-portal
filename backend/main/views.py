@@ -10,7 +10,7 @@ from student.models import StudentProfile
 
 from main.models import (OfficeMails, AboutUs, Achievements, AlumniTestimonial,
                          CareerCommittee, CoreTeamContacts, DesignationChoices,
-                         DirectorMessage, HomeImageCarousel, NavBarOptions,
+                         DirectorMessage, HomeImageCarousel,
                          NavBarSubOptions, News, PastRecruiters, PlacementCalendar, Volunteers,
                          VolunteersYearChoices, WhyRecruit, CareerDevelopmentActivity, CourseHighlights)
 from main.serializers import (OfficeMailsSerializer, AboutUsSerializer, AchievementsSerializer,
@@ -20,7 +20,6 @@ from main.serializers import (OfficeMailsSerializer, AboutUsSerializer, Achievem
                               DesignationChoicesSerializer,
                               DirectorMessageSerializer,
                               HomeImageCarouselSerializer,
-                              NavBarOptionsSerializer,
                               NavBarSubOptionsSerializer, NewsSerializer,
                               PastRecruitersSerializer, PlacementCalendarSerializer, VolunteersSerializer,
                               VolunteersYearChoicesSerializer,
@@ -104,13 +103,6 @@ class VolunteersSerializer(ListAPIView):
 class NavBarSubOptionsSerializer(ListAPIView):
     queryset = NavBarSubOptions.objects.all()
     serializer_class = NavBarSubOptionsSerializer
-    search_fields = ['title']
-    filter_backends = (SearchFilter,)
-
-
-class NavBarOptionsSerializer(ListAPIView):
-    queryset = NavBarOptions.objects.all()
-    serializer_class = NavBarOptionsSerializer
     search_fields = ['title']
     filter_backends = (SearchFilter,)
 

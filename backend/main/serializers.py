@@ -4,7 +4,7 @@ from student.models import ProgramAndBranch
 from .models import OfficeMails, News, PastRecruiters, PlacementCalendar, Volunteers,\
     AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
     VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
-    NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
+    NavBarSubOptions, AboutUs, DirectorMessage,\
     Achievements, WhyRecruit, CareerDevelopmentActivity, CourseHighlights
 
 
@@ -118,14 +118,6 @@ class NavBarSubOptionsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = NavBarSubOptions
-        fields = '__all__'
-
-
-class NavBarOptionsSerializer(serializers.ModelSerializer):
-    sub_options = NavBarSubOptionsSerializer(many=True)
-
-    class Meta:
-        model = NavBarOptions
         fields = '__all__'
 
 
