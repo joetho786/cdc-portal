@@ -80,10 +80,12 @@ export default function Navbar() {
                 </label>
                 <ul>
                   <li onClick={() => setIsChecked(!isChecked)}>
-                    <Link to="/achievements">Achievements</Link>
+                    <Link to="/student-dashboard/suggestion_inquiry">
+                      Student Corner
+                    </Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
-                    <Link to="/prospective">Prospective</Link>
+                    <Link to="/achievements">Achievements</Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/student-guidelines">Norms/Guidelines</Link>
@@ -118,6 +120,9 @@ export default function Navbar() {
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/brochure">Brochure</Link>
+                  </li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
+                    <Link to="/student-demographics">Student Demographics</Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/course-highlights">Programs</Link>
