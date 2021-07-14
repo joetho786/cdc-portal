@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SuggestionIdea = () => {
+const SuggestionInquiry = () => {
   const classes = useStyles();
   const [values1, setValues1] = React.useState({
     category: '',
@@ -96,4 +96,4 @@ const SuggestionIdea = () => {
   );
 };
 
-export default SuggestionIdea;
+export default SuggestionInquiry;

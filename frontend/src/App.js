@@ -56,7 +56,7 @@ function App() {
         <Route path="/admissions" component={AdmissionProcedure} />
         <Route path="/achievements" component={Achievements} />
         <Route path="/cd-activities" component={CDActivities} />
-        <Route path="/prospective" component={Prospective} />
+        <Route path="/student-demographics" component={Prospective} />
         <Route path="/student-guidelines" component={StudentGuidelines} />
         <Route path="/internships" component={Internships} />
         <Route path="/placement-calendar" component={PlacementCalendar} />
