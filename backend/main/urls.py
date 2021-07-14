@@ -18,7 +18,6 @@ urlpatterns = [
     path('volunteers_year_choices/', views.VolunteersYearChoicesSerializer.as_view(), name="volunteers_year_choices"),
     path('volunteers/', views.VolunteersSerializer.as_view(), name="volunteers"),
     path('navbar_suboptions/', views.NavBarSubOptionsSerializer.as_view(), name="navbar_suboptions"),
-    path('navbar_options/', views.NavBarOptionsSerializer.as_view(), name="navbar_options"),
     path('whyrecruitdata/', views.WhyRecruitSerializer.as_view(), name="whyrecruitdata"),
     path('course_highlights/', views.CourseHighlightsSerializer.as_view(), name="course_highlights"),
     path('placement_calendar/', views.PlacementCalendarView.as_view(), name="placement_calendar"),
