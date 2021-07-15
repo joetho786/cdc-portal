@@ -95,7 +95,7 @@ export default function Navbar() {
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/student-registraion-process">
-                      Registartion Procedure
+                      Registration Procedure
                     </Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
