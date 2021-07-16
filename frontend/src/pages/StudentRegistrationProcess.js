@@ -20,6 +20,7 @@ import Offers from '../assets/student_procedure/Offers.jpg';
 import Aoffers from '../assets/student_procedure/Aoffers.jpg';
 import Dashboard from '../assets/student_procedure/Dashboard.jpg';
 import SI from '../assets/student_procedure/SI.jpg';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,7 +82,7 @@ const StudentRegistrationProcess = () => {
             >
               <p className={classes.card}>
                 Use your LDAP credentials to Login in portal{' '}
-                <a href={'/student-login'}>Student Login</a>{' '}
+                <Link to="/student-login">Student Login</Link>{' '}
               </p>
               <br />
               <img src={Login} alt="logo" style={{ maxWidth: '100%' }} />
@@ -146,9 +147,9 @@ const StudentRegistrationProcess = () => {
                   <li>
                     {' '}
                     Navigate to Upload section from Menu{' '}
-                    <a href={'/student-dashboard/uploadresume'}>
+                    <Link to="/student-dashboard/UploadResume">
                       Upload Resume
-                    </a>
+                    </Link>
                   </li>
                   <li> Click and select the Resume File to upload </li>
                   <li> Enter any refrence name for your resume</li>
@@ -175,7 +176,7 @@ const StudentRegistrationProcess = () => {
                   <li>
                     {' '}
                     Navigate to Dashboard{' '}
-                    <a href={'/student-dashboard'}>Dashboard</a>
+                    <Link to="/student-dashboard">Dashboard</Link>
                   </li>
                   <li> All resumes are listed in this section </li>
                   <li> Check the status of the resume</li>
@@ -212,7 +213,7 @@ const StudentRegistrationProcess = () => {
                   <li>
                     {' '}
                     Navigate to Offers Page{' '}
-                    <a href={'/student-dashboard/offers'}>Offers</a>
+                    <Link to="/student-dashboard/offers">Offers</Link>
                   </li>
                   <li> All Offers are listed in this section </li>
                   <li>Click to view offer detials</li>
@@ -247,7 +248,7 @@ const StudentRegistrationProcess = () => {
                   <li>
                     {' '}
                     Navigate to Offers Page{' '}
-                    <a href={'/student-dashboard/offers'}>Offers</a>
+                    <Link to="/student-dashboard/offers">Offers</Link>
                   </li>
                   <li> Click on the apply button </li>
                   <li>Select the Resume</li>
@@ -273,7 +274,7 @@ const StudentRegistrationProcess = () => {
             >
               <p className={classes.card}>
                 View Applied Offers and Status on{' '}
-                <a href={'/student-dashboard'}>Dashboard</a>{' '}
+                <Link to="/student-dashboard">Dashboard</Link>{' '}
               </p>
               <br />
               <img src={Dashboard} alt="logo" style={{ maxWidth: '100%' }} />
@@ -285,9 +286,9 @@ const StudentRegistrationProcess = () => {
             >
               <p className={classes.card}>
                 Submit{' '}
-                <a href={'/student-dashboard/suggestion_inquiry'}>
+                <Link to="/student-dashboard/suggestion_inquiry">
                   Suggestion/Inquiry
-                </a>{' '}
+                </Link>{' '}
               </p>
               <br />
               <img src={SI} alt="logo" style={{ maxWidth: '100%' }} />
