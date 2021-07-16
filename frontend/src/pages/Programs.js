@@ -338,7 +338,13 @@ const Programmes = () => {
                                 scope="row"
                                 className={classes.text}
                               >
-                                <Link href={row.link}>{row.name}</Link>
+                                <Link
+                                  href={row.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {row.name}
+                                </Link>
                               </TableCell>
                             </TableRow>
                           ))}
@@ -356,7 +362,13 @@ const Programmes = () => {
                                 scope="row"
                                 className={classes.text}
                               >
-                                <Link href={row.link}>{row.name}</Link>
+                                <Link
+                                  href={row.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {row.name}
+                                </Link>
                               </TableCell>
                             </TableRow>
                           ))}
@@ -374,7 +386,13 @@ const Programmes = () => {
                                 scope="row"
                                 className={classes.text}
                               >
-                                <Link href={row.link}>{row.name}</Link>
+                                <Link
+                                  href={row.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {row.name}
+                                </Link>
                               </TableCell>
                             </TableRow>
                           ))}
@@ -392,7 +410,13 @@ const Programmes = () => {
                                 scope="row"
                                 className={classes.text}
                               >
-                                <Link href={row.link}>{row.name}</Link>
+                                <Link
+                                  href={row.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {row.name}
+                                </Link>
                               </TableCell>
                             </TableRow>
                           ))}
@@ -411,7 +435,13 @@ const Programmes = () => {
                                 scope="row"
                                 className={classes.text}
                               >
-                                <Link href={row.link}>{row.name}</Link>
+                                <Link
+                                  href={row.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {row.name}
+                                </Link>
                               </TableCell>
                             </TableRow>
                           ))}
@@ -433,7 +463,13 @@ const Programmes = () => {
                                 scope="row"
                                 className={classes.text}
                               >
-                                <Link href={row.link}>{row.name}</Link>
+                                <Link
+                                  href={row.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {row.name}
+                                </Link>
                               </TableCell>
                             </TableRow>
                           ))}
@@ -448,7 +484,13 @@ const Programmes = () => {
                                 scope="row"
                                 className={classes.text}
                               >
-                                <Link href={row.link}>{row.name}</Link>
+                                <Link
+                                  href={row.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {row.name}
+                                </Link>
                               </TableCell>
                             </TableRow>
                           ))}
@@ -463,7 +505,13 @@ const Programmes = () => {
                                 scope="row"
                                 className={classes.text}
                               >
-                                <Link href={row.link}>{row.name}</Link>
+                                <Link
+                                  href={row.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {row.name}
+                                </Link>
                               </TableCell>
                             </TableRow>
                           ))}
@@ -478,7 +526,13 @@ const Programmes = () => {
                                 scope="row"
                                 className={classes.text}
                               >
-                                <Link href={row.link}>{row.name}</Link>
+                                <Link
+                                  href={row.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {row.name}
+                                </Link>
                               </TableCell>
                             </TableRow>
                           ))}

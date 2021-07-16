@@ -104,7 +104,13 @@ export default function Footer(props) {
                       <b>Phone:</b> +91 291 2801153
                     </Typography>
                     <Typography variant="subtitle1" style={{ color: 'white' }}>
-                      <b>Email:</b> placement@iitj.ac.in
+                      <b>Email:</b>{' '}
+                      <a
+                        href="mailto:placement@iitj.ac.in"
+                        style={{ textDecoration: 'none', color: 'white' }}
+                      >
+                        placement@iitj.ac.in
+                      </a>
                     </Typography>
                   </li>
                 </ul>
