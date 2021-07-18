@@ -35,6 +35,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1rem',
     color: 'black',
   },
+  text: {
+    color: 'rgb(0,0,0)',
+    fontsize: '1rem',
+    marginTop: '4%',
+    marginBottom: '2%',
+  },
 }));
 
 const localizer = momentLocalizer(moment);
@@ -44,12 +50,17 @@ function getDate(date) {
   return date.toDateString();
 }
 
+const createdes = (upcoming) => {
+  return { __html: upcoming.description };
+};
+
 const PlacementCalendar = () => {
   const classes = useStyles();
   const [loading, setLoding] = useState(false);
   const [dialog, setdialog] = useState({});
   const [open, setopen] = useState(false);
   const [data, setdata] = useState([]);
+  const [upcoming, setupcoming] = useState([]);
 
   const handleClickOpen = (event) => {
     setdialog(event);
@@ -62,6 +73,12 @@ const PlacementCalendar = () => {
   };
 
   useEffect(() => {
+    instance
+      .get('main/navbar_suboptions?search=Upcoming Companies')
+      .then((res) => {
+        setupcoming(res.data[0]);
+      })
+      .catch((error) => console.log(error));
     instance
       .get('main/placement_calendar/')
       .then((res) => {
@@ -103,6 +120,27 @@ const PlacementCalendar = () => {
                       style={{ height: 500 }}
                       onSelectEvent={(event, e) => handleClickOpen(event)}
                     />
+                  </Paper>
+                </FadeUpBigDataWhenVisible>
+              </Grid>
+              <Grid item xs={12}>
+                <FadeUpBigDataWhenVisible>
+                  <Paper className={classes.paper}>
+                    <Typography
+                      component="h5"
+                      variant="h5"
+                      style={{ fontSize: 25, textAlign: 'center' }}
+                    >
+                      Upcoming Companies
+                    </Typography>
+                    {upcoming ? (
+                      <p
+                        dangerouslySetInnerHTML={createdes(upcoming)}
+                        className={classes.text}
+                      />
+                    ) : (
+                      <p className={classes.text}>Coming soon...</p>
+                    )}
                   </Paper>
                 </FadeUpBigDataWhenVisible>
               </Grid>

@@ -11,6 +11,7 @@ import StarsIcon from '@material-ui/icons/Stars';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import FadeInWhenVisible from '../Animation/FadeIn';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -93,18 +94,14 @@ const PlacementProcedureComponent = () => {
                 will be required to register at the Career Development Cell
                 (CDC) website
                 <span> </span>
-                <a href="https://spc.iitj.ac.in/">(https://spc.iitj.ac.in)</a>.
+                <a href="/">(https://osp.iitj.ac.in/)</a>.
               </p>
               <div style={{ marginTop: 10, marginRight: 5 }}>
-                <Button
-                  href="https://spc.iitj.ac.in/login/"
-                  variant="outlined"
-                  size="medium"
-                  color="primary"
-                  target="_blank"
-                >
-                  Register Now
-                </Button>
+                <Link to="/recruiter-login" style={{ textDecoration: 'none' }}>
+                  <Button variant="outlined" size="medium" color="primary">
+                    Register Now
+                  </Button>
+                </Link>
               </div>
             </VerticalTimelineElement>
             <VerticalTimelineElement
@@ -113,33 +110,33 @@ const PlacementProcedureComponent = () => {
               icon={3}
             >
               <p className={classes.card}>
-                fill out the JAF (Job Announcement Form)/ IAF (Intern
+                Fill out the JAF (Job Announcement Form)/ IAF (Intern
                 Announcement Form) and send a soft copy of the same to the
                 Placement Team. The CDC will verify the information provided by
                 the company, following which a login ID and a password for the
                 online CDC Portal will be provided to the companies.
               </p>
               <div style={{ marginTop: 10 }}>
-                <Button
-                  href="https://spc.iitj.ac.in/login/"
-                  variant="outlined"
-                  size="medium"
-                  color="primary"
-                  style={{ marginInlineEnd: 10 }}
-                  target="_blank"
-                >
-                  JAF
-                </Button>
-                <Button
-                  href="https://spc.iitj.ac.in/login/"
-                  variant="outlined"
-                  size="medium"
-                  color="primary"
-                  style={{ marginInlineEnd: 10 }}
-                  target="_blank"
-                >
-                  IAF
-                </Button>
+                <Link to="/jaf" style={{ textDecoration: 'none' }}>
+                  <Button
+                    variant="outlined"
+                    size="medium"
+                    color="primary"
+                    style={{ marginInlineEnd: 10 }}
+                  >
+                    JAF
+                  </Button>
+                </Link>
+                <Link to="/iaf" style={{ textDecoration: 'none' }}>
+                  <Button
+                    variant="outlined"
+                    size="medium"
+                    color="primary"
+                    style={{ marginInlineEnd: 10 }}
+                  >
+                    IAF
+                  </Button>
+                </Link>
               </div>
             </VerticalTimelineElement>
             <VerticalTimelineElement

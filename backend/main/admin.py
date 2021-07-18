@@ -2,7 +2,7 @@ from django.contrib import admin
 from main.models import OfficeMails, PastRecruiters, News,\
     AlumniTestimonial, HomeImageCarousel, DesignationChoices,\
     VolunteersYearChoices, CareerCommittee, CoreTeamContacts,\
-    Volunteers, NavBarSubOptions, NavBarOptions, AboutUs, DirectorMessage,\
+    Volunteers, NavBarSubOptions, AboutUs, DirectorMessage,\
     Achievements, WhyRecruit, CareerDevelopmentActivity, PlacementCalendar,\
     CourseHighlights
 from import_export.admin import ImportExportActionModelAdmin
@@ -135,17 +135,6 @@ class NavBarSubOptionsAdmin(admin.ModelAdmin):
 
     class Meta:
         model = NavBarSubOptions
-        fields = '__all__'
-
-
-@admin.register(NavBarOptions)
-class NavBarOptionsAdmin(admin.ModelAdmin):
-    list_display = ['title', 'active']
-    list_filter = ['active', ]
-    search_fields = ['title', ]
-
-    class Meta:
-        model = NavBarOptions
         fields = '__all__'
 
 

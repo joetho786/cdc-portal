@@ -104,7 +104,11 @@ export default function BasicTable() {
                   conducted by IITs. The procedures and other requirements for
                   admission are specified in the JEE Information Brochure
                   brought out every year.
-                  <Link href="http://iitj.ac.in/admission/btech.php?id=eligibility">
+                  <Link
+                    href="http://iitj.ac.in/admission/btech.php?id=eligibility"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Read More
                   </Link>
                 </Typography>
@@ -119,7 +123,10 @@ export default function BasicTable() {
                 <Typography className={classes.text}>
                   The eligibility criteria prescribed below are the absolute
                   minimum. The Admissions Committee may prescribe requirements
-                  over and above these. <Link href="#">Read More</Link>
+                  over and above these.{' '}
+                  <Link href="#" target="_blank" rel="noopener noreferrer">
+                    Read More
+                  </Link>
                 </Typography>
                 <TableContainer
                   className={classes.tablewrapper}
@@ -164,7 +171,10 @@ export default function BasicTable() {
                   below are the absolute minimum. However, the procedures and
                   other requirements for admission are specified in the JAM
                   Information Brochure brought out every year.
-                  <Link href="#"> Read More</Link>
+                  <Link href="#" target="_blank" rel="noopener noreferrer">
+                    {' '}
+                    Read More
+                  </Link>
                 </Typography>
               </Paper>
             </FadeUpWhenVisible>
