@@ -122,7 +122,7 @@ const Achievements = () => {
                 </div>
               </CardContent>
             </CardActionArea>
-            {highlights_Obj.details === null ? null : (
+            {highlights_Obj.details === '' ? null : (
               <CardActions className={classes.action}>
                 <DialogBox
                   label={'Details'}
@@ -165,7 +165,7 @@ const Achievements = () => {
                 </div>
               </CardContent>
             </CardActionArea>
-            {others_Obj.details === null ? null : (
+            {others_Obj.details === '' ? null : (
               <CardActions className={classes.action}>
                 <DialogBox
                   label={'Details'}
