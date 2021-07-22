@@ -68,7 +68,7 @@ export default function Footer(props) {
   return (
     <>
       <footer className={classes.footer}>
-        <Grid container style={{ margin: '0 5%' }}>
+        <Grid container style={{ paddingLeft: '7%' }}>
           <Grid item xs={6} sm={3}>
             <Typography
               component={'span'}
