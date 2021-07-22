@@ -16,14 +16,19 @@
 
 .cardContent {
   padding: 0.2rem;
-  background-color: #fff;
+  padding-top: 1rem;
+  background-color: #e6e6e6;
+  color: #012970;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
   text-align: center;
+  border-bottom-left-radius: 0.35rem;
+  border-bottom-right-radius: 0.35rem;
 }
 
 .department {
   text-align: center;
-  font-size: 1.2rem;
-  color: #636c72;
+  font-size: 1rem;
+  color: #012970;
   margin: 0.5rem 0 0.9rem 0;
   padding: 0 2rem;
 }
@@ -36,8 +41,8 @@
 }
 
 .email {
-  font-size: 1.2rem;
-  color: black;
+  font-size: 1rem;
+  color: #717ff5;
   text-decoration: none;
   text-align: center;
   display: flex;

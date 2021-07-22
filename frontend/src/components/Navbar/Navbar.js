@@ -176,9 +176,9 @@ export default function Navbar() {
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/contact">Contact Us</Link>
                   </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
+                  {/* <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/reach-us">Reach Us</Link>
-                  </li>
+                  </li> */}
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/placement-team">Placement Team</Link>
                   </li>

@@ -6,6 +6,8 @@ import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
+import PaperHeader from '../components/PaperHeader';
+import PeopleIcon from '@material-ui/icons/People';
 
 const CareerCounselling = () => {
   const [loading, setLoding] = useState(true);
@@ -43,6 +45,9 @@ const CareerCounselling = () => {
         <Loading />
       ) : (
         <>
+          <PaperHeader
+            data={{ icon: PeopleIcon, heading: 'Career Counselling Committee' }}
+          />
           <FadeInWhenVisible>
             <div className={styles.chairman}>
               <MenuIcon
@@ -74,7 +79,10 @@ const CareerCounselling = () => {
             <div className={styles.facultyIncharge}>
               <MenuIcon
                 fontSize="large"
-                style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
+                style={{
+                  margin: '0 0.5rem 0 0',
+                  paddingTop: '0rem',
+                }}
               />
               FACULTY INCHARGE
             </div>
