@@ -250,7 +250,6 @@ const PastRecruiters = () => {
                     >
                       Private Companies
                     </Typography>
-                    {console.log(privatetext)}
                     <Typography>
                       {privatetext ? (
                         <div className={style['list-type3']}>
