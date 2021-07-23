@@ -40,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
     margin: 10,
     float: 'left',
     minWidth: 'auto',
+    boxShadow:
+      '0 4px 8px 0 rgba(0, 0, 0, 0.16), 0 6px 20px 0 rgba(0, 0, 0, 0.13)',
   },
   media: {
     height: 140,
@@ -122,7 +124,12 @@ const Achievements = () => {
                 </div>
               </CardContent>
             </CardActionArea>
-            {highlights_Obj.details === '' ? null : (
+            {highlights_Obj.details === '' ? (
+              <CardActions
+                style={{ minHeight: 35 }}
+                className={classes.action}
+              ></CardActions>
+            ) : (
               <CardActions className={classes.action}>
                 <DialogBox
                   label={'Details'}
@@ -165,7 +172,12 @@ const Achievements = () => {
                 </div>
               </CardContent>
             </CardActionArea>
-            {others_Obj.details === '' ? null : (
+            {others_Obj.details === '' ? (
+              <CardActions
+                style={{ minHeight: 35 }}
+                className={classes.action}
+              ></CardActions>
+            ) : (
               <CardActions className={classes.action}>
                 <DialogBox
                   label={'Details'}

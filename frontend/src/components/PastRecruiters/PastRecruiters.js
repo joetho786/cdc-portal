@@ -22,7 +22,6 @@ const PastRecruiters = ({ data }) => {
             <CardMedia
               className={styles.PR_image}
               image={getLink(PR.company_logo)}
-              title="Contemplative Reptile"
             />
           </div>
         </div>
