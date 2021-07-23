@@ -8,7 +8,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { getLink } from '../utils/getLink';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import DialogBox from '../components/DialogBox';
@@ -100,7 +99,7 @@ const Achievements = () => {
       return highlights_list.push(
         <FadeInWhenVisible>
           <Card key={highlights_Obj.title} className={classes.Hroot}>
-            <CardActionArea className={classes.actionArea}>
+            <div className={classes.actionArea}>
               <CardMedia
                 className={classes.media}
                 image={getLink(highlights_Obj.image)}
@@ -123,7 +122,7 @@ const Achievements = () => {
                   />
                 </div>
               </CardContent>
-            </CardActionArea>
+            </div>
             {highlights_Obj.details === '' ? (
               <CardActions
                 style={{ minHeight: 35 }}
@@ -153,7 +152,7 @@ const Achievements = () => {
       return others_list.push(
         <FadeUpWhenVisible>
           <Card key={others_Obj.title} className={classes.Hroot}>
-            <CardActionArea className={classes.otherActionArea}>
+            <div className={classes.otherActionArea}>
               <CardContent>
                 <Typography
                   gutterBottom
@@ -171,7 +170,7 @@ const Achievements = () => {
                   />
                 </div>
               </CardContent>
-            </CardActionArea>
+            </div>
             {others_Obj.details === '' ? (
               <CardActions
                 style={{ minHeight: 35 }}

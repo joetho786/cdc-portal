@@ -2,7 +2,6 @@ import React from 'react';
 import Slider from 'react-slick';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -12,6 +11,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import EmailIcon from '@material-ui/icons/Email';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import RateReviewIcon from '@material-ui/icons/RateReview';
 import testiBack from '../../assets/testiback2.jpg';
 import styles from './AlumniTestimonial.module.css';
 import { getLink } from '../../utils/getLink';
@@ -103,7 +103,7 @@ const AlumniTestimonial = ({ data }) => {
               }}
               className={styles.root}
             >
-              <CardActionArea>
+              <div>
                 <CardMedia className={styles.media} image={testiBack} />
                 <div className={styles.profile}>
                   <img
@@ -132,7 +132,7 @@ const AlumniTestimonial = ({ data }) => {
                     {Testimonial_Obj.testimonial}
                   </Typography>
                 </CardContent>
-              </CardActionArea>
+              </div>
               <CardActions className={styles.cardsocial}>
                 <div>
                   {Testimonial_Obj.linkedin !== null && (
@@ -208,7 +208,7 @@ const AlumniTestimonial = ({ data }) => {
     ],
   };
   return (
-    <div style={{ marginBottom: '4rem', background: 'rgb(240,240,240)' }}>
+    <div style={{ marginBottom: '4rem', background: '#f6f9ff' }}>
       <div className="py-5">
         <Container
           style={{
@@ -221,11 +221,18 @@ const AlumniTestimonial = ({ data }) => {
                 fontSize: 40,
                 textAlign: '-webkit-center',
                 justifyContent: 'center',
-                display: 'grid',
+                display: 'flow-root',
                 marginBottom: -10,
                 marginTop: 70,
               }}
             >
+              <RateReviewIcon
+                style={{
+                  margin: '0 0.8rem -0.4rem 0',
+                  fontSize: '3rem',
+                  paddingTop: '0rem',
+                }}
+              />
               Alumni Testimonial
             </h2>
             <h3>
