@@ -23,7 +23,7 @@ const ContactCard = ({ data }) => {
           alt={data.name}
         />
         <div className={styles.cardContent}>
-          <b style={{ margin: '0', fontSize: '1.5rem' }}>
+          <b style={{ margin: '0', fontSize: '1.4rem' }}>
             {data.user.first_name} {data.user.last_name}
           </b>
           <div className={styles.footer}>
@@ -35,7 +35,10 @@ const ContactCard = ({ data }) => {
                       href={`mailto:${data.user.email}`}
                       className={styles.email}
                     >
-                      <EmailIcon style={{ margin: '0 0.5rem' }} />
+                      <EmailIcon
+                        fontSize="small"
+                        style={{ margin: '0 0.5rem' }}
+                      />
                       {data.user.email}
                     </a>
                   </td>
@@ -43,7 +46,10 @@ const ContactCard = ({ data }) => {
                 <tr>
                   <td>
                     <div className={styles.phone}>
-                      <PhoneIcon style={{ margin: '0 0.5rem' }} />
+                      <PhoneIcon
+                        fontSize="small"
+                        style={{ margin: '0 0.5rem' }}
+                      />
                       {data.phone}
                     </div>
                   </td>

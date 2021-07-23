@@ -5,6 +5,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import styles from '../styles/components/ContactDetails.module.css';
 import FadeInWhenVisible from './Animation/FadeIn';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 const Volunteers = () => {
   return (
     <FadeInWhenVisible>
@@ -14,8 +15,8 @@ const Volunteers = () => {
         justify="center"
         spacing={5}
         style={{
-          width: '100%',
-          margin: '6rem auto auto',
+          width: '80%',
+          margin: '4rem auto auto',
         }}
       >
         <Grid
@@ -26,8 +27,10 @@ const Volunteers = () => {
           lg={6}
           height="100%"
           style={{
-            textAlign: 'center',
             height: '100%',
+            color: '#444444',
+            background:
+              '#fafbff url(https://www.linkpicture.com/q/footer-bg_3.png) center no-repeat',
           }}
         >
           <b
@@ -35,14 +38,19 @@ const Volunteers = () => {
               textAlign: 'center',
               fontSize: '1.6rem',
               fontWeight: 'bold',
+              color: '#012970',
             }}
           >
             <LocationOnIcon
-              style={{ fontSize: '2rem', verticalAlign: 'text-bottom' }}
+              style={{
+                fontSize: '2rem',
+                verticalAlign: 'text-bottom',
+                marginRight: '10px',
+              }}
             />
             Indian Institute of Technology Jodhpur
           </b>
-          <table style={{ tableLayout: 'auto', margin: 'auto' }}>
+          <table style={{ tableLayout: 'auto', margin: '5% 10%' }}>
             <tbody>
               <tr>
                 <td>
@@ -94,8 +102,9 @@ const Volunteers = () => {
           lg={6}
           height="100%"
           style={{
-            textAlign: 'center',
             height: '100%',
+            color: '#444444',
+            background: '#fafbff',
           }}
         >
           <span
@@ -103,11 +112,20 @@ const Volunteers = () => {
               textAlign: 'center',
               fontSize: '1.6rem',
               fontWeight: 'bold',
+              color: '#012970',
+              marginLeft: '10%',
             }}
           >
+            <ContactPhoneIcon
+              style={{
+                fontSize: '2rem',
+                verticalAlign: 'text-bottom',
+                marginRight: '18px',
+              }}
+            />
             Contact Information
           </span>
-          <table style={{ tableLayout: 'auto', margin: 'auto' }}>
+          <table style={{ tableLayout: 'auto', margin: '5% 20%' }}>
             <tbody>
               <tr>
                 <td>

@@ -9,21 +9,23 @@
 
 .cardHeader {
   padding: 0.5rem;
-  background-color: #f5f5f5;
+  background-color: #e6e6e6;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   text-align: center;
+  border-top-left-radius: 0.35rem;
+  border-top-right-radius: 0.35rem;
 }
 
 .designation {
   font-size: 1.25rem;
-  color: black;
+  color: #012970;
   text-align: center;
   margin: 0.2rem 0;
 }
 
 .subDesignation {
   font-size: 1rem;
-  color: black;
+  color: #012970;
   margin: 0.2rem 0;
 }
 
@@ -37,9 +39,12 @@
 .cardContent {
   padding: 0.2rem;
   padding-top: 1rem;
-  background-color: #f5f5f5;
+  background-color: #e6e6e6;
+  color: #012970;
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   text-align: center;
+  border-bottom-left-radius: 0.35rem;
+  border-bottom-right-radius: 0.35rem;
 }
 
 .footer {
@@ -49,8 +54,8 @@
 }
 
 .email {
-  font-size: 1.25rem;
-  color: black;
+  font-size: 1rem;
+  color: #717ff5;
   text-decoration: none;
   display: flex;
   justify-content: flex-start;
@@ -58,8 +63,8 @@
 }
 
 .phone {
-  font-size: 1.25rem;
-  color: black;
+  font-size: 1rem;
+  color: #717ff5;
   display: flex;
   justify-content: flex-start;
   margin: 0;

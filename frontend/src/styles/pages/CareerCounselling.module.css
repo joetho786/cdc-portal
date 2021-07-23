@@ -1,16 +1,16 @@
 .chairman {
   font-size: 1.8rem;
-  color: black;
+  color: #012970;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 8rem;
+  margin-top: 2rem;
 }
 
 .facultyIncharge {
   font-size: 1.8rem;
-  color: black;
+  color: #012970;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -19,7 +19,7 @@
 
 .members {
   font-size: 1.8rem;
-  color: black;
+  color: #012970;
   text-align: center;
   display: flex;
   justify-content: center;
