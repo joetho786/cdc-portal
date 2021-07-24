@@ -7,6 +7,10 @@
   padding-bottom: 0.5rem;
 }
 
+.department:hover {
+  color: #012970;
+}
+
 .description {
   font-size: '1rem';
   color: 'black';

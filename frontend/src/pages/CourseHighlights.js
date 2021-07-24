@@ -5,7 +5,6 @@ import CourseCard from '../components/CourseCard';
 import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
-import SchoolIcon from '@material-ui/icons/School';
 import Paper from '@material-ui/core/Paper';
 import { Container } from '@material-ui/core';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
@@ -41,15 +40,18 @@ const CourseHighlights = ({ data }) => {
       ) : (
         <Container maxWidth="lg">
           <FadeInWhenVisible>
-            <Paper className={styles.heading} elevation={2}>
-              <SchoolIcon
-                fontSize="large"
-                style={{ margin: '0 0.4rem', padding: '0' }}
-              />
+            <Paper
+              className={styles.heading}
+              style={{ background: '#012970', color: '#fff' }}
+              elevation={2}
+            >
+              <i
+                class="fas fa-user-graduate"
+                style={{ margin: '0 1.2rem', padding: '0' }}
+              ></i>
               Course Highlights
             </Paper>
           </FadeInWhenVisible>
-
           <FadeInWhenVisible>
             <div className={styles.bTech}>
               <MenuIcon

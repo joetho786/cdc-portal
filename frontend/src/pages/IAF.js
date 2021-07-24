@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import instance from '../api/axios';
 import Paper from '@material-ui/core/Paper';
 import Loading from '../components/Loading';
-import DescriptionIcon from '@material-ui/icons/Description';
 import styles from '../styles/pages/IAF.module.css';
 import { Container } from '@material-ui/core';
 import { getLink } from '../utils/getLink';
@@ -30,11 +29,15 @@ const IAF = () => {
       ) : (
         <Container maxWidth="lg">
           <FadeInWhenVisible>
-            <Paper className={styles.heading} elevation={2}>
-              <DescriptionIcon
-                fontSize="inherit"
-                style={{ margin: '0 0.3rem', padding: '0' }}
-              />
+            <Paper
+              className={styles.heading}
+              style={{ background: '#012970', color: '#fff' }}
+              elevation={2}
+            >
+              <i
+                class="fas fa-file-alt"
+                style={{ margin: '0 1.2rem', padding: '0' }}
+              ></i>
               IAF
             </Paper>
           </FadeInWhenVisible>

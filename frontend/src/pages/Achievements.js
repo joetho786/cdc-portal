@@ -13,6 +13,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import DialogBox from '../components/DialogBox';
 import FadeUpWhenVisible from '../components/Animation/FadeUp';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -23,10 +24,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    padding: theme.spacing(2),
-    width: 'auto',
-    fontSize: '1rem',
-    color: 'black',
+    fontSize: '1.8rem',
+    color: '#fff',
+    backgroundColor: '#012970',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '1rem',
   },
   paperother: {
     width: 'auto',
@@ -203,14 +207,16 @@ const Achievements = () => {
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
                 <FadeInWhenVisible>
-                  <Paper className={classes.paper}>
-                    <Typography
-                      component="h5"
-                      variant="h5"
-                      style={{ fontSize: 30, textAlign: 'center' }}
-                    >
-                      Achievements
-                    </Typography>
+                  <Paper
+                    className={classes.paper}
+                    style={{ background: '#012970', color: '#fff' }}
+                    elevation={2}
+                  >
+                    <i
+                      class="fas fa-trophy"
+                      style={{ margin: '0 1.2rem', padding: '0' }}
+                    ></i>
+                    Achievements
                   </Paper>
                 </FadeInWhenVisible>
               </Grid>
