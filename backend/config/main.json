@@ -1,6 +1,6 @@
 {
   "ServerAdmins": [["manav_cdcdev", "kapoor.3@iitj.ac.in"]],
-  "LDAPTestMode": false,
+  "LDAPTestMode": true,
   "IntershipYears": ["B19"],
   "JobYears": ["B18"],
   "ShowAdertisements": true,

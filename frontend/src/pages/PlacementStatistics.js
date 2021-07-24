@@ -44,12 +44,12 @@ const useStyles = makeStyles((theme) => ({
 // Placement Data
 const heading = ['Branch', '2020-21', '2019-20'];
 const data = [
-  ['Computer Science Engineering', 100, 100],
-  ['Electrical Engineering', 84, 90],
-  ['Mechanical Engineering', 83, 86],
+  ['CSE', 0, 100, 'Computer Science Engineering'],
+  ['EE', 0, 84, 'Electrical Engineering'],
+  ['ME', 0, 83, 'Mechanical Engineering'],
 ];
-const overall = [95, 89];
-const OverallAverageSalary = [20, 16.73];
+const overall = [83, 89];
+const OverallAverageSalary = [0, 16.73];
 
 const PlacementStatistics = () => {
   const classes = useStyles();
@@ -132,7 +132,7 @@ const PlacementStatistics = () => {
                                   component="th"
                                   scope="row"
                                 >
-                                  {Data[0]}
+                                  {Data[3]} ({Data[0]})
                                 </TableCell>
                                 <TableCell
                                   className={classes.body}
@@ -190,7 +190,7 @@ const PlacementStatistics = () => {
                       data={[heading].concat(data)}
                       options={{
                         vAxis: { title: 'Placement Percentage' },
-                        hAxis: { title: 'Departments' },
+                        hAxis: { title: 'Departments', minValue: 0 },
                         legend: 'bottom',
                         animation: {
                           duration: 1000,

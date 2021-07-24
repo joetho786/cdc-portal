@@ -82,6 +82,14 @@ const SuggestionInquiry = () => {
           <React.Fragment>
             <SuggestionInquiryForm p1={values1} p2={setValues1} />
             <Button
+              disabled={
+                values1.sendto === '' ||
+                values1.category === '' ||
+                values1.subject === '' ||
+                values1.text === ''
+                  ? true
+                  : false
+              }
               variant="contained"
               color="primary"
               onClick={handleSubmit}
