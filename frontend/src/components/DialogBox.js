@@ -1,6 +1,5 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -58,9 +57,12 @@ export default function DialogBox({ label, title, text }) {
   };
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <span
+        style={{ color: '#012970', cursor: 'pointer', fontSize: '1rem' }}
+        onClick={handleClickOpen}
+      >
         {label}
-      </Button>
+      </span>
       <Dialog
         key={title}
         onClose={handleClose}

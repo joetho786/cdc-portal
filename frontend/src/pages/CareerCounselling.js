@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../api/axios';
-import styles from '../styles/pages/CareerCounselling.module.css';
 import C3MemberCard from '../components/C3MemberCard';
 import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
-import MenuIcon from '@material-ui/icons/Menu';
+import Paper from '@material-ui/core/Paper';
+import styles from '../styles/pages/PlacementTeam.module.css';
+import { Container } from '@material-ui/core';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
-import PaperHeader from '../components/PaperHeader';
-import PeopleIcon from '@material-ui/icons/People';
 
 const CareerCounselling = () => {
   const [loading, setLoding] = useState(true);
@@ -45,19 +44,21 @@ const CareerCounselling = () => {
         <Loading />
       ) : (
         <>
-          <PaperHeader
-            data={{ icon: PeopleIcon, heading: 'Career Counselling Committee' }}
-          />
-          <FadeInWhenVisible>
-            <div className={styles.chairman}>
-              <MenuIcon
-                fontSize="large"
-                style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
-              />
-              CHAIRMAN
-            </div>
-          </FadeInWhenVisible>
-          <hr className={styles.hr}></hr>
+          <Container maxWidth="lg">
+            <FadeInWhenVisible>
+              <Paper
+                className={styles.heading}
+                style={{ background: '#012970', color: '#fff' }}
+                elevation={2}
+              >
+                <i
+                  class="fas fa-users"
+                  style={{ margin: '0 1.2rem', padding: '0' }}
+                ></i>
+                Career Counselling Committee
+              </Paper>
+            </FadeInWhenVisible>
+          </Container>
           <Grid
             container
             direction="row"
@@ -74,20 +75,6 @@ const CareerCounselling = () => {
               );
             })}
           </Grid>
-          <hr className={styles.hr} style={{ marginTop: '5rem' }}></hr>
-          <FadeInWhenVisible>
-            <div className={styles.facultyIncharge}>
-              <MenuIcon
-                fontSize="large"
-                style={{
-                  margin: '0 0.5rem 0 0',
-                  paddingTop: '0rem',
-                }}
-              />
-              FACULTY INCHARGE
-            </div>
-          </FadeInWhenVisible>
-          <hr className={styles.hr}></hr>
           <Grid
             container
             direction="row"
@@ -104,17 +91,6 @@ const CareerCounselling = () => {
               );
             })}
           </Grid>
-          <hr className={styles.hr} style={{ marginTop: '5rem' }}></hr>
-          <FadeInWhenVisible>
-            <div className={styles.members}>
-              <MenuIcon
-                fontSize="large"
-                style={{ margin: '0 0.5rem 0 0', paddingTop: '0rem' }}
-              />
-              MEMBERS
-            </div>
-          </FadeInWhenVisible>
-          <hr className={styles.hr}></hr>
           <Grid
             container
             direction="row"

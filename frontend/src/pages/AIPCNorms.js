@@ -28,6 +28,15 @@ const useStyles = makeStyles((theme) => ({
     color: 'rgb(0,0,0)',
     fontsize: '1rem',
   },
+  heading: {
+    fontSize: '1.8rem',
+    color: '#fff',
+    backgroundColor: '#012970',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '1rem',
+  },
 }));
 
 const AIPCNorms = () => {
@@ -63,16 +72,16 @@ const AIPCNorms = () => {
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
                 <FadeInWhenVisible>
-                  <Paper className={classes.paper}>
-                    <Typography
-                      component="h5"
-                      variant="h5"
-                      display="block"
-                      width="500"
-                      style={{ fontSize: 30, textAlign: 'center' }}
-                    >
-                      AIPC Norms
-                    </Typography>
+                  <Paper
+                    className={classes.heading}
+                    style={{ background: '#012970', color: '#fff' }}
+                    elevation={2}
+                  >
+                    <i
+                      class="fas fa-book-reader"
+                      style={{ margin: '0 1.2rem', padding: '0' }}
+                    ></i>
+                    AIPC Norms
                   </Paper>
                 </FadeInWhenVisible>
               </Grid>

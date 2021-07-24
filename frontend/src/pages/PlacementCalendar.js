@@ -41,6 +41,15 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '4%',
     marginBottom: '2%',
   },
+  heading: {
+    fontSize: '1.8rem',
+    color: '#fff',
+    backgroundColor: '#012970',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '1rem',
+  },
 }));
 
 const localizer = momentLocalizer(moment);
@@ -98,14 +107,16 @@ const PlacementCalendar = () => {
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
                 <FadeInWhenVisible>
-                  <Paper className={classes.paper}>
-                    <Typography
-                      component="h5"
-                      variant="h5"
-                      style={{ fontSize: 30, textAlign: 'center' }}
-                    >
-                      Placement Calendar
-                    </Typography>
+                  <Paper
+                    className={classes.heading}
+                    style={{ background: '#012970', color: '#fff' }}
+                    elevation={2}
+                  >
+                    <i
+                      class="fas fa-calendar-alt"
+                      style={{ margin: '0 1.2rem', padding: '0' }}
+                    ></i>
+                    Placement Calendar
                   </Paper>
                 </FadeInWhenVisible>
               </Grid>
