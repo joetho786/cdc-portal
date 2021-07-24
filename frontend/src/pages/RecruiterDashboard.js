@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { BrowserRouter as Router /* Switch, Route */ } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
@@ -13,6 +13,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 /* import Home from '../components/StudentDashboard/Home';
 import UploadResume from '../components/StudentDashboard/UplaodResume';
 import StudentLogin from './StudentLogin'; */
+import AddAdvertisement from '../components/RecruiterDashboard/AddAdvertisement';
 import {
   mainListItems,
   secondaryListItems,
@@ -83,8 +84,6 @@ const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto',
   },
   container: {
     paddingTop: theme.spacing(4),
@@ -112,7 +111,7 @@ export default function Dashboard() {
     <div className={classes.root}>
       <CssBaseline />
       <Drawer
-        variant="permanent"
+        variant={window.innerWidth >= 1350 ? 'permanent' : 'temporary'}
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
         }}
@@ -131,11 +130,10 @@ export default function Dashboard() {
         <List>{thirdListItems}</List>
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Router>
-            {/* <Switch>
-              <Route path="/StudentDashboard/" exact component={Home} />
+            <Switch>
+              {/*  <Route path="/StudentDashboard/" exact component={Home} />
               <Route
                 path="/StudentDashboard/profile"
                 exact
@@ -145,8 +143,13 @@ export default function Dashboard() {
                 path="/StudentDashboard/UploadResume"
                 exact
                 component={UploadResume}
+              /> */}
+              <Route
+                path="/recruiter-dashboard/add-intern-advertisement"
+                exact
+                component={AddAdvertisement}
               />
-            </Switch> */}
+            </Switch>
           </Router>
         </Container>
       </main>
