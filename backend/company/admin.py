@@ -158,13 +158,13 @@ def send_email(self, request, obj, subject):
 
 @admin.register(CompanyProfile)
 class CompanyProfileAdmin(ImportExportActionModelAdmin):
-    readonly_fields = ['registration_timestamp', ]
+    """ readonly_fields = ['registration_timestamp', ]
     resource_class = CompanyProfileResource
     inlines = (CompanyPersonInline, JobOfferInline, InternshipOfferInline,)
     list_display = ['name', 'domain', 'url', 'registration_timestamp']
     list_filter = ['domain', 'registration_timestamp']
     search_fields = ['name', 'user__username']
-
+ """
     class Meta:
         model = CompanyProfile
         fields = '__all__'

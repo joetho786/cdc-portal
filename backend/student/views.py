@@ -5,7 +5,7 @@ from company.models import InternshipAdvertisement, InternshipOffer, JobAdvertis
 from cdc_portal.utils import get_config_value
 from django.db.utils import IntegrityError
 from rest_framework.response import Response
-from .serializers import StudentProfileSerializer, ResumeSerializer
+from .serializers import ProgramAndBranchSerializer, StudentProfileSerializer, ResumeSerializer
 from .models import StudentProfile, Resume, ProgramAndBranch
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
@@ -288,3 +288,10 @@ class Advertisement(APIView):
             data['type'] = 'Job'
             return Response(data, status=status.HTTP_200_OK)
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class GetProgramAndBranch(APIView):
+    def get(self, request):
+        data = ProgramAndBranch.objects.all()
+        serializer = ProgramAndBranchSerializer(data, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

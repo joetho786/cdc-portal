@@ -1,7 +1,9 @@
+from django.shortcuts import get_object_or_404
+from student.models import ProgramAndBranch
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from .serializers import CompanyProfileSerializer, InternshipOfferSerializer, JobOfferSerializer
-from .models import CompanyProfile, InternshipOffer, JobOffer
+from .models import CompanyProfile, InternshipAdvertisement, InternshipOffer, JobOffer
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
@@ -124,3 +126,33 @@ class GetInternshipoffers(APIView):
         internship_offers = InternshipOffer.objects.filter(company__user=request.user)
         serializer = InternshipOfferSerializer(internship_offers, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class AddInernshipAdvertisement(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, format=None):
+        data = {}
+        for key in request.data.keys():
+            if request.data.get(key) == 'true':
+                data[key] = True
+            elif request.data.get(key) == 'false':
+                data[key] = False
+            else:
+                data[key] = request.data.get(key)
+        selected_branches = data.pop('selectedBraches')
+        sb = []
+        dt = selected_branches.split(',')
+        for i in range(1, len(dt), 2):
+            if dt[i] == 'true':
+                sb.append(ProgramAndBranch.objects.get(id=int(dt[i-1])))
+        company = get_object_or_404(CompanyProfile, user=request.user)
+        print(data)
+        mod = InternshipAdvertisement.objects.create(**data, company=company)
+        mod.eligible_program_branch.set(sb)
+        #serializer = InternshipOfferSerializer(data=request.data)
+        """ if serializer.is_valid():
+            serializer.save(company=CompanyProfile.objects.get(user=request.user))
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else: """
+        return Response(status=status.HTTP_400_BAD_REQUEST)

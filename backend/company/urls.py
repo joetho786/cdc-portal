@@ -11,4 +11,5 @@ urlpatterns = [
     path('job_offers/', views.GetJoboffers.as_view(), name="job-offers"),
     path('internship_offers_add/', views.AddInternshipoffer.as_view(), name="intern-offers-add"),
     path('internship_offers/', views.GetInternshipoffers.as_view(), name="intern-offers"),
+    path('internship_ann_add/', views.AddInernshipAdvertisement.as_view(), name="intern-advertisement-add")
 ]
