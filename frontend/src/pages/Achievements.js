@@ -125,7 +125,7 @@ const Achievements = () => {
             </div>
             {highlights_Obj.details === '' ? (
               <CardActions
-                style={{ minHeight: 35 }}
+                style={{ minHeight: 19 }}
                 className={classes.action}
               ></CardActions>
             ) : (
@@ -173,7 +173,7 @@ const Achievements = () => {
             </div>
             {others_Obj.details === '' ? (
               <CardActions
-                style={{ minHeight: 35 }}
+                style={{ minHeight: 19 }}
                 className={classes.action}
               ></CardActions>
             ) : (
