@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import DialogBox from '../DialogBox';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import EmailIcon from '@material-ui/icons/Email';
@@ -129,7 +130,18 @@ const AlumniTestimonial = ({ data }) => {
                     component={'span'}
                     className={styles.main_content}
                   >
-                    {Testimonial_Obj.testimonial}
+                    {Testimonial_Obj.testimonial}{' '}
+                    {Testimonial_Obj.readmore !== '' ? (
+                      <DialogBox
+                        label={'read more'}
+                        title={
+                          Testimonial_Obj.alumni_name +
+                          ' - ' +
+                          Testimonial_Obj.company_working
+                        }
+                        text={Testimonial_Obj.readmore}
+                      />
+                    ) : null}
                   </Typography>
                 </CardContent>
               </div>
