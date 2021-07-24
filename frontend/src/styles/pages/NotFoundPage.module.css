@@ -75,14 +75,14 @@
   border-radius: 100px;
   outline: none;
   padding: 0.5rem 1.5rem;
-  border: 2px solid #1d1642;
-  color: #1d1642;
+  border: 2px solid #012970;
+  color: #012970;
   cursor: pointer;
   background-color: #fff;
   transition: background-color 0.3s ease-in-out;
 }
 
 .homeButton:hover {
-  background-color: #1d1642;
+  background-color: #012970;
   color: #fff;
 }

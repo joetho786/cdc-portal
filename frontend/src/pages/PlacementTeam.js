@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../api/axios';
 import ContactCard from '../components/ContactCard';
-import PaperHeader from '../components/PaperHeader';
+import Paper from '@material-ui/core/Paper';
 import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
-import PeopleIcon from '@material-ui/icons/People';
+import styles from '../styles/pages/PlacementTeam.module.css';
+import { Container } from '@material-ui/core';
+import FadeInWhenVisible from '../components/Animation/FadeIn';
 
 const PlacementTeam = () => {
   const [loading, setLoding] = useState(true);
@@ -43,7 +45,21 @@ const PlacementTeam = () => {
         <Loading />
       ) : (
         <>
-          <PaperHeader data={{ icon: PeopleIcon, heading: 'Placement Team' }} />
+          <Container maxWidth="lg">
+            <FadeInWhenVisible>
+              <Paper
+                className={styles.heading}
+                style={{ background: '#012970', color: '#fff' }}
+                elevation={2}
+              >
+                <i
+                  class="fas fa-users"
+                  style={{ margin: '0 1.2rem', padding: '0' }}
+                ></i>
+                Placement Team
+              </Paper>
+            </FadeInWhenVisible>
+          </Container>
           {data.map((dt) => {
             return (
               <div>

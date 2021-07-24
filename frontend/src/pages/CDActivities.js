@@ -3,11 +3,12 @@ import instance from '../api/axios';
 import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { Container, Typography } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import CDActivityCard from '../components/CDActivityCard';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -49,23 +50,34 @@ const useStyles = makeStyles((theme) => ({
   },
   upcomingHead: {
     fontSize: '1.8rem',
-    color: 'black',
+    color: '#012970',
     textAlign: 'center',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: '2rem',
-    marginTop: '1rem',
   },
   pastHead: {
     fontSize: '1.8rem',
-    color: 'black',
+    color: '#012970',
     textAlign: 'center',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: '2rem',
-    marginTop: '2rem',
+  },
+  heading: {
+    fontSize: '1.8rem',
+    color: '#fff',
+    backgroundColor: '#012970',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '1rem',
+  },
+  hr: {
+    margin: '1rem auto',
+    width: '20rem',
+    border: '0',
+    borderTop: '1px solid rgba(0, 0, 0, 0.1)',
   },
 }));
 
@@ -126,14 +138,16 @@ const CDActivities = () => {
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
                 <FadeInWhenVisible>
-                  <Paper className={classes.paper}>
-                    <Typography
-                      component="h5"
-                      variant="h5"
-                      style={{ fontSize: 30, textAlign: 'center' }}
-                    >
-                      Career Development Activities
-                    </Typography>
+                  <Paper
+                    className={classes.heading}
+                    style={{ background: '#012970', color: '#fff' }}
+                    elevation={2}
+                  >
+                    <i
+                      class="fas fa-users"
+                      style={{ margin: '0 1.2rem', padding: '0' }}
+                    ></i>
+                    Career Development Activities
                   </Paper>
                 </FadeInWhenVisible>
               </Grid>
@@ -145,6 +159,7 @@ const CDActivities = () => {
                   />
                   Upcoming Events
                 </div>
+                <hr className={classes.hr}></hr>
                 <Container maxWidth="lg" className={classes.Awrapper}>
                   {Upcoming === [] ? ' ' : getUpcoming()}
                 </Container>
@@ -154,6 +169,7 @@ const CDActivities = () => {
           <Container maxWidth="lg" className={classes.root}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
+                <hr className={classes.hr}></hr>
                 <div className={classes.pastHead}>
                   <MenuIcon
                     fontSize="large"
@@ -161,6 +177,7 @@ const CDActivities = () => {
                   />
                   Past Events
                 </div>
+                <hr className={classes.hr}></hr>
                 <Container maxWidth="lg" className={classes.Awrapper}>
                   {Past === [] ? ' ' : getPast()}
                 </Container>

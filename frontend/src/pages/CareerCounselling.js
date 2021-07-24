@@ -3,8 +3,10 @@ import instance from '../api/axios';
 import C3MemberCard from '../components/C3MemberCard';
 import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
-import PaperHeader from '../components/PaperHeader';
-import PeopleIcon from '@material-ui/icons/People';
+import Paper from '@material-ui/core/Paper';
+import styles from '../styles/pages/PlacementTeam.module.css';
+import { Container } from '@material-ui/core';
+import FadeInWhenVisible from '../components/Animation/FadeIn';
 
 const CareerCounselling = () => {
   const [loading, setLoding] = useState(true);
@@ -42,9 +44,21 @@ const CareerCounselling = () => {
         <Loading />
       ) : (
         <>
-          <PaperHeader
-            data={{ icon: PeopleIcon, heading: 'Career Counselling Committee' }}
-          />
+          <Container maxWidth="lg">
+            <FadeInWhenVisible>
+              <Paper
+                className={styles.heading}
+                style={{ background: '#012970', color: '#fff' }}
+                elevation={2}
+              >
+                <i
+                  class="fas fa-users"
+                  style={{ margin: '0 1.2rem', padding: '0' }}
+                ></i>
+                Career Counselling Committee
+              </Paper>
+            </FadeInWhenVisible>
+          </Container>
           <Grid
             container
             direction="row"
