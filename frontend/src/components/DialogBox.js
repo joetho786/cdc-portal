@@ -58,9 +58,12 @@ export default function DialogBox({ label, title, text }) {
   };
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <span
+        style={{ color: '#012970', cursor: 'pointer', fontSize: '1rem' }}
+        onClick={handleClickOpen}
+      >
         {label}
-      </Button>
+      </span>
       <Dialog
         key={title}
         onClose={handleClose}
