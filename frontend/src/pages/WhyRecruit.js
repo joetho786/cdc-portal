@@ -12,6 +12,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { getLink } from '../utils/getLink';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
 import FadeUpWhenVisible from '../components/Animation/FadeUp';
+import PaperHeading from '../components/PaperHeading';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -31,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     width: 'auto',
+    border: '3px solid',
+    borderColor: '#012970',
+    borderRadius: '5px',
   },
   card_content: {
     backgroundColor: 'rgb(255, 255, 255)',
@@ -64,22 +70,20 @@ const WhyRecruit = () => {
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
                 <FadeInWhenVisible>
-                  <Paper className={classes.paper}>
-                    <Typography
-                      component="h5"
-                      variant="h5"
-                      style={{ fontSize: 30, textAlign: 'center' }}
-                    >
-                      Why Recruit?
-                    </Typography>
-                  </Paper>
+                  <PaperHeading
+                    className={classes.paper}
+                    data={{
+                      icon: EqualizerIcon,
+                      heading: 'Why Recruit?',
+                    }}
+                  ></PaperHeading>
                 </FadeInWhenVisible>
               </Grid>
             </Grid>
           </Container>
           <Container maxwidth="lg" className={classes.root}>
             <Paper className={classes.paper}>
-              <Grid container spacing={4}>
+              <Grid container spacing={5}>
                 {recruitdata.map((item, index) => (
                   <Grid
                     item
