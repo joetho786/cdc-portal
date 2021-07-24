@@ -150,9 +150,4 @@ class AddInernshipAdvertisement(APIView):
         print(data)
         mod = InternshipAdvertisement.objects.create(**data, company=company)
         mod.eligible_program_branch.set(sb)
-        #serializer = InternshipOfferSerializer(data=request.data)
-        """ if serializer.is_valid():
-            serializer.save(company=CompanyProfile.objects.get(user=request.user))
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else: """
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_201_CREATED)

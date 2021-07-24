@@ -56,6 +56,7 @@ export default function AddAdvertisement() {
   const [values, setValues] = React.useState({});
   const [selectedBraches, setselectedBraches] = React.useState([[0, false]]);
   const [error, setError] = React.useState('');
+  const [su, setsu] = React.useState('');
   const [loading, setLoading] = React.useState(true);
   const [btech, setBtech] = React.useState([]);
   const [mtech, setMtech] = React.useState([]);
@@ -97,7 +98,7 @@ export default function AddAdvertisement() {
       .then((res) => {
         //console.log(res.data);
         if (res.status === 201) {
-          window.location = 'recruiter-login';
+          setsu('Form Submitted successfully, Under Review');
         }
       })
       .catch(function (error) {
@@ -116,6 +117,7 @@ export default function AddAdvertisement() {
       return;
     }
     setError('');
+    setsu('');
   };
   return (
     <React.Fragment>
@@ -135,6 +137,15 @@ export default function AddAdvertisement() {
       >
         <Alert onClose={handleCloseerror} severity="error">
           {error}
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={su !== ''}
+        autoHideDuration={6000}
+        onClose={handleCloseerror}
+      >
+        <Alert onClose={handleCloseerror} severity="success">
+          {su}
         </Alert>
       </Snackbar>
       <main className={classes.layout}>
