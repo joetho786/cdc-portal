@@ -8,7 +8,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { getLink } from '../utils/getLink';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import DialogBox from '../components/DialogBox';
@@ -44,6 +43,8 @@ const useStyles = makeStyles((theme) => ({
     margin: 10,
     float: 'left',
     minWidth: 'auto',
+    boxShadow:
+      '0 4px 8px 0 rgba(0, 0, 0, 0.16), 0 6px 20px 0 rgba(0, 0, 0, 0.13)',
   },
   media: {
     height: 140,
@@ -102,7 +103,7 @@ const Achievements = () => {
       return highlights_list.push(
         <FadeInWhenVisible>
           <Card key={highlights_Obj.title} className={classes.Hroot}>
-            <CardActionArea className={classes.actionArea}>
+            <div className={classes.actionArea}>
               <CardMedia
                 className={classes.media}
                 image={getLink(highlights_Obj.image)}
@@ -125,8 +126,13 @@ const Achievements = () => {
                   />
                 </div>
               </CardContent>
-            </CardActionArea>
-            {highlights_Obj.details === null ? null : (
+            </div>
+            {highlights_Obj.details === '' ? (
+              <CardActions
+                style={{ minHeight: 35 }}
+                className={classes.action}
+              ></CardActions>
+            ) : (
               <CardActions className={classes.action}>
                 <DialogBox
                   label={'Details'}
@@ -150,7 +156,7 @@ const Achievements = () => {
       return others_list.push(
         <FadeUpWhenVisible>
           <Card key={others_Obj.title} className={classes.Hroot}>
-            <CardActionArea className={classes.otherActionArea}>
+            <div className={classes.otherActionArea}>
               <CardContent>
                 <Typography
                   gutterBottom
@@ -168,8 +174,13 @@ const Achievements = () => {
                   />
                 </div>
               </CardContent>
-            </CardActionArea>
-            {others_Obj.details === null ? null : (
+            </div>
+            {others_Obj.details === '' ? (
+              <CardActions
+                style={{ minHeight: 35 }}
+                className={classes.action}
+              ></CardActions>
+            ) : (
               <CardActions className={classes.action}>
                 <DialogBox
                   label={'Details'}

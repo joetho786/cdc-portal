@@ -52,10 +52,13 @@ nav .content .links {
 .content .links li label {
   display: none;
 }
-.content .links li a:hover,
+.content .links li a:hover {
+  background: #f1f1f1;
+  color: #012970;
+}
 .content .links li label:hover {
-  background: #1d1642;
-  color: #ffffff;
+  background: #f1f1f1;
+  color: #012970;
 }
 .wrapper .search-icon,
 .wrapper .menu-icon {
