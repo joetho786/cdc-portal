@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import BusinessIcon from '@material-ui/icons/Business';
 import Container from '@material-ui/core/Container';
 import CardMedia from '@material-ui/core/CardMedia';
 import styles from './PastRecruiters.module.css';
@@ -22,7 +23,6 @@ const PastRecruiters = ({ data }) => {
             <CardMedia
               className={styles.PR_image}
               image={getLink(PR.company_logo)}
-              title="Contemplative Reptile"
             />
           </div>
         </div>
@@ -70,7 +70,7 @@ const PastRecruiters = ({ data }) => {
     ],
   };
   return (
-    <div style={{ background: 'rgb(240,240,240)' }}>
+    <div style={{ background: '#f6f9ff' }}>
       <div className="py-5">
         <Container
           style={{
@@ -83,11 +83,18 @@ const PastRecruiters = ({ data }) => {
                 fontSize: 40,
                 textAlign: '-webkit-center',
                 justifyContent: 'center',
-                display: 'grid',
+                display: 'flow-root',
                 marginBottom: -10,
                 marginTop: 70,
               }}
             >
+              <BusinessIcon
+                style={{
+                  margin: '0 0.8rem -0.4rem 0',
+                  fontSize: '3.2rem',
+                  paddingTop: '0rem',
+                }}
+              />
               Past Recruiters
             </h2>
             <h3>
