@@ -68,10 +68,97 @@ const useStyles = makeStyles((theme) => ({
 const PastRecruiters = () => {
   const classes = useStyles();
   const [loading, setLoding] = useState(true);
-  const [publictext, setPublictext] = useState([]);
-  const [privatetext, setPrivatetext] = useState([]);
   const [PR_Objs, setPR_Obj] = useState([]);
   const [searchValue, setSearchValue] = useState('*');
+  //past recruiter data
+  const data = {
+    privatetext: [
+      '3DPLM Software Limited',
+      'Aasaan Jobs Private Limited',
+      'Aakash Educational Service Limited',
+      'Allgo Embedded Systems',
+      'Amadeus Software Labs',
+      'Angara Ecommerce Private Limited',
+      'Amazon.com',
+      'Anglo Eastern Ship Private Limited',
+      'Arm Embedded Technologies Limited',
+      'Barclays',
+      'Cairn India',
+      'Cisco Systems',
+      'CMC Limited',
+      'Cocubes.com',
+      'Cognizant Technology Solution Corporation',
+      'CRISIL Limited',
+      'C42 Engineering Private Limited',
+      'DE Shaw & Company',
+      'DIRECTI',
+      'Drishti Software Solutions Private Limited',
+      'Flipkart.com',
+      'Finisar Corporation',
+      'Fluidyn Instruments Private Limited',
+      'Free Scale Semiconducter',
+      'Future Supply Chain Solutions Limited',
+      'Futures First',
+      'Goldman Sachs',
+      'Google',
+      'Grofers',
+      'Grident Technologies Private Limited',
+      'Gyan Central',
+      'Havells India Limited',
+      'HCL Technologies',
+      'Honda Cars',
+      'Hyundai',
+      'Infosys',
+      'Ittiam Systems Private Limited',
+      'Ignite World Private Limited',
+      'Ishi Systems',
+      'Jindal Steel and Power',
+      'Kritikal Solutions Private Limited',
+      'Larsen & Tourbo',
+      'Larsen & Tourbo ECC',
+      'Nagarro Software Private Limited',
+      'NBC Engineering Industries Limited',
+      'National Instruments Corporation',
+      'Navyug Solutions Limited',
+      'Nucleus Software Exports Limited',
+      'Oanda Financial Services',
+      'Oracle Financial Service Corporation',
+      'Practo Technologies Private Limited',
+      'Renault Nissan',
+      'Resonance Eduventures Limited',
+      'Samsung India Software Operations',
+      'Samsung India Software Centre',
+      'Samsung Software Engineering Lab',
+      'Sigmoid Analytics Limited',
+      'Steelwedge Technologies Private Limited',
+      'Snapdeal.com',
+      'STMicroelectronics',
+      'Tata Consultancy Services,',
+      'Tata Motors Private Limited',
+      'Trident Group',
+      'Voyalla Retail Private Limited',
+      'Volvo Eicher',
+      'Libsys Limited',
+      'Mahindra & Mahindra Limited',
+      'Maxheap Technologies',
+      'Microsoft Corporation',
+      'Misys Software Solutions Private Limited',
+      'Morgan Stanley',
+    ],
+    publictext: [
+      'Bank of India',
+      'Bharat Petroleum Corporation Limited',
+      'Bharat Heavy Electrical Limited',
+      'Coal India Limited',
+      'Defence Research Development Organization',
+      'Hindustan Petroleum Corporation Limited',
+      'Indian Army',
+      'Indian Navy',
+      'Indian Space Research Organization',
+      'Indian Oil Corporation Limited',
+      'Power System Operation Corporation',
+    ],
+  };
   const getPR_Objs = () => {
     let list = [];
 
@@ -182,26 +269,11 @@ const PastRecruiters = () => {
 
   useEffect(() => {
     instance
-      .get('main/navbar_suboptions/')
-      .then((res) => {
-        setPrivatetext(
-          res.data.filter((subOption) =>
-            subOption.title.includes('Past Recruiters Private')
-          )[0]
-        );
-        setPublictext(
-          res.data.filter((subOption) =>
-            subOption.title.includes('Past Recruiters Public')
-          )[0]
-        );
-      })
-      .then(() => setLoding(false))
-      .catch((error) => console.log(error));
-    instance
       .get('main/past_recruiters/')
       .then((res) => {
         setPR_Obj(res.data);
       })
+      .then(() => setLoding(false))
       .catch((error) => console.log(error));
   }, []);
 
@@ -251,9 +323,9 @@ const PastRecruiters = () => {
                       Private Companies
                     </Typography>
                     <Typography>
-                      {privatetext ? (
+                      {data.privatetext ? (
                         <div className={style['list-type3']}>
-                          {filter(privatetext, searchValue).map(
+                          {filter(data.privatetext, searchValue).map(
                             (company, index) => {
                               return <div key={index}>{company}</div>;
                             }
@@ -277,9 +349,9 @@ const PastRecruiters = () => {
                       Public Sector Companies
                     </Typography>
                     <Typography>
-                      {publictext ? (
+                      {data.publictext ? (
                         <div className={style['list-type3']}>
-                          {filter(publictext, searchValue).map(
+                          {filter(data.publictext, searchValue).map(
                             (company, index) => {
                               return <div key={index}>{company}</div>;
                             }
