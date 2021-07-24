@@ -9,7 +9,7 @@ from django.shortcuts import HttpResponseRedirect
 from zipfile import ZipFile
 from os.path import basename
 from company.models import CompanyPerson, CompanyProfile, InternshipAdvertisement, InternshipOffer, JobOffer, JobAdvertisement
-from .resources import CompanyPersonResource, CompanyProfileResource
+from .resources import CompanyPersonResource
 from .resources import InternshipAdvertisementResource, InternshipOfferResource, JobAdvertisementResource, JobOfferResource
 
 
