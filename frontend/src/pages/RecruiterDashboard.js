@@ -119,7 +119,10 @@ export default function Dashboard() {
         open={open}
       >
         <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton
+            onClick={handleDrawerClose}
+            onMouseEnter={handleDrawerClose}
+          >
             {open ? <ChevronLeftIcon /> : <MenuIcon />}
           </IconButton>
         </div>
