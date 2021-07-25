@@ -2,7 +2,8 @@ from django.shortcuts import get_object_or_404
 from student.models import ProgramAndBranch
 from django.contrib.auth.models import User
 from rest_framework.response import Response
-from .serializers import CompanyProfileSerializer, InternshipAdvertisementSerializer, InternshipAdvertisementSerializer_c, InternshipOfferSerializer, InternshipOfferSerializer_c, JobAdvertisementSerializer, JobAdvertisementSerializer_c, JobOfferSerializer, JobOfferSerializer_c
+from .serializers import CompanyProfileSerializer, InternshipAdvertisementSerializer_c, InternshipOfferSerializer
+from .serializers import InternshipOfferSerializer_c, JobAdvertisementSerializer_c, JobOfferSerializer, JobOfferSerializer_c
 from .models import CompanyProfile, InternshipAdvertisement, InternshipOffer, JobAdvertisement, JobOffer
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
