@@ -8,6 +8,12 @@ const C3MemberCard = ({ data }) => {
   return (
     <FadeUpWhenVisible>
       <div className={styles.teamCard}>
+        <div className={styles.cardHeader}>
+          <div className={styles.designation}>
+            <b>{data.designation.designation}</b>
+          </div>
+          <div className={styles.subDesignation}>Career Development Cell</div>
+        </div>
         <img
           className={styles.profileImage}
           src={getLink(data.profile_image)}
