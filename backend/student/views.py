@@ -149,7 +149,7 @@ class AvailableOffers(APIView):
 
     def get_offers(self, profile, model):
         if profile.program_branch.check_gpa:
-            offers = model.objects.filter(min_gpa__lte=profile.gpa,
+            offers = model.objects.filter(min_gpa__lte=profile.gpa, min_ug_gpa__lte=profile.ug_gpa,
                                           eligible_program_branch__name__contains=profile.program_branch.name,
                                           active=True).difference(self.get_applied_ad_list(profile.user, model))
         else:

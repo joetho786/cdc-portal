@@ -59,7 +59,7 @@ class StudentProfile(models.Model):
     year = models.SmallIntegerField()
     program_branch = models.ForeignKey(ProgramAndBranch, on_delete=models.SET_NULL, null=True)
     gpa = models.FloatField()
-    ug_gpa = models.FloatField(null=True, blank=True)
+    ug_gpa = models.FloatField(null=True, blank=True, default=0.0)
     phone = models.CharField(max_length=15)
     dob = models.DateField()
     category = models.CharField(max_length=10, choices=CATEGORY)

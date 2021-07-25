@@ -10,15 +10,17 @@ import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-/* import Home from '../components/StudentDashboard/Home';
-import UploadResume from '../components/StudentDashboard/UplaodResume';
+import Home from '../components/RecruiterDashboard/Home';
+/* import UploadResume from '../components/StudentDashboard/UplaodResume';
 import StudentLogin from './StudentLogin'; */
 import AddAdvertisement from '../components/RecruiterDashboard/AddAdvertisement';
+import StudentList from '../components/RecruiterDashboard/StudentList';
 import {
   mainListItems,
   secondaryListItems,
   thirdListItems,
 } from '../components/RecruiterDashboard/MenuItems';
+import ViewAdvertisement from '../components/StudentDashboard/ViewAdvertisement';
 
 const drawerWidth = 240;
 
@@ -133,21 +135,21 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Router>
             <Switch>
-              {/*  <Route path="/StudentDashboard/" exact component={Home} />
-              <Route
-                path="/StudentDashboard/profile"
-                exact
-                component={StudentLogin}
-              />
-              <Route
-                path="/StudentDashboard/UploadResume"
-                exact
-                component={UploadResume}
-              /> */}
+              <Route path="/recruiter-dashboard/" exact component={Home} />
               <Route
                 path="/recruiter-dashboard/add-intern-advertisement"
                 exact
                 component={AddAdvertisement}
+              />
+              <Route
+                path="/recruiter-dashboard/advertisement/:id"
+                exact
+                component={ViewAdvertisement}
+              />
+              <Route
+                path="/recruiter-dashboard/student-list/:id"
+                exact
+                component={StudentList}
               />
             </Switch>
           </Router>
