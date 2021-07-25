@@ -69,7 +69,8 @@ class BaseAdvertisement(models.Model):
     number_of_technical_tests = models.PositiveSmallIntegerField(default=0)
     number_of_hr_rounds = models.PositiveSmallIntegerField(default=0)
     medical_test_required = models.BooleanField(default=False)
-    min_gpa = models.FloatField(null=True, blank=True)
+    min_gpa = models.FloatField(null=True, blank=True, default=0.0)
+    min_ug_gpa = models.FloatField(null=True, blank=True, default=0.0)
     number_of_members = models.PositiveIntegerField(null=True, blank=True)
     other_details = models.TextField(null=True, blank=True)
     email_ids = models.ManyToManyField(ProgramEmailId, blank=True)
@@ -89,8 +90,13 @@ class JobAdvertisement(BaseAdvertisement):
     def get_absolute_url(self):
         return reverse(kwargs={"id": self.id})
 
+    @property
     def get_offers(self):
         return JobOffer.objects.filter(profile__id=self.id)
+
+    @property
+    def get_offers_count(self):
+        return JobOffer.objects.filter(profile__id=self.id).count()
 
 
 class InternshipAdvertisement(BaseAdvertisement):
@@ -115,21 +121,26 @@ class InternshipAdvertisement(BaseAdvertisement):
     con_designation = models.TextField(null=True, blank=True)
     con_email = models.CharField(max_length=15)
     con_phone = models.EmailField()
-    resume_shortlist_criteria = models.BooleanField(default=False)
+    #resume_shortlist_criteria = models.BooleanField(default=False)
     technical_round = models.BooleanField(default=False)
-    aptitude_round = models.BooleanField(default=False)
-    gd_round = models.BooleanField(default=False)
+    #aptitude_round = models.BooleanField(default=False)
+    #gd_round = models.BooleanField(default=False)
     ti_round = models.BooleanField(default=False)
     hr_round = models.BooleanField(default=False)
     other_round = models.BooleanField(default=False)
     pre_talk = models.BooleanField(default=False)
     description_file = models.FileField(upload_to='description_file', blank=True, null=True)
+    allow_backlog = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         return reverse("company:internship-offer", kwargs={"id": self.id})
 
+    @property
     def get_offers(self):
         return InternshipOffer.objects.filter(profile__id=self.id)
+
+    def get_offers_count(self):
+        return InternshipOffer.objects.filter(profile__id=self.id).count()
 
 
 class BaseOffer(models.Model):

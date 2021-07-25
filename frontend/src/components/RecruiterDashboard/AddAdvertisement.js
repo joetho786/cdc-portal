@@ -234,7 +234,7 @@ export default function AddAdvertisement() {
               <Grid item xs={12}>
                 <TextField
                   required
-                  label="Training Period"
+                  label="Duration of the Internship"
                   type="number"
                   helperText="Enter number of days"
                   value={values.training_period}
@@ -265,7 +265,7 @@ export default function AddAdvertisement() {
                   }}
                 >
                   {' '}
-                  4-Years B. Tech Programmes <br />
+                  Bachelor of Technology <br />
                   <div style={{ fontSize: '0.8rem' }}>
                     Admission to B.Tech Programmes is through IIT-Joint Entrance
                     Examination (Advanced)
@@ -297,7 +297,7 @@ export default function AddAdvertisement() {
                   }}
                 >
                   {' '}
-                  2-Years M. Tech Programmes <br />
+                  Master of Technology <br />
                   <div style={{ fontSize: '0.8rem' }}>
                     Admission to M.Tech. Programmes is through GATE
                   </div>{' '}
@@ -328,7 +328,7 @@ export default function AddAdvertisement() {
                   }}
                 >
                   {' '}
-                  2-Years M. Sc. Programmes
+                  Master of Science
                 </center>
               </Grid>
               <Grid container style={{ marginLeft: '6%' }}>
@@ -428,7 +428,6 @@ export default function AddAdvertisement() {
                 </Grid>
                 <Grid item xs={4} style={{ paddingRight: '10px' }}>
                   <TextField
-                    required
                     label="MTech"
                     type="number"
                     defaultValue={0}
@@ -443,7 +442,6 @@ export default function AddAdvertisement() {
                 </Grid>
                 <Grid item xs={4} style={{ paddingRight: '10px' }}>
                   <TextField
-                    required
                     label="MSc"
                     type="number"
                     defaultValue={0}
@@ -465,7 +463,6 @@ export default function AddAdvertisement() {
               <Grid container style={{ marginLeft: '10%', marginTop: '1%' }}>
                 <Grid item xs={4} style={{ paddingRight: '10px' }}>
                   <TextField
-                    required
                     label="MTech"
                     type="number"
                     defaultValue={0}
@@ -480,7 +477,6 @@ export default function AddAdvertisement() {
                 </Grid>
                 <Grid item xs={4} style={{ paddingRight: '10px' }}>
                   <TextField
-                    required
                     label="MSc"
                     type="number"
                     defaultValue={0}
@@ -498,11 +494,11 @@ export default function AddAdvertisement() {
                 <b style={{ fontSize: '0.8rem', marginLeft: '4%' }}>
                   2.
                   <Checkbox
-                    value={values.resume_shortlist_criteria}
+                    value={values.resume_required}
                     onChange={(e) => {
                       setValues({
                         ...values,
-                        ...{ resume_shortlist_criteria: e.target.checked },
+                        ...{ resume_required: e.target.checked },
                       });
                     }}
                   />{' '}
@@ -511,7 +507,22 @@ export default function AddAdvertisement() {
               </Grid>
               <Grid item xs={12}>
                 <b style={{ fontSize: '0.8rem', marginLeft: '4%' }}>
-                  3. Any Other Criteria:{' '}
+                  3.
+                  <Checkbox
+                    value={values.allow_backlog}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ allow_backlog: e.target.checked },
+                      });
+                    }}
+                  />{' '}
+                  Allow students who have backlogs{' '}
+                </b>
+              </Grid>
+              <Grid item xs={12}>
+                <b style={{ fontSize: '0.8rem', marginLeft: '4%' }}>
+                  4. Any Other Criteria:{' '}
                 </b>
               </Grid>
               <Grid item xs={10} style={{ marginLeft: '8%' }}>
@@ -528,7 +539,7 @@ export default function AddAdvertisement() {
               </Grid>
               <Grid item xs={12}>
                 <b style={{ fontSize: '0.8rem', marginLeft: '4%' }}>
-                  4. Further rounds for the shortlisted students
+                  5. Further rounds for the shortlisted students
                 </b>
               </Grid>
               <Grid container style={{ marginLeft: '8%' }}>
@@ -572,11 +583,11 @@ export default function AddAdvertisement() {
                   <b style={{ fontSize: '0.8rem', marginLeft: '4%' }}>
                     B. Aptitude Test
                     <Checkbox
-                      value={values.aptitude_round}
+                      value={values.aptitude_test_required}
                       onChange={(e) => {
                         setValues({
                           ...values,
-                          ...{ aptitude_round: e.target.checked },
+                          ...{ aptitude_test_required: e.target.checked },
                         });
                       }}
                     />{' '}
@@ -608,11 +619,11 @@ export default function AddAdvertisement() {
                   <b style={{ fontSize: '0.8rem', marginLeft: '4%' }}>
                     C. Group Discussion
                     <Checkbox
-                      value={values.gd_round}
+                      value={values.group_discussion_required}
                       onChange={(e) => {
                         setValues({
                           ...values,
-                          ...{ gd_round: e.target.checked },
+                          ...{ group_discussion_required: e.target.checked },
                         });
                       }}
                     />{' '}
