@@ -64,8 +64,21 @@ export default function RecruiterRegister() {
   });
   const [error, setError] = React.useState('');
   const [loading, setLoading] = React.useState(false);
+  const [categoryCompany, setCategoryCompany] = React.useState('');
+  const [industrySector, setIndustrySector] = React.useState('');
+  const mergeDomain = () => {
+    setValues({
+      ...values,
+      ...{
+        domain: categoryCompany + '/' + industrySector,
+      },
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    mergeDomain();
+    console.log(values);
     setLoading(true);
     var form = new FormData();
     for (const key in values) {
@@ -136,18 +149,63 @@ export default function RecruiterRegister() {
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} sm={8}>
-                <TextField
-                  required
-                  label="Company Domain"
-                  helperText="Type of company like banking/consulting etc"
-                  value={values.domain}
-                  onChange={(e) => {
-                    setValues({ ...values, ...{ domain: e.target.value } });
-                  }}
-                  fullWidth
-                />
+
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <InputLabel>Category of the Company *</InputLabel>
+                  <Select
+                    fullWidth
+                    value={categoryCompany}
+                    onChange={(e) => {
+                      setCategoryCompany(e.target.value);
+                    }}
+                  >
+                    <MenuItem value={'Public Sector'}>Public Sector</MenuItem>
+                    <MenuItem value={'Government Owned'}>
+                      Government Owned
+                    </MenuItem>
+                    <MenuItem value={'Private Sector'}>Private Sector</MenuItem>
+                    <MenuItem value={'MNC (Indian Origin)'}>
+                      MNC (Indian Origin)
+                    </MenuItem>
+                    <MenuItem value={'MNC (Foreign Origin)'}>
+                      MNC (Foreign Origin)
+                    </MenuItem>
+                    <MenuItem value={'Start-up'}>Start-up</MenuItem>
+                    <MenuItem value={'University/Institution'}>
+                      University/Institution
+                    </MenuItem>
+                    <MenuItem value={'Others'}>Others</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <InputLabel>Industry Sector *</InputLabel>
+                  <Select
+                    fullWidth
+                    value={industrySector}
+                    onChange={(e) => {
+                      setIndustrySector(e.target.value);
+                    }}
+                  >
+                    <MenuItem value={'Analytics'}>Analytics</MenuItem>
+                    <MenuItem value={'Consulting'}>Consulting</MenuItem>
+                    <MenuItem value={'Core (Technical)'}>
+                      Core (Technical)
+                    </MenuItem>
+                    <MenuItem value={'Finance'}>Finance</MenuItem>
+                    <MenuItem value={'IT'}>IT</MenuItem>
+                    <MenuItem value={'Management'}>Management</MenuItem>
+                    <MenuItem value={'Teaching and Research'}>
+                      Teaching and Research
+                    </MenuItem>
+                    <MenuItem value={'Others'}>Others</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+
               <Grid item xs={12}>
                 <Divider variant="middle" orientation="horizontal" />
               </Grid>
@@ -179,7 +237,7 @@ export default function RecruiterRegister() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
-                  label="Confrim Password"
+                  label="Conform Password"
                   error={values.password !== values.cpassword}
                   helperText={
                     values.password !== values.cpassword
