@@ -32,6 +32,11 @@ class AddCompanyDetails(APIView):
             profile.save()
             return Response(CompanyProfileSerializer(profile).data, status=status.HTTP_201_CREATED)
 
+    def get(self, request):
+        model = CompanyProfile.objects.get(user=request.user)
+        serializer = CompanyProfileSerializer(model)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 class GetCompanyDetails(APIView):
     permission_classes = (IsAuthenticated,)
