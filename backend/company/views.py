@@ -1,7 +1,10 @@
+from django.shortcuts import get_object_or_404
+from student.models import ProgramAndBranch
 from django.contrib.auth.models import User
 from rest_framework.response import Response
-from .serializers import CompanyProfileSerializer, InternshipOfferSerializer, JobOfferSerializer
-from .models import CompanyProfile, InternshipOffer, JobOffer
+from .serializers import CompanyProfileSerializer, InternshipAdvertisementSerializer_c, InternshipOfferSerializer
+from .serializers import InternshipOfferSerializer_c, JobAdvertisementSerializer_c, JobOfferSerializer, JobOfferSerializer_c
+from .models import CompanyProfile, InternshipAdvertisement, InternshipOffer, JobAdvertisement, JobOffer
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
@@ -29,6 +32,11 @@ class AddCompanyDetails(APIView):
             profile = CompanyProfile.objects.create(user=user, **data)
             profile.save()
             return Response(CompanyProfileSerializer(profile).data, status=status.HTTP_201_CREATED)
+
+    def get(self, request):
+        model = CompanyProfile.objects.get(user=request.user)
+        serializer = CompanyProfileSerializer(model)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class GetCompanyDetails(APIView):
@@ -124,3 +132,50 @@ class GetInternshipoffers(APIView):
         internship_offers = InternshipOffer.objects.filter(company__user=request.user)
         serializer = InternshipOfferSerializer(internship_offers, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class AddInernshipAdvertisement(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, format=None):
+        data = {}
+        for key in request.data.keys():
+            if request.data.get(key) == 'true':
+                data[key] = True
+            elif request.data.get(key) == 'false':
+                data[key] = False
+            else:
+                data[key] = request.data.get(key)
+        selected_branches = data.pop('selectedBraches')
+        sb = []
+        dt = selected_branches.split(',')
+        for i in range(1, len(dt), 2):
+            if dt[i] == 'true':
+                sb.append(ProgramAndBranch.objects.get(id=int(dt[i-1])))
+        company = get_object_or_404(CompanyProfile, user=request.user)
+        # print(data)
+        mod = InternshipAdvertisement.objects.create(**data, company=company)
+        mod.eligible_program_branch.set(sb)
+        return Response(status=status.HTTP_201_CREATED)
+
+
+class GetCompanyAnnouncements(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        intern = InternshipAdvertisement.objects.filter(company__user=request.user)
+        intern = InternshipAdvertisementSerializer_c(intern, many=True)
+        job = JobAdvertisement.objects.filter(company__user=request.user)
+        job = JobAdvertisementSerializer_c(job, many=True)
+        return Response({'internship': intern.data, 'job': job.data}, status=status.HTTP_200_OK)
+
+
+class GetAppliedStudents(APIView):
+    def get(self, request, id):
+        model = InternshipOffer.objects.filter(profile__id=id)
+        if not model.exists():
+            model = JobOffer.objects.filter(profile__id=id)
+            data = JobOfferSerializer_c(model, many=True).data
+        else:
+            data = InternshipOfferSerializer_c(model, many=True).data
+        return Response(data, status=status.HTTP_200_OK)

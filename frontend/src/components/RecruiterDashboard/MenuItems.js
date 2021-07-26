@@ -44,15 +44,14 @@ export const mainListItems = (
 export const secondaryListItems = (
   <div>
     <a
-      href="/"
-      onClick={Logout}
+      href="/recruiter-dashboard/add-intern-advertisement"
       style={{ color: 'inherit', textDecoration: 'none' }}
     >
       <ListItem button>
         <ListItemIcon>
           <PostAddIcon />
         </ListItemIcon>
-        <ListItemText primary="Add Advertisment" />
+        <ListItemText primary="Intern Advertisment" />
       </ListItem>
     </a>
   </div>

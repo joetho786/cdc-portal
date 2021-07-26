@@ -10,17 +10,18 @@ import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-
-// import Home from '../components/RecruiterDashboard/Home'
-/* import Home from '../components/StudentDashboard/Home';
-import UploadResume from '../components/StudentDashboard/UplaodResume';
+import Home from '../components/RecruiterDashboard/Home';
+/* import UploadResume from '../components/StudentDashboard/UplaodResume';
 import StudentLogin from './StudentLogin'; */
+import AddAdvertisement from '../components/RecruiterDashboard/AddAdvertisement';
+import StudentList from '../components/RecruiterDashboard/StudentList';
 import Profile from '../components/RecruiterDashboard/Profile';
 import {
   mainListItems,
   secondaryListItems,
   thirdListItems,
 } from '../components/RecruiterDashboard/MenuItems';
+import ViewAdvertisement from '../components/StudentDashboard/ViewAdvertisement';
 
 const drawerWidth = 240;
 
@@ -86,8 +87,6 @@ const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto',
   },
   container: {
     paddingTop: theme.spacing(4),
@@ -115,7 +114,7 @@ export default function Dashboard() {
     <div className={classes.root}>
       <CssBaseline />
       <Drawer
-        variant="permanent"
+        variant={window.innerWidth >= 1350 ? 'permanent' : 'temporary'}
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
         }}
@@ -137,25 +136,30 @@ export default function Dashboard() {
         <List>{thirdListItems}</List>
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Router>
             <Switch>
+              <Route path="/recruiter-dashboard/" exact component={Home} />
               <Route
                 path="/recruiter-dashboard/profile"
                 exact
                 component={Profile}
               />
-              {/* <Route
-                path="/StudentDashboard/profile"
+              <Route
+                path="/recruiter-dashboard/add-intern-advertisement"
                 exact
-                component={StudentLogin}
+                component={AddAdvertisement}
               />
               <Route
-                path="/StudentDashboard/UploadResume"
+                path="/recruiter-dashboard/advertisement/:id"
                 exact
-                component={UploadResume}
-              /> */}
+                component={ViewAdvertisement}
+              />
+              <Route
+                path="/recruiter-dashboard/student-list/:id"
+                exact
+                component={StudentList}
+              />
             </Switch>
           </Router>
         </Container>
