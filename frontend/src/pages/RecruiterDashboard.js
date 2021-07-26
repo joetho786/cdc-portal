@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { BrowserRouter as Router /* Switch, Route */ } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
@@ -10,9 +10,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+
+// import Home from '../components/RecruiterDashboard/Home'
 /* import Home from '../components/StudentDashboard/Home';
 import UploadResume from '../components/StudentDashboard/UplaodResume';
 import StudentLogin from './StudentLogin'; */
+import Profile from '../components/RecruiterDashboard/Profile';
 import {
   mainListItems,
   secondaryListItems,
@@ -137,9 +140,13 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Router>
-            {/* <Switch>
-              <Route path="/StudentDashboard/" exact component={Home} />
+            <Switch>
               <Route
+                path="/recruiter-dashboard/profile"
+                exact
+                component={Profile}
+              />
+              {/* <Route
                 path="/StudentDashboard/profile"
                 exact
                 component={StudentLogin}
@@ -148,8 +155,8 @@ export default function Dashboard() {
                 path="/StudentDashboard/UploadResume"
                 exact
                 component={UploadResume}
-              />
-            </Switch> */}
+              /> */}
+            </Switch>
           </Router>
         </Container>
       </main>
