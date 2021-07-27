@@ -44,10 +44,11 @@ const useStyles = makeStyles((theme) => ({
 // Placement Data
 const heading = ['Branch', '2020-21', '2019-20'];
 const data = [
-  ['CSE', 0, 100, 'Computer Science Engineering'],
-  ['EE', 0, 84, 'Electrical Engineering'],
-  ['ME', 0, 83, 'Mechanical Engineering'],
+  ['CSE', 100, 100, 'Computer Science Engineering'],
+  ['EE', 81, 84, 'Electrical Engineering'],
+  ['ME', 65, 83, 'Mechanical Engineering'],
 ];
+
 const overall = [83, 89];
 const OverallAverageSalary = [0, 16.73];
 
@@ -187,7 +188,9 @@ const PlacementStatistics = () => {
                       height={'500px'}
                       chartType="ComboChart"
                       loader={<div>Loading Chart</div>}
-                      data={[heading].concat(data)}
+                      data={[heading].concat(
+                        data.map((d) => [d[0], d[1], d[2]])
+                      )}
                       options={{
                         vAxis: { title: 'Placement Percentage' },
                         hAxis: { title: 'Departments', minValue: 0 },

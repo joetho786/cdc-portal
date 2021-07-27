@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../api/axios';
 import Loading from '../components/Loading';
-import HeroSection from '../components/herosection1';
+import HeroSection from '../components/Home/HeroSection';
+// import HeroSection from '../components/herosection1';
 import AboutUs from '../components/AboutUs/AboutUs';
 import CarouselNewsWrapper from '../components/CarouselNewsWrapper/CarouselRecentNews';
 import DirectorMessageComponent from '../components/DirectorMessage/DirectorMessage';
