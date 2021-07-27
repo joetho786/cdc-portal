@@ -6,7 +6,7 @@ import {
 import 'react-vertical-timeline-component/style.min.css';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { Container, Typography } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import StarsIcon from '@material-ui/icons/Stars';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -34,6 +34,15 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1rem',
     color: 'black',
   },
+  heading: {
+    fontSize: '1.8rem',
+    color: '#fff',
+    backgroundColor: '#012970',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '1rem',
+  },
 }));
 
 const IconStyle = {
@@ -54,14 +63,16 @@ const PlacementProcedureComponent = () => {
         <Grid container spacing={3}>
           <Grid style={{ marginTop: '30px' }} item xs={12}>
             <FadeInWhenVisible>
-              <Paper className={classes.paper}>
-                <Typography
-                  component="h5"
-                  variant="h5"
-                  style={{ fontSize: 30 }}
-                >
-                  Placement Procedure
-                </Typography>
+              <Paper
+                className={classes.heading}
+                style={{ background: '#012970', color: '#fff' }}
+                elevation={2}
+              >
+                <i
+                  class="fas fa-file-alt"
+                  style={{ margin: '0 1.2rem', padding: '0' }}
+                ></i>
+                Placement Procedure
               </Paper>
             </FadeInWhenVisible>
           </Grid>

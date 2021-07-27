@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../api/axios';
 import Loading from '../components/Loading';
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { Container, Typography } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
 import FadeUpBigDataWhenVisible from '../components/Animation/FadeUpBigData';
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    display: 'flex',
-    marginBottom: '2rem',
-    [theme.breakpoints.down(460)]: {
-      padding: 2,
-    },
-  },
   paper: {
-    padding: theme.spacing(2),
+    padding: '1rem',
+    margin: '2rem 0',
     [theme.breakpoints.up(460)]: {
       paddingInline: 40,
     },
@@ -27,6 +19,16 @@ const useStyles = makeStyles((theme) => ({
   text: {
     color: 'rgb(0,0,0)',
     fontsize: '1rem',
+  },
+  heading: {
+    fontSize: '1.8rem',
+    color: '#fff',
+    backgroundColor: '#012970',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '6rem 0rem 2rem 0rem',
+    padding: '1rem',
   },
 }));
 
@@ -59,36 +61,32 @@ const DirectorMessage = () => {
         <Loading />
       ) : (
         <>
-          <Container maxWidth="lg" className={classes.root}>
-            <Grid container spacing={3}>
-              <Grid style={{ marginTop: '30px' }} item xs={12}>
-                <FadeInWhenVisible>
-                  <Paper className={classes.paper}>
-                    <Typography
-                      component="h5"
-                      variant="h5"
-                      style={{ fontSize: 30, textAlign: 'center' }}
-                    >
-                      Director's Message
-                    </Typography>
-                  </Paper>
-                </FadeInWhenVisible>
-              </Grid>
-              <Grid item xs={12}>
-                <FadeUpBigDataWhenVisible>
-                  <Paper className={classes.paper}>
-                    {message ? (
-                      <p
-                        dangerouslySetInnerHTML={createMessage()}
-                        className={classes.text}
-                      />
-                    ) : (
-                      <p>Coming soon...</p>
-                    )}
-                  </Paper>
-                </FadeUpBigDataWhenVisible>
-              </Grid>
-            </Grid>
+          <Container maxWidth="lg">
+            <FadeInWhenVisible>
+              <Paper
+                className={classes.heading}
+                style={{ background: '#012970', color: '#fff' }}
+                elevation={2}
+              >
+                <i
+                  class="fas fa-comment"
+                  style={{ margin: '0 1.2rem', padding: '0' }}
+                ></i>
+                Director's Message
+              </Paper>
+            </FadeInWhenVisible>
+            <FadeUpBigDataWhenVisible>
+              <Paper className={classes.paper}>
+                {message ? (
+                  <p
+                    dangerouslySetInnerHTML={createMessage()}
+                    className={classes.text}
+                  />
+                ) : (
+                  <p>Coming soon...</p>
+                )}
+              </Paper>
+            </FadeUpBigDataWhenVisible>
           </Container>
         </>
       )}

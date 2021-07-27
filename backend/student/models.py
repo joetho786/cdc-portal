@@ -9,19 +9,27 @@ from django.utils.deconstruct import deconstructible
 class ProgramAndBranch(models.Model):
     """
     @Roll_number = B19EE048
-    => name = Btech Electrical Engineering
+    => program = choices
+    => name = Electrical Engineering
     => getter = B/EE
     => abbreviation = BTech EE
     => check_cg = to check for branch cg comaprison while listing offers
     """
-    name = models.CharField(max_length=60)
-    abbreviation = models.CharField(max_length=20)
+    CATEGORY = (
+        ('BTech', 'BTech'),
+        ('MTech', 'MTech'),
+        ('Phd', 'Phd'),
+        ('Msc', 'Msc'),
+    )
+    program = models.CharField(max_length=10, choices=CATEGORY, default="BTech")
+    name = models.CharField(max_length=60, default="Electrical Engineering")
+    abbreviation = models.CharField(max_length=20, blank=True, null=True)
     getter = models.CharField(max_length=10, default="B/EE")
     check_gpa = models.BooleanField(default=True)
     usable = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.abbreviation
+        return self.program + " " + self.name
 
 
 class ProgramEmailId(models.Model):
@@ -51,7 +59,7 @@ class StudentProfile(models.Model):
     year = models.SmallIntegerField()
     program_branch = models.ForeignKey(ProgramAndBranch, on_delete=models.SET_NULL, null=True)
     gpa = models.FloatField()
-    ug_gpa = models.FloatField(null=True, blank=True)
+    ug_gpa = models.FloatField(null=True, blank=True, default=0.0)
     phone = models.CharField(max_length=15)
     dob = models.DateField()
     category = models.CharField(max_length=10, choices=CATEGORY)

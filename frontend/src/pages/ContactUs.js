@@ -5,11 +5,11 @@ import ExploreIcon from '@material-ui/icons/Explore';
 const ContactUs = () => {
   return (
     <div style={{ height: 'auto', width: '100%' }}>
-      <PaperHeader data={{ icon: ExploreIcon, heading: 'ContactUs' }} />
+      <PaperHeader data={{ icon: ExploreIcon, heading: 'Contact Us' }} />
       <ContactDetails />
       <div
         style={{
-          width: '75%',
+          width: '80%',
           margin: '2rem auto',
         }}
       >

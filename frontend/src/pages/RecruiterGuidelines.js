@@ -33,6 +33,15 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     padding: theme.spacing(2),
   },
+  heading: {
+    fontSize: '1.8rem',
+    color: '#fff',
+    backgroundColor: '#012970',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '1rem',
+  },
 }));
 
 const RecruiterGuidelines = () => {
@@ -68,22 +77,22 @@ const RecruiterGuidelines = () => {
             <Grid container spacing={3}>
               <Grid style={{ marginTop: '30px' }} item xs={12}>
                 <FadeInWhenVisible>
-                  <Paper className={classes.paper}>
-                    <Typography
-                      component="h5"
-                      variant="h5"
-                      display="block"
-                      width="500"
-                      style={{ fontSize: 30, textAlign: 'center' }}
-                    >
-                      Norms and Guidelines
-                    </Typography>
+                  <Paper
+                    className={classes.heading}
+                    style={{ background: '#012970', color: '#fff' }}
+                    elevation={2}
+                  >
+                    <i
+                      class="fas fa-book-reader"
+                      style={{ margin: '0 1.2rem', padding: '0' }}
+                    ></i>
+                    Norms & Guidelines
                   </Paper>
                 </FadeInWhenVisible>
               </Grid>
               <Grid item xs={12}>
                 <FadeUpWhenVisible>
-                  <Paper className={classes.paper_s}>
+                  <Paper className={classes.paper}>
                     <Typography>
                       {text ? (
                         <p

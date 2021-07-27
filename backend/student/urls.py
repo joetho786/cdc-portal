@@ -9,5 +9,6 @@ urlpatterns = [
     path('offers/', views.AvailableOffers.as_view(), name="student-offers"),
     path('get_ad/<slug:id>', views.Advertisement.as_view(), name="get-advertisement-by-id"),
     path('applied_offers/', views.AppliedOffers.as_view(), name="student-applied-offers"),
-    path('suggestion_inquiry/', views.SendSuggestionsAndInquiry.as_view(), name="student-suggestion-inquiry")
+    path('suggestion_inquiry/', views.SendSuggestionsAndInquiry.as_view(), name="student-suggestion-inquiry"),
+    path('get_barnches/', views.GetProgramAndBranch.as_view(), name="student-branches")
 ]
