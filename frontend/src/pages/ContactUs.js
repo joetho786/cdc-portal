@@ -9,7 +9,7 @@ const ContactUs = () => {
       <ContactDetails />
       <div
         style={{
-          width: '75%',
+          width: '80%',
           margin: '2rem auto',
         }}
       >
