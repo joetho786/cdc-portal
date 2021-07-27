@@ -28,7 +28,7 @@ export const mainListItems = (
       </ListItem>
     </a>
     <a
-      href="/recruiter-dashboard/"
+      href="/recruiter-dashboard/profile/"
       style={{ color: 'inherit', textDecoration: 'none' }}
     >
       <ListItem button>

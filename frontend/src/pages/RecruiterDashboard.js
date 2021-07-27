@@ -15,6 +15,7 @@ import Home from '../components/RecruiterDashboard/Home';
 import StudentLogin from './StudentLogin'; */
 import AddAdvertisement from '../components/RecruiterDashboard/AddAdvertisement';
 import StudentList from '../components/RecruiterDashboard/StudentList';
+import Profile from '../components/RecruiterDashboard/Profile';
 import {
   mainListItems,
   secondaryListItems,
@@ -139,6 +140,11 @@ export default function Dashboard() {
           <Router>
             <Switch>
               <Route path="/recruiter-dashboard/" exact component={Home} />
+              <Route
+                path="/recruiter-dashboard/profile"
+                exact
+                component={Profile}
+              />
               <Route
                 path="/recruiter-dashboard/add-intern-advertisement"
                 exact

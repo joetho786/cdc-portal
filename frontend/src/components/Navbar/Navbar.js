@@ -236,7 +236,7 @@ export default function Navbar() {
                     /* Company Zone */
                     <ul>
                       <li onClick={() => setIsChecked(!isChecked)}>
-                        <Link to="/c3-members">Profile</Link>
+                        <a href="/recruiter-dashboard/profile">Profile</a>
                       </li>
                       <li onClick={Logout}>
                         <Link to="#">Logout</Link>
