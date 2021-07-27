@@ -19,7 +19,6 @@ import Achievements from './pages/Achievements';
 import CDActivities from './pages/CDActivities';
 import Prospective from './pages/Prospective';
 import StudentGuidelines from './pages/StudentGuidelines';
-import Internships from './pages/Internships';
 import JAF from './pages/JAF';
 import IAF from './pages/IAF';
 import ContactUs from './pages/ContactUs';
@@ -38,7 +37,6 @@ import SiteConfig from './pages/SiteConfig';
 import ScrollToTop from './components/ScrollToTop';
 import StudentProtected from './components/RestrictedRoutes/StudentProtected';
 import CompanyProtected from './components/RestrictedRoutes/CompanyProtected';
-import PlacementCalendar from './pages/PlacementCalendar';
 import StudentRegistrationProcess from './pages/StudentRegistrationProcess';
 
 function App() {
@@ -58,8 +56,6 @@ function App() {
         <Route path="/cd-activities" component={CDActivities} />
         <Route path="/student-demographics" component={Prospective} />
         <Route path="/student-guidelines" component={StudentGuidelines} />
-        <Route path="/internships" component={Internships} />
-        <Route path="/placement-calendar" component={PlacementCalendar} />
         <Route
           path="/student-registraion-process"
           component={StudentRegistrationProcess}

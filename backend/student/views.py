@@ -48,7 +48,7 @@ class StudentDetails(APIView):
             profile.save()
         except IntegrityError:
             return Response({'Error': 'Invalid/Empty Fields in Form'}, status=status.HTTP_400_BAD_REQUEST)
-        return Response(StudentProfileSerializer(profile, many=True).data, status=status.HTTP_200_OK)
+        return Response(StudentProfileSerializer(profile).data, status=status.HTTP_200_OK)
 
     def get(self, request, *args, **kwargs):
         user = request.user

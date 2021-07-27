@@ -3,6 +3,7 @@ import instance from '../api/axios';
 import Loading from '../components/Loading';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
+import Poster from '../components/Poster/Poster';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -93,6 +94,7 @@ const WhyRecruit = () => {
               </Grid>
             </Grid>
           </Container>
+          <Poster />
           <Container maxwidth="lg" className={classes.root}>
             <Paper className={classes.paper}>
               <Grid container spacing={5}>

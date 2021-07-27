@@ -23,6 +23,9 @@ import {
   secondaryListItems,
 } from '../components/StudentDashboard/MenuItems';
 import ViewAdvertisement from '../components/StudentDashboard/ViewAdvertisement';
+import NormsForm from '../components/RegistrationForms/NormsForm';
+import PlacementCalendar from '../components/StudentDashboard/PlacementCalendar';
+import Internships from '../components/StudentDashboard/Internships';
 
 const drawerWidth = 240;
 
@@ -183,6 +186,21 @@ export default function Dashboard() {
                 path="/student-dashboard/advertisement/:id"
                 exact
                 component={ViewAdvertisement}
+              />
+              <Route
+                path="/student-dashboard/norms-guidelines"
+                exact
+                component={NormsForm}
+              />
+              <Route
+                path="/student-dashboard/placement-calendar"
+                exact
+                component={PlacementCalendar}
+              />
+              <Route
+                path="/student-dashboard/info"
+                exact
+                component={Internships}
               />
             </Switch>
           </Router>

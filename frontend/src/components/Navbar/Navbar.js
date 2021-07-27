@@ -87,20 +87,20 @@ export default function Navbar() {
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/achievements">Achievements</Link>
                   </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
+                  {/* <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/student-guidelines">Norms/Guidelines</Link>
-                  </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
+                  </li> */}
+                  {/* <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/internships">Internships</Link>
-                  </li>
+                  </li> */}
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/student-registraion-process">
                       Registration Procedure
                     </Link>
                   </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
+                  {/* <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/placement-calendar">Placement Calendar</Link>
-                  </li>
+                  </li> */}
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/cd-activities">Career Development Activity</Link>
                   </li>
@@ -226,6 +226,11 @@ export default function Navbar() {
                       <li onClick={() => setIsChecked(!isChecked)}>
                         <a href="/student-dashboard/suggestion_inquiry">
                           Suggestion or Inquiry
+                        </a>
+                      </li>
+                      <li onClick={() => setIsChecked(!isChecked)}>
+                        <a href="/student-dashboard/placement-calendar">
+                          Placement Calendar
                         </a>
                       </li>
                       <li onClick={Logout}>

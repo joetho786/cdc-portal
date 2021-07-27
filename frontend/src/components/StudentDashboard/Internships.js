@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import instance from '../api/axios';
-import Loading from '../components/Loading';
+import instance from '../../api/axios';
+import Loading from '../Loading';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import FadeInWhenVisible from '../components/Animation/FadeIn';
-import FadeUpBigDataWhenVisible from '../components/Animation/FadeUpBigData';
+import FadeInWhenVisible from '../Animation/FadeIn';
+import FadeUpBigDataWhenVisible from '../Animation/FadeUpBigData';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
