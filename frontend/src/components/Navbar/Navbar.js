@@ -66,6 +66,12 @@ export default function Navbar() {
                     <Link to="/programs">Programmes</Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
+                    <Link to="/course-highlights">Course Highlights</Link>
+                  </li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
+                    <Link to="/grade-system">Grade System</Link>
+                  </li>
+                  <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/admissions">Admission Procedure</Link>
                   </li>
                 </ul>
@@ -121,30 +127,30 @@ export default function Navbar() {
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/brochure">Brochure</Link>
                   </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
+                  {/* <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/student-demographics">Student Demographics</Link>
-                  </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
+                  </li> */}
+                  {/* <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/course-highlights">Programs</Link>
-                  </li>
+                  </li> */}
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/placement-statistics">Placement Statistics</Link>
                   </li>
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/placement-procedure">Placement Procedure</Link>
                   </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
+                  {/* <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/grade-system">Grade System</Link>
-                  </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
+                  </li> */}
+                  {/* <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/company-rules">Norms/Guidelines</Link>
-                  </li>
+                  </li> */}
                   <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/past-recruiters">Past Recruiters</Link>
                   </li>
-                  <li onClick={() => setIsChecked(!isChecked)}>
+                  {/* <li onClick={() => setIsChecked(!isChecked)}>
                     <Link to="/aipc-norms">AIPC Norms</Link>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
               <li>

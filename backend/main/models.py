@@ -45,6 +45,7 @@ class News(models.Model):
 class AboutUs(models.Model):
     title = models.CharField(max_length=64, blank=True, default="About Us")
     content = RichTextUploadingField(blank=True, null=True)
+    short_content = RichTextUploadingField(blank=True, null=True, default="")
 
     def __str__(self):
         return self.title

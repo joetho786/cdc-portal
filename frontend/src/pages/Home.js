@@ -30,7 +30,9 @@ function Home() {
       // set about us text
       .get('main/about_us/')
       .then((res) => {
-        setAboutText(res.data[0]);
+        var ls = res.data[0];
+        ls.content = ls.short_content;
+        setAboutText(ls);
       })
       .catch((error) => console.log(error));
     instance

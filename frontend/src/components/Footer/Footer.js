@@ -34,6 +34,7 @@ const footers = [
       ['Placement registration link', '/recruiter-login'],
       ['Placement Statistics', '/placement-statistics'],
       ['Meet our Team', '/c3-members'],
+      ['AIPC Norms', '/aipc-norms'],
     ],
   },
   {
