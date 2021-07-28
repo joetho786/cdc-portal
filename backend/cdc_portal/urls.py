@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from.views import Login, GoogleLogin, LDAPOAuth, Config
 
 urlpatterns = [
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
     path('api/student/', include("student.urls")),
