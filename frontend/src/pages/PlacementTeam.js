@@ -20,6 +20,7 @@ const PlacementTeam = () => {
       'Internship Co-ordinator',
       'Departmental Representative',
       'Web Development Team',
+      'Representative',
     ];
 
     instance
