@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 
 from.views import Login, GoogleLogin, LDAPOAuth, Config
 
+admin.site.site_header = 'CDC Admin Pannel'
+
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
