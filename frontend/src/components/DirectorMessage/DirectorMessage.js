@@ -61,28 +61,54 @@ const DirectorMessageComponent = ({ data }) => {
   };
 
   return (
-    <Container maxWidth="lg">
+    <React.Fragment>
+      <div>
+        <div
+          style={{
+            fontSize: 40,
+            textAlign: '-webkit-center',
+            justifyContent: 'center',
+            display: 'flex',
+            marginBottom: -10,
+            marginTop: 70,
+          }}
+        >
+          <i
+            class="fas fa-comment"
+            style={{
+              marginBottom: '0.5%',
+              marginTop: '0.5%',
+              marginRight: '0.9%',
+            }}
+          ></i>
+          <h2 className={classes.MessageHeader}>{data.title}</h2>
+        </div>
+        <h3>
+          <hr style={{ width: '60%', marginBottom: 35 }} />
+        </h3>
+      </div>
       {data ? (
-        <Card className={classes.MessageContainer}>
-          <CardMedia
-            component="div"
-            className={classes.cover}
-            image={getLink(data.image)}
-          />
-          <div className={classes.details}>
-            <CardContent className={classes.content}>
-              <h2 className={classes.MessageHeader}>{data.title}</h2>
-              <div style={{ fontSize: '1rem', color: 'black' }}>
-                <p dangerouslySetInnerHTML={createDirectorMessage()} />
-                <p>{data.name}</p>
-              </div>
-            </CardContent>
-          </div>
-        </Card>
+        <Container maxWidth="lg" className={classes.textContainer}>
+          <Card className={classes.MessageContainer}>
+            <CardMedia
+              component="div"
+              className={classes.cover}
+              image={getLink(data.image)}
+            />
+            <div className={classes.details}>
+              <CardContent className={classes.content}>
+                <div style={{ fontSize: '1rem', color: 'black' }}>
+                  <p dangerouslySetInnerHTML={createDirectorMessage()} />
+                  <p>{data.name}</p>
+                </div>
+              </CardContent>
+            </div>
+          </Card>
+        </Container>
       ) : (
         ''
       )}
-    </Container>
+    </React.Fragment>
   );
 };
 export default DirectorMessageComponent;
