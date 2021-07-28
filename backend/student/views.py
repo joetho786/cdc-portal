@@ -43,8 +43,13 @@ class StudentDetails(APIView):
         data["year"] = r_dic["Year"]
         data["roll_no"] = user.username
         getter = r_dic["Batch"] + '/' + r_dic["Branch"]
+        program_branch = ProgramAndBranch.objects.filter(getter=getter)
+        if not program_branch.exists():
+            program_branch = ProgramAndBranch.objects.create(getter=getter, name="Unknown Branch" + user.username)
+        else:
+            program_branch = program_branch.first()
         try:
-            profile = StudentProfile.objects.create(user=user, **data, program_branch=ProgramAndBranch.objects.get(getter=getter))
+            profile = StudentProfile.objects.create(user=user, **data, program_branch=program_branch)
             profile.save()
         except IntegrityError:
             return Response({'Error': 'Invalid/Empty Fields in Form'}, status=status.HTTP_400_BAD_REQUEST)
