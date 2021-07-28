@@ -73,7 +73,7 @@ const AboutUs = () => {
                     elevation={2}
                   >
                     <i
-                      class="fa fa-users"
+                      class="fa fa-info-circle"
                       style={{ margin: '0 1.2rem', padding: '6px' }}
                     ></i>
                     About Us
