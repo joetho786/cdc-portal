@@ -21,7 +21,8 @@ const AboutUs = ({ data }) => {
           }}
         >
           <i
-            class="fa fa-users"
+            // class="fa fa-users"
+            class="fa fa-info-circle"
             style={{
               marginBottom: '0.5%',
               marginTop: '0.5%',
