@@ -73,8 +73,8 @@ const AboutUs = () => {
                     elevation={2}
                   >
                     <i
-                      class="fas fa-comment"
-                      style={{ margin: '0 1.2rem', padding: '0' }}
+                      class="fa fa-users"
+                      style={{ margin: '0 1.2rem', padding: '6px' }}
                     ></i>
                     About Us
                   </Paper>
