@@ -256,7 +256,7 @@ const Programmes = () => {
                 elevation={2}
               >
                 <i
-                  class="fas fa-graduation-cap"
+                  class="fas fa-university"
                   style={{ margin: '0 1.2rem', padding: '0' }}
                 ></i>
                 Programs
