@@ -7,7 +7,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import { Container, Typography } from '@material-ui/core';
 import FadeInWhenVisible from '../components/Animation/FadeIn';
 import FadeUpWhenVisible from '../components/Animation/FadeUp';
@@ -29,17 +28,13 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '2rem',
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: '1rem',
+    margin: '2rem 0',
     [theme.breakpoints.up(460)]: {
       paddingInline: 40,
     },
-    textAlign: 'center',
     width: 'auto',
-    fontSize: '1rem',
     color: 'black',
-    [theme.breakpoints.down(350)]: {
-      padding: 10,
-    },
   },
   text: {
     padding: theme.spacing(2),
@@ -47,6 +42,16 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
     fontSize: '1rem',
     color: 'black',
+  },
+  heading: {
+    fontSize: '1.8rem',
+    color: '#fff',
+    backgroundColor: '#012970',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '6rem 0rem 2rem 0rem',
+    padding: '1rem',
   },
 }));
 
@@ -77,64 +82,56 @@ export default function BasicTable() {
 
   return (
     <>
-      <Container maxWidth="lg" className={classes.root}>
-        <Grid container spacing={3}>
-          <Grid style={{ marginTop: '30px' }} item xs={12}>
-            <FadeInWhenVisible>
-              <Paper className={classes.paper}>
-                <Typography
-                  component="h5"
-                  variant="h5"
-                  style={{ fontSize: 30 }}
-                >
-                  Grade System
-                </Typography>
-              </Paper>
-            </FadeInWhenVisible>
-          </Grid>
-          <Grid item xs={12}>
-            <FadeUpWhenVisible>
-              <Paper className={classes.paper}>
-                <Typography
-                  component="h5"
-                  variant="h5"
-                  style={{ fontSize: 16 }}
-                >
-                  The evaluation system in the Institute is based on the
-                  Cumulative Grade Point Average (CGPA) calculated on a scale of
-                  10. The grading policy is followed with the following
-                  distribution of points:
-                </Typography>
-                <TableContainer
-                  className={classes.tablewrapper}
-                  component={Paper}
-                  elevation={0}
-                >
-                  <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell align="center">GRADES</TableCell>
-                        <TableCell align="center">DENOTION</TableCell>
-                        <TableCell align="center">POINTS</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {rows.map((row) => (
-                        <TableRow key={row.name}>
-                          <TableCell align="center" component="th" scope="row">
-                            {row.name}
-                          </TableCell>
-                          <TableCell align="center">{row.calories}</TableCell>
-                          <TableCell align="center">{row.points}</TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Paper>
-            </FadeUpWhenVisible>
-          </Grid>
-        </Grid>
+      <Container maxWidth="lg">
+        <FadeInWhenVisible>
+          <Paper
+            className={classes.heading}
+            style={{ background: '#012970', color: '#fff' }}
+            elevation={2}
+          >
+            <i
+              class="fas fa-graduation-cap"
+              style={{ margin: '0 1.2rem', padding: '0' }}
+            ></i>
+            Grade System
+          </Paper>
+        </FadeInWhenVisible>
+        <FadeUpWhenVisible>
+          <Paper className={classes.paper}>
+            <Typography component="h5" variant="h5" style={{ fontSize: 16 }}>
+              The evaluation system in the Institute is based on the Cumulative
+              Grade Point Average (CGPA) calculated on a scale of 10. The
+              grading policy is followed with the following distribution of
+              points:
+            </Typography>
+            <TableContainer
+              className={classes.tablewrapper}
+              component={Paper}
+              elevation={0}
+            >
+              <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell align="center">GRADES</TableCell>
+                    <TableCell align="center">DENOTION</TableCell>
+                    <TableCell align="center">POINTS</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row) => (
+                    <TableRow key={row.name}>
+                      <TableCell align="center" component="th" scope="row">
+                        {row.name}
+                      </TableCell>
+                      <TableCell align="center">{row.calories}</TableCell>
+                      <TableCell align="center">{row.points}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
+        </FadeUpWhenVisible>
       </Container>
     </>
   );

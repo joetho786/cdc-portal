@@ -24,13 +24,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: '1rem',
+    margin: '2rem 0',
     [theme.breakpoints.up(460)]: {
       paddingInline: 40,
     },
     width: 'auto',
-    color: 'rgb(0,0,0)',
-    fontSize: '1rem',
+    color: 'black',
   },
   heading: {
     fontSize: '1.8rem',
@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    margin: '6rem 0rem 2rem 0rem',
     padding: '1rem',
   },
   card: {
@@ -74,80 +75,72 @@ const WhyRecruit = () => {
       {loading ? (
         <Loading />
       ) : (
-        <>
-          <Container maxWidth="lg" className={classes.root}>
-            <Grid container spacing={3}>
-              <Grid style={{ marginTop: '30px' }} item xs={12}>
-                <FadeInWhenVisible>
-                  <Paper
-                    className={classes.heading}
-                    style={{ background: '#012970', color: '#fff' }}
-                    elevation={2}
-                  >
-                    <EqualizerIcon
-                      fontSize="large"
-                      style={{ margin: '0 1.2rem', padding: '0' }}
-                    />
-                    Why Recruit?
-                  </Paper>
-                </FadeInWhenVisible>
-              </Grid>
-            </Grid>
-          </Container>
-          <Poster />
-          <Container maxwidth="lg" className={classes.root}>
-            <Paper className={classes.paper}>
-              <Grid container spacing={5}>
-                {recruitdata.map((item, index) => (
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    styles={{
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <FadeUpWhenVisible>
-                      <Card className={classes.card} raised="True">
-                        <CardActionArea>
-                          <CardMedia
-                            component="img"
-                            alt={item.title}
-                            height="200"
-                            justify-content="center"
-                            image={getLink(item.img)}
-                            title={item.title}
-                            padding="5"
-                            backgroundColor="rgb(255, 255, 255)"
-                          />
-                          <CardContent className={classes.card_content}>
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h2"
-                              align="center"
-                              color="rgb(0,0,0)"
-                            >
-                              {item.title}
-                            </Typography>
-                            <Typography
-                              variant="body3"
-                              color="rgb(0,0,0)"
-                              component="p"
-                            >
-                              {item.text}
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                      </Card>
-                    </FadeUpWhenVisible>
-                  </Grid>
-                ))}
-              </Grid>
+        <Container maxWidth="lg">
+          <FadeInWhenVisible>
+            <Paper
+              className={classes.heading}
+              style={{ background: '#012970', color: '#fff' }}
+              elevation={2}
+            >
+              <EqualizerIcon
+                fontSize="large"
+                style={{ margin: '0 1.2rem', padding: '0' }}
+              />
+              Why Recruit?
             </Paper>
-          </Container>
-        </>
+          </FadeInWhenVisible>
+          <Poster />
+          <Paper className={classes.paper}>
+            <Grid container spacing={5}>
+              {recruitdata.map((item, index) => (
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  styles={{
+                    justifyContent: 'center',
+                  }}
+                >
+                  <FadeUpWhenVisible>
+                    <Card className={classes.card} raised="True">
+                      <CardActionArea>
+                        <CardMedia
+                          component="img"
+                          alt={item.title}
+                          height="200"
+                          justify-content="center"
+                          image={getLink(item.img)}
+                          title={item.title}
+                          padding="5"
+                          backgroundColor="rgb(255, 255, 255)"
+                        />
+                        <CardContent className={classes.card_content}>
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            component="h2"
+                            align="center"
+                            color="rgb(0,0,0)"
+                          >
+                            {item.title}
+                          </Typography>
+                          <Typography
+                            variant="body3"
+                            color="rgb(0,0,0)"
+                            component="p"
+                          >
+                            {item.text}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </FadeUpWhenVisible>
+                </Grid>
+              ))}
+            </Grid>
+          </Paper>
+        </Container>
       )}
     </div>
   );

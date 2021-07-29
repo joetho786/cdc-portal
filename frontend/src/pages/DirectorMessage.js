@@ -14,10 +14,10 @@ const useStyles = makeStyles((theme) => ({
       paddingInline: 40,
     },
     width: 'auto',
-    color: 'rgb(0,0,0)',
+    color: 'black',
   },
   text: {
-    color: 'rgb(0,0,0)',
+    color: 'black',
     fontsize: '1rem',
   },
   heading: {
