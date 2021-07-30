@@ -58,7 +58,8 @@ class StudentDetails(APIView):
     def get(self, request, *args, **kwargs):
         user = request.user
         allowed_edit = get_config_value('AllowProfileEdit')
-        student_profile = StudentProfile.objects.get(user=user)
+        student_profile = get_object_or_404(StudentProfile, user=user)
+        # student_profile = StudentProfile.objects.get(user=user)
         serializer = StudentProfileSerializer(student_profile)
         data = serializer.data
         data['AllowedEdit'] = allowed_edit
