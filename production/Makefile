@@ -20,6 +20,14 @@ pull:
 
 deploy: pull stop build_launch
 
+scale-django:
+	@docker-compose --scale django=3
+
+scale-databases:
+	@docker-compose --scale postgresql=2
+
+scale: scale-django scale-databases
+
 stop:
 	@docker-compose down
 

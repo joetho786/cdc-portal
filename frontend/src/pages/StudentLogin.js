@@ -62,7 +62,11 @@ const StudentLogin = () => {
       })
       .catch(function (error) {
         if (error.response) {
-          setError(error.response.data['Error']);
+          if (error.response.status === 400) {
+            setError(error.response.data['Error']);
+          } else {
+            setError(error.response.status + ': LDAP Server Down Try Later');
+          }
         }
         setLoading(false);
       });
