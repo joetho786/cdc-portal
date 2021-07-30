@@ -5,7 +5,6 @@ services:
       context: ../backend
       dockerfile: Dockerfile.prod
     image: "cdc-web-backend-1:latest"
-    container_name: django
     restart: unless-stopped
     env_file: .env
     environment:
@@ -13,7 +12,7 @@ services:
       - MODE=Production
       - PORT=8000
     ports:
-      - 8000:8000
+      - 8000
     volumes:
       - django_static_files:/app/assets/staticfiles
       - django_media_files:/app/assets/media
