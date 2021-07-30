@@ -29,8 +29,8 @@ const PlacementTeam = () => {
         var placementTeam = [];
         designations.forEach((designation) => {
           placementTeam.push(
-            res.data.filter((member) =>
-              member.designation.designation.includes(designation)
+            res.data.filter(
+              (member) => member.designation.designation === designation
             )
           );
         });
