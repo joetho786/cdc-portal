@@ -38,6 +38,7 @@ import ScrollToTop from './components/ScrollToTop';
 import StudentProtected from './components/RestrictedRoutes/StudentProtected';
 import CompanyProtected from './components/RestrictedRoutes/CompanyProtected';
 import StudentRegistrationProcess from './pages/StudentRegistrationProcess';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
       <ScrollToTop />
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/about-us" component={AboutUs} />
         <Route path="/chairman-message" component={ChairmanMessage} />
         <Route path="/director-message" component={DirectorMessage} />
         <Route path="/grade-system" component={GradeSystem} />

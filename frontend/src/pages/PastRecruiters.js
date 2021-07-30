@@ -41,12 +41,12 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '25px',
     color: 'white',
     backgroundColor: '#012970',
-    borderRadius: '3px',
+    borderRadius: '10px',
     padding: '4px',
     border: 'none',
   },
   bar: {
-    margin: 'auto',
+    marginBottom: '2rem',
   },
   buttondiv: {
     fontsize: '1.5rem',
@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
       color: '#012970',
       backgroundColor: 'white',
       border: 'none',
+      cursor: 'pointer',
     },
   },
 }));
