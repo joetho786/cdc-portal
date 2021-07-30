@@ -20,6 +20,7 @@ class ProgramAndBranch(models.Model):
         ('MTech', 'MTech'),
         ('Phd', 'Phd'),
         ('Msc', 'Msc'),
+        ('MBA', 'MBA')
     )
     program = models.CharField(max_length=10, choices=CATEGORY, default="BTech")
     name = models.CharField(max_length=60, default="Electrical Engineering")
