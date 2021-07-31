@@ -8,7 +8,7 @@
   "Alerts": {
     "CompanyLogin": [],
     "CompanyDashboard": [],
-    "StudentLogin": ["Placemnet not yet initialized", "lightBlue"],
+    "StudentLogin": ["Placement not yet initialized", "lightBlue"],
     "StudentDashboard": [],
     "StudentRegister": [],
     "Homepage": ["Welcome to new CDC Portal", "lightBlue"]
