@@ -14,17 +14,22 @@ launch: .env
 build_launch:
 	@docker-compose up --build -d
 
+scale_build_launch:
+	@docker-compose up --build -d --scale django=3 --scale postgresql=2
+
 pull:
 	@cd ..
 	@git pull
 
 deploy: pull stop build_launch
 
+scale_deploy: pull scale_build_launch
+
 scale-django:
-	@docker-compose --scale django=3
+	@docker-compose scale django=3
 
 scale-databases:
-	@docker-compose --scale postgresql=2
+	@docker-compose scale postgresql=2
 
 scale: scale-django scale-databases
 
