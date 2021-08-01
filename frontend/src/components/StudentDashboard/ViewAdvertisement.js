@@ -40,7 +40,7 @@ function ViewAdvertisement(props) {
           adt.url = adt.company.url;
           let p = '';
           adt.eligible_program_branch.forEach((program) => {
-            p = p + ' ' + program.name;
+            p = p + ',' + program.program + '' + program.name;
           });
           adt.program = p;
           setdata(adt);
@@ -122,7 +122,7 @@ function ViewAdvertisement(props) {
             </Typography>
             <Grid container spacing={2}>
               <Grid item sm={6} style={{ paddingLeft: '10%' }}>
-                <div className={classes.av}>CTC</div>
+                <div className={classes.av}>CTC/Stipend</div>
                 <div className={classes.av}>Gross Salary</div>
                 <div className={classes.av}>Bonus</div>
                 <div className={classes.av}>Bond</div>
@@ -131,10 +131,12 @@ function ViewAdvertisement(props) {
               </Grid>
               <Grid item sm={6}>
                 <div className={classes.av}>: {data.ctc}</div>
-                <div className={classes.av}>: {data.gross_salary}</div>
+                <div className={classes.av}>
+                  : {data.gross_salary ? data.gross_salary : 'NA'}
+                </div>
                 <div className={classes.av}>: {data.bonus}</div>
                 <div className={classes.av}>
-                  : {data.bond ? 'Applicable' : 'Not Applicable'}
+                  : {data.bond ? 'Applicable' : 'NA'}
                 </div>
                 <div className={classes.av}>: {data.bond_details}</div>
               </Grid>
@@ -156,11 +158,20 @@ function ViewAdvertisement(props) {
             <Grid container spacing={2}>
               <Grid item sm={6} style={{ paddingLeft: '2%' }}>
                 <div className={classes.av}>Eligible Programs and Branches</div>
-                <div className={classes.av}>Minimum CGPA</div>
                 <br />
               </Grid>
               <Grid item sm={6}>
                 <div className={classes.av}>: {data.program}</div>
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item sm={6} style={{ paddingLeft: '2%' }}>
+                <div className={classes.av}>Minimum GPA</div>
+                <div className={classes.av}>Minimum UG GPA</div>
+                <br />
+              </Grid>
+              <Grid item sm={6}>
+                <div className={classes.av}>: {data.min_ug_gpa}</div>
                 <div className={classes.av}>: {data.min_gpa}</div>
               </Grid>
             </Grid>
@@ -182,9 +193,9 @@ function ViewAdvertisement(props) {
                 <div className={classes.av}>Resume Shortlist Criteria</div>
                 <div className={classes.av}>Aptitude Test</div>
                 <div className={classes.av}>Group Discussion</div>
-                <div className={classes.av}>Number of Technical Rounds</div>
+                {/* <div className={classes.av}>Number of Technical Rounds</div>
                 <div className={classes.av}>Number of Technical Interviews</div>
-                <div className={classes.av}>Number of HR Rounds</div>
+                <div className={classes.av}>Number of HR Rounds</div> */}
                 <div className={classes.av}>Medical Test</div>
                 <br />
               </Grid>
@@ -193,7 +204,10 @@ function ViewAdvertisement(props) {
                   : {data.resume_required ? 'Required' : 'Not Required'}
                 </div>
                 <div className={classes.av}>
-                  : {data.resume_shortlist_criteria}
+                  :{' '}
+                  {data.resume_shortlist_criteria === ''
+                    ? 'NA'
+                    : data.resume_shortlist_criteria}
                 </div>
                 <div className={classes.av}>
                   : {data.aptitude_test_required ? 'Present' : 'Not Present'}
@@ -201,13 +215,13 @@ function ViewAdvertisement(props) {
                 <div className={classes.av}>
                   : {data.group_discussion_required ? 'Present' : 'Not Present'}
                 </div>
-                <div className={classes.av}>
+                {/* <div className={classes.av}>
                   : {data.number_of_technical_tests}
                 </div>
                 <div className={classes.av}>
                   : {data.number_of_technical_interviews}
                 </div>
-                <div className={classes.av}>: {data.number_of_hr_rounds}</div>
+                <div className={classes.av}>: {data.number_of_hr_rounds}</div> */}
                 <div className={classes.av}>
                   : {data.medical_test_required ? 'Required' : 'Not Required'}
                 </div>
