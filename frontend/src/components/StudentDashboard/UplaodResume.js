@@ -86,7 +86,7 @@ function UploadResume() {
               color="primary"
               gutterBottom
             >
-              Upload Reume
+              Upload Resume
             </Typography>
             <Typography
               variant="subtitle"
