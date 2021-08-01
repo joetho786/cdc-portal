@@ -252,6 +252,16 @@ export default function Navbar() {
                       <li onClick={() => setIsChecked(!isChecked)}>
                         <a href="/recruiter-dashboard/profile">Profile</a>
                       </li>
+                      <li onClick={() => setIsChecked(!isChecked)}>
+                        <a href="/recruiter-dashboard/add-intern-advertisement">
+                          Add Intern Announcement
+                        </a>
+                      </li>
+                      <li onClick={() => setIsChecked(!isChecked)}>
+                        <a href="/recruiter-dashboard/add-job-advertisement">
+                          Add Job Announcement
+                        </a>
+                      </li>
                       <li onClick={Logout}>
                         <Link to="#">Logout</Link>
                       </li>

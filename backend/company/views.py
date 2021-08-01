@@ -159,6 +159,31 @@ class AddInernshipAdvertisement(APIView):
         return Response(status=status.HTTP_201_CREATED)
 
 
+class AddJobAdvertisement(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, format=None):
+        data = {}
+        for key in request.data.keys():
+            if request.data.get(key) == 'true':
+                data[key] = True
+            elif request.data.get(key) == 'false':
+                data[key] = False
+            else:
+                data[key] = request.data.get(key)
+        selected_branches = data.pop('selectedBraches')
+        sb = []
+        dt = selected_branches.split(',')
+        for i in range(1, len(dt), 2):
+            if dt[i] == 'true':
+                sb.append(ProgramAndBranch.objects.get(id=int(dt[i-1])))
+        company = get_object_or_404(CompanyProfile, user=request.user)
+        # print(data)
+        mod = JobAdvertisement.objects.create(**data, company=company)
+        mod.eligible_program_branch.set(sb)
+        return Response(status=status.HTTP_201_CREATED)
+
+
 class GetCompanyAnnouncements(APIView):
     permission_classes = (IsAuthenticated,)
 

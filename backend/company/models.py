@@ -45,6 +45,7 @@ class BaseAdvertisement(models.Model):
     # validity
     expiry = models.DateTimeField(null=True, blank=True)
     active = models.BooleanField(default=False)
+    show_company = models.BooleanField(default=False)
     # job prof
     id = models.UUIDField(primary_key=True, default=uuid4)
     company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE, null=True, blank=True)
@@ -76,34 +77,7 @@ class BaseAdvertisement(models.Model):
     email_ids = models.ManyToManyField(ProgramEmailId, blank=True)
     email_sent = models.BooleanField(default=False)
     creation_timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-
-    class Meta:
-        abstract = True
-
-    def __str__(self):
-        return "{} ({})".format(self.designation, self.company.name)
-
-
-class JobAdvertisement(BaseAdvertisement):
-    pass
-
-    def get_absolute_url(self):
-        return reverse(kwargs={"id": self.id})
-
-    @property
-    def get_offers(self):
-        return JobOffer.objects.filter(profile__id=self.id)
-
-    @property
-    def get_offers_count(self):
-        return JobOffer.objects.filter(profile__id=self.id).count()
-
-
-class InternshipAdvertisement(BaseAdvertisement):
-    training_period = models.CharField(max_length=50)
-    btech_stipend = models.FloatField(null=True, blank=True)
-    mtech_stipend = models.FloatField(null=True, blank=True)
-    msc_stipend = models.FloatField(null=True, blank=True)
+    # extra
     btech_min_ucpga = models.FloatField(null=True, blank=True)
     mtech_min_ucpga = models.FloatField(null=True, blank=True)
     msc_min_ucpga = models.FloatField(null=True, blank=True)
@@ -131,6 +105,62 @@ class InternshipAdvertisement(BaseAdvertisement):
     pre_talk = models.BooleanField(default=False)
     description_file = models.FileField(upload_to='description_file', blank=True, null=True)
     allow_backlog = models.BooleanField(default=False)
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return "{} ({})".format(self.designation, self.company.name)
+
+
+class JobAdvertisement(BaseAdvertisement):
+    phd_min_ucpga = models.FloatField(null=True, blank=True)
+    phd_min_pcpga = models.FloatField(null=True, blank=True)
+    time_issue_letter = models.IntegerField(null=True, blank=True)
+    # bond_details
+    btech_basic = models.FloatField(null=True, blank=True)
+    btech_monthly_salary = models.FloatField(null=True, blank=True)
+    btech_variables = models.FloatField(null=True, blank=True)
+    btech_gross_salary = models.FloatField(null=True, blank=True)
+    btech_cost_to_company = models.FloatField(null=True, blank=True)
+    mtech_basic = models.FloatField(null=True, blank=True)
+    mtech_monthly_salary = models.FloatField(null=True, blank=True)
+    mtech_variables = models.FloatField(null=True, blank=True)
+    mtech_gross_salary = models.FloatField(null=True, blank=True)
+    mtech_cost_to_company = models.FloatField(null=True, blank=True)
+    msc_basic = models.FloatField(null=True, blank=True)
+    msc_monthly_salary = models.FloatField(null=True, blank=True)
+    msc_variables = models.FloatField(null=True, blank=True)
+    msc_gross_salary = models.FloatField(null=True, blank=True)
+    msc_cost_to_company = models.FloatField(null=True, blank=True)
+    phd_basic = models.FloatField(null=True, blank=True)
+    phd_monthly_salary = models.FloatField(null=True, blank=True)
+    phd_variables = models.FloatField(null=True, blank=True)
+    phd_gross_salary = models.FloatField(null=True, blank=True)
+    phd_cost_to_company = models.FloatField(null=True, blank=True)
+    mba_basic = models.FloatField(null=True, blank=True)
+    mba_monthly_salary = models.FloatField(null=True, blank=True)
+    mba_variables = models.FloatField(null=True, blank=True)
+    mba_gross_salary = models.FloatField(null=True, blank=True)
+    mba_cost_to_company = models.FloatField(null=True, blank=True)
+
+    def get_absolute_url(self):
+        return reverse(kwargs={"id": self.id})
+
+    @property
+    def get_offers(self):
+        return JobOffer.objects.filter(profile__id=self.id)
+
+    @property
+    def get_offers_count(self):
+        return JobOffer.objects.filter(profile__id=self.id).count()
+
+
+class InternshipAdvertisement(BaseAdvertisement):
+    training_period = models.CharField(max_length=50)
+    btech_stipend = models.FloatField(null=True, blank=True)
+    mtech_stipend = models.FloatField(null=True, blank=True)
+    msc_stipend = models.FloatField(null=True, blank=True)
 
     def get_absolute_url(self):
         return reverse("company:internship-offer", kwargs={"id": self.id})

@@ -61,6 +61,8 @@ export default function AddAdvertisement() {
   const [btech, setBtech] = React.useState([]);
   const [mtech, setMtech] = React.useState([]);
   const [msc, setMsc] = React.useState([]);
+  const [phd, setPhd] = React.useState([]);
+  const [mba, setMba] = React.useState([]);
 
   React.useEffect(() => {
     instance
@@ -75,6 +77,12 @@ export default function AddAdvertisement() {
         );
         setMtech(
           res.data.filter((subOption) => subOption.program.includes('MTech'))
+        );
+        setPhd(
+          res.data.filter((subOption) => subOption.program.includes('Phd'))
+        );
+        setMba(
+          res.data.filter((subOption) => subOption.program.includes('MBA'))
         );
       })
       .then(() => setLoading(false))
@@ -94,7 +102,7 @@ export default function AddAdvertisement() {
     //console.log(values);
     //console.log(selectedBraches);
     instance
-      .post('company/internship_ann_add/', form)
+      .post('company/job_ann_add/', form)
       .then((res) => {
         //console.log(res.data);
         if (res.status === 201) {
@@ -157,7 +165,7 @@ export default function AddAdvertisement() {
             align="center"
             style={{ margin: '20px' }}
           >
-            INTERNSHIP ANNOUNCEMENT FORM
+            JOB ANNOUNCEMENT FORM
           </Typography>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={4}>
@@ -235,14 +243,28 @@ export default function AddAdvertisement() {
               <Grid item xs={12}>
                 <TextField
                   required
-                  label="Duration of the Internship"
+                  label="Time required to issue offer letter if the student is selected"
                   type="number"
-                  helperText="Enter number of days"
-                  value={values.training_period}
+                  helperText="Enter number of weeks/months"
+                  value={values.time_issue_letter}
                   onChange={(e) => {
                     setValues({
                       ...values,
-                      ...{ training_period: e.target.value },
+                      ...{ time_issue_letter: e.target.value },
+                    });
+                  }}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  label="Any Bond/Contract"
+                  value={values.bond_details}
+                  onChange={(e) => {
+                    setValues({
+                      ...values,
+                      ...{ bond_details: e.target.value },
                     });
                   }}
                   fullWidth
@@ -349,53 +371,455 @@ export default function AddAdvertisement() {
                 ))}
               </Grid>
               <Grid item xs={12}>
+                <center
+                  style={{
+                    fontSize: '1.2rem',
+                    fontWeight: 'bold',
+                    color: 'grey',
+                  }}
+                >
+                  {' '}
+                  Doctor of Philosophy <br />
+                </center>
+              </Grid>
+              <Grid container style={{ marginLeft: '6%' }}>
+                {phd.map((element) => (
+                  <Grid item xs={12} sm={6}>
+                    <Checkbox
+                      value={element.id}
+                      onChange={(e) => {
+                        setselectedBraches([
+                          ...selectedBraches,
+                          [e.target.value, e.target.checked],
+                        ]);
+                      }}
+                    />{' '}
+                    {element.name}
+                  </Grid>
+                ))}
+              </Grid>
+              <Grid item xs={12}>
+                <center
+                  style={{
+                    fontSize: '1.2rem',
+                    fontWeight: 'bold',
+                    color: 'grey',
+                  }}
+                >
+                  {' '}
+                  Master of Business Administration <br />
+                  <div style={{ fontSize: '0.8rem' }}>
+                    Admission to MBA program is through CAT
+                  </div>{' '}
+                </center>
+              </Grid>
+              <Grid container style={{ marginLeft: '6%' }}>
+                {mba.map((element) => (
+                  <Grid item xs={12} sm={6}>
+                    <Checkbox
+                      value={element.id}
+                      onChange={(e) => {
+                        setselectedBraches([
+                          ...selectedBraches,
+                          [e.target.value, e.target.checked],
+                        ]);
+                      }}
+                    />{' '}
+                    {element.name}
+                  </Grid>
+                ))}
+              </Grid>
+              <Grid item xs={12}>
                 <Divider variant="middle" orientation="horizontal" />
               </Grid>
               <Grid item xs={12}>
-                <b style={{ fontSize: '1.1rem' }}>Stipend Details :-</b>
+                <b style={{ fontSize: '1.1rem' }}>Package Details :-</b>
+                <Grid
+                  item
+                  xs={12}
+                  style={{ fontSize: '0.7rem', margin: '1rem' }}
+                >
+                  <b>
+                    * in lacs per annum (LPA) <br />* Leave 0 if not apllicable
+                  </b>
+                </Grid>
               </Grid>
-              <Grid container style={{ marginLeft: '6%', marginTop: '2%' }}>
+
+              <Grid container style={{ marginLeft: '6%' }}>
+                <Grid item xs={12} style={{ paddingBottom: '10px' }}>
+                  <b>BTech</b>
+                </Grid>
                 <Grid item xs={4}>
                   <TextField
-                    label="BTech"
+                    label="Basic"
                     type="number"
-                    helperText="Enter per month in INR"
                     defaultValue={0}
-                    value={values.btech_stipend}
+                    value={values.btech_basic}
                     onChange={(e) => {
                       setValues({
                         ...values,
-                        ...{ btech_stipend: e.target.value },
+                        ...{ btech_basic: e.target.value },
                       });
                     }}
                   />
                 </Grid>
                 <Grid item xs={4}>
                   <TextField
-                    label="MTech"
+                    label="Monthly Fixed Salary"
                     type="number"
-                    helperText="Enter per month in INR"
                     defaultValue={0}
-                    value={values.mtech_stipend}
+                    value={values.btech_monthly_salary}
                     onChange={(e) => {
                       setValues({
                         ...values,
-                        ...{ mtech_stipend: e.target.value },
+                        ...{ btech_monthly_salary: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} style={{ padding: '10px' }}></Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Variables"
+                    type="number"
+                    defaultValue={0}
+                    value={values.btech_variables}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ btech_variables: e.target.value },
                       });
                     }}
                   />
                 </Grid>
                 <Grid item xs={4}>
                   <TextField
-                    label="MSc"
+                    label="Gross Salary"
                     type="number"
-                    helperText="Enter per month in INR"
                     defaultValue={0}
-                    value={values.msc_stipend}
+                    value={values.btech_gross_salary}
                     onChange={(e) => {
                       setValues({
                         ...values,
-                        ...{ msc_stipend: e.target.value },
+                        ...{ btech_gross_salary: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Cost to Company"
+                    type="number"
+                    defaultValue={0}
+                    value={values.btech_cost_to_company}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ btech_cost_to_company: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container style={{ marginLeft: '6%', marginTop: '5%' }}>
+                <Grid item xs={12} style={{ paddingBottom: '10px' }}>
+                  <b>MTech</b>
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Basic"
+                    type="number"
+                    defaultValue={0}
+                    value={values.mtech_basic}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ mtech_basic: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Monthly Fixed Salary"
+                    type="number"
+                    defaultValue={0}
+                    value={values.mtech_monthly_salary}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ mtech_monthly_salary: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} style={{ padding: '10px' }}></Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Variables"
+                    type="number"
+                    defaultValue={0}
+                    value={values.mtech_variables}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ mtech_variables: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Gross Salary"
+                    type="number"
+                    defaultValue={0}
+                    value={values.mtech_gross_salary}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ mtech_gross_salary: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Cost to Company"
+                    type="number"
+                    defaultValue={0}
+                    value={values.mtech_cost_to_company}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ mtech_cost_to_company: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container style={{ marginLeft: '6%', marginTop: '5%' }}>
+                <Grid item xs={12} style={{ paddingBottom: '10px' }}>
+                  <b>M.Sc</b>
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Basic"
+                    type="number"
+                    defaultValue={0}
+                    value={values.msc_basic}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ msc_basic: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Monthly Fixed Salary"
+                    type="number"
+                    defaultValue={0}
+                    value={values.msc_monthly_salary}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ msc_monthly_salary: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} style={{ padding: '10px' }}></Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Variables"
+                    type="number"
+                    defaultValue={0}
+                    value={values.msc_variables}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ msc_variables: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Gross Salary"
+                    type="number"
+                    defaultValue={0}
+                    value={values.msc_gross_salary}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ msc_gross_salary: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Cost to Company"
+                    type="number"
+                    defaultValue={0}
+                    value={values.msc_cost_to_company}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ msc_cost_to_company: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container style={{ marginLeft: '6%', marginTop: '5%' }}>
+                <Grid item xs={12} style={{ paddingBottom: '10px' }}>
+                  <b>Ph.D</b>
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Basic"
+                    type="number"
+                    defaultValue={0}
+                    value={values.phd_basic}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ phd_basic: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Monthly Fixed Salary"
+                    type="number"
+                    defaultValue={0}
+                    value={values.phd_monthly_salary}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ phd_monthly_salary: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} style={{ padding: '10px' }}></Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Variables"
+                    type="number"
+                    defaultValue={0}
+                    value={values.phd_variables}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ phd_variables: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Gross Salary"
+                    type="number"
+                    defaultValue={0}
+                    value={values.phd_gross_salary}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ phd_gross_salary: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Cost to Company"
+                    type="number"
+                    defaultValue={0}
+                    value={values.phd_cost_to_company}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ phd_cost_to_company: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container style={{ marginLeft: '6%', marginTop: '5%' }}>
+                <Grid item xs={12} style={{ paddingBottom: '10px' }}>
+                  <b>MBA</b>
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Basic"
+                    type="number"
+                    defaultValue={0}
+                    value={values.mba_basic}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ mba_basic: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Monthly Fixed Salary"
+                    type="number"
+                    defaultValue={0}
+                    value={values.mba_monthly_salary}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ mba_monthly_salary: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} style={{ padding: '10px' }}></Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Variables"
+                    type="number"
+                    defaultValue={0}
+                    value={values.mba_variables}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ mba_variables: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Gross Salary"
+                    type="number"
+                    defaultValue={0}
+                    value={values.mba_gross_salary}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ mba_gross_salary: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    label="Cost to Company"
+                    type="number"
+                    defaultValue={0}
+                    value={values.mba_cost_to_company}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ mba_cost_to_company: e.target.value },
                       });
                     }}
                   />
@@ -455,6 +879,24 @@ export default function AddAdvertisement() {
                     }}
                   />
                 </Grid>
+                <Grid
+                  item
+                  xs={4}
+                  style={{ paddingRight: '10px', marginTop: '10px' }}
+                >
+                  <TextField
+                    label="Ph.D"
+                    type="number"
+                    defaultValue={0}
+                    value={values.phd_min_ucgpa}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ phd_min_ucpga: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
               </Grid>
               <Grid item xs={12}>
                 <b style={{ fontSize: '0.8rem', marginLeft: '7%' }}>
@@ -486,6 +928,20 @@ export default function AddAdvertisement() {
                       setValues({
                         ...values,
                         ...{ msc_min_pcpga: e.target.value },
+                      });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={4} style={{ paddingRight: '10px' }}>
+                  <TextField
+                    label="Ph.D"
+                    type="number"
+                    defaultValue={0}
+                    value={values.phd_min_pcgpa}
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        ...{ phd_min_pcpga: e.target.value },
                       });
                     }}
                   />
