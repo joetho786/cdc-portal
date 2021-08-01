@@ -92,8 +92,20 @@ const mTechProgram = [
     'http://iitj.ac.in/academics/index.php?id=acad_program&&prog=40'
   ),
   createData(
-    'M. Tech. (Metallurgical and Material Design)',
+    'M. Tech. (Metallurgical and Material Engineering)',
     'http://iitj.ac.in/academics/index.php?id=acad_program&&prog=21'
+  ),
+  createData(
+    'M. Tech. (Chemical Engineering)',
+    'https://iitj.ac.in/department/index.php?id=pg_program&dept=chemical'
+  ),
+  createData(
+    'M.Tech. (Infrastructure Engineering with specialization in Environmental Engineering)',
+    'https://iitj.ac.in/academics/index.php?id=acad_program&&prog=49'
+  ),
+  createData(
+    'M.Tech. (Infrastructure Engineering with specialization in Energy)',
+    'https://iitj.ac.in/academics/index.php?id=acad_program&&prog=49'
   ),
 ];
 
@@ -110,12 +122,20 @@ const mScProgram = [
     'M.Sc. (Physics)',
     'http://iitj.ac.in/academics/index.php?id=acad_program&&prog=18'
   ),
+  createData(
+    'M.Sc. (Digital Humanities)',
+    'https://iitj.ac.in/dh/index.php?id=msc_programs'
+  ),
 ];
 
 const mScMtechProgram = [
   createData(
     'Mathematics & Data Science',
     'http://iitj.ac.in/academics/index.php?id=acad_program&&prog=34'
+  ),
+  createData(
+    'M.Sc. (Physics)-M.Tech. (Materials Engineering) Dual Degree Program ',
+    'https://iitj.ac.in/uploaded_docs/Introduction%20-%20M.Sc.-%20Ph.D.%20Dual%20Degree%20-%2015.04.2020.pdf'
   ),
 ];
 
@@ -153,7 +173,7 @@ const mTechPhdProgram = [
     'http://iitj.ac.in/academics/index.php?id=acad_program&&prog=11'
   ),
   createData(
-    'M.Tech.-Ph.D. Dual Degree (Design Engineering)',
+    'M.Tech.-Ph.D. Dual Degree (Mechanical Design Engineering)',
     'http://iitj.ac.in/academics/index.php?id=acad_program&&prog=5'
   ),
   createData(
@@ -163,6 +183,18 @@ const mTechPhdProgram = [
   createData(
     'M.Tech.-Ph.D. Dual Degree (Thermofluids Engineering)',
     'http://iitj.ac.in/academics/index.php?id=acad_program&&prog=4'
+  ),
+  createData(
+    '	M.Tech.-Ph.D. Dual Degree (Chemical Engineering)',
+    'https://iitj.ac.in/academics/index.php?id=acad_program&&prog=50'
+  ),
+  createData(
+    'M.Tech.-Ph.D. Dual Degree (Infrastructure Engineering with specialization in Environmental Engineering)',
+    'https://iitj.ac.in/academics/index.php?id=acad_program&&prog=50'
+  ),
+  createData(
+    'M.Tech.-Ph.D. Dual Degree (Infrastructure Engineering with specialization in Energy)',
+    'https://iitj.ac.in/academics/index.php?id=acad_program&&prog=50'
   ),
 ];
 
@@ -186,7 +218,10 @@ const phdEngineeringSciences = [
     'Ph.D. (Biosciences and Bioengineering)',
     'http://iitj.ac.in/academics/index.php?id=curriculum&prog=phd&dep=biology'
   ),
-  createData('Ph.D. (Computer Science and Engineering)', '#'),
+  createData(
+    'Ph.D. (Computer Science and Engineering)',
+    'https://cse.iitj.ac.in/index.php/doctoral-program'
+  ),
   createData(
     'Ph.D. (Electrical Engineering)',
     'http://iitj.ac.in/academics/index.php?id=curriculum&prog=phd&dep=ee'
@@ -199,15 +234,23 @@ const phdEngineeringSciences = [
     'Ph.D. (Metallurgical and Materials Engineering)',
     'http://iitj.ac.in/academics/index.php?id=curriculum&prog=mtech&dep=mt'
   ),
+  createData(
+    'Ph.D. (Chemical Engineering)',
+    'https://iitj.ac.in/department/index.php?id=doc_program&dept=chemical'
+  ),
+  createData(
+    'Ph.D. (Civil and Infrastructure Engineering)',
+    'https://iitj.ac.in/academics/index.php?id=acad_program&&prog=51'
+  ),
 ];
 
 const phdInterDisciplinary = [
   createData(
-    'Ph.D. (AUV Technologies)',
+    'Ph.D. (Robotics and Mobility Systems)',
     'http://iitj.ac.in/academics/index.php?id=acad_program&&prog=phd'
   ),
   createData(
-    'Ph.D. (Cognitive Science)',
+    'Ph.D. (Science of Intelligence)',
     'http://iitj.ac.in/academics/index.php?id=acad_program&&prog=phd'
   ),
   createData(
@@ -227,7 +270,7 @@ const phdInterDisciplinary = [
     'http://iitj.ac.in/academics/index.php?id=acad_program&&prog=phd'
   ),
   createData(
-    'Ph.D. (Space Technologies)',
+    'Ph.D. (Space & Science Technologies)',
     'http://iitj.ac.in/academics/index.php?id=acad_program&&prog=phd'
   ),
 ];
@@ -236,6 +279,10 @@ const phdHumanities = [
   createData(
     'Ph.D. (Humanities & Social Sciences)',
     'http://iitj.ac.in/academics/index.php?id=curriculum&prog=phd&dep=hss'
+  ),
+  createData(
+    'Ph.D. (Management and Entrepreneurship)',
+    'https://iitj.ac.in/uploaded_docs/SME%20PhD%20Preamble_06012020.pdf'
   ),
 ];
 
