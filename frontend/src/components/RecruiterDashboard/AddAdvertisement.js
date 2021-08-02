@@ -61,6 +61,7 @@ export default function AddAdvertisement() {
   const [btech, setBtech] = React.useState([]);
   const [mtech, setMtech] = React.useState([]);
   const [msc, setMsc] = React.useState([]);
+  const [mba, setMba] = React.useState([]);
 
   React.useEffect(() => {
     instance
@@ -75,6 +76,9 @@ export default function AddAdvertisement() {
         );
         setMtech(
           res.data.filter((subOption) => subOption.program.includes('MTech'))
+        );
+        setMba(
+          res.data.filter((subOption) => subOption.program.includes('MBA'))
         );
       })
       .then(() => setLoading(false))
@@ -99,6 +103,7 @@ export default function AddAdvertisement() {
         //console.log(res.data);
         if (res.status === 201) {
           setsu('Form Submitted successfully, Under Review');
+          setValues({});
         }
         setLoading(false);
       })
@@ -206,8 +211,6 @@ export default function AddAdvertisement() {
                 <TextField
                   required
                   label="Tenative Joining Date"
-                  type="date"
-                  defaultValue="2022-01-01"
                   value={values.tentative_join_date}
                   onChange={(e) => {
                     setValues({
@@ -237,7 +240,7 @@ export default function AddAdvertisement() {
                   required
                   label="Duration of the Internship"
                   type="number"
-                  helperText="Enter number of days"
+                  helperText="Enter number of weeks"
                   value={values.training_period}
                   onChange={(e) => {
                     setValues({
@@ -334,6 +337,37 @@ export default function AddAdvertisement() {
               </Grid>
               <Grid container style={{ marginLeft: '6%' }}>
                 {msc.map((element) => (
+                  <Grid item xs={12} sm={6}>
+                    <Checkbox
+                      value={element.id}
+                      onChange={(e) => {
+                        setselectedBraches([
+                          ...selectedBraches,
+                          [e.target.value, e.target.checked],
+                        ]);
+                      }}
+                    />{' '}
+                    {element.name}
+                  </Grid>
+                ))}
+              </Grid>
+              <Grid item xs={12}>
+                <center
+                  style={{
+                    fontSize: '1.2rem',
+                    fontWeight: 'bold',
+                    color: 'grey',
+                  }}
+                >
+                  {' '}
+                  Master of Business Administration <br />
+                  <div style={{ fontSize: '0.8rem' }}>
+                    Admission to MBA program is through CAT
+                  </div>{' '}
+                </center>
+              </Grid>
+              <Grid container style={{ marginLeft: '6%' }}>
+                {mba.map((element) => (
                   <Grid item xs={12} sm={6}>
                     <Checkbox
                       value={element.id}
