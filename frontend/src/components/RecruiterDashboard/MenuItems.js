@@ -54,6 +54,17 @@ export const secondaryListItems = (
         <ListItemText primary="Intern Advertisment" />
       </ListItem>
     </a>
+    <a
+      href="/recruiter-dashboard/add-job-advertisement"
+      style={{ color: 'inherit', textDecoration: 'none' }}
+    >
+      <ListItem button>
+        <ListItemIcon>
+          <PostAddIcon />
+        </ListItemIcon>
+        <ListItemText primary="Job Advertisment" />
+      </ListItem>
+    </a>
   </div>
 );
 

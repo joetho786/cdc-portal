@@ -14,6 +14,7 @@ import Home from '../components/RecruiterDashboard/Home';
 /* import UploadResume from '../components/StudentDashboard/UplaodResume';
 import StudentLogin from './StudentLogin'; */
 import AddAdvertisement from '../components/RecruiterDashboard/AddAdvertisement';
+import AddJobAdvertisement from '../components/RecruiterDashboard/AddJobAdvertisement';
 import StudentList from '../components/RecruiterDashboard/StudentList';
 import Profile from '../components/RecruiterDashboard/Profile';
 import {
@@ -149,6 +150,11 @@ export default function Dashboard() {
                 path="/recruiter-dashboard/add-intern-advertisement"
                 exact
                 component={AddAdvertisement}
+              />
+              <Route
+                path="/recruiter-dashboard/add-job-advertisement"
+                exact
+                component={AddJobAdvertisement}
               />
               <Route
                 path="/recruiter-dashboard/advertisement/:id"

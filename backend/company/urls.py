@@ -12,6 +12,7 @@ urlpatterns = [
     path('internship_offers_add/', views.AddInternshipoffer.as_view(), name="intern-offers-add"),
     path('internship_offers/', views.GetInternshipoffers.as_view(), name="intern-offers"),
     path('internship_ann_add/', views.AddInernshipAdvertisement.as_view(), name="intern-advertisement-add"),
+    path('job_ann_add/', views.AddJobAdvertisement.as_view(), name="job-advertisement-add"),
     path('get_company_ann/', views.GetCompanyAnnouncements.as_view(), name="company-get-announcement"),
     path('get_applications/<slug:id>', views.GetAppliedStudents.as_view(), name="get-applications-of-ann")
 ]

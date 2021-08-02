@@ -130,8 +130,10 @@ function Home() {
                         <TableCell>
                           {row.active ? (
                             <Chip color="green" label="Active" />
+                          ) : row.show_company ? (
+                            <Chip color="red" label="Inactive" />
                           ) : (
-                            <Chip label="Pending" />
+                            <Chip label="In Review" />
                           )}
                         </TableCell>
                         <TableCell>
@@ -141,6 +143,7 @@ function Home() {
                           <Button
                             variant="contained"
                             color="primary"
+                            disabled={!row.show_company}
                             className={classes.button}
                             endIcon={<VisibilityIcon />}
                             onClick={() => {
@@ -184,15 +187,16 @@ function Home() {
                   color="primary"
                   gutterBottom
                 >
-                  Intern Offers
+                  Job Announcements
                 </Typography>
                 <Table size="small">
                   <TableHead>
                     <TableRow>
                       <TableCell>S No.</TableCell>
-                      <TableCell>Name</TableCell>
                       <TableCell>Job Designation</TableCell>
                       <TableCell>Expirees On</TableCell>
+                      <TableCell>Status</TableCell>
+                      <TableCell>No. of Students Registered</TableCell>
                       <TableCell>Action</TableCell>
                     </TableRow>
                   </TableHead>
@@ -207,8 +211,10 @@ function Home() {
                         <TableCell>
                           {row.active ? (
                             <Chip color="green" label="Active" />
+                          ) : row.show_company ? (
+                            <Chip color="red" label="Inactive" />
                           ) : (
-                            <Chip label="Pending" />
+                            <Chip label="In Review" />
                           )}
                         </TableCell>
                         <TableCell>
@@ -218,6 +224,7 @@ function Home() {
                           <Button
                             variant="contained"
                             color="primary"
+                            disabled={!row.show_company}
                             className={classes.button}
                             endIcon={<VisibilityIcon />}
                             onClick={() => {

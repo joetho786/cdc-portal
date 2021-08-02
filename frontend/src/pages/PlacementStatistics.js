@@ -59,7 +59,6 @@ const data = [
 ];
 
 const overall = [83, 89];
-const OverallAverageSalary = [0, 16.73];
 
 const PlacementStatistics = () => {
   const classes = useStyles();
@@ -158,21 +157,6 @@ const PlacementStatistics = () => {
                         {overall[1]}%
                       </TableCell>
                     </TableRow>
-                    <TableRow key="overallAvg">
-                      <TableCell
-                        className={classes.body}
-                        component="th"
-                        scope="row"
-                      >
-                        Overall Average Salary
-                      </TableCell>
-                      <TableCell className={classes.body} align="left">
-                        {OverallAverageSalary[0]}L
-                      </TableCell>
-                      <TableCell className={classes.body} align="left">
-                        {OverallAverageSalary[1]}L
-                      </TableCell>
-                    </TableRow>
                   </TableBody>
                 </Table>
               </TableContainer>
@@ -183,8 +167,8 @@ const PlacementStatistics = () => {
                 loader={<div>Loading Chart</div>}
                 data={[heading].concat(data.map((d) => [d[0], d[1], d[2]]))}
                 options={{
-                  vAxis: { title: 'Placement Percentage' },
-                  hAxis: { title: 'Departments', minValue: 0 },
+                  vAxis: { title: 'Placement Percentage', minValue: 0 },
+                  hAxis: { title: 'Departments' },
                   legend: 'bottom',
                   animation: {
                     duration: 1000,
