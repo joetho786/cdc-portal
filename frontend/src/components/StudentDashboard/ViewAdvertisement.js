@@ -27,6 +27,7 @@ function getDate(date) {
 function ViewAdvertisement(props) {
   const classes = useStyles();
   const [data, setdata] = React.useState('');
+  const [programList, setProgramList] = React.useState(['']);
   const id = props.match.params.id;
 
   React.useEffect(() => {
@@ -39,8 +40,12 @@ function ViewAdvertisement(props) {
           adt.name = adt.company.name;
           adt.url = adt.company.url;
           let p = '';
+          const newList = [];
           adt.eligible_program_branch.forEach((program) => {
-            p = p + ',' + program.program + '' + program.name;
+            p = program.program + ' ' + program.name;
+            newList.push(p);
+            setProgramList(newList);
+            console.log(newList);
           });
           adt.program = p;
           setdata(adt);
@@ -87,26 +92,54 @@ function ViewAdvertisement(props) {
             >
               Profile
             </Typography>
-            <Grid container spacing={2}>
-              <Grid item sm={6} style={{ paddingLeft: '10%' }}>
-                <div className={classes.av}>Company</div>
-                <div className={classes.av}>Designation</div>
-                <div className={classes.av}>Description</div>
-                <div className={classes.av}>Joining Date</div>
-                <div className={classes.av}>Job Location</div>
-                <br />
+            <Grid
+              container
+              spacing={2}
+              xm={12}
+              style={{
+                paddingLeft: '2%',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Company : </div>
+                <div className={classes.av}>{data.name}</div>
               </Grid>
-              <Grid item sm={6}>
-                <div className={classes.av}>: {data.name}</div>
-                <div className={classes.av}>: {data.designation}</div>
-                <div className={classes.av}>: {data.description}</div>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Designation : </div>
+                <div className={classes.av}>{data.designation}</div>
+              </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Description : </div>
+                <div className={classes.av}>{data.description}</div>
+              </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Joining Date : </div>
                 <div className={classes.av}>
-                  : {getDate(data.tentative_join_date)}
-                </div>
-                <div className={classes.av}>
-                  : {data.tentative_job_location}
+                  {getDate(data.tentative_join_date)}
                 </div>
               </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Job Location : </div>
+                <div className={classes.av}>{data.tentative_job_location}</div>
+              </Grid>
+              <br />
             </Grid>
           </React.Fragment>
         </Paper>
@@ -120,26 +153,56 @@ function ViewAdvertisement(props) {
             >
               Package Detials
             </Typography>
-            <Grid container spacing={2}>
-              <Grid item sm={6} style={{ paddingLeft: '10%' }}>
-                <div className={classes.av}>CTC/Stipend</div>
-                <div className={classes.av}>Gross Salary</div>
-                <div className={classes.av}>Bonus</div>
-                <div className={classes.av}>Bond</div>
-                <div className={classes.av}>Bond Details</div>
-                <br />
+            <Grid
+              container
+              spacing={2}
+              xm={12}
+              style={{
+                paddingLeft: '2%',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>CTC/Stipend : </div>
+                <div className={classes.av}>{data.ctc}</div>
               </Grid>
-              <Grid item sm={6}>
-                <div className={classes.av}>: {data.ctc}</div>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Gross Salary : </div>
                 <div className={classes.av}>
-                  : {data.gross_salary ? data.gross_salary : 'NA'}
+                  {data.gross_salary ? data.gross_salary : 'NA'}
                 </div>
-                <div className={classes.av}>: {data.bonus}</div>
-                <div className={classes.av}>
-                  : {data.bond ? 'Applicable' : 'NA'}
-                </div>
-                <div className={classes.av}>: {data.bond_details}</div>
               </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Bonus : </div>
+                <div className={classes.av}>{data.bonus}</div>
+              </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Bond : </div>
+                <div className={classes.av}>
+                  {data.bond ? 'Applicable' : 'NA'}
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Bond Details : </div>
+                <div className={classes.av}>{data.bond_details}</div>
+              </Grid>
+              <br />
             </Grid>
           </React.Fragment>
         </Paper>
@@ -155,25 +218,55 @@ function ViewAdvertisement(props) {
             >
               Eligibility
             </Typography>
-            <Grid container spacing={2}>
-              <Grid item sm={6} style={{ paddingLeft: '2%' }}>
-                <div className={classes.av}>Eligible Programs and Branches</div>
-                <br />
-              </Grid>
-              <Grid item sm={6}>
-                <div className={classes.av}>: {data.program}</div>
+            <Grid
+              container
+              spacing={2}
+              xm={12}
+              style={{
+                paddingLeft: '2%',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>
+                  Eligible Programs and Branches :{' '}
+                </div>
+                <div className={classes.av}>
+                  {programList.map((p, index) => {
+                    return <li key={index}>{p}</li>;
+                  })}
+                </div>
               </Grid>
             </Grid>
-            <Grid container spacing={2}>
-              <Grid item sm={6} style={{ paddingLeft: '2%' }}>
-                <div className={classes.av}>Minimum GPA</div>
-                <div className={classes.av}>Minimum UG GPA</div>
-                <br />
+            <Grid
+              container
+              spacing={2}
+              xm={12}
+              style={{
+                paddingLeft: '2%',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Minimum GPA : </div>
+                <div className={classes.av}>{data.min_gpa}</div>
               </Grid>
-              <Grid item sm={6}>
-                <div className={classes.av}>: {data.min_ug_gpa}</div>
-                <div className={classes.av}>: {data.min_gpa}</div>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Minimum UG GPA : </div>
+                <div className={classes.av}>{data.min_ug_gpa}</div>
               </Grid>
+              <br />
             </Grid>
           </React.Fragment>
         </Paper>
@@ -187,45 +280,90 @@ function ViewAdvertisement(props) {
             >
               Selection Process
             </Typography>
-            <Grid container spacing={2}>
-              <Grid item sm={6} style={{ paddingLeft: '2%' }}>
-                <div className={classes.av}>Resume</div>
-                <div className={classes.av}>Resume Shortlist Criteria</div>
-                <div className={classes.av}>Aptitude Test</div>
-                <div className={classes.av}>Group Discussion</div>
-                {/* <div className={classes.av}>Number of Technical Rounds</div>
-                <div className={classes.av}>Number of Technical Interviews</div>
-                <div className={classes.av}>Number of HR Rounds</div> */}
-                <div className={classes.av}>Medical Test</div>
-                <br />
-              </Grid>
-              <Grid item sm={6}>
+            <Grid
+              container
+              xm={12}
+              style={{
+                paddingLeft: '2%',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Resume : </div>
                 <div className={classes.av}>
-                  : {data.resume_required ? 'Required' : 'Not Required'}
+                  {data.resume_required ? 'Required' : 'Not Required'}
                 </div>
+              </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Resume Shortlist Criteria : </div>
                 <div className={classes.av}>
-                  :{' '}
                   {data.resume_shortlist_criteria === ''
                     ? 'NA'
                     : data.resume_shortlist_criteria}
                 </div>
+              </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Aptitude Test : </div>
                 <div className={classes.av}>
-                  : {data.aptitude_test_required ? 'Present' : 'Not Present'}
-                </div>
-                <div className={classes.av}>
-                  : {data.group_discussion_required ? 'Present' : 'Not Present'}
-                </div>
-                {/* <div className={classes.av}>
-                  : {data.number_of_technical_tests}
-                </div>
-                <div className={classes.av}>
-                  : {data.number_of_technical_interviews}
-                </div>
-                <div className={classes.av}>: {data.number_of_hr_rounds}</div> */}
-                <div className={classes.av}>
-                  : {data.medical_test_required ? 'Required' : 'Not Required'}
+                  {data.aptitude_test_required ? 'Present' : 'Not Present'}
                 </div>
               </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Group Discussion : </div>
+                <div className={classes.av}>
+                  {data.group_discussion_required ? 'Present' : 'Not Present'}
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Technical Round : </div>
+                <div className={classes.av}>
+                  {data.technical_round ? 'Present' : ' '}
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Technical Interviews : </div>
+                <div className={classes.av}>
+                  {data.ti_round ? 'Present' : ' '}
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>HR Rounds : </div>
+                <div className={classes.av}>
+                  {data.hr_round ? 'Present' : ''}
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <div className={classes.av}>Medical Test : </div>
+                <div className={classes.av}>
+                  {data.medical_test_required ? 'Required' : 'Not Required'}
+                </div>
+              </Grid>
+              <br />
             </Grid>
           </React.Fragment>
         </Paper>
