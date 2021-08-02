@@ -333,7 +333,7 @@ function ViewAdvertisement(props) {
               >
                 <div className={classes.av}>Technical Round : </div>
                 <div className={classes.av}>
-                  {data.technical_round ? 'Present' : ' '}
+                  {data.technical_round ? 'Present' : 'Not Present'}
                 </div>
               </Grid>
               <Grid
@@ -342,7 +342,7 @@ function ViewAdvertisement(props) {
               >
                 <div className={classes.av}>Technical Interviews : </div>
                 <div className={classes.av}>
-                  {data.ti_round ? 'Present' : ' '}
+                  {data.ti_round ? 'Present' : 'Not Present'}
                 </div>
               </Grid>
               <Grid
@@ -351,7 +351,7 @@ function ViewAdvertisement(props) {
               >
                 <div className={classes.av}>HR Rounds : </div>
                 <div className={classes.av}>
-                  {data.hr_round ? 'Present' : ''}
+                  {data.hr_round ? 'Present' : 'Not Present'}
                 </div>
               </Grid>
               <Grid
