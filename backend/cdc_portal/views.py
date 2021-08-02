@@ -25,7 +25,7 @@ class Login(views.APIView):
         password = request.data['password']
         users = User.objects.filter(email=email)
         if len(users) > 1:
-            user = User.objects.filter(email=email, is_superuser=True)
+            user = User.objects.filter(email=email, is_superuser=True)[0]
         elif len(users) == 1:
             user = users[0]
         else:
