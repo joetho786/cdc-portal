@@ -10,6 +10,9 @@ from django.contrib.auth.models import User
 
 from student.models import StudentProfile
 from .utils import get_config, edit_config, get_config_value, IsSuperUser
+from decouple import config
+
+SECRET_KEY = config('SECRET_KEY', cast=str)
 
 
 class Login(views.APIView):
@@ -20,10 +23,17 @@ class Login(views.APIView):
 
         email = request.data['email']
         password = request.data['password']
-        try:
-            user = User.objects.get(email=email)
-        except User.DoesNotExist:
-            return Response({'Error': "Invalid email/password"}, status=400, content_type="application/json")
+        users = User.objects.filter(email=email)
+        if len(users) > 1:
+            user = User.objects.filter(email=email, is_superuser=True)
+        elif len(users) == 1:
+            user = users[0]
+        else:
+            return Response(
+                {'Error': "Invalid credentials"},
+                status=400,
+                content_type="application/json"
+            )
         if user and user.check_password(password):
 
             payload = {
@@ -31,7 +41,7 @@ class Login(views.APIView):
                 'email': user.email,
                 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
             }
-            data = {'token': jwt.encode(payload, "SECRET_KEY", algorithm="HS256")}
+            data = {'token': jwt.encode(payload, SECRET_KEY, algorithm="HS256")}
             data['Dname'] = user.email
             return Response(
                 data,
@@ -87,7 +97,7 @@ class LDAPOAuth(views.APIView):
                 'email': user.email,
                 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
             }
-            data = {'token': jwt.encode(payload, "SECRET_KEY", algorithm="HS256")}
+            data = {'token': jwt.encode(payload, SECRET_KEY, algorithm="HS256")}
             data['Dname'] = name[0] + " (" + roll_no + ")"
             try:
                 StudentProfile.objects.get(user=user)
@@ -131,7 +141,7 @@ class GoogleLogin(views.APIView):
                 'email': user.email,
                 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
             }
-            jwt_token = {'token': jwt.encode(payload, "SECRET_KEY", algorithm="HS256")}
+            jwt_token = {'token': jwt.encode(payload, SECRET_KEY, algorithm="HS256")}
 
             return Response(
                 jwt_token,
