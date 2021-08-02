@@ -11,6 +11,8 @@ from os.path import basename
 from company.models import CompanyPerson, CompanyProfile, InternshipAdvertisement, InternshipOffer, JobOffer, JobAdvertisement
 from .resources import CompanyPersonResource
 from .resources import InternshipAdvertisementResource, InternshipOfferResource, JobAdvertisementResource, JobOfferResource
+import csv
+from django.http import HttpResponse
 
 
 class JobAdvertisementInline(admin.StackedInline):
@@ -31,6 +33,22 @@ class InternshipOfferInline(admin.StackedInline):
 
 class CompanyPersonInline(admin.StackedInline):
     model = CompanyPerson
+
+
+def export_as_csv(modeladmin, request, queryset):
+
+    meta = modeladmin.model._meta
+    field_names = [field.name for field in meta.fields]
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
+    writer = csv.writer(response)
+
+    writer.writerow(field_names)
+    for obj in queryset:
+        _ = writer.writerow([getattr(obj, field) for field in field_names])
+
+    return response
 
 
 def get_zipped_resumes_for_ad(modeladmin, request, queryset):
@@ -194,7 +212,7 @@ class JobAdvertisementAdmin(ImportExportActionModelAdmin):
     list_filter = ['company', 'active', 'creation_timestamp', ]
     ordering = ['company']
     search_fields = ['company__name', ]
-    actions = [get_zipped_resumes_for_ad, make_active, make_inactive]
+    actions = [get_zipped_resumes_for_ad, make_active, make_inactive, export_as_csv]
 
     def response_change(self, request, obj):
         subject = "Job Advertisement"
@@ -215,7 +233,7 @@ class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
     list_filter = ['company', 'active', 'creation_timestamp', ]
     ordering = ['company']
     search_fields = ['company__name', ]
-    actions = [get_zipped_resumes_for_ad, make_active, make_inactive]
+    actions = [get_zipped_resumes_for_ad, make_active, make_inactive, export_as_csv]
 
     def response_change(self, request, obj):
         subject = "Internship Advertisement"

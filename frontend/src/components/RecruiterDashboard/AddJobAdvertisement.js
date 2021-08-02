@@ -107,6 +107,7 @@ export default function AddAdvertisement() {
         //console.log(res.data);
         if (res.status === 201) {
           setsu('Form Submitted successfully, Under Review');
+          setValues({});
         }
         setLoading(false);
       })
@@ -214,8 +215,6 @@ export default function AddAdvertisement() {
                 <TextField
                   required
                   label="Tenative Joining Date"
-                  type="date"
-                  defaultValue="2022-01-01"
                   value={values.tentative_join_date}
                   onChange={(e) => {
                     setValues({
