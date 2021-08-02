@@ -33,15 +33,6 @@ class ProgramAndBranch(models.Model):
         return self.program + " " + self.name
 
 
-class ProgramEmailId(models.Model):
-    program = models.ForeignKey(ProgramAndBranch, on_delete=models.CASCADE)
-    year = models.IntegerField(blank=True, null=True)
-    email = models.EmailField()
-
-    def __str__(self):
-        return self.email
-
-
 class StudentProfile(models.Model):
     # Choices
     CATEGORY = (

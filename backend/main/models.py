@@ -10,6 +10,7 @@ class OfficeMails(models.Model):
     CATEGORY = (
         ('Suggestion Recipient', 'Suggestion Recipient'),
         ('Inquiry Recipient', 'Inquiry Recipient'),
+        ('Advertisement Recipient', 'Advertisement Recipient'),
         ('CC', 'CC'),
         ('BCC', 'BCC'),
     )
@@ -19,10 +20,10 @@ class OfficeMails(models.Model):
     active = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.name
+        return self.email
 
     class Meta:
-        verbose_name_plural = 'OfficeMails'
+        verbose_name_plural = 'Office Mails'
 
 
 class News(models.Model):

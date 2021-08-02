@@ -115,38 +115,38 @@ def send_email(self, request, obj, subject):
     if "_sendemail" in request.POST:
         obj.email_sent = True
         obj.save()
-        from_email = settings.SPC_EMAIL
+        from_email = settings.SERVER_EMAIL
         with get_connection(
                 username=from_email,
-                password=settings.SPC_EMAIL_PASSWORD
+                password=settings.SERVER_EMAIL_PASSWORD
         ) as connection:
             to_email = []
-            for email_id in obj.email_ids.all():
+            for email_id in obj.email_ids.filter(category="Advertisement Recipient"):
                 to_email.append(email_id.email)
-            html_content = render_to_string("company/ad_email.html", {'subject': subject,
-                                                                      'company': obj.company,
-                                                                      'designation': obj.designation,
-                                                                      'description': obj.description,
-                                                                      'tentative_join_date': obj.tentative_join_date,
-                                                                      'tentative_job_location': obj.tentative_job_location,
-                                                                      'ads': obj.ads.url if obj.ads else False,
-                                                                      'ctc': obj.ctc,
-                                                                      'gross_salary': obj.gross_salary,
-                                                                      'bonus': obj.bonus,
-                                                                      'bond': obj.bond,
-                                                                      'bond_details': obj.bond_details,
-                                                                      'resume_required': obj.resume_required,
-                                                                      'resume_shortlist_criteria': obj.resume_shortlist_criteria,
-                                                                      'aptitude_test_required': obj.aptitude_test_required,
-                                                                      'group_discussion_required': obj.group_discussion_required,
-                                                                      'number_of_technical_interviews': obj.number_of_technical_interviews,
-                                                                      'number_of_technical_tests': obj.number_of_technical_tests,
-                                                                      'number_of_hr_rounds': obj.number_of_hr_rounds,
-                                                                      'medical_test_required': obj.medical_test_required,
-                                                                      'min_gpa': obj.min_gpa,
-                                                                      'number_of_members': obj.number_of_members,
-                                                                      'other_details': obj.other_details,
-                                                                      'expiry': obj.expiry})
+            html_content = render_to_string("company/advertisement_email.html", {'subject': subject,
+                                                                                 'company': obj.company,
+                                                                                 'designation': obj.designation,
+                                                                                 'description': obj.description,
+                                                                                 'description_file': (obj.description_file if obj.description_file
+                                                                                                      else False),
+                                                                                 'tentative_join_date': obj.tentative_join_date,
+                                                                                 'tentative_job_location': obj.tentative_job_location,
+                                                                                 'ctc': obj.ctc,
+                                                                                 'gross_salary': obj.gross_salary if obj.gross_salary else False,
+                                                                                 'bonus': obj.bonus if obj.bonus else False,
+                                                                                 'bond': obj.bond if obj.bond else False,
+                                                                                 'bond_details': obj.bond_details if obj.bond_details else False,
+                                                                                 'eligible_program_branch': obj.eligible_program_branch,
+                                                                                 'mtech_stipend': obj.mtech_stipend if obj.mtech_stipend else False,
+                                                                                 'resume_required': obj.resume_required,
+                                                                                 'aptitude_test_required': obj.aptitude_test_required,
+                                                                                 'group_discussion_required': obj.group_discussion_required,
+                                                                                 'number_of_technical_interviews': obj.number_of_technical_interviews,
+                                                                                 'number_of_technical_tests': obj.number_of_technical_tests,
+                                                                                 'number_of_hr_rounds': obj.number_of_hr_rounds,
+                                                                                 'min_gpa': obj.min_gpa if obj.min_gpa else False,
+                                                                                 'min_ug_gpa': obj.min_ug_gpa if obj.min_ug_gpa else False,
+                                                                                 'expiry': obj.expiry})
             text_content = strip_tags(html_content)
             message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
                                              connection=connection)
@@ -187,7 +187,7 @@ class CompanyPersonAdmin(ImportExportActionModelAdmin):
 
 @admin.register(JobAdvertisement)
 class JobAdvertisementAdmin(ImportExportActionModelAdmin):
-    # change_form_template = "admin/adversiment_change_form.html"
+    change_form_template = "admin/send_advertisement.html"
     readonly_fields = ['creation_timestamp', ]
     resource_class = JobAdvertisementResource
     list_display = ['company', 'designation', 'ctc', 'min_gpa', 'active', 'expiry', 'email_sent']
@@ -208,7 +208,7 @@ class JobAdvertisementAdmin(ImportExportActionModelAdmin):
 
 @admin.register(InternshipAdvertisement)
 class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
-    # change_form_template = "admin/adversiment_change_form.html"
+    change_form_template = "admin/send_advertisement.html"
     readonly_fields = ['creation_timestamp', ]
     resource_class = InternshipAdvertisementResource
     list_display = ['company', 'designation', 'min_gpa', 'ctc', 'active', 'expiry', 'email_sent']

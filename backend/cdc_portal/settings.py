@@ -40,6 +40,7 @@ EMAIL_HOST = config('SERVER_EMAIL_HOST', cast=str, default="smtp.gmail.com")
 EMAIL_HOST_USER = config('SERVER_EMAIL', cast=str)
 EMAIL_HOST_PASSWORD = config('SERVER_EMAIL_PASSWORD', cast=str)
 SERVER_EMAIL = config('SERVER_EMAIL', cast=str)
+SERVER_EMAIL_PASSWORD = config('SERVER_EMAIL_PASSWORD', cast=str)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 FEEDBACK_SENDER_EMAIL = config('FEEDBACK_SENDER_EMAIL')

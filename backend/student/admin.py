@@ -1,5 +1,5 @@
 from django.contrib import admin
-from student.models import StudentProfile, Resume, ProgramAndBranch, ProgramEmailId
+from student.models import StudentProfile, Resume, ProgramAndBranch
 from .resources import StudentProfileResource
 from import_export.admin import ImportExportActionModelAdmin
 
@@ -32,15 +32,6 @@ def mark_unplaced(modeladmin, request, queryset):
 class ProgramAndBranchAdmin(admin.ModelAdmin):
     class Meta:
         model = ProgramAndBranch
-        fields = '__all__'
-
-
-@admin.register(ProgramEmailId)
-class ProgramEmailIdAdmin(admin.ModelAdmin):
-    list_display = ['email', 'program', 'year']
-
-    class Meta:
-        model = ProgramEmailId
         fields = '__all__'
 
 
