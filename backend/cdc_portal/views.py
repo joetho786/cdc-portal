@@ -57,6 +57,8 @@ class Login(views.APIView):
 class LDAPOAuth(views.APIView):
 
     def post(self, request, *args, **kwargs):
+        if not get_config_value('AllowRegistration'):
+            return Response({'Error': "Registration not started yet"}, status="400", content_type="application/json")
         if not request.data:
             return Response({'Error': "Please provide valid credentials"}, status="400", content_type="application/json")
 
