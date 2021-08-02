@@ -46,7 +46,7 @@ def export_as_csv(modeladmin, request, queryset):
 
     writer.writerow(field_names)
     for obj in queryset:
-        row = writer.writerow([getattr(obj, field) for field in field_names])
+        _ = writer.writerow([getattr(obj, field) for field in field_names])
 
     return response
 
