@@ -124,6 +124,8 @@ class Resumes(APIView):
 
     def post(self, request, format=None):
         serializer = ResumeSerializer(data=request.data)
+        if not StudentProfile.objects.filter(user=request.user).exists():
+            return Response("Create a profile before Uploading Resume", status=status.HTTP_400_BAD_REQUEST)
         if serializer.is_valid():
             serializer.save(student=StudentProfile.objects.get(user=request.user))
             return Response(serializer.data, status=status.HTTP_201_CREATED)

@@ -57,7 +57,7 @@ class Login(views.APIView):
 class LDAPOAuth(views.APIView):
 
     def post(self, request, *args, **kwargs):
-        if not get_config_value('AllowRegistration'):
+        if not get_config_value('AllowStudentLogin'):
             return Response({'Error': "Registration not started yet"}, status="400", content_type="application/json")
         if not request.data:
             return Response({'Error': "Please provide valid credentials"}, status="400", content_type="application/json")
@@ -77,6 +77,11 @@ class LDAPOAuth(views.APIView):
                 email = result.split("mail=mail: ")[1].split(",")[0].replace("}", "").replace("{", "")
                 name = result.split("givenname=givenName: ")[1].split(",")[0].replace("}", "").replace("{", "").split(" ")
                 roll_no = result.split("sn=sn: ")[1].split(",")[0].replace("(", "").replace(")", "").replace("}", "").replace("{", "")
+                changers = get_config_value('Changers')
+                for i in changers:
+                    if roll_no == i[0]:
+                        roll_no = i[1]
+                        break
             except:  # noqa: E722
                 return Response(
                     {'Error': "LDAP Server Down"},
@@ -107,6 +112,8 @@ class LDAPOAuth(views.APIView):
                     data,
                     status=status.HTTP_200_OK)
             except StudentProfile.DoesNotExist:
+                if not get_config_value('AllowRegistration'):
+                    return Response({'Error': "Registration Ended"}, status="400", content_type="application/json")
                 return Response(
                     data,
                     status=status.HTTP_201_CREATED)
