@@ -25,7 +25,10 @@ class StudentDetails(APIView):
         dic = {}
         lis1 = re.split("\d+", roll)  # noqa: W605
         lis2 = re.split("\D+", roll)  # noqa: W605
-        dic["RollNo"], dic["Year"], dic["Batch"], dic["Branch"] = lis2[-1], lis2[-2], lis1[0], lis1[1]
+        try:
+            dic["RollNo"], dic["Year"], dic["Batch"], dic["Branch"] = lis2[-1], lis2[-2], lis1[0], lis1[1]
+        except:
+            dic["RollNo"], dic["Year"], dic["Batch"], dic["Branch"] = -1, 20, 'M', 'CS'
         return dic
 
     def post(self, request, *args, **kwargs):
@@ -42,6 +45,8 @@ class StudentDetails(APIView):
         r_dic = self.get_data_from_rollno(user.username)
         data["year"] = r_dic["Year"]
         data["roll_no"] = user.username
+        if r_dic["RollNo"] == -1:
+            data["roll_no"] = "Unknown"
         getter = r_dic["Batch"] + '/' + r_dic["Branch"]
         program_branch = ProgramAndBranch.objects.filter(getter=getter)
         if not program_branch.exists():
