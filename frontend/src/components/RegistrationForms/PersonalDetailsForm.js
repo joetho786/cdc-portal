@@ -122,7 +122,7 @@ export default function PersonalDetailsForm({ p1, p2 }) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
-            <InputLabel>Person Width Disability *</InputLabel>
+            <InputLabel>Person With Disability *</InputLabel>
             <Select
               fullWidth
               required

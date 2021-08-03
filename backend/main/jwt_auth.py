@@ -3,6 +3,9 @@ from rest_framework.authentication import get_authorization_header, BaseAuthenti
 from django.contrib.auth.models import User
 
 import jwt
+from decouple import config
+
+SECRET_KEY = config('SECRET_KEY', cast=str)
 
 
 class TokenAuthentication(BaseAuthentication):
@@ -37,7 +40,7 @@ class TokenAuthentication(BaseAuthentication):
 
     def authenticate_credentials(self, token):
         try:
-            payload = jwt.decode(token, "SECRET_KEY", algorithms=["HS256"])
+            payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
             email = payload['email']
             userid = payload['id']
 

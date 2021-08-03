@@ -30,9 +30,11 @@ export default function NormsForm({ p1, p2 }) {
           Norms for Student Placements and Internships
         </h3>
         <p>
-          Fullowing are norms for students to register with Career Development
-          Cell (CDC), IIT Jodhpur, for participating in the placement and
-          internship activities facilitated by the Institute.{' '}
+          The norms for students’ placement and internship processes are
+          elucidated below. Students who register with the Career Development
+          Cell (CDC), IIT Jodhpur to participate in the placement and internship
+          are requested to read these guidelines carefully before registering
+          for the process:{' '}
         </p>
         <br />
         <h4>
@@ -40,20 +42,61 @@ export default function NormsForm({ p1, p2 }) {
         </h4>
         <ol style={{ listStyle: 'disc' }}>
           <li>
-            The Career Development Cell only assists students in the placement
-            process and does not take responsibility for placing students.
+            Placement registration is for one academic year only. Students are
+            required to register to indicate their interest in the campus
+            placement process. Only the registered students can sit for campus
+            recruitments
           </li>
           <li>
-            No Student should contact any official of a company registered with
-            the CDC.
+            A student is expected to read the Job Announcement Form (JAF)/
+            Internship Announcement Form (IAF) thoroughly before applying to a
+            particular company.
           </li>
-          <li> A Student should not provide any wrong information to CDC.</li>
+          <li>
+            Information provided by the student to the CDC should be accurate.
+            Sharing false information may lead to disciplinary action against
+            the student.
+          </li>
+          <li>
+            Once a student registers for a particular company, he/she is bound
+            to attend the entire selection process of that company.
+          </li>
+          <li>
+            During the Pre-Placement Talk by companies, a student is responsible
+            to gather necessary information related to the company or the
+            selection process well before the selection process begins.
+          </li>
+          <li>
+            No student is allowed to contact any official of a company
+            registered with the CDC. Only the student coordinators of the CDC
+            can do so through a proper channel under the guidance of the Faculty
+            Supervisor.
+          </li>
+          <li>
+            A student appearing for the virtual selection process is required to
+            log in to the test/interview platform at least 15 minutes before the
+            scheduled starting time.
+          </li>
           <font color="red">
             <li>
-              If a student is found using any unfair means during the online
-              interview/tests, he/she shall be debarred from the process and be
-              liable to severe consequences including disciplinary action.
+              Students are expected to register twice on the Career Development
+              Cell website, once for the (August-December) term and again for
+              the (January-April) term.
             </li>
+
+            <li>
+              If a student is found using any unfair means during the
+              interview/tests, he/she shall be debarred from the respective
+              company’s selection process and be liable to face disciplinary
+              action.
+            </li>
+            <br />
+            <br />
+            <b>
+              Please note: CDC only offers assistance to the students in the
+              placement process. It does not take the responsibility of placing
+              all the students.
+            </b>
           </font>
         </ol>
         <p></p>
@@ -67,62 +110,79 @@ export default function NormsForm({ p1, p2 }) {
         <ol>
           <li>
             {' '}
-            If a Student registers to interview with a company, it is mandatory
-            for the Student to participate in the entire process starting from
-            presentation by the company to the interview.
+            Only the students graduating in the year 2022 are eligible to
+            participate in the placement season 2021- 2022.
           </li>
           <li>
             {' '}
-            Inappropriate behavior is unacceptable by a Student during placement
-            or internship process, which may hamper the Company-Institute
-            relationship or Institute pulicies of decorum.
+            It is mandatory for a student who has applied to a particular
+            company to participate in the entire selection process conducted by
+            that company.
           </li>
           <li>
             {' '}
-            It is mandatory for a student to fullow the dress code laid down by
-            the CDC.
+            It is mandatory for a student to be dressed in business formals
+            during the selection process.
           </li>
           <li>
             {' '}
-            It is suggested for a student to accept an offer made by a company.
-            A Student, who is offered a job by a company, will be out of the
-            placement process irrespective of whether he/she accepts the offer.
+            If a student receives a Pre-Placement Offer (PPO), he/she must
+            accept or reject the offer before appearing for the selection
+            process of other companies. If the student accepts the PPO then
+            he/she will be considered out of the placement process of the
+            subsequent companies. The student will have to reject the PPO to be
+            allowed to appear in the selection process of other companies.
           </li>
           <li>
             {' '}
-            In case a Student receives a Pre-Placement Offer (PPO), he/she must
-            accept or reject the offer before appearing for the next round of
-            the Interviews. Once the Student accepts the PPO, he/she will be
-            immediately out of the placement process. Only when the Student
-            rejects the PPO, can he/she participate in the further placement
-            rounds.
+            If a student applies for a company but misses to appear in any stage
+            of the selection process, he/she shall be debarred from applying to
+            the following 3 companies of his/her domain that come for
+            placements.
+          </li>
+          <li>
+            {' '}
+            If a student gets multiple job offers on a single day, then he/she
+            should select one out of those and inform the CDC about his/her
+            decision within the minimum stipulated time period.
+          </li>
+          <li>
+            <font color="red">
+              {' '}
+              Suppose a student is extended an offer from a company, in that
+              case, he/she will be out of campus recruitment process
+              irrespective of the student’s response(accept/reject) to the
+              offer. He/She is advised to accept the extended offer
+            </font>
+          </li>
+          <li>
+            A student who gets placed at a CTC of below Rs 5 Lakhs shall be
+            given an option to apply to the companies that offer a CTC of above
+            Rs 5 Lakhs. Once he/she has been offered a package above 5 lakhs,
+            he/she will be out of the placement process
           </li>
           <font color="red">
             <li>
               {' '}
-              If a student registers and fails to show up at any stage of the
-              whule process he/she shall be debarred from registering in the
-              next 3 companies of the domain that applies to the candidate.
+              Failure to disclose information regarding PPO to the CDC may lead
+              to disciplinary action against the student.
+            </li>
+            <li>
+              Any inappropriate behaviour by a student during the selection
+              process of a company that hampers the Institute’s relationship
+              with that company or hurts the reputation of the Institute shall
+              call for strict disciplinary action against the student concerned.
             </li>
           </font>
-          <li>
-            {' '}
-            If a Student has multiple job offers on a single day, he/she should
-            select one, and inform the same to CDC within the minimum time
-            period specified by the CDC.
-          </li>
-          <li>
-            {' '}
-            Only the batch of Students graduating in summer 2021 is eligible to
-            participate in the 2020 placement process.{' '}
-            <font color="red">
-              CDC has the sule authority to accommodate any exception in this
-              regard under very special circumstances.
-            </font>
-          </li>
         </ol>
-        <p></p>
-
+        <br />
+        <p>
+          <b>
+            Please note: CDC reserves the right to modify the norms as and when
+            required
+          </b>
+        </p>
+        <bt />
         <br />
 
         <h4 class="h4">
@@ -132,56 +192,66 @@ export default function NormsForm({ p1, p2 }) {
         <ol>
           <li>
             {' '}
-            It is strongly recommended to a student that he/she should accept an
-            internship offer made by a company. A Student, who is offered an
-            internship by a company, will automatically be out of the internship
-            process irrespective of whether the student accepts the internship
-            or not.
+            Only the batch of students graduating in 2023 is eligible to
+            participate in the campus recruitment season 2021-2022
           </li>
           <li>
             {' '}
-            As an Intern in a company, a student is expected to create a
-            positive image about himself and the Institute. Any negative
-            feedback received from the company during a student’s internship
-            period will be considered seriously and an appropriate action will
-            be taken.
+            A student must inform regarding his/her PPO to the CDC within the
+            same day of the offer being made
           </li>
           <font color="red">
             <li>
-              {' '}
-              . Post-acceptance, If a student fails to join the internship of a
-              company that extended the offer, then he/she shall be denied from
-              applying to any company on Day 1* of the successive placement
-              season.
+              Suppose a student is extended an internship from a company, in
+              that case, he/she will be out of campus recruitment process
+              irrespective of the student’s response(accept/reject) to the
+              offer. He/She is advised to accept the extended internship
             </li>
           </font>
           <br />
-          <font color="red">
-            <p>
-              *Day 1 refers to the first set of companies of the domain that
-              applies to the candidate.
-            </p>
-          </font>
-          <font color="red">
-            <li>
-              If a student registers and fails to show up at any stage of the
-              whule process he/she shall be debarred from registering in the
-              next 3 companies of the domain that applies to the candidate.
-            </li>
-          </font>
+
+          <li>
+            If a student applies to a company but fails to show up at any stage
+            of the selection process, then he/she shall be debarred from
+            applying to the following 3 companies of his/her domain that come
+            for internships
+          </li>
+          <li>
+            If a student fails to join the internship of a company that extended
+            him/her the offer on Day 1, Day 2 or Day 3 post-acceptance, he/she
+            shall be denied from applying to any company on Day 1* of the
+            successive placement season. *Day 1 refers to the first set of
+            companies of the domain that apply to the candidate
+          </li>
+          <li>
+            As an Intern in a company, a student is expected to create a
+            positive image about himself/herself and the Institute. Any negative
+            feedback received from the company during a student’s internship
+            period will be taken seriously. It could lead to the debarment from
+            the placement process of the other companies or any other
+            disciplinary action as may deem appropriate.
+          </li>
+          <li>
+            Any inappropriate behaviour by a student during the internship at a
+            company that hampers the Institute’s relationship with that company
+            or hurts the reputation of the Institute shall call for strict
+            disciplinary action against the student concerned.
+          </li>
         </ol>
         <p></p>
         <br />
         <p style={{ fontSize: '15px' }}>
           <b>
             {' '}
-            Viulation of any of the above norms will lead to debarring the
-            student from the entire placement process.
+            Please note: CDC reserves the right to take disciplinary action
+            against the student who violates the aforementioned norms of the
+            Placement/ Internship Process
           </b>{' '}
-          Further, Career Development Cell reserves the right to inform any
-          viulation by a Student to Office of Academics and/or the Office of
-          Students for a suitable disciplinary action.{' '}
         </p>
+        <br />
+        <b>
+          <i>*The norms are last updated on 30-07-2021*</i>
+        </b>
         <br />
         <br />
       </div>

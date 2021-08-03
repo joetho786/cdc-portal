@@ -90,6 +90,7 @@ export default function RecruiterRegister() {
         //console.log(res.data);
         if (res.status === 201) {
           window.location = 'recruiter-login';
+          setLoading(false);
         }
       })
       .catch(function (error) {

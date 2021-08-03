@@ -171,8 +171,8 @@ function ViewAdvertisement(props) {
                 <br />
               </Grid>
               <Grid item sm={6}>
-                <div className={classes.av}>: {data.min_ug_gpa}</div>
                 <div className={classes.av}>: {data.min_gpa}</div>
+                <div className={classes.av}>: {data.min_ug_gpa}</div>
               </Grid>
             </Grid>
           </React.Fragment>
