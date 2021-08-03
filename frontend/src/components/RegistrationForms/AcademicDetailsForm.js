@@ -124,11 +124,11 @@ export default function AcademicDetailsForm({ p1, p2 }) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            name="10th Board %"
-            label="10th Board %"
+            name="10th Board %/CGPA"
+            label="10th Board %/CGPA"
             type="number"
             fullWidth
-            autoComplete="10th Board %"
+            autoComplete="10th Board %/CGPA"
             value={p1.bp10}
             onChange={handleChangebp10}
           />
