@@ -27,7 +27,7 @@ class StudentDetails(APIView):
         lis2 = re.split("\D+", roll)  # noqa: W605
         try:
             dic["RollNo"], dic["Year"], dic["Batch"], dic["Branch"] = lis2[-1], lis2[-2], lis1[0], lis1[1]
-        except:
+        except:  # noqa: E722
             dic["RollNo"], dic["Year"], dic["Batch"], dic["Branch"] = -1, 20, 'M', 'CS'
         return dic
 
