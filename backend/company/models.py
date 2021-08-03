@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import pre_save, post_delete
 from uuid import uuid4
 from django.shortcuts import reverse
-from student.models import ProgramAndBranch, StudentProfile, ProgramEmailId, Resume
+from student.models import ProgramAndBranch, StudentProfile, Resume
+from main.models import OfficeMails
 # Create your models here.
 
 
@@ -74,7 +75,7 @@ class BaseAdvertisement(models.Model):
     min_ug_gpa = models.FloatField(null=True, blank=True, default=0.0)
     number_of_members = models.PositiveIntegerField(null=True, blank=True)
     other_details = models.TextField(null=True, blank=True)
-    email_ids = models.ManyToManyField(ProgramEmailId, blank=True)
+    email_ids = models.ManyToManyField(OfficeMails, blank=True)
     email_sent = models.BooleanField(default=False)
     creation_timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     # extra
@@ -157,7 +158,7 @@ class JobAdvertisement(BaseAdvertisement):
 
 
 class InternshipAdvertisement(BaseAdvertisement):
-    training_period = models.CharField(max_length=50)
+    training_period = models.CharField(null=True, blank=True, max_length=50)
     btech_stipend = models.FloatField(null=True, blank=True)
     mtech_stipend = models.FloatField(null=True, blank=True)
     msc_stipend = models.FloatField(null=True, blank=True)
