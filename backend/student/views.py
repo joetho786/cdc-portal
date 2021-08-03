@@ -238,13 +238,13 @@ class SendSuggestionsAndInquiry(APIView):
         feedback_subject = data['subject']
         feedback_text = data['text']
         feedback_category = data['category']
-        from_email = settings.FEEDBACK_SENDER_EMAIL
+        from_email = settings.SERVER_EMAIL
         CCList = [i.email for i in OfficeMails.objects.filter(category="CC")]
         BCCList = [i.email for i in OfficeMails.objects.filter(category="BCC")]
         # Send mail
         with get_connection(
                 username=from_email,
-                password=settings.FEEDBACK_SENDER_EMAIL_PASSWORD
+                password=settings.SERVER_EMAIL_PASSWORD
         ) as connection:
             subject = feedback_subject
             to_email = [send_mail_to, ]
@@ -261,10 +261,10 @@ class SendSuggestionsAndInquiry(APIView):
             message.send()
 
         # Confirmation mail to user
-        from_success_email = settings.FEEDBACK_RESPONDER_EMAIL
+        from_success_email = settings.SERVER_EMAIL
         with get_connection(
                 username=from_success_email,
-                password=settings.FEEDBACK_RESPONDER_EMAIL_PASSWORD
+                password=settings.SERVER_EMAIL_PASSWORD
         ) as connection:
             subject = feedback_category + ' ' + 'received'
             to_email = [email, ]
