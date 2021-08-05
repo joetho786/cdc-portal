@@ -119,7 +119,7 @@ const Profile = () => {
       })
       .catch(function (error) {
         if (error.response) {
-          setError(error.response.data);
+          setError('Invalid Form. All * fields are required');
         }
         setLoading(false);
       });
