@@ -2,6 +2,8 @@ from django.contrib import admin
 from student.models import StudentProfile, Resume, ProgramAndBranch
 from .resources import StudentProfileResource
 from import_export.admin import ImportExportActionModelAdmin
+import csv
+from django.http import HttpResponse
 
 
 class ResumeInline(admin.StackedInline):
@@ -28,6 +30,22 @@ def mark_unplaced(modeladmin, request, queryset):
     queryset.update(placed=False)
 
 
+def export_as_csv(modeladmin, request, queryset):
+
+    meta = modeladmin.model._meta
+    field_names = [field.name for field in meta.fields]
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
+    writer = csv.writer(response)
+
+    writer.writerow(field_names)
+    for obj in queryset:
+        _ = writer.writerow([getattr(obj, field) for field in field_names])
+
+    return response
+
+
 @admin.register(ProgramAndBranch)
 class ProgramAndBranchAdmin(admin.ModelAdmin):
     class Meta:
@@ -44,7 +62,7 @@ class StudentProfileAdmin(ImportExportActionModelAdmin):
     list_filter = ['program_branch', 'year', 'registration_timestamp', 'placed']
     ordering = ['roll_no', ]
     search_fields = ['roll_no', 'user__first_name', 'user__last_name']
-    actions = [ban, mark_placed, mark_unplaced]
+    actions = [ban, mark_placed, mark_unplaced, export_as_csv]
 
     class Meta:
         model = StudentProfile
@@ -58,7 +76,7 @@ class ResumeAdmin(admin.ModelAdmin):
     list_display = ['get_roll_no', 'student', 'get_gpa', 'reference', 'file', 'is_verified', 'timestamp', ]
     search_fields = ['student__user__first_name', 'student__user__last_name', 'student__user__username']
     list_filter = ['is_verified', 'timestamp', 'student__program_branch', 'student__year']
-    actions = [approve_resumes, unapprove_resumes]
+    actions = [approve_resumes, unapprove_resumes, export_as_csv]
 
     def get_roll_no(self, instance):
         return instance.student.roll_no
