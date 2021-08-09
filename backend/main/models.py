@@ -292,6 +292,7 @@ class CourseHighlights(models.Model):
     program = models.CharField(max_length=64)
     title = models.CharField(max_length=64)
     description = RichTextUploadingField()
+    brochure = models.FileField(upload_to='department_brochure', null=True, blank=True)
 
     def __str__(self):
         return self.title
