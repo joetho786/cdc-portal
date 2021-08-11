@@ -160,12 +160,12 @@ function UploadResume() {
       </Grid>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
-          Resume Uplaoded Suceessfully!
+          Resume Uploaded Suceessfully!
         </Alert>
       </Snackbar>
       <Snackbar open={error} autoHideDuration={6000} onClose={handleCloseerror}>
         <Alert onClose={handleCloseerror} severity="error">
-          Resume Upload Failed Try Later
+          Resume Upload Failed, Try Again Later
         </Alert>
       </Snackbar>
     </Grid>
