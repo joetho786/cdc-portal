@@ -5,6 +5,13 @@ import random
 from django.utils.deconstruct import deconstructible
 
 
+def get_email(self):
+    return self.email
+
+
+User.add_to_class("__str__", get_email)
+
+
 @deconstructible
 class ProgramAndBranch(models.Model):
     """
@@ -99,10 +106,10 @@ pre_save.connect(event_pre_save_receiver_student, sender=StudentProfile)
 
 
 def event_pre_save_receiver_resume(sender, instance, *args, **kwargs):
-    if instance.student.user.first_name not in instance.file.name or \
-            instance.student.user.last_name not in instance.file.name or \
-            instance.student.user.username not in instance.file.name or \
-            'IITJodhpur.pdf' not in instance.file.name \
+    if (instance.student.user.first_name not in instance.file.name or
+            instance.student.user.last_name not in instance.file.name or
+            instance.student.user.username not in instance.file.name or
+            'IITJodhpur.pdf' not in instance.file.name) \
             and instance._state.adding is True:
         instance.file.name = instance.student.user.first_name + '_' + instance.student.user.last_name \
             + '_' + instance.student.user.username + '_' + str(random.randint(1, 10001)) + \
