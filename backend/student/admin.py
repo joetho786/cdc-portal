@@ -62,7 +62,7 @@ class StudentProfileAdmin(ImportExportActionModelAdmin):
     list_filter = ['program_branch', 'year', 'registration_timestamp', 'placed']
     ordering = ['roll_no', ]
     search_fields = ['roll_no', 'user__first_name', 'user__last_name']
-    actions = [ban, mark_placed, mark_unplaced, export_as_csv]
+    actions = ImportExportActionModelAdmin.actions + [ban, mark_placed, mark_unplaced, export_as_csv]
 
     class Meta:
         model = StudentProfile

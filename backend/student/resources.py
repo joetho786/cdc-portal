@@ -14,7 +14,7 @@ class StudentProfileResource(resources.ModelResource):
 
     program_branch = Field(
         column_name='Program and Branch',
-        attribute='program_branch__name')
+        attribute='program_branch')
 
     class Meta:
         model = StudentProfile
