@@ -221,10 +221,13 @@ class AppliedOffers(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
         ad_id = data.pop('ad_id')
         ad = get_object_or_404(model_ad, id=ad_id)
-        rs_id = data.pop('resume')
-        res = get_object_or_404(Resume, id=rs_id)
         student = get_object_or_404(StudentProfile, user=user)
-        model.objects.create(profile=ad, resume=res, student=student, company=ad.company)
+        if not ad.allow_without_resume:
+            rs_id = data.pop('resume')
+            res = get_object_or_404(Resume, id=rs_id)
+            model.objects.create(profile=ad, resume=res, student=student, company=ad.company)
+        else:
+            model.objects.create(profile=ad, student=student, company=ad.company)
         return Response(status=status.HTTP_200_OK)
 
 

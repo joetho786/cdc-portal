@@ -124,6 +124,24 @@ function Offers() {
         //setLoading(false);
       });
   }
+  function handelApply2() {
+    var form = new FormData();
+    form.append('type', selcted.type);
+    form.append('ad_id', selcted.id);
+    instance
+      .post('/student/applied_offers/', form)
+      .then((res) => {
+        if (res.status === 200) {
+          window.location = '/student-dashboard/offers';
+        }
+      })
+      .catch(function (error) {
+        if (error.response) {
+          //setError(error.response.data['Error']);
+        }
+        //setLoading(false);
+      });
+  }
   return (
     <React.Fragment>
       <Grid container spacing={2}>
@@ -194,8 +212,12 @@ function Offers() {
                             className={classes.button}
                             endIcon={<SendIcon />}
                             onClick={(e) => {
-                              handleOpen();
                               setselcted(row);
+                              if (row.allow_without_resume) {
+                                handelApply2();
+                              } else {
+                                handleOpen();
+                              }
                             }}
                           >
                             Apply
@@ -259,8 +281,12 @@ function Offers() {
                             className={classes.button}
                             endIcon={<SendIcon />}
                             onClick={(e) => {
-                              handleOpen();
                               setselcted(row);
+                              if (row.allow_without_resume) {
+                                handelApply2();
+                              } else {
+                                handleOpen();
+                              }
                             }}
                           >
                             Apply

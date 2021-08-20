@@ -47,6 +47,7 @@ class BaseAdvertisement(models.Model):
     expiry = models.DateTimeField(null=True, blank=True)
     active = models.BooleanField(default=False)
     show_company = models.BooleanField(default=False)
+    allow_without_resume = models.BooleanField(default=False)
     # job prof
     id = models.UUIDField(primary_key=True, default=uuid4)
     company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE, null=True, blank=True)
@@ -179,7 +180,7 @@ class BaseOffer(models.Model):
     company = models.ForeignKey(CompanyProfile, on_delete=models.SET_NULL, null=True)
     is_accepted = models.BooleanField(default=False)
     ppo = models.BooleanField(default=False)
-    resume = models.ForeignKey(Resume, on_delete=models.PROTECT, null=True)
+    resume = models.ForeignKey(Resume, on_delete=models.PROTECT, null=True, blank=True)
     application_timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     @property
