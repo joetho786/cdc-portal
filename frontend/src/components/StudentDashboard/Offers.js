@@ -66,12 +66,14 @@ function Offers() {
       .then((res) => {
         console.log(res.data);
         let dat = [];
-        res.data.Internships.forEach((element) => {
-          element.name = element.company.name;
-          element.type = 'Intern';
-          dat.push(element);
-        });
-        setinternData(dat);
+        try {
+          res.data.Internships.forEach((element) => {
+            element.name = element.company.name;
+            element.type = 'Intern';
+            dat.push(element);
+          });
+          setinternData(dat);
+        } catch (e) {}
         dat = [];
         res.data.Jobs.forEach((element) => {
           element.name = element.company.name;
@@ -126,6 +128,7 @@ function Offers() {
   }
   function handelApply2() {
     var form = new FormData();
+    console.log(selcted);
     form.append('type', selcted.type);
     form.append('ad_id', selcted.id);
     instance
@@ -243,7 +246,7 @@ function Offers() {
                   color="primary"
                   gutterBottom
                 >
-                  Intern Offers
+                  Job Offers
                 </Typography>
                 <Table size="small">
                   <TableHead>
