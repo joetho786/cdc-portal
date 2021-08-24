@@ -269,8 +269,8 @@ class JobOfferAdmin(ImportExportActionModelAdmin):
     list_filter = ['company', 'is_accepted', 'profile']
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
-                     'student__user__last_name', ]
-    actions = [get_zipped_resumes, mark_placed, mark_ppo]
+                     'student__user__last_name', 'student__roll_no']
+    actions = ImportExportActionModelAdmin.actions
 
     class Meta:
         model = JobOffer
