@@ -134,6 +134,10 @@ def send_email(self, request, obj, subject):
         obj.email_sent = True
         obj.save()
         from_email = settings.SERVER_EMAIL
+        try:
+            mtech_stipend = obj.mtech_stipend
+        except AttributeError:
+            mtech_stipend = False
         with get_connection(
                 username=from_email,
                 password=settings.SERVER_EMAIL_PASSWORD
@@ -155,7 +159,7 @@ def send_email(self, request, obj, subject):
                                                                                  'bond': obj.bond if obj.bond else False,
                                                                                  'bond_details': obj.bond_details if obj.bond_details else False,
                                                                                  'eligible_program_branch': obj.eligible_program_branch,
-                                                                                 'mtech_stipend': obj.mtech_stipend if obj.mtech_stipend else False,
+                                                                                 'mtech_stipend': mtech_stipend,
                                                                                  'resume_required': obj.resume_required,
                                                                                  'aptitude_test_required': obj.aptitude_test_required,
                                                                                  'group_discussion_required': obj.group_discussion_required,
