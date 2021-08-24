@@ -129,7 +129,7 @@ class BaseOfferResource(resources.ModelResource):
 
 class InternshipOfferResource(resources.ModelResource):
     def dehydrate_resume_link(self, offer):
-        if(offer.resume!=None):
+        if(offer.resume is not None):
             return 'https://spc.iitj.ac.in%s' % (offer.resume.file.url)
         return 'No Resume'
 
@@ -211,9 +211,10 @@ class InternshipOfferResource(resources.ModelResource):
                         'xii_percentage',
                         'nationality', 'current_address', 'permanent_address', 'physical_disability',)
 
+
 class JobOfferResource(resources.ModelResource):
     def dehydrate_resume_link(self, offer):
-        if(offer.resume!=None):
+        if(offer.resume is not None):
             return 'https://spc.iitj.ac.in%s' % (offer.resume.file.url)
         return 'No Resume'
 
@@ -294,6 +295,7 @@ class JobOfferResource(resources.ModelResource):
                         'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
                         'xii_percentage',
                         'nationality', 'current_address', 'permanent_address', 'physical_disability',)
+
 
 class BaseAdvertisementResource(resources.ModelResource):
     eligible_program_branch = Field(attribute='eligible_program_branch',

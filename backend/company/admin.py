@@ -275,6 +275,7 @@ class JobOfferAdmin(ImportExportActionModelAdmin):
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
                      'student__user__last_name', 'student__roll_no']
     ImportExportActionModelAdmin.actions = ImportExportActionModelAdmin.actions
+
     class Meta:
         model = JobOffer
         fields = '__all__'
