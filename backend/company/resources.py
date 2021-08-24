@@ -127,14 +127,11 @@ class BaseOfferResource(resources.ModelResource):
                         'nationality', 'current_address', 'permanent_address', 'physical_disability',)
 
 
-class JobOfferResource(BaseOfferResource):
-    class Meta:
-        model = JobOffer
-
-
 class InternshipOfferResource(resources.ModelResource):
     def dehydrate_resume_link(self, offer):
-        return 'https://spc.iitj.ac.in%s' % (offer.resume.file.url)
+        if(offer.resume is not None):
+            return 'https://spc.iitj.ac.in%s' % (offer.resume.file.url)
+        return 'No Resume'
 
     roll_no = Field(
         column_name='Roll No',
@@ -204,6 +201,91 @@ class InternshipOfferResource(resources.ModelResource):
 
     class Meta:
         model = InternshipOffer
+        fields = ('resume_link', 'roll_no', 'name', 'email', 'year', 'program_branch', 'gpa', 'ug_gpa',
+                  'phone', 'category',  'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
+                  'xii_percentage', 'nationality', 'current_address', 'permanent_address', 'physical_disability',)
+        export_order = ('resume_link', 'roll_no', 'name', 'email', 'year', 'program_branch', 'gpa', 'ug_gpa',
+                        'phone',
+                        'category',
+                        'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
+                        'xii_percentage',
+                        'nationality', 'current_address', 'permanent_address', 'physical_disability',)
+
+
+class JobOfferResource(resources.ModelResource):
+    def dehydrate_resume_link(self, offer):
+        if(offer.resume is not None):
+            return 'https://spc.iitj.ac.in%s' % (offer.resume.file.url)
+        return 'No Resume'
+
+    roll_no = Field(
+        column_name='Roll No',
+        attribute='student__roll_no')
+    name = Field(
+        column_name='Name',
+        attribute='student__user__get_full_name')
+    email = Field(
+        column_name='Email ID',
+        attribute='student__user__email')
+    year = Field(
+        column_name='Current year of study',
+        attribute='student__year')
+    program_branch = Field(
+        column_name='Program and Branch',
+        attribute='student__program_branch__name')
+    gpa = Field(
+        column_name='GPA',
+        attribute='student__gpa')
+    ug_gpa = Field(
+        column_name='UG GPA',
+        attribute='student__ug_gpa')
+    phone = Field(
+        column_name='Phone Number',
+        attribute='student__phone')
+    category = Field(
+        column_name='Category',
+        attribute='student__get_category_display')
+    jee_air = Field(
+        column_name='JEE AIR',
+        attribute='student__jee_air')
+    physical_disability = Field(
+        column_name='Physical Disability',
+        attribute='student__physical_disability')
+    current_address = Field(
+        column_name='Current Address',
+        attribute='student__current_address')
+    permanent_address = Field(
+        column_name='Permanent Address',
+        attribute='student__permanent_address')
+    x_year = Field(
+        column_name='Class X Year',
+        attribute='student__x_year')
+    x_board_name = Field(
+        column_name='Class X Board',
+        attribute='student__x_board_name')
+    x_percentage = Field(
+        column_name='Class X Percentage/CGPA',
+        attribute='student__x_percentage')
+    xii_year = Field(
+        column_name='Class XII Year',
+        attribute='student__xii_year')
+    xii_board_name = Field(
+        column_name='Class XII Board',
+        attribute='student__xii_board_name')
+    xii_percentage = Field(
+        column_name='Class XII Percentage/CGPA',
+        attribute='student__xii_percentage')
+    nationality = Field(
+        column_name='Nationality',
+        attribute='student__get_nationality_display',
+    )
+    resume_link = Field(
+        column_name='Link to resume',
+        attribute='resume__file__url'
+    )
+
+    class Meta:
+        model = JobOffer
         fields = ('resume_link', 'roll_no', 'name', 'email', 'year', 'program_branch', 'gpa', 'ug_gpa',
                   'phone', 'category',  'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
                   'xii_percentage', 'nationality', 'current_address', 'permanent_address', 'physical_disability',)
