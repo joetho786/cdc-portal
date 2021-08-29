@@ -123,7 +123,7 @@ const StudentRegister = () => {
   };
 
   const handleSubmit = () => {
-    console.log(values1);
+    // console.log(values1);
     setLoading(true);
     var form = new FormData();
     try {

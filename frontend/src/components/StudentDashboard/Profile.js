@@ -88,7 +88,7 @@ const Profile = () => {
   };
 
   const handleSubmit = () => {
-    console.log(values1);
+    // console.log(values1);
     setLoading(true);
     var form = new FormData();
     try {
@@ -141,7 +141,7 @@ const Profile = () => {
         } else {
           setCheck(true);
         }
-        console.log(res.data);
+        // console.log(res.data);
         setValues1({
           birthday: data.dob,
           phonenumber: data.phone,
