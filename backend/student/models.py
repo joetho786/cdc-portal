@@ -5,13 +5,6 @@ import random
 from django.utils.deconstruct import deconstructible
 
 
-def get_email(self):
-    return self.email
-
-
-User.add_to_class("__str__", get_email)
-
-
 @deconstructible
 class ProgramAndBranch(models.Model):
     """
@@ -58,7 +51,10 @@ class StudentProfile(models.Model):
     year = models.SmallIntegerField()
     program_branch = models.ForeignKey(ProgramAndBranch, on_delete=models.SET_NULL, null=True)
     gpa = models.FloatField()
+    ug_college = models.TextField(null=True, blank=True,default='')
     ug_gpa = models.FloatField(null=True, blank=True, default=0.0)
+    ug_passing_year = models.SmallIntegerField(null=True, blank=True, default=0)
+    ug_program_branch= models.TextField(null=True, blank=True,default='')
     phone = models.CharField(max_length=15)
     dob = models.DateField()
     category = models.CharField(max_length=10, choices=CATEGORY)
@@ -106,13 +102,13 @@ pre_save.connect(event_pre_save_receiver_student, sender=StudentProfile)
 
 
 def event_pre_save_receiver_resume(sender, instance, *args, **kwargs):
-    if (instance.student.user.first_name not in instance.file.name or
-            instance.student.user.last_name not in instance.file.name or
-            instance.student.roll_no not in instance.file.name or
-            'IITJodhpur.pdf' not in instance.file.name) \
+    if instance.student.user.first_name not in instance.file.name or \
+            instance.student.user.last_name not in instance.file.name or \
+            instance.student.user.username not in instance.file.name or \
+            'IITJodhpur.pdf' not in instance.file.name \
             and instance._state.adding is True:
         instance.file.name = instance.student.user.first_name + '_' + instance.student.user.last_name \
-            + '_' + instance.student.roll_no + '_' + str(random.randint(1, 10001)) + \
+            + '_' + instance.student.user.username + '_' + str(random.randint(1, 10001)) + \
             '_' + 'IITJodhpur.pdf'
     if not instance.reference:
         instance.reference = instance.file.name

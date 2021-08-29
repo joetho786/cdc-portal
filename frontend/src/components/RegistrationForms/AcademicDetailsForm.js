@@ -6,8 +6,17 @@ export default function AcademicDetailsForm({ p1, p2 }) {
   const handleChangegpa = (event) => {
     p2({ ...p1, ...{ gpa: event.target.value } });
   };
+  const handleChangeugclg = (event) => {
+    p2({ ...p1, ...{ ugclg: event.target.value } });
+  };
   const handleChangeugpa = (event) => {
     p2({ ...p1, ...{ ugpa: event.target.value } });
+  };
+  const handleChangeugyear = (event) => {
+    p2({ ...p1, ...{ ugyear: event.target.value } });
+  };
+  const handleChangeugprbr = (event) => {
+    p2({ ...p1, ...{ ugprbr: event.target.value } });
   };
   const handleChangejeeair = (event) => {
     p2({ ...p1, ...{ jeeair: event.target.value } });
@@ -48,6 +57,16 @@ export default function AcademicDetailsForm({ p1, p2 }) {
         </Grid>
         <Grid item xs={12}>
           <TextField
+            name="U.G College"
+            label="U.G College"
+            type="text"
+            fullWidth
+            autoComplete="U.G College"
+            helperText="This field is only for P.G. students"
+            value={p1.ugclg}
+            onChange={handleChangeugclg}
+          />
+          <TextField
             name="U.G GPA"
             label="U.G GPA"
             type="number"
@@ -56,6 +75,26 @@ export default function AcademicDetailsForm({ p1, p2 }) {
             helperText="This field is only for P.G. students"
             value={p1.ugpa}
             onChange={handleChangeugpa}
+          />
+          <TextField
+            name="U.G Passing Year"
+            label="U.G Passing Year"
+            type="number"
+            fullWidth
+            autoComplete="U.G Passing Year"
+            helperText="This field is only for P.G. students"
+            value={p1.ugyear}
+            onChange={handleChangeugyear}
+          />
+          <TextField
+            name="U.G Program And Branch"
+            label="U.G Program And Branch"
+            type="text"
+            fullWidth
+            autoComplete="U.G Program And Branch"
+            helperText="This field is only for P.G. students"
+            value={p1.ugprbr}
+            onChange={handleChangeugprbr}
           />
         </Grid>
         <Grid item xs={12}>

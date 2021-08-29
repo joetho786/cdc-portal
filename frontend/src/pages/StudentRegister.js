@@ -77,7 +77,10 @@ const StudentRegister = () => {
   });
   const [values2, setValues2] = React.useState({
     gpa: '',
+    ugclg: '',
     ugpa: '',
+    ugyear: '',
+    ugprbr: '',
     jeeair: '',
     by12: '',
     by10: '',
@@ -120,14 +123,17 @@ const StudentRegister = () => {
   };
 
   const handleSubmit = () => {
-    //console.log(values1);
+    console.log(values1);
     setLoading(true);
     var form = new FormData();
     try {
       form.append('std_image', values1.photo, values1.photo.name);
     } catch {}
     form.append('gpa', values2.gpa);
+    form.append('ug_college', values2.ugclg);
     form.append('ug_gpa', values2.ugpa);
+    form.append('ug_passing_year', values2.ugyear);
+    form.append('ug_program_branch', values2.ugprbr);
     form.append('phone', values1.phonenumber);
     form.append('dob', values1.birthday);
     form.append('category', values1.category);
