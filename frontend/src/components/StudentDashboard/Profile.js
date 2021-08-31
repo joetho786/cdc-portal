@@ -66,7 +66,10 @@ const Profile = () => {
   });
   const [values2, setValues2] = React.useState({
     gpa: '',
+    ugclg: '',
     ugpa: '',
+    ugyear: '',
+    ugprbr: '',
     jeeair: '',
     by12: '',
     by10: '',
@@ -85,14 +88,17 @@ const Profile = () => {
   };
 
   const handleSubmit = () => {
-    //console.log(values1);
+    // console.log(values1);
     setLoading(true);
     var form = new FormData();
     try {
       form.append('std_image', values1.photo, values1.photo.name);
     } catch {}
     form.append('gpa', values2.gpa);
+    form.append('ug_college', values2.ugclg);
     form.append('ug_gpa', values2.ugpa);
+    form.append('ug_passing_year', values2.ugyear);
+    form.append('ug_program_branch', values2.ugprbr);
     form.append('phone', values1.phonenumber);
     form.append('dob', values1.birthday);
     form.append('category', values1.category);
@@ -135,7 +141,7 @@ const Profile = () => {
         } else {
           setCheck(true);
         }
-        console.log(res.data);
+        // console.log(res.data);
         setValues1({
           birthday: data.dob,
           phonenumber: data.phone,
@@ -150,7 +156,10 @@ const Profile = () => {
           year: data.year,
           roll_no: data.roll_no,
           gpa: data.gpa,
+          ugclg: data.ug_college,
           ugpa: data.ug_gpa,
+          ugyear: data.ug_passing_year,
+          ugprbr: data.ug_program_branch,
           jeeair: data.jee_air,
           by12: data.xii_year,
           by10: data.x_year,
