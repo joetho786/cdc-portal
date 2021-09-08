@@ -275,7 +275,7 @@ class JobOfferAdmin(ImportExportActionModelAdmin):
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
                      'student__user__last_name', 'student__roll_no']
-    actions = ImportExportActionModelAdmin.actions
+    ImportExportActionModelAdmin.actions = ImportExportActionModelAdmin.actions
 
     class Meta:
         model = JobOffer
