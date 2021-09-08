@@ -168,7 +168,7 @@ def send_email(self, request, obj, subject):
                                                                                  'number_of_hr_rounds': obj.number_of_hr_rounds,
                                                                                  'min_gpa': obj.min_gpa if obj.min_gpa else False,
                                                                                  'min_ug_gpa': obj.min_ug_gpa if obj.min_ug_gpa else False,
-                                                                                 'other_details': obj.other_details if other_detailselse False,
+                                                                                 'other_details': obj.other_details if obj.other_details else False,
                                                                                  'expiry': obj.expiry})
             text_content = strip_tags(html_content)
             message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
