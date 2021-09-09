@@ -177,7 +177,7 @@ function Home() {
                         {row.is_accepted ? (
                           <Chip color="green" label="Accepted" />
                         ) : (
-                          <Chip label="Pending" />
+                          <Chip label="Applied" />
                         )}
                       </TableCell>
                     </TableRow>
@@ -235,7 +235,7 @@ function Home() {
                         {row.is_accepted ? (
                           <Chip color="green" label="Accepted" />
                         ) : (
-                          <Chip label="Pending" />
+                          <Chip label="Applied" />
                         )}
                       </TableCell>
                     </TableRow>
