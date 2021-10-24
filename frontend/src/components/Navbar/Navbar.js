@@ -222,6 +222,9 @@ export default function Navbar() {
                     /* Student Zone */
                     <ul>
                       <li onClick={() => setIsChecked(!isChecked)}>
+                        <a href="/student-dashboard/">Dashboard</a>
+                      </li>
+                      <li onClick={() => setIsChecked(!isChecked)}>
                         <a href="/student-dashboard/profile">Profile</a>
                       </li>
                       <li onClick={() => setIsChecked(!isChecked)}>
