@@ -14,7 +14,8 @@ const PlacementTeam = () => {
 
   useEffect(() => {
     const designations = [
-      'Faculty Incharge',
+      'President',
+      'Vice-President',
       'Senior Assistant',
       'Student Co-ordinator',
       'Internship Co-ordinator',
