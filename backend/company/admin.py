@@ -63,8 +63,8 @@ def get_zipped_resumes_for_ad(modeladmin, request, queryset):
         messages.warning(request, "No offers exist for this advertisement")
         return
 
-    zip_path = "resume/zipped/" + offers[0].profile.company.name.replace("/", " or ") + '  ' + offers[0].profile.designation.replace(
-        "/", " or ") + '  ' + str(offers[0].profile_id) + ".zip"
+    zip_path = "assets/media/resume/zipped/" + offers[0].profile.company.name.replace(" ", "_") + '_' + offers[0].profile.designation.replace(
+        " ", "_") + '_' + str(offers[0].profile_id) + ".zip"
 
     missing = []
     for offer in offers:
@@ -80,7 +80,8 @@ def get_zipped_resumes_for_ad(modeladmin, request, queryset):
             zip.write(offer.resume.file.path, basename(offer.resume.file.path))
 
         zip.close()
-        url = "/media/" + zip_path
+        url = "/media/resume/zipped/" + offers[0].profile.company.name.replace(" ", "_") + '_' + offers[0].profile.designation.replace(
+        " ", "_") + '_' + str(offers[0].profile_id) + ".zip"
         return HttpResponseRedirect(url)
 
 
@@ -92,8 +93,9 @@ def get_zipped_resumes(modeladmin, request, queryset):
     if not offers.count():
         messages.warning(request, "Select atleast 1 offer")
         return
-    zip_path = "resume/zipped/" + offers[0].profile.company.name.replace("/", " or ") + '  ' + offers[0].profile.designation.replace(
-        "/", " or ") + '  ' + str(offers[0].profile_id) + ".zip"
+
+    zip_path = "assets/media/resume/zipped/" + offers[0].profile.company.name.replace(" ", "_") + '_' + offers[0].profile.designation.replace(
+        " ", "_") + '_' + str(offers[0].profile_id) + ".zip"
 
     missing = []
     for offer in offers:
@@ -108,7 +110,8 @@ def get_zipped_resumes(modeladmin, request, queryset):
         for offer in offers:
             zip.write(offer.resume.file.path, basename(offer.resume.file.path))
         zip.close()
-        url = "/media/" + zip_path
+        url = "/media/resume/zipped/" + offers[0].profile.company.name.replace(" ", "_") + '_' + offers[0].profile.designation.replace(
+        " ", "_") + '_' + str(offers[0].profile_id) + ".zip"
         return HttpResponseRedirect(url)
 
 
