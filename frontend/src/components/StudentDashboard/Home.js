@@ -118,7 +118,7 @@ function Home() {
       setinternoffers(dat);
       dat = [];
       res.data.Jobs.forEach((element) => {
-        element.name = element.company.name;
+        element.name = element.profile.company.name;
         element.designation = element.profile.designation;
         element.adv = element.profile.id;
         dat.push(element);
