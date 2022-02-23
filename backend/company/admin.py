@@ -81,7 +81,7 @@ def get_zipped_resumes_for_ad(modeladmin, request, queryset):
 
         zip.close()
         url = "/media/resume/zipped/" + offers[0].profile.company.name.replace(" ", "_") + '_' + offers[0].profile.designation.replace(
-        " ", "_") + '_' + str(offers[0].profile_id) + ".zip"
+            " ", "_") + '_' + str(offers[0].profile_id) + ".zip"
         return HttpResponseRedirect(url)
 
 
@@ -111,7 +111,7 @@ def get_zipped_resumes(modeladmin, request, queryset):
             zip.write(offer.resume.file.path, basename(offer.resume.file.path))
         zip.close()
         url = "/media/resume/zipped/" + offers[0].profile.company.name.replace(" ", "_") + '_' + offers[0].profile.designation.replace(
-        " ", "_") + '_' + str(offers[0].profile_id) + ".zip"
+            " ", "_") + '_' + str(offers[0].profile_id) + ".zip"
         return HttpResponseRedirect(url)
 
 
