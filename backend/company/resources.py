@@ -299,10 +299,10 @@ class JobOfferResource(resources.ModelResource):
 
 class BaseAdvertisementResource(resources.ModelResource):
     program = Field(attribute='eligible_program_branch',
-                                    widget=ManyToManyWidget(ProgramAndBranch, field='program'))
+                    widget=ManyToManyWidget(ProgramAndBranch, field='program'))
 
     eligible_branches = Field(attribute='eligible_program_branch',
-                                    widget=ManyToManyWidget(ProgramAndBranch, field='name'))
+                              widget=ManyToManyWidget(ProgramAndBranch, field='name'))
 
     class Meta:
         abstract = True
