@@ -298,13 +298,16 @@ class JobOfferResource(resources.ModelResource):
 
 
 class BaseAdvertisementResource(resources.ModelResource):
-    eligible_program_branch = Field(attribute='eligible_program_branch',
+    program = Field(attribute='eligible_program_branch',
+                                    widget=ManyToManyWidget(ProgramAndBranch, field='program'))
+
+    eligible_branches = Field(attribute='eligible_program_branch',
                                     widget=ManyToManyWidget(ProgramAndBranch, field='name'))
 
     class Meta:
         abstract = True
         fields = (
-            'company__name', 'designation', 'description', 'tentative_join_date', 'tentative_job_location',
+            'company__name', 'designation', 'description', 'tentative_join_date', 'program', 'eligible_branches', 'tentative_job_location',
             'ctc', 'gross_salary', 'bonus', 'bond', 'bond_details', 'resume_required',
             'resume_shortlist_criteria', 'aptitude_test_required', 'group_discussion_required',
             'number_of_technical_interviews', 'number_of_technical_tests', 'number_of_hr_rounds',
@@ -312,7 +315,7 @@ class BaseAdvertisementResource(resources.ModelResource):
             'min_gpa', 'number_of_members', 'other_details',)
 
         export_order = (
-            'company__name', 'designation', 'description', 'tentative_join_date', 'eligible_program_branch', 'min_gpa',
+            'company__name', 'designation', 'description', 'tentative_join_date', 'program', 'eligible_branches', 'min_gpa',
             'tentative_job_location', 'ctc', 'gross_salary', 'bonus', 'bond', 'bond_details', 'resume_required',
             'resume_shortlist_criteria', 'aptitude_test_required', 'group_discussion_required',
             'number_of_technical_interviews', 'number_of_technical_tests', 'number_of_hr_rounds',
