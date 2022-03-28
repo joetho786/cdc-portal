@@ -132,6 +132,10 @@ def mark_ppo(modeladmin, request, queryset):
     queryset.update(is_accepted=True)
 
 
+def mark_accepted(modeladmin, request, queryset):
+    queryset.update(is_accepted=True)
+
+
 def send_email(self, request, obj, subject):
     if "_sendemail" in request.POST:
         obj.email_sent = True
@@ -262,7 +266,7 @@ class InternshipOfferAdmin(ImportExportActionModelAdmin):
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
                      'student__user__last_name', 'student__roll_no']
-    ImportExportActionModelAdmin.actions = ImportExportActionModelAdmin.actions + [get_zipped_resumes, mark_placed, mark_ppo]
+    ImportExportActionModelAdmin.actions = ImportExportActionModelAdmin.actions + [get_zipped_resumes, mark_placed, mark_ppo, mark_accepted]
 
     class Meta:
         model = InternshipOffer
