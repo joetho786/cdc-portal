@@ -48,9 +48,6 @@ class BaseOfferResource(resources.ModelResource):
     dob = Field(
         column_name='DOB(YYYY-MM-DD)',
         attribute='student__dob')
-    year = Field(
-        column_name='Current year of study',
-        attribute='student__year')
     program_branch = Field(
         column_name='Program and Branch',
         attribute='student__program_branch__name')
@@ -117,11 +114,11 @@ class BaseOfferResource(resources.ModelResource):
     class Meta:
         abstract = True
         fields = ('student_applied_offers', 'resume_link', 'company', 'designation', 'is_accepted', 'ppo', 'ctc',
-                  'roll_no', 'name', 'email', 'dob', 'year', 'program_branch', 'gpa', 'ug_gpa', 'phone', 'category',
+                  'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa', 'phone', 'category',
                   'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
                   'nationality', 'current_address', 'permanent_address', 'physical_disability',)
         export_order = ('student_applied_offers', 'resume_link',
-                        'company', 'designation', 'is_accepted', 'ppo', 'ctc', 'roll_no', 'name', 'email', 'dob', 'year', 'program_branch', 'gpa',
+                        'company', 'designation', 'is_accepted', 'ppo', 'ctc', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa',
                         'ug_gpa', 'phone', 'category',
                         'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
                         'nationality', 'current_address', 'permanent_address', 'physical_disability',)
@@ -142,9 +139,9 @@ class InternshipOfferResource(resources.ModelResource):
     email = Field(
         column_name='Email ID',
         attribute='student__user__email')
-    year = Field(
-        column_name='Current year of study',
-        attribute='student__year')
+    dob = Field(
+        column_name='DOB(YYYY-MM-DD)',
+        attribute='student__dob')
     program_branch = Field(
         column_name='Program and Branch',
         attribute='student__program_branch__name')
@@ -201,10 +198,10 @@ class InternshipOfferResource(resources.ModelResource):
 
     class Meta:
         model = InternshipOffer
-        fields = ('resume_link', 'roll_no', 'name', 'email', 'year', 'program_branch', 'gpa', 'ug_gpa',
+        fields = ('resume_link', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa',
                   'phone', 'category',  'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
                   'xii_percentage', 'nationality', 'current_address', 'permanent_address', 'physical_disability',)
-        export_order = ('resume_link', 'roll_no', 'name', 'email', 'year', 'program_branch', 'gpa', 'ug_gpa',
+        export_order = ('resume_link', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa',
                         'phone',
                         'category',
                         'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
@@ -227,9 +224,9 @@ class JobOfferResource(resources.ModelResource):
     email = Field(
         column_name='Email ID',
         attribute='student__user__email')
-    year = Field(
-        column_name='Current year of study',
-        attribute='student__year')
+    dob = Field(
+        column_name='DOB(YYYY-MM-DD)',
+        attribute='student__dob')
     program_branch = Field(
         column_name='Program and Branch',
         attribute='student__program_branch__name')
@@ -286,10 +283,10 @@ class JobOfferResource(resources.ModelResource):
 
     class Meta:
         model = JobOffer
-        fields = ('resume_link', 'roll_no', 'name', 'email', 'year', 'program_branch', 'gpa', 'ug_gpa',
+        fields = ('resume_link', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa',
                   'phone', 'category',  'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
                   'xii_percentage', 'nationality', 'current_address', 'permanent_address', 'physical_disability',)
-        export_order = ('resume_link', 'roll_no', 'name', 'email', 'year', 'program_branch', 'gpa', 'ug_gpa',
+        export_order = ('resume_link', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa',
                         'phone',
                         'category',
                         'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
