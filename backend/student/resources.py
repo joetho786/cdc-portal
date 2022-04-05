@@ -4,6 +4,42 @@ from .models import StudentProfile
 
 
 class StudentProfileResource(resources.ModelResource):
+    user__first_name = Field(
+        column_name='First Name',
+        attribute='user__first_name',
+    )
+    user__last_name = Field(
+        column_name='Last Name',
+        attribute='user__last_name',
+    )
+    roll_no = Field(
+        column_name='Roll Number',
+        attribute='roll_no',
+    )
+    user__email = Field(
+        column_name='Email',
+        attribute='user__email',
+    )
+    year = Field(
+        column_name='Year',
+        attribute='year',
+    )
+    gpa = Field(
+        column_name='GPA',
+        attribute='gpa',
+    )
+    ug_college = Field(
+        column_name='UG College',
+        attribute='ug_college',
+    )
+    ug_program_branch = Field(
+        column_name='UG Program and Branch',
+        attribute='ug_program_branch',
+    )
+    dob = Field(
+        column_name='Date of birth',
+        attribute='dob',
+    )
     nationality = Field(
         column_name='Nationality',
         attribute='get_nationality_display',
