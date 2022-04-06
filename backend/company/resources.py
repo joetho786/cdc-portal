@@ -130,6 +130,46 @@ class InternshipOfferResource(resources.ModelResource):
             return 'https://spc.iitj.ac.in%s' % (offer.resume.file.url)
         return 'No Resume'
 
+    def dehydrate_company_name(self, offer):
+        if(offer.is_accepted):
+            return offer.company.name
+        return ' '
+
+    def dehydrate_company_profile(self, offer):
+        if(offer.is_accepted):
+            return offer.profile.designation
+        return ' '
+
+    def dehydrate_company_ctc(self, offer):
+        if(offer.is_accepted):
+            return offer.profile.ctc
+        return ' '
+
+    def dehydrate_tentative_join_date(self, offer):
+        if(offer.is_accepted):
+            return offer.profile.tentative_join_date
+        return ' '
+
+    def dehydrate_tentative_job_location(self, offer):
+        if(offer.is_accepted):
+            return offer.profile.tentative_job_location
+        return ' '
+
+    company_name = Field(
+        column_name='Company Name',
+        attribute='company__name')
+    company_profile = Field(
+        column_name='Profile',
+        attribute='profile__designation')
+    company_ctc = Field(
+        column_name='CTC',
+        attribute='profile__ctc')
+    tentative_join_date = Field(
+        column_name='Tentative Joining Date',
+        attribute='profile__tentative_join_date')
+    tentative_job_location = Field(
+        column_name='Tentative Job Location',
+        attribute='profile__tentative_job_location')
     roll_no = Field(
         column_name='Roll No',
         attribute='student__roll_no')
@@ -200,13 +240,15 @@ class InternshipOfferResource(resources.ModelResource):
         model = InternshipOffer
         fields = ('resume_link', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa',
                   'phone', 'category',  'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
-                  'xii_percentage', 'nationality', 'current_address', 'permanent_address', 'physical_disability',)
+                  'xii_percentage', 'nationality', 'current_address', 'permanent_address', 'physical_disability',
+                  'company_name', 'company_profile', 'company_ctc', 'tentative_join_date', 'tentative_job_location')
         export_order = ('resume_link', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa',
                         'phone',
                         'category',
                         'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
                         'xii_percentage',
-                        'nationality', 'current_address', 'permanent_address', 'physical_disability',)
+                        'nationality', 'current_address', 'permanent_address', 'physical_disability',
+                        'company_name', 'company_profile', 'company_ctc', 'tentative_join_date', 'tentative_job_location')
 
 
 class JobOfferResource(resources.ModelResource):
@@ -215,6 +257,46 @@ class JobOfferResource(resources.ModelResource):
             return 'https://spc.iitj.ac.in%s' % (offer.resume.file.url)
         return 'No Resume'
 
+    def dehydrate_company_name(self, offer):
+        if(offer.is_accepted):
+            return offer.company.name
+        return ' '
+
+    def dehydrate_company_profile(self, offer):
+        if(offer.is_accepted):
+            return offer.profile.designation
+        return ' '
+
+    def dehydrate_company_ctc(self, offer):
+        if(offer.is_accepted):
+            return offer.profile.ctc
+        return ' '
+
+    def dehydrate_tentative_join_date(self, offer):
+        if(offer.is_accepted):
+            return offer.profile.tentative_join_date
+        return ' '
+
+    def dehydrate_tentative_job_location(self, offer):
+        if(offer.is_accepted):
+            return offer.profile.tentative_job_location
+        return ' '
+
+    company_name = Field(
+        column_name='Company Name',
+        attribute='company__name')
+    company_profile = Field(
+        column_name='Profile',
+        attribute='profile__designation')
+    company_ctc = Field(
+        column_name='CTC',
+        attribute='profile__ctc')
+    tentative_join_date = Field(
+        column_name='Tentative Joining Date',
+        attribute='profile__tentative_join_date')
+    tentative_job_location = Field(
+        column_name='Tentative Job Location',
+        attribute='profile__tentative_job_location')
     roll_no = Field(
         column_name='Roll No',
         attribute='student__roll_no')
@@ -285,13 +367,15 @@ class JobOfferResource(resources.ModelResource):
         model = JobOffer
         fields = ('resume_link', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa',
                   'phone', 'category',  'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
-                  'xii_percentage', 'nationality', 'current_address', 'permanent_address', 'physical_disability',)
+                  'xii_percentage', 'nationality', 'current_address', 'permanent_address', 'physical_disability',
+                  'company_name', 'company_profile', 'company_ctc', 'tentative_join_date', 'tentative_job_location')
         export_order = ('resume_link', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa',
                         'phone',
                         'category',
                         'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
                         'xii_percentage',
-                        'nationality', 'current_address', 'permanent_address', 'physical_disability',)
+                        'nationality', 'current_address', 'permanent_address', 'physical_disability',
+                        'company_name', 'company_profile', 'company_ctc', 'tentative_join_date', 'tentative_job_location')
 
 
 class BaseAdvertisementResource(resources.ModelResource):
