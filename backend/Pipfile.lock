@@ -47,14 +47,6 @@
             "markers": "python_version < '3.8'",
             "version": "==1.5.2"
         },
-        "celery": {
-            "hashes": [
-                "sha256:1664b8cf5051c86188e86f1afb85213927f92b8818e2315e34b010da0d767b98",
-                "sha256:4d858a8fe53c07a9f0cbf8cf1da28e8abe5464d0aba5713bf83908e74277734b"
-            ],
-            "index": "pypi",
-            "version": "==5.2.0"
-        },
         "certifi": {
             "hashes": [
                 "sha256:78884e7c1d4b00ce3cea67b44566851c4343c120abd683433ce934a68ea58872",
