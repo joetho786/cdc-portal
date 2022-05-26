@@ -17,6 +17,7 @@ const PlacementTeam = () => {
       'President',
       'Vice-President',
       'Senior Assistant',
+      'Training & Placement Officer',
       'Student Co-ordinator',
       'Internship Co-ordinator',
       'Departmental Representative',
@@ -29,11 +30,19 @@ const PlacementTeam = () => {
       .then((res) => {
         var placementTeam = [];
         designations.forEach((designation) => {
-          placementTeam.push(
-            res.data.filter(
-              (member) => member.designation.designation === designation
-            )
-          );
+          if (designation === 'Training & Placement Officer') {
+            placementTeam[placementTeam.length - 1].push(
+              res.data.filter(
+                (member) => member.designation.designation === designation
+              )[0]
+            );
+          } else {
+            placementTeam.push(
+              res.data.filter(
+                (member) => member.designation.designation === designation
+              )
+            );
+          }
         });
         setData(placementTeam);
       })
