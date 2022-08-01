@@ -74,6 +74,7 @@ def get_zipped_resumes(modeladmin, request, queryset):
             try:
                 zip.write(resume.file.path, basename(resume.file.path))
             except Exception as e:
+                print(e)
                 print(resume.student.user.first_name)
         zip.close()
         url = "/media/resume/zipped/" + resumes[0].student.roll_no.replace(" ", "_") + \
