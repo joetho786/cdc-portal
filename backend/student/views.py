@@ -138,7 +138,7 @@ class Resumes(APIView):
         if resume.student.user.id != user.id:
             return Response({'Error': 'Cannot delete others resume'}, status.HTTP_403_FORBIDDEN)
         data = {}
-        if(resume.is_verified):
+        if resume.is_verified:
             return Response({'Error': 'Can not delete verified resume'}, status.HTTP_403_FORBIDDEN)
         else:
             operation = resume.delete()

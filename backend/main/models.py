@@ -261,7 +261,7 @@ class NavBarSubOptions(models.Model):
         queryset = NavBarSubOptions.objects.all().filter(slug__iexact=original_slug).count()
         count = 1
         slug = original_slug
-        while(queryset):
+        while queryset:
             slug = original_slug + '-' + str(count)
             count += 1
             queryset = NavBarSubOptions.objects.all().filter(slug__iexact=slug).count()
