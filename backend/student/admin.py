@@ -63,7 +63,7 @@ def get_zipped_resumes(modeladmin, request, queryset):
     missing = []
     for resume in resumes:
         if not resume.file:
-            missing.append(resume.student.user.first_name+" "+resume.student.user.last_name+"("+resume.student.roll_no+")")
+            missing.append(resume.student.user.first_name.replace(" ", "_")+"("+resume.student.roll_no.replace(" ", "_")+")")
 
     if missing:
         messages.error(request, 'Missing Resume of '+', '.join(missing)+" .")
@@ -71,7 +71,10 @@ def get_zipped_resumes(modeladmin, request, queryset):
     else:
         zip = ZipFile(zip_path, 'w')
         for resume in resumes:
-            zip.write(resume.file.path, basename(resume.file.path))
+            try:
+                zip.write(resume.file.path, basename(resume.file.path))
+            except:
+                print(resume.student.user.first_name)
         zip.close()
         url = "/media/resume/zipped/" + resumes[0].student.roll_no.replace(" ", "_") + \
             '_to_' + resumes[len(resumes)-1].student.roll_no.replace(" ", "_") + ".zip"
