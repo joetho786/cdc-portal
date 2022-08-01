@@ -62,10 +62,10 @@ def get_zipped_resumes(modeladmin, request, queryset):
 
     missing = []
     for resume in resumes:
-        if(not resume.file):
+        if not resume.file:
             missing.append(resume.student.user.first_name+" "+resume.student.user.last_name+"("+resume.student.roll_no+")")
 
-    if(missing):
+    if missing:
         messages.error(request, 'Missing Resume of '+', '.join(missing)+" .")
         return
     else:

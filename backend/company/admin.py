@@ -68,10 +68,10 @@ def get_zipped_resumes_for_ad(modeladmin, request, queryset):
 
     missing = []
     for offer in offers:
-        if(not offer.resume):
+        if not offer.resume:
             missing.append(offer.student.user.first_name+" "+offer.student.user.last_name+"("+offer.student.roll_no+")")
 
-    if(missing):
+    if missing:
         messages.error(request, 'Missing Resume of '+', '.join(missing)+" .")
         return
     else:
@@ -99,10 +99,10 @@ def get_zipped_resumes(modeladmin, request, queryset):
 
     missing = []
     for offer in offers:
-        if(not offer.resume):
+        if not offer.resume:
             missing.append(offer.student.user.first_name+" "+offer.student.user.last_name+"("+offer.student.roll_no+")")
 
-    if(missing):
+    if missing:
         messages.error(request, 'Missing Resume of '+', '.join(missing)+" .")
         return
     else:

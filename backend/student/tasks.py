@@ -13,13 +13,13 @@ def send_resume_verification_email():
     unverifiedResumesStudents = set()
     message = ""
     for resume in resumes:
-        if(resume.is_verified is False):
+        if resume.is_verified is False:
             name = str(resume.student.user.get_full_name())
             name = name + ' ' + str(resume.student.roll_no)
             unverifiedResumesStudents.add(name)
             message = message + name
     unverifiedResumesStudents = list(unverifiedResumesStudents)
-    if(len(unverifiedResumesStudents) > 0):
+    if len(unverifiedResumesStudents) > 0:
         with get_connection(
                 username=settings.SERVER_EMAIL,
                 password=settings.SERVER_EMAIL_PASSWORD
