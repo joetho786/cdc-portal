@@ -4,6 +4,10 @@ from .resources import StudentProfileResource
 from import_export.admin import ImportExportActionModelAdmin
 import csv
 from django.http import HttpResponse
+from zipfile import ZipFile
+from django.contrib import messages
+from django.shortcuts import HttpResponseRedirect
+from os.path import basename
 
 
 class ResumeInline(admin.StackedInline):
@@ -46,6 +50,34 @@ def export_as_csv(modeladmin, request, queryset):
     return response
 
 
+def get_zipped_resumes(modeladmin, request, queryset):
+    if modeladmin.model is Resume:
+        resumes = queryset
+    if not resumes.count():
+        messages.warning(request, "Select atleast 1 resume to download")
+        return
+
+    zip_path = "assets/media/resume/zipped/" + \
+        resumes[0].student.roll_no.replace(" ", "_") + '_to_' + resumes[len(resumes)-1].student.roll_no.replace(" ", "_") + ".zip"
+
+    missing = []
+    for resume in resumes:
+        if(not resume.file):
+            missing.append(resume.student.user.first_name+" "+resume.student.user.last_name+"("+resume.student.roll_no+")")
+
+    if(missing):
+        messages.error(request, 'Missing Resume of '+', '.join(missing)+" .")
+        return
+    else:
+        zip = ZipFile(zip_path, 'w')
+        for resume in resumes:
+            zip.write(resume.file.path, basename(resume.file.path))
+        zip.close()
+        url = "/media/resume/zipped/" + resumes[0].student.roll_no.replace(" ", "_") + \
+            '_to_' + resumes[len(resumes)-1].student.roll_no.replace(" ", "_") + ".zip"
+        return HttpResponseRedirect(url)
+
+
 @admin.register(ProgramAndBranch)
 class ProgramAndBranchAdmin(admin.ModelAdmin):
     class Meta:
@@ -76,7 +108,7 @@ class ResumeAdmin(admin.ModelAdmin):
     list_display = ['get_roll_no', 'student', 'get_gpa', 'reference', 'file', 'is_verified', 'timestamp', ]
     search_fields = ['student__user__first_name', 'student__user__last_name', 'student__user__username']
     list_filter = ['is_verified', 'timestamp', 'student__program_branch', 'student__year']
-    actions = [approve_resumes, unapprove_resumes, export_as_csv]
+    actions = [get_zipped_resumes, approve_resumes, unapprove_resumes, export_as_csv]
 
     def get_roll_no(self, instance):
         return instance.student.roll_no
