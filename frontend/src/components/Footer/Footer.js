@@ -49,8 +49,7 @@ const footers = [
 const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: 'white',
-    background:
-      'url(https://www.linkpicture.com/q/hero-bg_1.png) top center no-repeat',
+    background: 'url(https://i.imgur.com/VcAY65E.jpeg) top center no-repeat',
     color: '#012970',
     padding: theme.spacing(3, 0),
   },
