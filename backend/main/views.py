@@ -82,7 +82,7 @@ class VolunteersYearChoicesSerializer(ListAPIView):
 
 
 class CoreTeamContactsSerializer(ListAPIView):
-    queryset = CoreTeamContacts.objects.filter(active=True)
+    queryset = CoreTeamContacts.objects.filter(active=True).order_by('order_no')
     serializer_class = CoreTeamContactsSerializer
     search_fields = ['designation__designation']
     filter_backends = (SearchFilter,)
