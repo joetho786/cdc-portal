@@ -126,32 +126,32 @@ class BaseOfferResource(resources.ModelResource):
 
 class InternshipOfferResource(resources.ModelResource):
     def dehydrate_resume_link(self, offer):
-        if(offer.resume is not None):
+        if offer.resume is not None:
             return 'https://spc.iitj.ac.in%s' % (offer.resume.file.url)
         return 'No Resume'
 
     def dehydrate_company_name(self, offer):
-        if(offer.is_accepted):
+        if offer.is_accepted:
             return offer.company.name
         return ' '
 
     def dehydrate_company_profile(self, offer):
-        if(offer.is_accepted):
+        if offer.is_accepted:
             return offer.profile.designation
         return ' '
 
     def dehydrate_company_ctc(self, offer):
-        if(offer.is_accepted):
+        if offer.is_accepted:
             return offer.profile.ctc
         return ' '
 
     def dehydrate_tentative_join_date(self, offer):
-        if(offer.is_accepted):
+        if offer.is_accepted:
             return offer.profile.tentative_join_date
         return ' '
 
     def dehydrate_tentative_job_location(self, offer):
-        if(offer.is_accepted):
+        if offer.is_accepted:
             return offer.profile.tentative_job_location
         return ' '
 
@@ -253,32 +253,32 @@ class InternshipOfferResource(resources.ModelResource):
 
 class JobOfferResource(resources.ModelResource):
     def dehydrate_resume_link(self, offer):
-        if(offer.resume is not None):
+        if offer.resume is not None:
             return 'https://spc.iitj.ac.in%s' % (offer.resume.file.url)
         return 'No Resume'
 
     def dehydrate_company_name(self, offer):
-        if(offer.is_accepted):
+        if offer.is_accepted:
             return offer.company.name
         return ' '
 
     def dehydrate_company_profile(self, offer):
-        if(offer.is_accepted):
+        if offer.is_accepted:
             return offer.profile.designation
         return ' '
 
     def dehydrate_company_ctc(self, offer):
-        if(offer.is_accepted):
+        if offer.is_accepted:
             return offer.profile.ctc
         return ' '
 
     def dehydrate_tentative_join_date(self, offer):
-        if(offer.is_accepted):
+        if offer.is_accepted:
             return offer.profile.tentative_join_date
         return ' '
 
     def dehydrate_tentative_job_location(self, offer):
-        if(offer.is_accepted):
+        if offer.is_accepted:
             return offer.profile.tentative_job_location
         return ' '
 

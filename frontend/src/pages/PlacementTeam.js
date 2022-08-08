@@ -15,13 +15,14 @@ const PlacementTeam = () => {
   useEffect(() => {
     const designations = [
       'President',
-      'Vice-President',
+      'Training & Placement Officer',
       'Senior Assistant',
-      'Student Co-ordinator',
-      'Internship Co-ordinator',
-      'Departmental Representative',
+      'Vice-President',
+      'Overall Co-ordinator',
+      'Placement Representative',
+      'Internship Representative',
+      'Executives',
       'Web Development Team',
-      'Representative',
     ];
 
     instance
@@ -29,11 +30,19 @@ const PlacementTeam = () => {
       .then((res) => {
         var placementTeam = [];
         designations.forEach((designation) => {
-          placementTeam.push(
-            res.data.filter(
-              (member) => member.designation.designation === designation
-            )
-          );
+          if (designation === 'Senior Assistant') {
+            placementTeam[placementTeam.length - 1].push(
+              res.data.filter(
+                (member) => member.designation.designation === designation
+              )[0]
+            );
+          } else {
+            placementTeam.push(
+              res.data.filter(
+                (member) => member.designation.designation === designation
+              )
+            );
+          }
         });
         setData(placementTeam);
       })
