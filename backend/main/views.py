@@ -10,7 +10,7 @@ from student.models import StudentProfile
 
 from main.models import (OfficeMails, AboutUs, Achievements, AlumniTestimonial,
                          CareerCommittee, CoreTeamContacts, DesignationChoices,
-                         DirectorMessage, HomeImageCarousel,
+                         DirectorMessage, HomeImageCarousel, SheetsPlacementCalendar,
                          NavBarSubOptions, News, PastRecruiters, PlacementCalendar, Volunteers,
                          VolunteersYearChoices, WhyRecruit, CareerDevelopmentActivity, CourseHighlights)
 from main.serializers import (OfficeMailsSerializer, AboutUsSerializer, AchievementsSerializer,
@@ -22,7 +22,7 @@ from main.serializers import (OfficeMailsSerializer, AboutUsSerializer, Achievem
                               HomeImageCarouselSerializer,
                               NavBarSubOptionsSerializer, NewsSerializer,
                               PastRecruitersSerializer, PlacementCalendarSerializer, VolunteersSerializer,
-                              VolunteersYearChoicesSerializer,
+                              VolunteersYearChoicesSerializer, SheetsPlacementCalendarSerializer,
                               WhyRecruitSerializer, CareerDevelopmentActivitySerializer, CourseHighlightsSerializer)
 
 
@@ -146,3 +146,8 @@ class CourseHighlightsSerializer(ListAPIView):
 class PlacementCalendarView(ListAPIView):
     queryset = PlacementCalendar.objects.all()
     serializer_class = PlacementCalendarSerializer
+
+
+class SheetsPlacementCalendarView(ListAPIView):
+    queryset = SheetsPlacementCalendar.objects.all()
+    serializer_class = SheetsPlacementCalendarSerializer
