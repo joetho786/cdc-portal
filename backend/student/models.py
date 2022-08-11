@@ -39,6 +39,10 @@ class ProgramAndBranch(models.Model):
     def __str__(self):
         return self.program + " " + self.name
 
+    class Meta:
+        verbose_name = "Program and Branch"
+        verbose_name_plural = "Programs and Branches"
+
 
 class StudentProfile(models.Model):
     # Choices
