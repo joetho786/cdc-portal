@@ -15,13 +15,13 @@ class CompanyProfile(models.Model):
         ('2', 'Other'),
     )
     # Model
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    domain = models.CharField(max_length=30)  # add choices
+    domain = models.CharField(max_length=100)  # add choices
     url = models.CharField(max_length=100, null=True, blank=True)
-    city = models.CharField(max_length=15, null=True, blank=True)
-    state = models.CharField(max_length=15, null=True, blank=True)
-    country = models.CharField(max_length=15, choices=NATION)
+    city = models.CharField(max_length=100, null=True, blank=True)
+    state = models.CharField(max_length=100, null=True, blank=True)
+    country = models.CharField(max_length=100, choices=NATION)
     pin_code = models.CharField(max_length=10, blank=True, null=True)
     job_offers = models.ManyToManyField(StudentProfile, through='company.JobOffer',
                                         through_fields=('company', 'student'), related_name='joboffers')
