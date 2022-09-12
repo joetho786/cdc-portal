@@ -53,7 +53,12 @@ const useStyles = makeStyles((theme) => ({
 export default function AddAdvertisement() {
   const classes = useStyles();
   const [file, setFile] = React.useState('');
-  const [values, setValues] = React.useState({});
+  const [values, setValues] = React.useState({
+    designation: '',
+    tentative_join_date: '',
+    tentative_job_location: '',
+    con_phone: '',
+  });
   const [selectedBraches, setselectedBraches] = React.useState([[0, false]]);
   const [error, setError] = React.useState('');
   const [su, setsu] = React.useState('');
@@ -245,16 +250,16 @@ export default function AddAdvertisement() {
                   required
                   label="Tentative Job Location"
                   error={
-                    values.tentative_join_location.length > 100
+                    values.tentative_job_location.length > 100
                       ? (hasError = true)
                       : false
                   }
                   helperText={
-                    values.tentative_join_location.length > 100
+                    values.tentative_job_location.length > 100
                       ? "Length of Tentative Join Location can't be more than 100"
                       : ''
                   }
-                  value={values.tentative_join_location}
+                  value={values.tentative_job_location}
                   onChange={(e) => {
                     setValues({
                       ...values,

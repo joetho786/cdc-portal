@@ -138,7 +138,7 @@ const Profile = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Typography align="left" style={{ paddingBottom: '4%' }}>
-                    Country : {values.country === '0' ? 'India' : 'other'}
+                    Country : {values.country === '1' ? 'India' : 'other'}
                   </Typography>
                 </Grid>
               </FadeInWhenVisible>

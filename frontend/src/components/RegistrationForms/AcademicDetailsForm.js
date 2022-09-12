@@ -110,64 +110,106 @@ export default function AcademicDetailsForm({ p1, p2 }) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            required
             name="12th Board Year"
             label="12th Board Year"
             type="number"
             fullWidth
             autoComplete="12th Board Year"
+            error={p1.by12.length > 4}
+            helperText={
+              p1.by12.length > 4
+                ? "Length of 12th Board Year can't be more than 4"
+                : ''
+            }
             value={p1.by12}
             onChange={handleChangeby12}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            required
             name="10th Board Year"
             label="10th Board Year"
             type="number"
             fullWidth
             autoComplete="10th Board Year"
+            error={p1.by10.length > 4}
+            helperText={
+              p1.by10.length > 4
+                ? "Length of 10th Board Year can't be more than 4"
+                : ''
+            }
             value={p1.by10}
             onChange={handleChangeby10}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            required
             name="12th Board Name"
             label="12th Board Name"
             fullWidth
             autoComplete="12th Board Name"
+            error={p1.bn12.length > 100}
+            helperText={
+              p1.bn12.length > 100
+                ? "Length of 12th Board Name can't be more than 100"
+                : ''
+            }
             value={p1.bn12}
             onChange={handleChangebn12}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            required
             name="10th Board Name"
             label="10th Board Name"
             fullWidth
             autoComplete="10th Board Name"
+            error={p1.bn10.length > 100}
+            helperText={
+              p1.bn10.length > 100
+                ? "Length of 10th Board Name can't be more than 100"
+                : ''
+            }
             value={p1.bn10}
             onChange={handleChangebn10}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            required
             name="12th Board %"
             label="12th Board %"
             type="number"
             fullWidth
             autoComplete="12th Board %"
+            error={p1.bp12.length > 10}
+            helperText={
+              p1.bp12.length > 10
+                ? "Length of 12th Board %/CGPA can't be more than 10"
+                : ''
+            }
             value={p1.bp12}
             onChange={handleChangebp12}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            required
             name="10th Board %/CGPA"
             label="10th Board %/CGPA"
             type="number"
             fullWidth
             autoComplete="10th Board %/CGPA"
+            error={p1.bp10.length > 10}
+            helperText={
+              p1.bp10.length > 10
+                ? "Length of 10th Board %/CGPA can't be more than 10"
+                : ''
+            }
             value={p1.bp10}
             onChange={handleChangebp10}
           />

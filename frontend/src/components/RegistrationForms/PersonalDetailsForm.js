@@ -55,6 +55,7 @@ export default function PersonalDetailsForm({ p1, p2 }) {
       <Grid container spacing={4}>
         <Grid item xs={12} sm={5}>
           <TextField
+            required
             id="date"
             label="Date Of Birth"
             type="date"
@@ -72,6 +73,12 @@ export default function PersonalDetailsForm({ p1, p2 }) {
             label="Phone number"
             fullWidth
             autoComplete="Phone number"
+            error={p1.phonenumber.length > 15}
+            helperText={
+              p1.phonenumber.length > 15
+                ? "Length of Phone number can't be more than 15"
+                : 'Enter only one phone number'
+            }
             value={p1.phonenumber}
             onChange={handleChangephone}
           />
