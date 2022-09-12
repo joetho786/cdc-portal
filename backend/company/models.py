@@ -54,7 +54,7 @@ class BaseAdvertisement(models.Model):
     designation = models.CharField(max_length=250)
     description = models.TextField()
     tentative_join_date = models.CharField(max_length=100)
-    tentative_job_location = models.CharField(max_length=50)
+    tentative_job_location = models.CharField(max_length=100)
     # ads = models.FileField(upload_to='ads', null=True, blank=True)
     # package details
     ctc = models.FloatField(null=True, blank=True)
