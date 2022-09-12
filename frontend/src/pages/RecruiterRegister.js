@@ -52,7 +52,7 @@ export default function RecruiterRegister() {
   var hasError = false;
   const [values, setValues] = React.useState({
     name: '',
-    domain: '',
+    domain: '/',
     email: '',
     password: '',
     cpassword: '',
@@ -61,24 +61,13 @@ export default function RecruiterRegister() {
     city: '',
     state: '',
     pin_code: '',
-    country: 0,
+    country: 1,
   });
   const [error, setError] = React.useState('');
   const [loading, setLoading] = React.useState(false);
-  const [categoryCompany, setCategoryCompany] = React.useState('');
-  const [industrySector, setIndustrySector] = React.useState('');
-  const mergeDomain = () => {
-    setValues({
-      ...values,
-      ...{
-        domain: categoryCompany + '/' + industrySector,
-      },
-    });
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    mergeDomain();
     console.log(values);
     setLoading(true);
     var form = new FormData();
@@ -163,9 +152,13 @@ export default function RecruiterRegister() {
                   <InputLabel>Category of the Company *</InputLabel>
                   <Select
                     fullWidth
-                    value={categoryCompany}
                     onChange={(e) => {
-                      setCategoryCompany(e.target.value);
+                      setValues({
+                        ...values,
+                        ...{
+                          domain: e.target.value + values.domain,
+                        },
+                      });
                     }}
                   >
                     <MenuItem value={'Public Sector'}>Public Sector</MenuItem>
@@ -193,9 +186,13 @@ export default function RecruiterRegister() {
                   <InputLabel>Industry Sector *</InputLabel>
                   <Select
                     fullWidth
-                    value={industrySector}
                     onChange={(e) => {
-                      setIndustrySector(e.target.value);
+                      setValues({
+                        ...values,
+                        ...{
+                          domain: values.domain + e.target.value,
+                        },
+                      });
                     }}
                   >
                     <MenuItem value={'Analytics'}>Analytics</MenuItem>
@@ -370,8 +367,8 @@ export default function RecruiterRegister() {
                       });
                     }}
                   >
-                    <MenuItem value={0}>Indian</MenuItem>
-                    <MenuItem value={1}>Others</MenuItem>
+                    <MenuItem value={1}>Indian</MenuItem>
+                    <MenuItem value={2}>Others</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
