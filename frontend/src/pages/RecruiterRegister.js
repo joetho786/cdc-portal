@@ -49,9 +49,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RecruiterRegister() {
   const classes = useStyles();
+  var hasError = false;
   const [values, setValues] = React.useState({
     name: '',
-    domain: '',
+    domain: '/',
     email: '',
     password: '',
     cpassword: '',
@@ -60,24 +61,13 @@ export default function RecruiterRegister() {
     city: '',
     state: '',
     pin_code: '',
-    country: 0,
+    country: 1,
   });
   const [error, setError] = React.useState('');
   const [loading, setLoading] = React.useState(false);
-  const [categoryCompany, setCategoryCompany] = React.useState('');
-  const [industrySector, setIndustrySector] = React.useState('');
-  const mergeDomain = () => {
-    setValues({
-      ...values,
-      ...{
-        domain: categoryCompany + '/' + industrySector,
-      },
-    });
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    mergeDomain();
     console.log(values);
     setLoading(true);
     var form = new FormData();
@@ -143,6 +133,12 @@ export default function RecruiterRegister() {
                 <TextField
                   required
                   label="Name of the Company"
+                  error={values.name.length > 100 ? (hasError = true) : false}
+                  helperText={
+                    values.name.length > 100
+                      ? "Length of Name can't be more than 100"
+                      : ''
+                  }
                   value={values.name}
                   onChange={(e) => {
                     setValues({ ...values, ...{ name: e.target.value } });
@@ -156,9 +152,13 @@ export default function RecruiterRegister() {
                   <InputLabel>Category of the Company *</InputLabel>
                   <Select
                     fullWidth
-                    value={categoryCompany}
                     onChange={(e) => {
-                      setCategoryCompany(e.target.value);
+                      setValues({
+                        ...values,
+                        ...{
+                          domain: e.target.value + values.domain,
+                        },
+                      });
                     }}
                   >
                     <MenuItem value={'Public Sector'}>Public Sector</MenuItem>
@@ -186,9 +186,13 @@ export default function RecruiterRegister() {
                   <InputLabel>Industry Sector *</InputLabel>
                   <Select
                     fullWidth
-                    value={industrySector}
                     onChange={(e) => {
-                      setIndustrySector(e.target.value);
+                      setValues({
+                        ...values,
+                        ...{
+                          domain: values.domain + e.target.value,
+                        },
+                      });
                     }}
                   >
                     <MenuItem value={'Analytics'}>Analytics</MenuItem>
@@ -239,7 +243,11 @@ export default function RecruiterRegister() {
                 <TextField
                   required
                   label="Conform Password"
-                  error={values.password !== values.cpassword}
+                  error={
+                    values.password !== values.cpassword
+                      ? (hasError = true)
+                      : false
+                  }
                   helperText={
                     values.password !== values.cpassword
                       ? 'Password didnot match'
@@ -261,6 +269,12 @@ export default function RecruiterRegister() {
                   required
                   label="Contact Number"
                   type="number"
+                  error={values.contact.length > 20 ? (hasError = true) : false}
+                  helperText={
+                    values.contact.length > 20
+                      ? "Length of Contact can't be more than 20"
+                      : ''
+                  }
                   value={values.contact}
                   onChange={(e) => {
                     setValues({ ...values, ...{ contact: e.target.value } });
@@ -273,7 +287,12 @@ export default function RecruiterRegister() {
                   required
                   label="Company Url"
                   type="url"
-                  helperText="Enter the URL of your company's website (Must start with https/http)"
+                  error={values.url.length > 100 ? (hasError = true) : false}
+                  helperText={
+                    values.url.length > 100
+                      ? "Length of URL can't be more than 100"
+                      : "Enter the URL of your company's website (Must start with https/http)"
+                  }
                   value={values.url}
                   onChange={(e) => {
                     setValues({ ...values, ...{ url: e.target.value } });
@@ -285,6 +304,12 @@ export default function RecruiterRegister() {
                 <TextField
                   required
                   label="City"
+                  error={values.city.length > 100 ? (hasError = true) : false}
+                  helperText={
+                    values.city.length > 100
+                      ? "Length of City can't be more than 100"
+                      : ''
+                  }
                   value={values.city}
                   onChange={(e) => {
                     setValues({ ...values, ...{ city: e.target.value } });
@@ -296,6 +321,12 @@ export default function RecruiterRegister() {
                 <TextField
                   required
                   label="State"
+                  error={values.state.length > 100 ? (hasError = true) : false}
+                  helperText={
+                    values.state.length > 100
+                      ? "Length of State can't be more than 100"
+                      : ''
+                  }
                   value={values.state}
                   onChange={(e) => {
                     setValues({ ...values, ...{ state: e.target.value } });
@@ -308,6 +339,14 @@ export default function RecruiterRegister() {
                   required
                   label="Pincode"
                   type="number"
+                  error={
+                    values.pin_code.length > 10 ? (hasError = true) : false
+                  }
+                  helperText={
+                    values.pin_code.length > 10
+                      ? "Length of Pin Code can't be more than 10"
+                      : ''
+                  }
                   value={values.pin_code}
                   onChange={(e) => {
                     setValues({ ...values, ...{ pin_code: e.target.value } });
@@ -328,8 +367,8 @@ export default function RecruiterRegister() {
                       });
                     }}
                   >
-                    <MenuItem value={0}>Indian</MenuItem>
-                    <MenuItem value={1}>Others</MenuItem>
+                    <MenuItem value={1}>Indian</MenuItem>
+                    <MenuItem value={2}>Others</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -339,6 +378,7 @@ export default function RecruiterRegister() {
                 variant="contained"
                 color="primary"
                 type="submit"
+                disabled={hasError ? true : false}
                 className={classes.button}
               >
                 Submit

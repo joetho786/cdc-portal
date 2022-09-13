@@ -53,7 +53,12 @@ const useStyles = makeStyles((theme) => ({
 export default function AddAdvertisement() {
   const classes = useStyles();
   const [file, setFile] = React.useState('');
-  const [values, setValues] = React.useState({});
+  const [values, setValues] = React.useState({
+    designation: '',
+    tentative_join_date: '',
+    tentative_job_location: '',
+    con_phone: '',
+  });
   const [selectedBraches, setselectedBraches] = React.useState([[0, false]]);
   const [error, setError] = React.useState('');
   const [su, setsu] = React.useState('');
@@ -62,6 +67,7 @@ export default function AddAdvertisement() {
   const [mtech, setMtech] = React.useState([]);
   const [msc, setMsc] = React.useState([]);
   const [mba, setMba] = React.useState([]);
+  var hasError = false;
 
   React.useEffect(() => {
     instance
@@ -170,6 +176,14 @@ export default function AddAdvertisement() {
                 <TextField
                   required
                   label="Job Designation"
+                  error={
+                    values.designation.length > 250 ? (hasError = true) : false
+                  }
+                  helperText={
+                    values.designation.length > 250
+                      ? "Length of Job Designation can't be more than 250"
+                      : ''
+                  }
                   value={values.designation}
                   onChange={(e) => {
                     setValues({
@@ -211,6 +225,16 @@ export default function AddAdvertisement() {
                 <TextField
                   required
                   label="Tenative Joining Date"
+                  error={
+                    values.tentative_join_date.length > 100
+                      ? (hasError = true)
+                      : false
+                  }
+                  helperText={
+                    values.tentative_join_date.length > 100
+                      ? "Length of Tentative Joining Date can't be more than 100"
+                      : ''
+                  }
                   value={values.tentative_join_date}
                   onChange={(e) => {
                     setValues({
@@ -225,7 +249,17 @@ export default function AddAdvertisement() {
                 <TextField
                   required
                   label="Tentative Job Location"
-                  value={values.tentative_join_location}
+                  error={
+                    values.tentative_job_location.length > 100
+                      ? (hasError = true)
+                      : false
+                  }
+                  helperText={
+                    values.tentative_job_location.length > 100
+                      ? "Length of Tentative Join Location can't be more than 100"
+                      : ''
+                  }
+                  value={values.tentative_job_location}
                   onChange={(e) => {
                     setValues({
                       ...values,
@@ -888,6 +922,14 @@ export default function AddAdvertisement() {
                     label="Phone"
                     fullWidth
                     type="number"
+                    error={
+                      values.con_phone.length > 15 ? (hasError = true) : false
+                    }
+                    helperText={
+                      values.con_phone.length > 15
+                        ? "Length of Phone no. can't be more than 15"
+                        : ''
+                    }
                     value={values.con_phone}
                     onChange={(e) => {
                       setValues({
@@ -907,6 +949,7 @@ export default function AddAdvertisement() {
                 variant="contained"
                 color="primary"
                 type="submit"
+                disabled={hasError ? true : false}
                 className={classes.button}
               >
                 Submit
