@@ -61,6 +61,7 @@ const Profile = () => {
     cadd: '',
     category: '',
     national: '',
+    gender: '',
     disable: '',
     photo: '',
   });
@@ -103,6 +104,7 @@ const Profile = () => {
     form.append('dob', values1.birthday);
     form.append('category', values1.category);
     form.append('jee_air', values2.jeeair);
+    form.append('gender', values1.gender);
     form.append('physical_disability', values1.disable);
     form.append('nationality', values1.national);
     form.append('permanent_address', values1.padd);
@@ -149,6 +151,7 @@ const Profile = () => {
           cadd: data.current_address,
           category: data.category,
           national: data.nationality,
+          gender: data.gender,
           disable: data.physical_disability,
           photo: getLink(data.std_image),
         });

@@ -83,6 +83,8 @@ class StudentDetails(APIView):
                     data[key] = False
                 else:
                     data[key] = request.data.get(key)
+                    if key == 'jee_air' and request.data.get(key) == 'null':
+                        data[key] = None
         user = request.user
         profile = StudentProfile.objects.get(user=user)
         serializer = StudentProfileSerializer(instance=profile, data=data)

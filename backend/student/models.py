@@ -56,6 +56,12 @@ class StudentProfile(models.Model):
         ('Indian', 'Indian'),
         ('Other', 'Other'),
     )
+
+    GENDER = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Others', 'Others')
+    )
     # Model
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     roll_no = models.CharField(max_length=11)
@@ -68,6 +74,7 @@ class StudentProfile(models.Model):
     ug_program_branch = models.TextField(null=True, blank=True, default='')
     phone = models.CharField(max_length=15)
     dob = models.DateField()
+    gender = models.CharField(max_length=10, choices=GENDER, default='Male')
     category = models.CharField(max_length=10, choices=CATEGORY)
     jee_air = models.IntegerField(null=True, blank=True)
     physical_disability = models.BooleanField(default=False)
