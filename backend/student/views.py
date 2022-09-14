@@ -83,6 +83,8 @@ class StudentDetails(APIView):
                     data[key] = False
                 else:
                     data[key] = request.data.get(key)
+                    if key == 'jee_air' and request.data.get(key) == 'null':
+                        data[key] = None
         user = request.user
         profile = StudentProfile.objects.get(user=user)
         serializer = StudentProfileSerializer(instance=profile, data=data)
@@ -163,13 +165,24 @@ class AvailableOffers(APIView):
     def get_offers(self, profile, model):
         if not profile.banned:
             if profile.program_branch.check_gpa:
-                offers = model.objects.filter(min_gpa__lte=profile.gpa, min_ug_gpa__lte=profile.ug_gpa,
-                                              eligible_program_branch__getter__contains=profile.program_branch.getter,
-                                              active=True).difference(self.get_applied_ad_list(profile.user, model))
+                if profile.gender == 'Male':
+                    offers = model.objects.filter(min_gpa__lte=profile.gpa, min_ug_gpa__lte=profile.ug_gpa,
+                                                  eligible_program_branch__getter__contains=profile.program_branch.getter,
+                                                  only_female=False, active=True).difference(self.get_applied_ad_list(profile.user, model))
+                else:
+                    offers = model.objects.filter(min_gpa__lte=profile.gpa, min_ug_gpa__lte=profile.ug_gpa,
+                                                  eligible_program_branch__getter__contains=profile.program_branch.getter,
+                                                  active=True).difference(self.get_applied_ad_list(profile.user, model))
             else:
-                offers = model.objects.filter(min_gpa__lte=profile.gpa,
-                                              eligible_program_branch__getter__contains=profile.program_branch.getter,
-                                              active=True).difference(self.get_applied_ad_list(profile.user, model))
+                if profile.gender == 'Male':
+                    offers = model.objects.filter(min_gpa__lte=profile.gpa,
+                                                  eligible_program_branch__getter__contains=profile.program_branch.getter,
+                                                  only_female=False, active=True).difference(self.get_applied_ad_list(profile.user, model))
+                else:
+                    offers = model.objects.filter(min_gpa__lte=profile.gpa,
+                                                  eligible_program_branch__getter__contains=profile.program_branch.getter,
+                                                  active=True).difference(self.get_applied_ad_list(profile.user, model))
+
             return offers
 
     def get(self, request):

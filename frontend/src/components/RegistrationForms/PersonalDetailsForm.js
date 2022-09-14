@@ -47,6 +47,9 @@ export default function PersonalDetailsForm({ p1, p2 }) {
   const handleChangedis = (event) => {
     p2({ ...p1, ...{ disable: event.target.value } });
   };
+  const handleChangegender = (event) => {
+    p2({ ...p1, ...{ gender: event.target.value } });
+  };
   const selectFile = (event) => {
     p2({ ...p1, ...{ photo: event.target.files[0] } });
   };
@@ -124,6 +127,21 @@ export default function PersonalDetailsForm({ p1, p2 }) {
             <Select fullWidth value={p1.national} onChange={handleChangenat}>
               <MenuItem value="Indian">Indian</MenuItem>
               <MenuItem value="Other">Others</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <FormControl fullWidth>
+            <InputLabel>Gender *</InputLabel>
+            <Select
+              fullWidth
+              required
+              value={p1.gender}
+              onChange={handleChangegender}
+            >
+              <MenuItem value={'Male'}>Male</MenuItem>
+              <MenuItem value={'Female'}>Female</MenuItem>
+              <MenuItem value={'Others'}>Others</MenuItem>
             </Select>
           </FormControl>
         </Grid>

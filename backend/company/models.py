@@ -64,6 +64,7 @@ class BaseAdvertisement(models.Model):
     bond_details = models.TextField(blank=True, null=True)
     # selection process
     eligible_program_branch = models.ManyToManyField(ProgramAndBranch)
+    only_female = models.BooleanField(default=False, verbose_name="Female Candidates Only")
     resume_required = models.BooleanField(default=False)
     resume_shortlist_criteria = models.TextField(null=True, blank=True)
     aptitude_test_required = models.BooleanField(default=False)

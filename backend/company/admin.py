@@ -220,8 +220,8 @@ class JobAdvertisementAdmin(ImportExportActionModelAdmin):
     change_form_template = "admin/send_advertisement.html"
     readonly_fields = ['creation_timestamp', ]
     resource_class = JobAdvertisementResource
-    list_display = ['company', 'designation', 'ctc', 'min_gpa', 'active', 'expiry', 'email_sent']
-    list_filter = ['company', 'active', 'creation_timestamp', ]
+    list_display = ['company', 'designation', 'ctc', 'min_gpa', 'active', 'expiry', 'email_sent', 'only_female']
+    list_filter = ['company', 'active', 'creation_timestamp', 'only_female']
     ordering = ['company']
     search_fields = ['company__name', ]
     actions = [get_zipped_resumes_for_ad, make_active, make_inactive, export_as_csv]
@@ -241,8 +241,8 @@ class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
     change_form_template = "admin/send_advertisement.html"
     readonly_fields = ['creation_timestamp', ]
     resource_class = InternshipAdvertisementResource
-    list_display = ['company', 'designation', 'min_gpa', 'ctc', 'active', 'expiry', 'email_sent']
-    list_filter = ['company', 'active', 'creation_timestamp', ]
+    list_display = ['company', 'designation', 'min_gpa', 'ctc', 'active', 'expiry', 'email_sent', 'only_female']
+    list_filter = ['company', 'active', 'creation_timestamp', 'only_female']
     ordering = ['company']
     search_fields = ['company__name', ]
     actions = [get_zipped_resumes_for_ad, make_active, make_inactive, export_as_csv]

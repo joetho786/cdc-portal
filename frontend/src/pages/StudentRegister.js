@@ -72,6 +72,7 @@ const StudentRegister = () => {
     cadd: '',
     category: '',
     national: '',
+    gender: '',
     disable: '',
     photo: '',
   });
@@ -138,6 +139,7 @@ const StudentRegister = () => {
     form.append('dob', values1.birthday);
     form.append('category', values1.category);
     form.append('jee_air', values2.jeeair);
+    form.append('gender', values1.gender);
     form.append('physical_disability', values1.disable);
     form.append('nationality', values1.national);
     form.append('permanent_address', values1.padd);
