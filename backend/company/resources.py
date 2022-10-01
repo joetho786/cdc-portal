@@ -1,7 +1,7 @@
 from import_export import resources
 from import_export.fields import Field
 from import_export.widgets import ManyToManyWidget
-from company.models import JobOffer, InternshipOffer, JobAdvertisement, InternshipAdvertisement
+from company.models import JobOffer, InternshipOffer, JobAdvertisement, InternshipAdvertisement, PlacedStudent
 from company.models import CompanyPerson, CompanyProfile
 from student.models import ProgramAndBranch
 
@@ -412,3 +412,58 @@ class JobAdvertisementResource(BaseAdvertisementResource):
 class InternshipAdvertisementResource(BaseAdvertisementResource):
     class Meta:
         model = InternshipAdvertisement
+
+class PlacedStudentResource(resources.ModelResource):
+    company_name = Field(
+        column_name='Company Name',
+        attribute='company__name')
+    company_profile = Field(
+        column_name='Profile',
+        attribute='designation')
+    company_ctc = Field(
+        column_name='CTC',
+        attribute='ctc')
+    company_stipend = Field(
+        column_name='Stipend',
+        attribute='stipend')
+    roll_no = Field(
+        column_name='Roll No',
+        attribute='student__roll_no')
+    name = Field(
+        column_name='Name',
+        attribute='student__user__get_full_name')
+    email = Field(
+        column_name='Email ID',
+        attribute='student__user__email')
+    dob = Field(
+        column_name='DOB(YYYY-MM-DD)',
+        attribute='student__dob')
+    program_branch = Field(
+        column_name='Program and Branch',
+        attribute='student__program_branch__name')
+    gpa = Field(
+        column_name='GPA',
+        attribute='student__gpa')
+    ug_gpa = Field(
+        column_name='UG GPA',
+        attribute='student__ug_gpa')
+    phone = Field(
+        column_name='Phone Number',
+        attribute='student__phone')
+    category = Field(
+        column_name='Category',
+        attribute='student__get_category_display')
+    resume = Field(
+        column_name='Resume',
+        attribute='resume__file__url')
+
+    class Meta:
+        model = PlacedStudent
+        fields = ('resume', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa',
+                  'phone', 'category', 'company_name', 'company_profile', 'company_ctc', 'tentative_join_date', 'tentative_job_location')
+        export_order = ('resume', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa',
+                        'phone', 'category', 'company_name', 'company_profile', 'company_ctc')
+    
+    def dehydrate_resume(self, placed_student):
+        return 'https://spc.iitj.ac.in%s' % (placed_student.resume.file.url)
+    
