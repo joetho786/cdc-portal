@@ -211,12 +211,12 @@ class BaseOffer(models.Model):
             if is_internship:
                 self.student.banned = True
                 if self.student.program_branch.program == 'BTech':
-                    stipend =  self.profile.btech_stipend
+                    stipend = self.profile.btech_stipend
                 elif self.student.program_branch.program == 'MTech':
                     stipend = self.profile.mtech_stipend
                 else:
                     stipend = self.profile.msc_stipend
-                
+
                 status = PlacedStudent.ACCEPTED
                 PlacedStudent.objects.create(
                     student=self.student,
@@ -232,19 +232,19 @@ class BaseOffer(models.Model):
 
                 if self.student.program_branch.program == 'BTech':
                     ctc = self.profile.btech_cost_to_company
-                elif self.student.program_branch.program == 'MTech':    
+                elif self.student.program_branch.program == 'MTech':
                     ctc = self.profile.mtech_cost_to_company
                 elif self.student.program_branch.program == 'MSc':
                     ctc = self.profile.msc_cost_to_company
                 else:
                     ctc = self.profile.mba_cost_to_company
-                
+
                 if self.ppo:
                     status = PlacedStudent.PPO
                 else:
                     status = PlacedStudent.PLACED
                     self.student.banned = True
-                
+
                 PlacedStudent.objects.create(
                     student=self.student,
                     resume=self.resume.url,
@@ -261,6 +261,7 @@ class BaseOffer(models.Model):
 class JobOffer(BaseOffer):
     profile = models.ForeignKey(JobAdvertisement, on_delete=models.CASCADE)
 
+
 class InternshipOffer(BaseOffer):
     profile = models.ForeignKey(InternshipAdvertisement, on_delete=models.CASCADE)
 
@@ -272,10 +273,10 @@ class PlacedStudent(models.Model):
     ACCEPTED = 'accepted'
 
     STATUS_CHOICES = (
-        ( PLACED , 'Placed'),
-        ( PPO, 'PPO'),
-        ( DROPPED, 'Dropped'),
-        ( ACCEPTED, 'Accepted'),
+        (PLACED, 'Placed'),
+        (PPO, 'PPO'),
+        (DROPPED, 'Dropped'),
+        (ACCEPTED, 'Accepted'),
     )
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
     resume = models.ForeignKey(Resume, on_delete=models.PROTECT, null=True, blank=True)
@@ -285,7 +286,7 @@ class PlacedStudent(models.Model):
     designation = models.CharField(max_length=500)
     ctc = models.FloatField(null=True, blank=True, default=0)
     stipend = models.FloatField(null=True, blank=True, default=0)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='placed') 
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='placed')
 
 
 def event_pre_save_receiver(sender, instance, *args, **kwargs):

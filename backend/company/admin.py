@@ -30,8 +30,10 @@ class JobOfferInline(admin.StackedInline):
 class InternshipOfferInline(admin.StackedInline):
     model = InternshipOffer
 
+
 class PlacedStudentInline(admin.StackedInline):
     model = PlacedStudent
+
 
 class CompanyPersonInline(admin.StackedInline):
     model = CompanyPerson
@@ -290,22 +292,21 @@ class JobOfferAdmin(ImportExportActionModelAdmin):
         model = JobOffer
         fields = '__all__'
 
+
 @admin.register(PlacedStudent)
 class PlacedStudentAdmin(ImportExportActionModelAdmin):
     resource_class = PlacedStudentResource
     list_display = ['student', 'get_roll_no', 'company', 'job_profile', 'internship_profile', 'status']
-    list_filter = ['company', 'ctc', 'status', 'job_profile', 'internship_profile',]
+    list_filter = ['company', 'ctc', 'status', 'job_profile', 'internship_profile']
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
                      'student__user__last_name', 'student__roll_no', 'student__ug_gpa', 'student__pg_gpa',
-                     'designation', 'ctc',   'status', 'job_profile', 'internship_profile',]
+                     'designation', 'ctc',   'status', 'job_profile', 'internship_profile']
     ImportExportActionModelAdmin.actions = ImportExportActionModelAdmin.actions
 
     class Meta:
         model = PlacedStudent
         fields = '__all__'
-    
+
     def get_roll_no(self, obj):
         return obj.student.roll_no
-    
-

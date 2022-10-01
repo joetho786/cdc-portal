@@ -413,6 +413,7 @@ class InternshipAdvertisementResource(BaseAdvertisementResource):
     class Meta:
         model = InternshipAdvertisement
 
+
 class PlacedStudentResource(resources.ModelResource):
     company_name = Field(
         column_name='Company Name',
@@ -463,7 +464,6 @@ class PlacedStudentResource(resources.ModelResource):
                   'phone', 'category', 'company_name', 'company_profile', 'company_ctc', 'tentative_join_date', 'tentative_job_location')
         export_order = ('resume', 'roll_no', 'name', 'email', 'dob', 'program_branch', 'gpa', 'ug_gpa',
                         'phone', 'category', 'company_name', 'company_profile', 'company_ctc')
-    
+
     def dehydrate_resume(self, placed_student):
         return 'https://spc.iitj.ac.in%s' % (placed_student.resume.file.url)
-    
