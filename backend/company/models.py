@@ -218,7 +218,7 @@ class BaseOffer(models.Model):
                     stipend = self.profile.msc_stipend
 
                 status = PlacedStudent.ACCEPTED
-                PlacedStudent.objects.get_or_create(
+                PlacedStudent.objects.update_or_create(
                     student=self.student,
                     resume=self.resume,
                     company=self.company,
@@ -245,7 +245,7 @@ class BaseOffer(models.Model):
                     status = PlacedStudent.PLACED
                     self.student.banned = True
 
-                PlacedStudent.objects.get_or_create(
+                PlacedStudent.objects.update_or_create(
                     student=self.student,
                     resume=self.resume,
                     company=self.company,
