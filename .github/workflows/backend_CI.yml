@@ -39,7 +39,6 @@ jobs:
         sudo apt-get install libpq-dev 
         pip3 install coverage
         pip3 install pipenv
-        pip3 install celery
     - name: Linting
       working-directory: ./backend
       run: |
