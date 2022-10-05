@@ -4,24 +4,20 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-flake8 = "*"
 
 [packages]
 django = "==3.1.4"
-requests = "*"
 psycopg2 = "==2.8.4"
-django-decouple = "==2.1"
-djangorestframework = "==3.12.2"
+django-decouple = "*"
+djangorestframework = "*"
 pillow = "*"
 django-import-export = "*"
 django-ckeditor = "*"
 django-cors-headers = "*"
 django-filter = "*"
-redis="*"
-django-celery-beat="*"
-django-celery-results="*"
-cryptography="==3.1.1"
-pyjwt="*"
+cryptography = "*"
+pyjwt = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
