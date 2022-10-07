@@ -4,14 +4,12 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-flake8 = "*"
 
 [packages]
 django = "==3.1.4"
-requests = "*"
 psycopg2 = "==2.8.4"
-django-decouple = "==2.1"
-djangorestframework = "==3.12.2"
+django-decouple = "*"
+djangorestframework = "*"
 pillow = "*"
 django-import-export = "*"
 django-ckeditor = "*"
