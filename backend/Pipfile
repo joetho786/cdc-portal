@@ -15,9 +15,9 @@ django-import-export = "*"
 django-ckeditor = "*"
 django-cors-headers = "*"
 django-filter = "*"
-cryptography = "*"
-pyjwt = "*"
-requests = "*"
+redis="*"
+cryptography="==3.1.1"
+pyjwt="*"
 
 [requires]
 python_version = "3.7"
