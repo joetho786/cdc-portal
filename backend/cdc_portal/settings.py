@@ -58,8 +58,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'django_celery_results',
-    'django_celery_beat',
     'ckeditor',
     'ckeditor_uploader',
     'corsheaders',
