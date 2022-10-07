@@ -4,22 +4,22 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-flake8 = "*"
 
 [packages]
 django = "==3.1.4"
+requests = "*"
 psycopg2 = "==2.8.4"
-django-decouple = "*"
-djangorestframework = "*"
+django-decouple = "==2.1"
+djangorestframework = "==3.12.2"
 pillow = "*"
 django-import-export = "*"
 django-ckeditor = "*"
 django-cors-headers = "*"
 django-filter = "*"
 redis="*"
-requests="*"
 cryptography="==3.1.1"
 pyjwt="*"
+flake8 = "*"
 
 [requires]
 python_version = "3.7"
