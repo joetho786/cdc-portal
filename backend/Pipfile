@@ -4,7 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-flake8 = "*"
+
 
 [packages]
 django = "==3.1.4"
@@ -20,6 +20,7 @@ redis="*"
 requests="*"
 cryptography="==3.1.1"
 pyjwt="*"
+flake8 = "*"
 
 [requires]
 python_version = "3.7"
