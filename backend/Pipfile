@@ -17,6 +17,7 @@ django-ckeditor = "*"
 django-cors-headers = "*"
 django-filter = "*"
 redis="*"
+requests="*"
 cryptography="==3.1.1"
 pyjwt="*"
 
