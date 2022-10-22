@@ -30,8 +30,7 @@ const Volunteers = () => {
           style={{
             height: '100%',
             color: '#444444',
-            background:
-              '#fafbff center no-repeat',
+            background: '#fafbff center no-repeat',
           }}
         >
           <b
