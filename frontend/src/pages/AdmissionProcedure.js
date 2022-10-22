@@ -293,7 +293,7 @@ export default function BasicTable() {
               </Typography>
             </TabPanel>
             <div>
-              <img src={admission} width="100%" height="50%" alt="admsission" />
+              <img src={admission} width="30%" height="30%" alt="admsission" />
             </div>
           </Paper>
         </FadeUpWhenVisible>
